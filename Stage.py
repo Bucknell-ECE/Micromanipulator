@@ -61,8 +61,8 @@ class Stage:
         self.sendCommand('87', ['0x35'])
 
     def startup(self):
-        forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
-        backwardStep =
+        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+        ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
     def getPositionFromM3LS(self):
         self.sendCommandNoVars(19)
