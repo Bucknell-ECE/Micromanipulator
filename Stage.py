@@ -44,6 +44,7 @@ class Stage:
             command += [hex(ord(i))]
         command += ['0x3E']
         command += ['0x0D']
+
         return command
 
 
