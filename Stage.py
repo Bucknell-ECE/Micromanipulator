@@ -64,7 +64,9 @@ class Stage:
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
-    def getPositionFromM3LS(self):
+ """
+  def getPositionFromM3LS(self):
         self.sendCommandNoVars(19)
         temp =[]
-        temp = bus.read_i2c_block_data(32, char cmd)
+        temp = bus.read_i2c_block_data(32, charcmd)
+ """
