@@ -56,7 +56,6 @@ class Stage:
     def sendCommand(self, commandCode, commandVars):
         print('Command code', commandCode, 2 * commandCode)
         print('command vars', commandVars, commandVars[1]+commandVars[2])
-        print('commmand to sent', commandToSend)
         commandToSend = self.buildCommand(commandCode, commandVars)
         print('commmand to sent', commandToSend)
         print('added' , commandToSend[1] + commandToSend[2])
