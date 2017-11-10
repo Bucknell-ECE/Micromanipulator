@@ -45,6 +45,9 @@ def encoderCountConvert(value):
     for i in range(8 - int(len(encodeOutput))):
         encodeOutput.insert(0, 30)
     # print(encodeOutput)
+
+    print('EncoderCOunt OUtput', encodeOutput)
+    print(encodeOutput[1] + encodeOutput[2])
     return encodeOutput
 
 
