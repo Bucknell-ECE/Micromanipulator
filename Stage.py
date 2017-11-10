@@ -31,7 +31,7 @@ class Stage:
         command += [13] # carriage return
         #print(command)
         #print([command[1] + command[2]])
-        #return command
+        return command
 
     def buildCommandNoVars(self, commandCode):
         ''''
