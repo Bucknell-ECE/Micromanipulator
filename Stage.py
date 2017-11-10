@@ -54,7 +54,12 @@ class Stage:
         bus = smbus.SMBus(1)
         bus.write_i2c_block_data(self.address, 0, command)
     def sendCommand(self, commandCode, commandVars):
+        print('Command code', commandCode, 2 * commandCode)
+        print('command vars', commandVars, commandVars[1]+commandVars[2])
+        print('commmand to sent', commandToSend)
         commandToSend = self.buildCommand(commandCode, commandVars)
+        print('commmand to sent', commandToSend)
+        print('added' , commandToSend[1] + commandToSend[2])
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
