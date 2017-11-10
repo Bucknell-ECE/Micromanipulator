@@ -1,4 +1,4 @@
-# import smbus
+import smbus
 from helper import *
 class Stage:
 
