@@ -8,7 +8,7 @@ while True:
     #com = xaxis.buildCommand('08',encoderConvert(moveToNew))
     #print(com)
     #xaxis.calibrate()
-    xaxis.sendCommand('08', encoderCountConvert(moveToNew)
+    xaxis.sendCommand('08', encoderCountConvert(moveToNew))
     input('Finished, Continue?')
 
 

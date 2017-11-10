@@ -21,14 +21,14 @@ class Stage:
         '''
 
         command = [] #empty list to hold command
-        command += ['0x' + str(int(self.address[2:]) << 1)]  # address of stage bit shifted 1 left
-        command += ['0x3C'] # open carat
+        command += [int(self.address[2:]) << 1]  # address of stage bit shifted 1 left
+        command += [60] # open carat
         for i in str(commandCode):
-            command += [hex(ord(i))]
-        command += ['0x20'] # space
+            command += [ord(i)]
+        command += [32] # space
         command += commandVars
-        command += ['0x3E'] # close carat
-        command += ['0x0D'] # carriage return
+        command += [62] # close carat
+        command += [13] # carriage return
         return command
 
     def buildCommandNoVars(self, commandCode):
