@@ -50,11 +50,12 @@ class Stage:
 
 
     def write(self, command):
-        #print(command)
-        #print(command[1] + command[2])
+        print(command)
+        print(command[1] + command[2])
         bus = smbus.SMBus(1)
-        #print('found bus')
+        print('found bus')
         bus.write_i2c_block_data(self.address, 0, command)
+
     def sendCommand(self, commandCode, commandVars):
         #print('Command code', commandCode, 2 * commandCode)
         #print('command vars', commandVars, commandVars[1]+commandVars[2])
@@ -62,7 +63,7 @@ class Stage:
         #print('commmand to sent', commandToSend)
         #print('added' , commandToSend[1] + commandToSend[2])
         self.write(commandToSend)
-       # print('written')
+        #print('written')
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
