@@ -19,7 +19,9 @@ def encoderConvert(value):
     #ensure that the output is 8 bytes
     for i in range(8 - int(len(encodeOutput))):
         encodeOutput.insert(0, '0x30')
+    print('Encoded output is ')
     print('EncoderCOunt OUtput', encodeOutput)
+    print(encodeOutput[1] + encodeOutput[2])
     return encodeOutput
 
 def encoderCountConvert(value):
