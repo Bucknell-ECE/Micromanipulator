@@ -29,6 +29,7 @@ class Stage:
         command += commandVars
         command += [62] # close carat
         command += [13] # carriage return
+        print(command)
         return command
 
     def buildCommandNoVars(self, commandCode):

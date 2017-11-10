@@ -47,7 +47,6 @@ def encoderCountConvert(value):
 
 
 
-
         #####################TEST CODE ######################################
 
 #print('This is a test')
