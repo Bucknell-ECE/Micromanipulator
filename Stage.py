@@ -6,7 +6,7 @@ class Stage:
         self.position = position
         self.address = address
         self.bus = bus
-    # bus = smbus.SMBus(self.bus)
+    bus = smbus.SMBus(self.bus)
    # def getPosFromM3LS(self):
 
     def getPosition(self):
