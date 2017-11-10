@@ -60,6 +60,7 @@ class Stage:
         print('commmand to sent', commandToSend)
         print('added' , commandToSend[1] + commandToSend[2])
         self.write(commandToSend)
+        print('written')
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
