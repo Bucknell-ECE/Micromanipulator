@@ -29,9 +29,9 @@ class Stage:
         command += commandVars
         command += [62] # close carat
         command += [13] # carriage return
-        print(command)
-        print([command[1] + command[2]])
-        return command
+        #print(command)
+        #print([command[1] + command[2]])
+        #return command
 
     def buildCommandNoVars(self, commandCode):
         ''''
@@ -40,29 +40,29 @@ class Stage:
         '''
 
         command = []
-        command += ['0x' + str(int(self.address[2:]) << 1)]
-        command += ['0x3C']
+        command += [self.address << 1]
+        command += [60]
         for i in str(commandCode):
             command += [hex(ord(i))]
-        command += ['0x3E']
-        command += ['0x0D']
+        command += [62]
+        command += [13]
         return command
 
 
     def write(self, command):
-        print(command)
-        print(command[1] + command[2])
+        #print(command)
+        #print(command[1] + command[2])
         bus = smbus.SMBus(1)
-        print('found bus')
+       # print('found bus')
         bus.write_i2c_block_data(self.address, 0, command)
     def sendCommand(self, commandCode, commandVars):
-        print('Command code', commandCode, 2 * commandCode)
-        print('command vars', commandVars, commandVars[1]+commandVars[2])
+        #print('Command code', commandCode, 2 * commandCode)
+       # print('command vars', commandVars, commandVars[1]+commandVars[2])
         commandToSend = self.buildCommand(commandCode, commandVars)
-        print('commmand to sent', commandToSend)
-        print('added' , commandToSend[1] + commandToSend[2])
+       # print('commmand to sent', commandToSend)
+       # print('added' , commandToSend[1] + commandToSend[2])
         self.write(commandToSend)
-        print('written')
+      #  print('written')
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
