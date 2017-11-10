@@ -29,9 +29,9 @@ class Stage:
         command += commandVars
         command += [62] # close carat
         command += [13] # carriage return
-        #print(command)
-        #print([command[1] + command[2]])
-        #return command
+        print(command)
+        print([command[1] + command[2]])
+        return command
 
     def buildCommandNoVars(self, commandCode):
         ''''
@@ -40,12 +40,12 @@ class Stage:
         '''
 
         command = []
-        command += [self.address << 1]
-        command += [60]
+        command += ['0x' + str(int(self.address[2:]) << 1)]
+        command += ['0x3C']
         for i in str(commandCode):
             command += [hex(ord(i))]
-        command += [62]
-        command += [13]
+        command += ['0x3E']
+        command += ['0x0D']
         return command
 
 
@@ -60,7 +60,7 @@ class Stage:
         print('command vars', commandVars, commandVars[1]+commandVars[2])
         commandToSend = self.buildCommand(commandCode, commandVars)
         print('commmand to sent', commandToSend)
-        #print('added' , commandToSend[1] + commandToSend[2])
+        print('added' , commandToSend[1] + commandToSend[2])
         self.write(commandToSend)
         print('written')
 
