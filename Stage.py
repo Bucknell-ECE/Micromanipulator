@@ -54,7 +54,7 @@ class Stage:
         print(command[1] + command[2])
         bus = smbus.SMBus(1)
         print('found bus')
-        bus.write_i2c_block_data(0x32, 0, command)
+        bus.write_i2c_block_data(self.address, 0, command)
     def sendCommand(self, commandCode, commandVars):
         print('Command code', commandCode, 2 * commandCode)
         print('command vars', commandVars, commandVars[1]+commandVars[2])
