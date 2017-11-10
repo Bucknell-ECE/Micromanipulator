@@ -10,7 +10,7 @@ while True:
     #com = xaxis.buildCommand('08',encoderConvert(moveToNew))
     #print(com)
     #xaxis.calibrate()
-    bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 48, 48, 48, 62, 13])
+    bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
     #xaxis.sendCommand('08', encoderCountConvert(moveToNew))
     input('Finished, Continue?')
 
