@@ -48,6 +48,7 @@ class Stage:
 
 
     def write(self, command):
+        print(command)
         bus = smbus.SMBus(1)
         bus.write_i2c_block_data(self.address, 0, command)
     def sendCommand(self, commandCode, commandVars):
