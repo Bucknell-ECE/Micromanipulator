@@ -78,7 +78,7 @@ class Stage:
         self.sendCommandNoVars('10')
         temp = bus.read_i2c_block_data(0x32, 0)
 
-        rcvEncodedPosition = str(temp[10:18])
+        rcvEncodedPosition = str(int(temp[11:18]))
         print(rcvEncodedPosition)
         position = int(rcvEncodedPosition, 16)
         return position
