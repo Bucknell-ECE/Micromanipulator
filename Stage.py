@@ -62,7 +62,7 @@ class Stage:
 
 
     def calibrate(self):
-        self.sendCommand('87', ['0x35'])
+        self.sendCommand('87', [' 5'])
 
     def startup(self):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
@@ -73,15 +73,21 @@ class Stage:
         """
         Function that returns the position of the stage
         :return: Postion of the stage in encoder counts(NOT uM!)
+
+        From newscale documentation:
+        Send : <10>
+        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
+        S is motor status
+        P is position, hex representation of encoder counts
+        E is error count. How far is the stage from where it is supposed to be?
         """
         bus = self.bus
-        self.sendCommandNoVars('10')
-        temp = bus.read_i2c_block_data(0x32, 0)
+        self.sendCommandNoVars('10')  #send query asking about motor status and position
+        temp = bus.read_i2c_block_data(0x32, 0)  #store incoming data from motor in list
 
         rcvEncodedPosition = ''
         for element in range(8):
             rcvEncodedPosition += str(chr(temp[11+element]))
-        print(rcvEncodedPosition)
         position = int(rcvEncodedPosition, 16)
         return position
 

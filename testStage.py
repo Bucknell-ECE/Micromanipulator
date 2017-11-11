@@ -9,7 +9,7 @@ while True:
     bus = smbus.SMBus(1)
 
     next = input('What do you want to do next?')
-    print(next)
+
     if next == 1:
         temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
@@ -31,6 +31,10 @@ while True:
     elif next == 5:
         pos = xaxis.getPositionFromM3LS()
         print(pos)
+    elif next == 6:
+        xaxis.calibrate()
+        temp = bus.read_i2c_block_data(0x32, 0)
+        print('temp', temp)
 
 
 
