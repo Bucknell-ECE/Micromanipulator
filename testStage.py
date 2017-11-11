@@ -10,33 +10,40 @@ while True:
 
     next = input('What do you want to do next?')
 
-    if next == 1:
+    if next == 1: # read status register
         temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
-    elif next == 2:
+    elif next == 2: #move to a location
         moveToNew = input('Where should the stage move next?')
         # com = xaxis.buildCommand('08',encoderConvert(moveToNew))
         # print(com)
         # xaxis.calibrate()
         # bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
         xaxis.sendCommand('08', encoderCountConvert(moveToNew))
-    elif next == 3:
+    elif next == 3: #get full status
         xaxis.sendCommandNoVars('19')
         temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
-    elif next == 4:
+    elif next == 4:# read firmware version
         xaxis.sendCommandNoVars('01')
         temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
-    elif next == 5:
+    elif next == 5: #get current postion
         pos = xaxis.getPositionFromM3LS()
         print(pos)
-    elif next == 6:
+    elif next == 6: #calibrate
         xaxis.calibrate()
         temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
-    elif next == 7:
+    elif next == 8: #Return home
         xaxis.returnHome()
+    elif next == 7:
+        newHome = input('Enter y to set current location as home, or enter postiion to set home')
+        if newHome == 'y':
+            xaxis.setCurrentHome()
+        else:
+            xaxis.setHome(newHome)
+
 
 
 

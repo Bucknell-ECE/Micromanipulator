@@ -44,6 +44,9 @@ class Stage:
         :return: NA
         """
         self.home = location
+    def setCurrentHome(self):
+        current = self.getPositionFromM3LS()
+        self.setHome(current)
 
     def buildCommand(self, commandCode, commandVars):
         """
