@@ -5,7 +5,7 @@ class Stage:
     def __init__(self, address, position, bus):
         self.position = position
         self.address = address
-        self.bus = bus
+        self.bus = smbus.SMBus(bus)
     bus = smbus.SMBus(1)
    # def getPosFromM3LS(self):
 
@@ -68,9 +68,17 @@ class Stage:
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
-    """
+
     def getPositionFromM3LS(self):
-        self.sendCommandNoVars(19)
-        temp =[]
-        temp = bus.read_i2c_block_data(32, charcmd)
-    """
+        """
+        Function that returns the position of the stage
+        :return: Postion of the stage in encoder counts(NOT uM!)
+        """
+        bus = self.bus
+        self.sendCommandNoVars('10')
+        temp = bus.read_i2c_block_data(0x32, 0)
+        rcvEncodedPosition = temp[10:18]
+        position = int(rcvEncodedPosition, 16)
+        return position
+
+
