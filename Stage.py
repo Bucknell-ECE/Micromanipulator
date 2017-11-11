@@ -1,18 +1,30 @@
 import smbus
 from helper import *
+
+
+
 class Stage:
 
     def __init__(self, address, position, bus):
         self.position = position
         self.address = address
         self.bus = smbus.SMBus(bus)
+        self.home = 3000
     bus = smbus.SMBus(1)
-   # def getPosFromM3LS(self):
 
     def getPosition(self):
         return int(self.position)
+
     def getAddress(self):
         return self.address
+
+    def setHome(self, location):
+        """
+        Allows user to set the home location for the particular axis
+        :param location: a location, specified in encoder counts
+        :return: NA
+        """
+        self.home = location
 
     def buildCommand(self, commandCode, commandVars):
         """
@@ -45,7 +57,6 @@ class Stage:
         command += [13]
         return command
 
-
     def write(self, command):
         bus = smbus.SMBus(1)
         bus.write_i2c_block_data(self.address, 0, command)
@@ -54,12 +65,10 @@ class Stage:
         commandToSend = self.buildCommand(commandCode, commandVars)
         self.write(commandToSend)
 
-
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
-        print('commant no vars: ', commandToSend)
+        #print('command no vars: ', commandToSend)
         self.write(commandToSend)
-
 
     def calibrate(self):
         self.sendCommand('87', [ 5])
@@ -90,5 +99,21 @@ class Stage:
             rcvEncodedPosition += str(chr(temp[11+element]))
         position = int(rcvEncodedPosition, 16)
         return position
+
+    def goToLocation(self, location):
+        """
+        Sends the stage to the location specified, in encoder counts
+        :param location: a location in encoder counts
+        :return: NA
+        """
+        self.sendCommand('08', encodeToCommand(location))
+
+    def returnHome(self):
+        """
+        Funtion that sends the stage to its home location
+        :return: NA
+        """
+        self.goToLocation(self.home)
+
 
 

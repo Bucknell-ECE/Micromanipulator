@@ -35,6 +35,9 @@ while True:
         xaxis.calibrate()
         temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
+    elif next == 7:
+        xaxis.returnHome()
+
 
 
 
