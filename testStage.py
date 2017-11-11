@@ -9,10 +9,10 @@ while True:
     bus = smbus.SMBus(1)
 
     next = input('What do you want to do next?')
-    if input == '1':
+    if next == '1':
         temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
-    elif input == '2':
+    elif next == '2':
         moveToNew = input('Where should the stage move next?')
         # com = xaxis.buildCommand('08',encoderConvert(moveToNew))
         # print(com)
