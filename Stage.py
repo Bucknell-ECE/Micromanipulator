@@ -62,7 +62,7 @@ class Stage:
 
 
     def calibrate(self):
-        self.sendCommand('87', [' 5'])
+        self.sendCommand('87', [ 5])
 
     def startup(self):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
