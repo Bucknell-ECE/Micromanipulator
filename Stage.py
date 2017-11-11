@@ -40,7 +40,7 @@ class Stage:
         command += [self.address << 1]
         command += [60]
         for i in str(commandCode):
-            command += [hex(ord(i))]
+            command += [ord(i)]
         command += [62]
         command += [13]
         return command
@@ -57,7 +57,9 @@ class Stage:
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
+        print('commant no vars: ', commandToSend)
         self.write(commandToSend)
+
 
     def calibrate(self):
         self.sendCommand('87', ['0x35'])
