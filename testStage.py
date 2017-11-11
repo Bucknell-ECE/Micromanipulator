@@ -38,8 +38,8 @@ while True:
     elif next == 8: #Return home
         xaxis.returnHome()
     elif next == 7:
-        newHome = input('Enter y to set current location as home, or enter postiion to set home')
-        if newHome == 'y':
+        newHome = input('Enter -1 to set current location as home, or enter postiion to set home')
+        if newHome == -1:
             xaxis.setCurrentHome()
         else:
             xaxis.setHome(newHome)
