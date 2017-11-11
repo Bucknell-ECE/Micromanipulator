@@ -9,7 +9,8 @@ while True:
     bus = smbus.SMBus(1)
 
     next = input('What do you want to do next?')
-    if next == '1':
+    print(next)
+    if next == 1:
         temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
     elif next == '2':
