@@ -8,8 +8,8 @@ print(2 * xaxis.getAddress())
 while True:
     bus = smbus.SMBus(1)
     print('bus est')
-    temp = []
-    temp+= bus.read_i2c_block_data(0x32, 19)
+    #temp = []
+    temp = bus.read_i2c_block_data(0x32, 19)
     print('temp', temp)
     moveToNew = input('Where should the stage move next?')
     #com = xaxis.buildCommand('08',encoderConvert(moveToNew))
