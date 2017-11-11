@@ -80,7 +80,7 @@ class Stage:
 
         rcvEncodedPosition = ''
         for element in range(8):
-            rcvEncodedPosition += str(temp[11+element])
+            rcvEncodedPosition += str(chr(temp[11+element]))
         print(rcvEncodedPosition)
         position = int(rcvEncodedPosition, 16)
         return position
