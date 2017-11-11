@@ -106,6 +106,8 @@ class Stage:
         :param location: a location in encoder counts
         :return: NA
         """
+        print(encodeToCommand(location))
+        encodeToCommand(location)
         self.sendCommand('08', encodeToCommand(location))
 
     def returnHome(self):
