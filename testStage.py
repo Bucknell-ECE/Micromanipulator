@@ -28,6 +28,11 @@ while True:
         xaxis.sendCommandNoVars('01')
         temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
+    elif next == 5:
+        xaxis.sendCommandNoVars('10')
+        temp = bus.read_i2c_block_data(0x32, 0)
+        print('temp', temp)
+
 
 
 
