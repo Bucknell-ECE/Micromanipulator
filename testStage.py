@@ -22,7 +22,7 @@ while True:
         xaxis.sendCommand('08', encoderCountConvert(moveToNew))
     elif next == 3:
         xaxis.sendCommandNoVars('19')
-        temp = bus.read_i2c_block_data(0x32, 19)
+        temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
 
 
