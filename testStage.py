@@ -7,16 +7,20 @@ print(xaxis.getAddress())
 print(2 * xaxis.getAddress())
 while True:
     bus = smbus.SMBus(1)
-    print('bus est')
-    #temp = []
-    temp = bus.read_i2c_block_data(0x32, 19)
-    print('temp', temp)
-    moveToNew = input('Where should the stage move next?')
-    #com = xaxis.buildCommand('08',encoderConvert(moveToNew))
-    #print(com)
-    #xaxis.calibrate()
-    #bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
-    xaxis.sendCommand('08', encoderCountConvert(moveToNew))
-    input('Finished, Continue?')
+
+    next = input('What do you want to do next?')
+    if input == 'q':
+        temp = bus.read_i2c_block_data(0x32, 19)
+        print('temp', temp)
+    elif input == 'm':
+        moveToNew = input('Where should the stage move next?')
+        # com = xaxis.buildCommand('08',encoderConvert(moveToNew))
+        # print(com)
+        # xaxis.calibrate()
+        # bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
+        xaxis.sendCommand('08', encoderCountConvert(moveToNew))
+
+
+
 
 
