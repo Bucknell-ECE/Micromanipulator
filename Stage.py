@@ -15,35 +15,34 @@ class Stage:
         return self.address
 
     def buildCommand(self, commandCode, commandVars):
-        ''''
+        """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
-        '''
+        """
 
-        command = [] #empty list to hold command
+        command = []  # empty list to hold command
         command += [self.address << 1]  # address of stage bit shifted 1 left
-        command += [60] # open carat
+        command += [60]  # open carat(<)
         for i in str(commandCode):
             command += [ord(i)]
-        command += [32] # space
+        command += [32]  # space(' ')
         command += commandVars
-        command += [62] # close carat
-        command += [13] # carriage return
+        command += [62]  # close carat (>)
+        command += [13]  # carriage return(\r)
         return command
 
     def buildCommandNoVars(self, commandCode):
-        ''''
+        """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
-        '''
-
+        """
         command = []
-        command += ['0x' + str(int(self.address[2:]) << 1)]
-        command += ['0x3C']
+        command += [self.address << 1]
+        command += [60]
         for i in str(commandCode):
             command += [hex(ord(i))]
-        command += ['0x3E']
-        command += ['0x0D']
+        command += [62]
+        command += [13]
         return command
 
 
