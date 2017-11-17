@@ -2,6 +2,7 @@
 from Stage import *
 #import smbus
 
+
 #bus = smbus.SMBus(1)
 #def write(self, command):
     #bus.write_i2c_block_data(self.address, 0, command)
