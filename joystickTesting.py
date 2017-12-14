@@ -1,1 +1,28 @@
+import pygame
+import sys
+import time
 
+pygame.joystick.init() # Initialize joystick module
+
+
+print pygame.joystick.get_count() # Return number of joysticks
+
+logitech_joystick = pygame.joystick.Joystick(0) # Create a new joystick. The id argument must be a value from 0 to pygame.joystick.get_count()-1.
+logitech_joystick.init() # Initialize logitech_joystick
+print logitech_joystick.get_init() # Initialize joystick
+print logitech_joystick.get_id() # Get joystick ID
+print logitech_joystick.get_name() # Get joystick system name
+print logitech_joystick.get_numaxes() # Get number of axes on joystick
+print logitech_joystick.get_numballs() # Get number of track balls
+print logitech_joystick.get_numbuttons() # Get number of buttons on the joystick
+print logitech_joystick.get_numhats() # Get number of hat controls
+
+
+while True: # Loop forever
+    pygame.event.pump() # Process pygame event handlers
+    positionX = logitech_joystick.get_axis(0)
+    positionY = logitech_joystick.get_axis(1)
+    positionZ = logitech_joystick.get_axis(2)
+    print positionX # Get current position of an axis
+    print positionY
+    print positionZ
