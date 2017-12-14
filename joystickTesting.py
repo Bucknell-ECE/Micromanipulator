@@ -26,3 +26,4 @@ while True: # Loop forever
     print positionX # Get current position of an axis
     print positionY
     print positionZ
+
