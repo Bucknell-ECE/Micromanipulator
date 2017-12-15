@@ -2,6 +2,7 @@ import pygame
 import sys
 import time
 
+pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
 
 
