@@ -25,11 +25,16 @@ while True: # Loop forever
     positionY = logitech_joystick.get_axis(1)
     positionZ = logitech_joystick.get_axis(2)
     currentButton = logitech_joystick.get_button(6)
+    button8 = logitech_joystick.get_button(7)
+    button9 = logitech_joystick.get_button(8)
+    button10 = logitech_joystick.get_button(9)
+    button11 = logitech_joystick.get_button(10)
 
     time.sleep(0.1)
 
     #print positionX # Get current position of an axis
     #print positionY
     #print positionZ
-    print currentButton
+    #print currentButton
+    print button8, button9, button10, button11
 
