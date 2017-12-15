@@ -44,6 +44,6 @@ while True: # Loop forever
     #print currentButton
     #print button8, button9, button10, button11
 
-    newPosition = myJoy.getConvertPosition(myJoy, 0)
+    newPosition = myJoy.convertPosition(myJoy, 0)
     print newPosition
 
