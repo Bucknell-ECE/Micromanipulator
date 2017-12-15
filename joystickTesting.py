@@ -1,6 +1,8 @@
 import pygame
 import sys
 import time
+from CustomJoystick import *
+
 
 pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
@@ -12,11 +14,15 @@ logitech_joystick = pygame.joystick.Joystick(0) # Create a new joystick. The id 
 logitech_joystick.init() # Initialize logitech_joystick
 print logitech_joystick.get_init() # Initialize joystick
 print logitech_joystick.get_id() # Get joystick ID
-print logitech_joystick.get_name() # Get joystick system name
-print logitech_joystick.get_numaxes() # Get number of axes on joystick
-print logitech_joystick.get_numballs() # Get number of track balls
-print logitech_joystick.get_numbuttons() # Get number of buttons on the joystick
+myname =  logitech_joystick.get_name() # Get joystick system name
+print myname
+numberaxes =  logitech_joystick.get_numaxes() # Get number of axes on joystick
+print numberaxes
+numberbuttons = logitech_joystick.get_numballs() # Get number of track balls logitech_joystick.get_numbuttons() # Get number of buttons on the joystick
+print numberbuttons
 print logitech_joystick.get_numhats() # Get number of hat controls
+
+myJoy = CustomJoystick(myJoy, myname, numberaxes, numberbuttons)
 
 
 while True: # Loop forever
@@ -37,4 +43,7 @@ while True: # Loop forever
     print positionZ
     #print currentButton
     #print button8, button9, button10, button11
+
+    newPosition = myJoy.getConvertPosition(myJoy, 0)
+    print newPosition
 
