@@ -26,7 +26,6 @@ while True: # Loop forever
     positionZ = logitech_joystick.get_axis(2)
     currentButton = logitech_joystick.get_button(5)
 
-
     time.sleep(0.1)
 
     #print positionX # Get current position of an axis
