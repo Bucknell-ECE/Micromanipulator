@@ -32,9 +32,9 @@ while True: # Loop forever
 
     time.sleep(0.1)
 
-    #print positionX # Get current position of an axis
-    #print positionY
-    #print positionZ
+    print positionX # Get current position of an axis
+    print positionY
+    print positionZ
     #print currentButton
-    print button8, button9, button10, button11
+    #print button8, button9, button10, button11
 
