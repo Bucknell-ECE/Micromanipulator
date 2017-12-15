@@ -22,7 +22,7 @@ numberbuttons = logitech_joystick.get_numballs() # Get number of track balls log
 print numberbuttons
 print logitech_joystick.get_numhats() # Get number of hat controls
 
-myJoy = CustomJoystick(myJoy, myname, numberaxes, numberbuttons)
+myJoy = CustomJoystick(myname, numberaxes, numberbuttons)
 
 
 while True: # Loop forever
