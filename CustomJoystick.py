@@ -2,8 +2,8 @@ import pygame
 
 class CustomJoystick:
 
-    def _init_(self, type, numberaxes, numberbuttons):
-        self.type = type
+    def _init_(self, name, numberaxes, numberbuttons):
+        self.name = name
         self.numberaxes = numberaxes
         self.numberbuttons = numberbuttons
 
