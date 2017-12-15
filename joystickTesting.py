@@ -24,10 +24,12 @@ while True: # Loop forever
     positionX = logitech_joystick.get_axis(0)
     positionY = logitech_joystick.get_axis(1)
     positionZ = logitech_joystick.get_axis(2)
+    currentButton = logitech_joystick.get_button()
 
     time.sleep(1)
 
     print positionX # Get current position of an axis
     print positionY
     print positionZ
+    print currentButton
 
