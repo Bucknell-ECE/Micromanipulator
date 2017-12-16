@@ -93,14 +93,6 @@ while done == False:
         textPrint.printy(screen, "Number of axes: {}".format(axes))
         textPrint.indent()
 
-        for i in range(axes):
-            axis = joystick.get_axis(i)
-            textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(i, axis))
-        textPrint.unindent()
-
-        buttons = joystick.get_numbuttons()
-        textPrint.printy(screen, "Number of buttons: {}".format(buttons))
-        textPrint.indent()
 
 
 
