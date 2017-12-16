@@ -21,6 +21,23 @@ print logitech_joystick.get_numhats() # Get number of hat controls
 
 joy = CustomJoystick('Logitech')
 while True:
+    positionX = logitech_joystick.get_axis(0)
+    positionY = logitech_joystick.get_axis(1)
+    positionZ = logitech_joystick.get_axis(2)
+    currentButton = logitech_joystick.get_button(6)
+    button8 = logitech_joystick.get_button(7)
+    button9 = logitech_joystick.get_button(8)
+    button10 = logitech_joystick.get_button(9)
+    button11 = logitech_joystick.get_button(10)
+    print positionX  # Get current position of an axis
+    print positionY
+    print positionZ
+
+
+    time.sleep(.1)
+
+
+
     print'Throttle', joy.getThrottle()
     print'X: ', joy.getX()
     print'y ', joy.getY()
