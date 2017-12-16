@@ -75,6 +75,12 @@ class CustomJoystick:
         print('events being called')
         commands = []
         for event in pygame.event.get():  # User did something
+            if event.type == pygame.JOYBUTTONUP:
+                button = event.button
+                print("Button {} off".format(button))
+
+        '''        
+        for event in pygame.event.get():  # User did something
             print(event)
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
@@ -98,6 +104,7 @@ class CustomJoystick:
               #      button2count += 1
             #print('Button 2 Coutnt is : ', button2count)
             clock.tick(20)
+        '''
         return commands
 
 
