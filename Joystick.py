@@ -65,9 +65,12 @@ class CustomJoystick:
 ############################CODE WRITTTEN BY RYDER#########################################
     def getButtons(self):
         ###
+        pygame.init()
         pygame.joystick.init()
         joystick = pygame.joystick.Joystick(0)
         joystick.init()
+        # Used to manage how fast the screen updates
+        clock = pygame.time.Clock()
         ###
         print('events being called')
         commands = []
@@ -94,6 +97,7 @@ class CustomJoystick:
               #  if button == 2:
               #      button2count += 1
             #print('Button 2 Coutnt is : ', button2count)
+            clock.tick(20)
         return commands
 
 
