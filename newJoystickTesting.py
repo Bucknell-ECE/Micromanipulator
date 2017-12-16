@@ -39,6 +39,8 @@ while True:
     print'X: ', joy.getX()
     print'y ', joy.getY()
     print'position', joy.getPosition()
+    print'Buttons: ', joy.getButtons()
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
-    time.sleep(.5)
+
+    time.sleep(1)
