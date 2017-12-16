@@ -16,6 +16,13 @@ def mapval(x, inMin, inMax, outMin, outMax):
 xAxisNum = 0
 yAxisNum = 1
 throttleAxisNum = 2
+buttonMap = {
+    1: 'Hold',
+    2: 'Zup',
+    3: 'Zdown',
+    4: 'ChangeMode',
+}
+
 class CustomJoystick:
     #will need to create a button mapping function that imports text file stuff here.
     def __init__(self, name, number):
@@ -57,6 +64,27 @@ class CustomJoystick:
 
 ############################CODE WRITTTEN BY RYDER#########################################
     def getButtons(self):
+        commands = []
+        for event in pygame.event.get():  # User did something
+            if event.type == pygame.QUIT:  # If user clicked close
+                done = True  # Flag that we are done so we exit this loop
+
+            # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+            if event.type == pygame.JOYBUTTONDOWN:
+                # print("Joystick button pressed.")
+                button = event.button
+                commands += buttonMap[button]
+                #print(event)
+            #if event.type == pygame.JOYBUTTONUP:
+                # print("Joystick button released.")
+               # print(event)
+                # print(event.type)
+                # print(event.button)
+               # button = event.button
+               # print("Button {} off".format(button))
+              #  if button == 2:
+              #      button2count += 1
+            #print('Button 2 Coutnt is : ', button2count)
 
 
 
