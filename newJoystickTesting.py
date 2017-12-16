@@ -6,7 +6,7 @@ pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
 
 
-joy = CustomJoystick('Logitech')
+joy = CustomJoystick('Logitech', 0)
 while True:
 
     '''
