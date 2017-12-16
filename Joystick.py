@@ -66,6 +66,7 @@ class CustomJoystick:
     def getButtons(self):
         commands = []
         for event in pygame.event.get():  # User did something
+            print(event)
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
 
