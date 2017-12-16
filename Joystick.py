@@ -85,7 +85,7 @@ class CustomJoystick:
               #  if button == 2:
               #      button2count += 1
             #print('Button 2 Coutnt is : ', button2count)
-
+        return commands
 
 
     def getAbsoluteX(self):
