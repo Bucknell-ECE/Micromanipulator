@@ -49,7 +49,7 @@ pygame.joystick.init()
 
 # Get ready to print
 textPrint = TextPrint()
-
+button2count = 0
 # -------- Main Program Loop -----------
 while done == False:
     # EVENT PROCESSING STEP
@@ -68,6 +68,9 @@ while done == False:
             print(event.button)
             button = event.button
             print("Button {} off".format(button))
+            if button == 2:
+                button2count + 1
+        print('Button 2 Coutnt is : ', button2count)
 
 
     # DRAWING STEP
