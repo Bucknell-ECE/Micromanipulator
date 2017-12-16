@@ -24,6 +24,7 @@ def getButtons():
         if event.type == pygame.JOYBUTTONUP:
             button = event.button
             print("Button {} off".format(button))
+            commands += button
 
     '''        
     for event in pygame.event.get():  # User did something
