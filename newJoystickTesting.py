@@ -9,6 +9,49 @@ pygame.joystick.init() # Initialize joystick module
 joy = CustomJoystick('Logitech', 0)
 
 
+def getButtons():
+    ###
+    # pygame.init()
+    # pygame.joystick.init()
+    joystick = pygame.joystick.Joystick(0)
+    joystick.init()
+    # Used to manage how fast the screen updates
+    clock = pygame.time.Clock()
+    ###
+    print('events being called')
+    commands = ['pp']
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.JOYBUTTONUP:
+            button = event.button
+            print("Button {} off".format(button))
+
+    '''        
+    for event in pygame.event.get():  # User did something
+        print(event)
+        if event.type == pygame.QUIT:  # If user clicked close
+            done = True  # Flag that we are done so we exit this loop
+
+        # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+        if event.type == pygame.JOYBUTTONDOWN:
+            # print("Joystick button pressed.")
+            button = event.button
+            print('button num ', button)
+            print(buttonMap[button])
+            commands += buttonMap[button]
+            print(event)
+        #if event.type == pygame.JOYBUTTONUP:
+            # print("Joystick button released.")
+           # print(event)
+            # print(event.type)
+            # print(event.button)
+           # button = event.button
+           # print("Button {} off".format(button))
+          #  if button == 2:
+          #      button2count += 1
+        #print('Button 2 Coutnt is : ', button2count)
+        clock.tick(20)
+    '''
+    return commands
 
 while True:
 
@@ -40,6 +83,7 @@ while True:
             print("Axis {} value: {:>6.3f}".format(i, axis))
 
     '''
+    print'Buttons: ', getButtons()
     print'butt :', joy.getButtons()
     #print'Throttle', joy.getThrottle()
     '''
@@ -51,7 +95,7 @@ while True:
     print'X: ', joy.getX()
     print'y ', joy.getY()
     print'position', joy.getPosition()
-    #print'Buttons: ', getButtons()
+
 
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
