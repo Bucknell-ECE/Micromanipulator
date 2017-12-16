@@ -73,7 +73,7 @@ while done == False:
                 button2count += 1
         print('Button 2 Coutnt is : ', button2count)
 
-    time.sleep(.5)
+    time.sleep(2)
 
 
     # DRAWING STEP
