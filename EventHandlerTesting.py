@@ -43,12 +43,6 @@ pygame.display.set_caption("My Game")
 done = False
 
 
-
-
-
-
-
-
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
@@ -74,7 +68,15 @@ while done == False:
 
     screen.fill(WHITE)
     textPrint.reset()
+
+
+
+
+
     pygame.display.flip()
 
     # Limit to 20 frames per second
     clock.tick(20)
+
+
+pygame.quit()
