@@ -15,12 +15,14 @@ def getButtons():
     pygame.joystick.init()
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
+    pygame.event.get()
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
     ###
     print('events being called')
     commands = []
     for event in pygame.event.get():  # User did something
+        print(event)
         if event.type == pygame.JOYBUTTONUP:
             button = event.button
             print("Button {} off".format(button))
