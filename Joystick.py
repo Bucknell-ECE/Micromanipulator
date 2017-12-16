@@ -28,10 +28,10 @@ class CustomJoystick:
         # For each joystick:
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
-            print('this is joystick: ', i)
+            #print('this is joystick: ', i)
             joystick.init()
         axes = joystick.get_numaxes()
-        print(axes)
+        #print(axes)
     def getAxisPosition(self, axisIndex):
         joystick = pygame.joystick.Joystick(0)
         return joystick.get_axis(axisIndex)
@@ -45,8 +45,8 @@ class CustomJoystick:
 
     def getX(self):
         pygame.event.get()
-        joystick = pygame.joystick.Joystick(0)
-        return joystick.get_axis(xAxisNum)
+        #joystick = pygame.joystick.Joystick(0)
+        return self.joystick.get_axis(xAxisNum)
 
     def getY(self):
         pygame.event.get()
@@ -54,5 +54,11 @@ class CustomJoystick:
         return self.joystick.get_axis(yAxisNum)
 
     def getThrottle(self):
-        joystick = pygame.joystick.Joystick(0)
-        return joystick.get_axis(throttleAxisNum)
+        pygame.event.get()
+        #joystick = pygame.joystick.Joystick(0)
+        return self.joystick.get_axis(throttleAxisNum)
+
+    def getPosition(self):
+        pygame.event.get()
+        position = [self.joystick.get_axis(xAxisNum), self.self.joystick.get_axis(yAxisNum)]
+        return position
