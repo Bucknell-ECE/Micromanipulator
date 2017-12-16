@@ -9,8 +9,7 @@ class CustomJoystick:
     #will need to create a button mapping function that imports text file stuff here.
     def __init__(self, name):
         self.name = name
-        self.numberaxes = numberaxes
-        self.numberbuttons = numberbuttons
+
 
         joystick_count = pygame.joystick.get_count()
         joystick = pygame.joystick.Joystick(i)
