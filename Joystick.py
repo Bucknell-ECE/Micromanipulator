@@ -1,6 +1,17 @@
 import pygame
 #from helper import mapval
 
+def mapval(x, inMin, inMax, outMin, outMax):
+    """
+    Maps a value in one range to a value in another range
+    :param x: value to be mapped
+    :param inMin: minimum of the input scale
+    :param inMax: maximum of the input scale
+    :param outMin: minimum of the output scale
+    :param outMax: maximum of the output scale
+    :return: mapped value, rounded to the nearest integer value
+    """
+    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
 xAxisNum = 0
 yAxisNum = 1
@@ -43,22 +54,48 @@ class CustomJoystick:
     #def getButtons(self):
        # fdshkj
 
-    def getX(self):
+    def getAbsoluteX(self):
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(xAxisNum)
 
-    def getY(self):
+    def getAbsoluteY(self):
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(yAxisNum)
 
-    def getThrottle(self):
+    def getAbsoluteThrottle(self):
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(throttleAxisNum)
 
-    def getPosition(self):
+    def getAbsolutePosition(self):
         pygame.event.get()
         position = [round(self.joystick.get_axis(xAxisNum), 3), round(self.joystick.get_axis(yAxisNum), 3)]
         return position
+
+    def getX(self):
+        pygame.event.get()
+        #joystick = pygame.joystick.Joystick(0)
+        absoluteX = self.getAbsoluteX() + 1
+
+        return mapval(absoluteX, 0, 2, 0, 1023)
+
+
+    def getY(self):
+        pygame.event.get()
+        #joystick = pygame.joystick.Joystick(0)
+        absoluteY = self.getAbsoluteY() + 1
+        return mapval(absoluteY, 0, 2, 0, 1023)
+
+    def getThrottle(self):
+        pygame.event.get()
+        #joystick = pygame.joystick.Joystick(0)
+        absoluteThrottle = self.getAbsoluteThrottle()
+        return mapval(absoluteThrottle, 0, 2, 0, 1023)
+
+    def getPosition(self):
+        pygame.event.get()
+        #position = [round(self.joystick.get_axis(xAxisNum), 3), round(self.joystick.get_axis(yAxisNum), 3)]
+        absolutePosition = [self.getAbsoluteX() + 1, self.getAbsoluteY() + 1]
+        return map(lambda x: mapval(x, 0, 2, 0, 1023), absolutePosition)
