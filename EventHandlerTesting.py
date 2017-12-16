@@ -33,10 +33,10 @@ class TextPrint:
 pygame.init()
 
 # Set the width and height of the screen [width,height]
-size = [500, 700]
-screen = pygame.display.set_mode(size)
+#size = [500, 700]
+#screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("My Game")
+#pygame.display.set_caption("My Game")
 
 # Loop until the user clicks the close button.
 done = False
@@ -66,7 +66,7 @@ while done == False:
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
-    screen.fill(WHITE)
+    #screen.fill(WHITE)
     textPrint.reset()
 
     # Get count of joysticks
@@ -89,7 +89,7 @@ while done == False:
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
     # Go ahead and update the screen with what we've drawn.
-    pygame.display.flip()
+    #pygame.display.flip()
 
     # Limit to 20 frames per second
     clock.tick(20)
