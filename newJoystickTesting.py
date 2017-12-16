@@ -33,6 +33,16 @@ while True:
     print positionY
     print positionZ
 '''
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.QUIT:  # If user clicked close
+            done = True  # Flag that we are done so we exit this loop
+
+        # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+        if event.type == pygame.JOYBUTTONDOWN:
+            print("Joystick button pressed.")
+        if event.type == pygame.JOYBUTTONUP:
+            print("Joystick button released.")
+
     joystick_count = pygame.joystick.get_count()
     for i in range(joystick_count):
         joystick = pygame.joystick.Joystick(i)
