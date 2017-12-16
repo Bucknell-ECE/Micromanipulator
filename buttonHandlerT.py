@@ -24,19 +24,19 @@ while True:
           #  done = True  # Flag that we are done so we exit this loop
 
         # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
-        if event.type == pygame.JOYBUTTONDOWN:
+        #if event.type == pygame.JOYBUTTONDOWN:
             #print("Joystick button pressed.")
-            print(event)
+            #print(event)
         if event.type == pygame.JOYBUTTONUP:
             #print("Joystick button released.")
-            print(event)
+            #print(event)
             #print(event.type)
             #print(event.button)
             button = event.button
             print("Button {} off".format(button))
-            if button == 2:
-                button2count += 1
-        print('Button 2 Coutnt is : ', button2count)
+            #if button == 2:
+               # button2count += 1
+        #print('Button 2 Coutnt is : ', button2count)
 
     time.sleep(2)
 
