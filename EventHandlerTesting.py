@@ -102,16 +102,7 @@ while done == False:
         textPrint.printy(screen, "Number of buttons: {}".format(buttons))
         textPrint.indent()
 
-        for i in range(buttons):
-            button = joystick.get_button(i)
-            textPrint.printy(screen, "Button {:>2} value: {}".format(i, button))
-        textPrint.unindent()
 
-        # Hat switch. All or nothing for direction, not like joysticks.
-        # Value comes back in an array.
-        hats = joystick.get_numhats()
-        textPrint.printy(screen, "Number of hats: {}".format(hats))
-        textPrint.indent()
 
 
 
