@@ -21,6 +21,7 @@ def getButtons():
     ###
     print('events being called')
     commands = []
+    print pygame.event.get()
     for event in pygame.event.get():  # User did something
         print(event)
         if event.type == pygame.JOYBUTTONUP:
