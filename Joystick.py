@@ -54,6 +54,12 @@ class CustomJoystick:
     #def getButtons(self):
        # fdshkj
 
+
+############################CODE WRITTTEN BY RYDER#########################################
+    def getButtons(self):
+
+
+
     def getAbsoluteX(self):
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)

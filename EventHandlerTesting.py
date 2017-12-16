@@ -47,7 +47,8 @@ clock = pygame.time.Clock()
 
 # Initialize the joysticks
 pygame.joystick.init()
-
+joystick = pygame.joystick.Joystick(0)
+joystick.init()
 # Get ready to print
 textPrint = TextPrint()
 button2count = 0
@@ -83,12 +84,12 @@ while done == False:
     textPrint.reset()
 
     # Get count of joysticks
-    joystick_count = pygame.joystick.get_count()
+#    joystick_count = pygame.joystick.get_count()
 
     # For each joystick:
-    for i in range(joystick_count):
-        joystick = pygame.joystick.Joystick(i)
-        joystick.init()
+#    for i in range(joystick_count):
+ #       joystick = pygame.joystick.Joystick(i)
+ #       joystick.init()
 
 
 
