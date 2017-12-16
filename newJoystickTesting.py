@@ -18,7 +18,7 @@ def getButtons():
     # Used to manage how fast the screen updates
     #clock = pygame.time.Clock()
     ###
-    print('events being called')
+    print('buttton static call')
     commands = ['pp']
     for event in pygame.event.get():  # User did something
         if event.type == pygame.JOYBUTTONUP:
