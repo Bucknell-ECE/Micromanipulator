@@ -32,6 +32,7 @@ class CustomJoystick:
         # For each joystick:
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
+            print('this is joystick: ', i)
             joystick.init()
 
     def getAxisPosition(self, axisIndex):
