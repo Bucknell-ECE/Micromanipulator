@@ -17,7 +17,7 @@ joystick.init()
 
 button2count = 0
 # -------- Main Program Loop -----------
-while done == False:
+while True:
     # EVENT PROCESSING STEP
     for event in pygame.event.get():  # User did something
        # if event.type == pygame.QUIT:  # If user clicked close
