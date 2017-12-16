@@ -68,7 +68,7 @@ while True:
         if event.type == pygame.JOYBUTTONUP:
             print("Joystick button released.")
     '''
-    pygame.event.get()
+    #pygame.event.get()
     '''
     joystick_count = pygame.joystick.get_count()
     for i in range(joystick_count):
