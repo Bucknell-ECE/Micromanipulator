@@ -60,5 +60,5 @@ class CustomJoystick:
 
     def getPosition(self):
         pygame.event.get()
-        position = [self.joystick.get_axis(xAxisNum), self.self.joystick.get_axis(yAxisNum)]
+        position = [self.joystick.get_axis(xAxisNum), self.joystick.get_axis(yAxisNum)]
         return position
