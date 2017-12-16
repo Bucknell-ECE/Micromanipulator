@@ -11,8 +11,8 @@ joy = CustomJoystick('Logitech', 0)
 
 def getButtons():
     ###
-    pygame.init()
-    pygame.joystick.init()
+    #pygame.init()
+    #pygame.joystick.init()
     joystick = pygame.joystick.Joystick(0)
     joystick.init()
     pygame.event.get()
@@ -60,6 +60,7 @@ while True:
     print'y ', joy.getY()
     print'position', joy.getPosition()
     print'Buttons: ', getButtons()
+    print'butt :', joy.getButtons()
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
 
