@@ -3,6 +3,9 @@ import pygame
 
 pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
+size = [500, 700]
+screen = pygame.display.set_mode(size)
+
 while True:
     for event in pygame.event.get():  # User did something
 
