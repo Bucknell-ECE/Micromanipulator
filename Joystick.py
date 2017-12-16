@@ -1,5 +1,5 @@
 import pygame
-from helper import mapval
+#from helper import mapval
 
 
 xAxisNum = 0
