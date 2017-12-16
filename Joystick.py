@@ -64,6 +64,11 @@ class CustomJoystick:
 
 ############################CODE WRITTTEN BY RYDER#########################################
     def getButtons(self):
+        ###
+        pygame.joystick.init()
+        joystick = pygame.joystick.Joystick(0)
+        joystick.init()
+        ###
         print('events being called')
         commands = []
         for event in pygame.event.get():  # User did something
