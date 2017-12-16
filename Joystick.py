@@ -12,7 +12,7 @@ class CustomJoystick:
 
 
         joystick_count = pygame.joystick.get_count()
-        joystick = pygame.joystick.Joystick(i)
+        joystick = pygame.joystick.Joystick(0)
         # For each joystick:
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
