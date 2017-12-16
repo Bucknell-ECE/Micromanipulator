@@ -7,9 +7,15 @@ print(xaxis.getAddress())
 print(2 * xaxis.getAddress())
 while True:
     bus = smbus.SMBus(1)
-
     next = input('What do you want to do next?')
-
+    #1. Read Status register
+    #2. move to a location
+    #3. get full status
+    #4. read firmware version
+    #5. get current position
+    #6. calibrate
+    #7. set home position
+    #8. go home
     if next == 1: # read status register
         temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
