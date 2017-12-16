@@ -33,9 +33,19 @@ while True:
     print positionY
     print positionZ
 
+    joystick_count = pygame.joystick.get_count()
+    for i in range(joystick_count):
+        joystick = pygame.joystick.Joystick(i)
+        joystick.init()
 
-    time.sleep(.1)
+        time.sleep(.1)
+        axes = joystick.get_numaxes()
+        print("Number of axes: {}".format(axes))
 
+
+        for i in range(axes):
+            axis = joystick.get_axis(i)
+            print( "Axis {} value: {:>6.3f}".format(i, axis))
 
 
     #print'Throttle', joy.getThrottle()
