@@ -66,7 +66,8 @@ while done == False:
             print(event)
             print(event.type)
             print(event.button)
-            print(event["button"])
+            button = event.button
+            print("Button {} off".format(button))
 
 
     # DRAWING STEP
