@@ -2,7 +2,11 @@ import pygame
 from Joystick import *
 import time
 
+pygame.init() # Initialize all pygame modules
+pygame.joystick.init() # Initialize joystick module
 
+
+print pygame.joystick.get_count() # Return number of joysticks
 logitech_joystick = pygame.joystick.Joystick(0) # Create a new joystick. The id argument must be a value from 0 to pygame.joystick.get_count()-1.
 logitech_joystick.init() # Initialize logitech_joystick
 print logitech_joystick.get_init() # Initialize joystick
