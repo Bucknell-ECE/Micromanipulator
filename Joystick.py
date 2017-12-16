@@ -29,6 +29,8 @@ class CustomJoystick:
 
         joystick_count = pygame.joystick.get_count()
         joystick = pygame.joystick.Joystick(0)
+        axes = joystick.get_numaxes()
+        print(axes)
         # For each joystick:
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
