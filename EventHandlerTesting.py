@@ -65,7 +65,7 @@ while done == False:
             print("Joystick button released.")
             print(event)
             print(event.type)
-            print(["button"])
+            print(event["button"])
 
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
