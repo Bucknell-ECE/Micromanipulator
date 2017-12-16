@@ -113,12 +113,7 @@ while done == False:
         textPrint.printy(screen, "Number of hats: {}".format(hats))
         textPrint.indent()
 
-        for i in range(hats):
-            hat = joystick.get_hat(i)
-            textPrint.printy(screen, "Hat {} value: {}".format(i, str(hat)))
-        textPrint.unindent()
 
-        textPrint.unindent()
 
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
