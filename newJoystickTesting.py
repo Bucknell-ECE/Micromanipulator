@@ -5,7 +5,7 @@ import time
 pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
 
-
+'''
 print pygame.joystick.get_count() # Return number of joysticks
 logitech_joystick = pygame.joystick.Joystick(0) # Create a new joystick. The id argument must be a value from 0 to pygame.joystick.get_count()-1.
 logitech_joystick.init() # Initialize logitech_joystick
@@ -18,10 +18,10 @@ print numberaxes
 numberbuttons = logitech_joystick.get_numballs() # Get number of track balls logitech_joystick.get_numbuttons() # Get number of buttons on the joystick
 print numberbuttons
 print logitech_joystick.get_numhats() # Get number of hat controls
-
+'''
 #joy = CustomJoystick('Logitech')
 while True:
-    positionX = logitech_joystick.get_axis(0)
+    '''positionX = logitech_joystick.get_axis(0)
     positionY = logitech_joystick.get_axis(1)
     positionZ = logitech_joystick.get_axis(2)
     currentButton = logitech_joystick.get_button(6)
@@ -32,20 +32,18 @@ while True:
     print positionX  # Get current position of an axis
     print positionY
     print positionZ
-
+'''
     joystick_count = pygame.joystick.get_count()
     for i in range(joystick_count):
         joystick = pygame.joystick.Joystick(i)
         joystick.init()
-
-        time.sleep(.1)
         axes = joystick.get_numaxes()
         print("Number of axes: {}".format(axes))
 
 
         for i in range(axes):
             axis = joystick.get_axis(i)
-            print( "Axis {} value: {:>6.3f}".format(i, axis))
+            print("Axis {} value: {:>6.3f}".format(i, axis))
 
 
     #print'Throttle', joy.getThrottle()
