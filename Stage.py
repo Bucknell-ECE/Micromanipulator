@@ -1,5 +1,6 @@
 import smbus
 from helper import *
+import time
 
 def encodeToCommand(value):
     """
@@ -93,7 +94,21 @@ class Stage:
         self.write(commandToSend)
 
     def calibrate(self):
+        """
+        Function that runs a calibration for the stages. Runs both forward and backwards commands.
+        :return: N/A
+        """
+        '''
+        Send to stage:
+        <87 5>/r
+        Recieve from stage:
+        
+        
+        '''
         self.sendCommand('87', [ 5])
+        time.sleep(0.2)
+        self.sendCommand('87', [ 4])
+        time.sleep(0.2)
 
     def startup(self):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
@@ -138,6 +153,16 @@ class Stage:
         :return: NA
         """
         self.goToLocation(self.home)
+
+    def read(self):
+        """
+        Reads from the output register of the stage
+        :return: List of signed values that reprsent what is on the output register of the stage
+        """
+        bus = self.bus
+        temp = bus.read_i2c_block_data(self.address, 0)
+        print('temp', temp)
+        return temp
 
 
 
