@@ -9,26 +9,13 @@ pygame.joystick.init() # Initialize joystick module
 joy = CustomJoystick('Logitech', 0)
 
 
-def getButtons():
-    ###
-    #pygame.init()
-    #pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
-    pygame.event.get()
-    # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
-    ###
-    print('events being called')
-    commands = []
-    print pygame.event.get()
+
+while True:
+
     for event in pygame.event.get():  # User did something
-        print(event)
         if event.type == pygame.JOYBUTTONUP:
             button = event.button
             print("Button {} off".format(button))
-    return commands
-while True:
 
     '''
     for event in pygame.event.get():  # User did something
@@ -65,9 +52,6 @@ while True:
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
     print'--------------LAST SHOT------------------------'
-    for event in pygame.event.get():  # User did something
-        if event.type == pygame.JOYBUTTONUP:
-            button = event.button
-            print("Button {} off".format(button))
+
 
     time.sleep(1)
