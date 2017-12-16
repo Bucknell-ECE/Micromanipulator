@@ -13,10 +13,10 @@ def getButtons():
     ###
     # pygame.init()
     # pygame.joystick.init()
-    joystick = pygame.joystick.Joystick(0)
-    joystick.init()
+    #joystick = pygame.joystick.Joystick(0)
+    #joystick.init()
     # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
+    #clock = pygame.time.Clock()
     ###
     print('events being called')
     commands = ['pp']
