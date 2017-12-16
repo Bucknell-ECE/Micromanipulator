@@ -75,6 +75,14 @@ while done == False:
     textPrint.printy(screen, "Number of joysticks: {}".format(joystick_count))
     textPrint.indent()
 
+    # For each joystick:
+    for i in range(joystick_count):
+        joystick = pygame.joystick.Joystick(i)
+        joystick.init()
+
+
+
+        # Get the name from the OS for the controller/joystick
 
 
 
