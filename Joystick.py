@@ -73,8 +73,10 @@ class CustomJoystick:
             if event.type == pygame.JOYBUTTONDOWN:
                 # print("Joystick button pressed.")
                 button = event.button
+                print('button num ', button)
+                print(buttonMap[button])
                 commands += buttonMap[button]
-                #print(event)
+                print(event)
             #if event.type == pygame.JOYBUTTONUP:
                 # print("Joystick button released.")
                # print(event)
