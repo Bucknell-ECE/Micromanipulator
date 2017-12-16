@@ -84,8 +84,9 @@ while True:
             print("Axis {} value: {:>6.3f}".format(i, axis))
 
     '''
-    print'Buttons: ', getButtons()
     print'butt :', joy.getButtons()
+    print'Buttons: ', getButtons()
+
     #print'Throttle', joy.getThrottle()
     '''
     for event in pygame.event.get():  # User did something
