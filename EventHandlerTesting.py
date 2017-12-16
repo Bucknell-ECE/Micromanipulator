@@ -2,13 +2,14 @@ import pygame
 import time
 
 # Define some colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+#BLACK = (0, 0, 0)
+#WHITE = (255, 255, 255)
 
 
 # This is a simple class that will help us print to the screen
 # It has nothing to do with the joysticks, just outputting the
 # information.
+'''
 class TextPrint:
     def __init__(self):
         self.reset()
@@ -30,7 +31,7 @@ class TextPrint:
     def unindent(self):
         self.x -= 10
 
-
+'''
 pygame.init()
 
 # Set the width and height of the screen [width,height]
@@ -50,7 +51,7 @@ pygame.joystick.init()
 joystick = pygame.joystick.Joystick(0)
 joystick.init()
 # Get ready to print
-textPrint = TextPrint()
+#textPrint = TextPrint()
 button2count = 0
 # -------- Main Program Loop -----------
 while done == False:
@@ -81,7 +82,7 @@ while done == False:
     # First, clear the screen to white. Don't put other drawing commands
     # above this, or they will be erased with this command.
     #screen.fill(WHITE)
-    textPrint.reset()
+    #textPrint.reset()
 
     # Get count of joysticks
 #    joystick_count = pygame.joystick.get_count()
