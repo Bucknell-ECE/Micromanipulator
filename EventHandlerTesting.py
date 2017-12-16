@@ -2,8 +2,8 @@ import pygame
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+pygame.init() # Initialize all pygame modules
 
-clock = pygame.time.Clock()
 # This is a simple class that will help us print to the screen
 # It has nothing to do with the joysticks, just outputting the
 # information.
@@ -27,10 +27,11 @@ class TextPrint:
 
     def unindent(self):
         self.x -= 10
-pygame.init() # Initialize all pygame modules
+
 pygame.joystick.init() # Initialize joystick module
 size = [500, 700]
 screen = pygame.display.set_mode(size)
+clock = pygame.time.Clock()
 textPrint = TextPrint()
 while True:
     for event in pygame.event.get():  # User did something
