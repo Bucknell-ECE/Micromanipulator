@@ -72,9 +72,6 @@ while done == False:
     # Get count of joysticks
     joystick_count = pygame.joystick.get_count()
 
-    textPrint.printy(screen, "Number of joysticks: {}".format(joystick_count))
-    textPrint.indent()
-
     # For each joystick:
     for i in range(joystick_count):
         joystick = pygame.joystick.Joystick(i)
