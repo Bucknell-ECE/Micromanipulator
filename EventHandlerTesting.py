@@ -84,14 +84,6 @@ while done == False:
         textPrint.indent()
 
         # Get the name from the OS for the controller/joystick
-        name = joystick.get_name()
-        textPrint.printy(screen, "Joystick name: {}".format(name))
-
-        # Usually axis run in pairs, up/down for one, and left/right for
-        # the other.
-        axes = joystick.get_numaxes()
-        textPrint.printy(screen, "Number of axes: {}".format(axes))
-        textPrint.indent()
 
 
 
