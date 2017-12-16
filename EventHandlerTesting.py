@@ -64,6 +64,7 @@ while done == False:
         if event.type == pygame.JOYBUTTONUP:
             print("Joystick button released.")
             print(event)
+            print(event.key)
 
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
