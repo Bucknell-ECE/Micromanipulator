@@ -64,5 +64,10 @@ while True:
     print'butt :', joy.getButtons()
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
+    print'--------------LAST SHOT------------------------'
+    for event in pygame.event.get():  # User did something
+        if event.type == pygame.JOYBUTTONUP:
+            button = event.button
+            print("Button {} off".format(button))
 
     time.sleep(1)
