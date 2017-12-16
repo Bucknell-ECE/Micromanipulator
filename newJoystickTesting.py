@@ -40,19 +40,20 @@ while True:
             print("Axis {} value: {:>6.3f}".format(i, axis))
 
     '''
-    print'Throttle', joy.getThrottle()
+    print'butt :', joy.getButtons()
+    #print'Throttle', joy.getThrottle()
+    '''
     for event in pygame.event.get():  # User did something
         if event.type == pygame.JOYBUTTONUP:
             button = event.button
             print("Button {} off".format(button))
+    '''
     print'X: ', joy.getX()
     print'y ', joy.getY()
     print'position', joy.getPosition()
     #print'Buttons: ', getButtons()
-    print'butt :', joy.getButtons()
+
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
-    print'--------------LAST SHOT------------------------'
-
 
     time.sleep(1)
