@@ -1,4 +1,5 @@
 import pygame
+import time
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -71,6 +72,8 @@ while done == False:
             if button == 2:
                 button2count += 1
         print('Button 2 Coutnt is : ', button2count)
+
+    time.sleep(.5)
 
 
     # DRAWING STEP
