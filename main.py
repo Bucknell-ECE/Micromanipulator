@@ -14,7 +14,8 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
-axes = [xaxis]#, yaxis, zaxis]
+axes = [xaxis]#
+# , yaxis, zaxis]
 home = [xaxis.home]#, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 200000
@@ -69,16 +70,16 @@ while True:
     if currentMillis - lastMillis < refreshRate:
         x = 1
     else:
-
+        print('running')
         lastMillis = currentMillis
         #if controlMode == 'velocity':
             #fsdjfl
         if controlMode == 'position':
             setBounds()
 
-            xaxis.goToLocation(mapval(joy.getX(), 0, 1023, xlinearRangeMin, xlinearRangeMax))
+            xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900)# xlinearRangeMin, xlinearRangeMax))
             #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
-    time.sleep(0.5)
+    #time.sleep(0.1)
 
 
