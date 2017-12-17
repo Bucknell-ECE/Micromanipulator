@@ -1,71 +1,144 @@
-# import smbus
+import smbus
 from helper import *
+
+def encodeToCommand(value):
+    """
+    Builds the guts of a command to send the stage to a particular encoder count
+    Steps to figure out what should be converted in order to for command to word
+    1. Come up with command according to newscale documentation and write out the command as a series of individual chars
+    2. convert each character into its hes representation
+    3. The command can either be sent as the string of these values, or as the individual decimal values for each
+    :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
+    :return: the 8 bit output that represents
+    """
+    encodeOutput = []  # create a blank list to hold the output
+    hexValue = hex(int(value)).upper()  # convert the decimal to hex
+    valueConvert = hexValue[2:]  # remove the 0x from the hex value
+    # for each character in the input, convert it to its base 10 representation of the ascii character
+    for i in valueConvert:
+        encodeOutput += [ord(str(i))]
+    # ensure that the output is 8 bytes
+    for i in range(8 - int(len(encodeOutput))):
+        encodeOutput.insert(0, 30)
+    return encodeOutput
+
 class Stage:
 
     def __init__(self, address, position, bus):
         self.position = position
         self.address = address
-        self.bus = bus
-    # bus = smbus.SMBus(self.bus)
-   # def getPosFromM3LS(self):
+        self.bus = smbus.SMBus(bus)
+        self.home = 3000
+    bus = smbus.SMBus(1)
 
     def getPosition(self):
         return int(self.position)
+
     def getAddress(self):
         return self.address
 
+    def setHome(self, location):
+        """
+        Allows user to set the home location for the particular axis
+        :param location: a location, specified in encoder counts
+        :return: NA
+        """
+        self.home = location
+    def setCurrentHome(self):
+        current = self.getPositionFromM3LS()
+        self.setHome(current)
+
     def buildCommand(self, commandCode, commandVars):
-        ''''
+        """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
-        '''
+        """
 
-        command = [] #empty list to hold command
-        command += ['0x' + str(int(self.address[2:]) << 1)]  # address of stage bit shifted 1 left
-        command += ['0x3C'] # open carat
+        command = []  # empty list to hold command
+        command += [self.address << 1]  # address of stage bit shifted 1 left
+        command += [60]  # open carat(<)
         for i in str(commandCode):
-            command += [hex(ord(i))]
-        command += ['0x20'] # space
+            command += [ord(i)]
+        command += [32]  # space(' ')
         command += commandVars
-        command += ['0x3E'] # close carat
-        command += ['0x0D'] # carriage return
+        command += [62]  # close carat (>)
+        command += [13]  # carriage return(\r)
         return command
 
     def buildCommandNoVars(self, commandCode):
-        ''''
+        """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
-        '''
-
+        """
         command = []
-        command += ['0x' + str(int(self.address[2:]) << 1)]
-        command += ['0x3C']
+        command += [self.address << 1]
+        command += [60]
         for i in str(commandCode):
-            command += [hex(ord(i))]
-        command += ['0x3E']
-        command += ['0x0D']
+            command += [ord(i)]
+        command += [62]
+        command += [13]
 
         return command
 
-
     def write(self, command):
+        bus = smbus.SMBus(1)
         bus.write_i2c_block_data(self.address, 0, command)
+
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
+        #print('command no vars: ', commandToSend)
         self.write(commandToSend)
 
     def calibrate(self):
-        self.sendCommand('87', ['0x35'])
+        self.sendCommand('87', [ 5])
 
     def startup(self):
-        forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
-        backwardStep =
+        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+        ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
+
     def getPositionFromM3LS(self):
-        self.sendCommandNoVars(19)
-        temp =[]
-        temp = bus.read_i2c_block_data(32, char cmd)
+        """
+        Function that returns the position of the stage
+        :return: Postion of the stage in encoder counts(NOT uM!)
+
+        From newscale documentation:
+        Send : <10>
+        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
+        S is motor status
+        P is position, hex representation of encoder counts
+        E is error count. How far is the stage from where it is supposed to be?
+        """
+        bus = self.bus
+        self.sendCommandNoVars('10')  #send query asking about motor status and position
+        temp = bus.read_i2c_block_data(0x32, 0)  #store incoming data from motor in list
+
+        rcvEncodedPosition = ''
+        for element in range(8):
+            rcvEncodedPosition += str(chr(temp[11+element]))
+        position = int(rcvEncodedPosition, 16)
+        return position
+
+    def goToLocation(self, location):
+        """
+        Sends the stage to the location specified, in encoder counts
+        :param location: a location in encoder counts
+        :return: NA
+        """
+        print(encodeToCommand(location))
+        encodeToCommand(location)
+        self.sendCommand('08', encodeToCommand(location))
+
+    def returnHome(self):
+        """
+        Funtion that sends the stage to its home location
+        :return: NA
+        """
+        self.goToLocation(self.home)
+
+
+
