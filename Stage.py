@@ -85,6 +85,11 @@ class Stage:
         #bus.write_i2c_block_data(self.address, 0, command)
         bus.write_i2c_block_data(self.address, 0, command)
 
+    def write1(self, command):
+        bus = smbus.SMBus(1)
+        #bus.write_i2c_block_data(self.address, 0, command)
+        bus.write_i2c_block_data(0x32, 0, command)
+
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         print(commandToSend)
@@ -93,7 +98,7 @@ class Stage:
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         #print('command no vars: ', commandToSend)
-        self.write(commandToSend)
+        self.write1(commandToSend)
 
     def calibrate(self):
         """

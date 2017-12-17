@@ -91,9 +91,9 @@ while True:
         #f.close()
         raise
     except IOError:
-        xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
-        print('temp', temp)
+        #xaxis.sendCommandNoVars('19')
+        #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        #print('temp', temp)
         xaxis.sendCommandNoVars('10')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
