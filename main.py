@@ -3,6 +3,7 @@ from Stage import *
 from datetime import datetime
 from Joystick import *
 import pygame
+import smbus
 xaxis = Stage(0x32, 6000, 1)
 #yaxis = Stage(0x33, 6000, 1)
 #zaxis = Stage(0x34, 6000, 1)
@@ -67,15 +68,20 @@ def setBounds():
 
 while True:
     #setBounds()
+    try:
+        #xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        print(datetime.now())
+        xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        #print('passed')
+        # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+        #print(time.time())
+        #print(datetime.now())
+        #time.sleep(0.0001)
+    except:
+        xaxis.sendCommandNoVars('19')
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        print('temp', temp)
 
-    #xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
-    print(datetime.now())
-    xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
-    #print('passed')
-    # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
-    #print(time.time())
-    #print(datetime.now())
-    #time.sleep(0.0001)
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
