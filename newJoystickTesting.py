@@ -85,7 +85,7 @@ while True:
 
     '''
     print'butt :', joy.getButtons()
-    print'Buttons: ', getButtons()
+    #print'Buttons: ', getButtons()
 
     #print'Throttle', joy.getThrottle()
     '''

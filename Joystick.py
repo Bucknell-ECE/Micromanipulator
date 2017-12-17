@@ -71,15 +71,16 @@ class CustomJoystick:
         joystick.init()
         # Used to manage how fast the screen updates
         clock = pygame.time.Clock()
-        ###
-        print('events being called')
-        commands = ['pp']
-        for event in pygame.event.get():  # User did something
-            if event.type == pygame.JOYBUTTONUP:
-                button = event.button
-                print("Button {} off".format(button))
+        ##
 
-        '''        
+        #print('events being called')
+        commands = ['pp']
+        #for event in pygame.event.get():  # User did something
+         #   if event.type == pygame.JOYBUTTONUP:
+          #      button = event.button
+             #   print("Button {} off".format(button))
+
+
         for event in pygame.event.get():  # User did something
             print(event)
             if event.type == pygame.QUIT:  # If user clicked close
@@ -104,7 +105,7 @@ class CustomJoystick:
               #      button2count += 1
             #print('Button 2 Coutnt is : ', button2count)
             clock.tick(20)
-        '''
+
         return commands
 
 
