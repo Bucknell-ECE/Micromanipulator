@@ -64,17 +64,14 @@ class CustomJoystick:
 
 ############################CODE WRITTTEN BY RYDER#########################################
     def getButtons(self):
-        ###
-        #pygame.init()
-        #pygame.joystick.init()
-        joystick = pygame.joystick.Joystick(0)
-        joystick.init()
+        #joystick = pygame.joystick.Joystick(0)
+        #joystick.init()
         # Used to manage how fast the screen updates
         clock = pygame.time.Clock()
         ##
 
         #print('events being called')
-        commands = ['pp']
+        commands = []
         #for event in pygame.event.get():  # User did something
          #   if event.type == pygame.JOYBUTTONUP:
           #      button = event.button
