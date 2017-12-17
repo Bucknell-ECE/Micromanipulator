@@ -77,6 +77,7 @@ class Stage:
             command += [ord(i)]
         command += [62]
         command += [13]
+
         return command
 
     def write(self, command):
