@@ -86,7 +86,7 @@ while True:
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'w')
-        f.write(temp)
+        f.write(str(temp))
         f.close()
         raise
     except:
@@ -97,7 +97,7 @@ while True:
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'w')
-        f.write(temp)
+        f.write(str(temp))
         f.close()
         raise
 
