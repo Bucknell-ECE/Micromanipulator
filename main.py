@@ -85,6 +85,9 @@ while True:
         xaxis.sendCommandNoVars('10')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
+        f = open('errorLog.txt', 'w')
+        f.write(temp)
+        f.close()
         raise
     except:
         xaxis.sendCommandNoVars('19')
@@ -93,6 +96,9 @@ while True:
         xaxis.sendCommandNoVars('10')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
+        f = open('errorLog.txt', 'w')
+        f.write(temp)
+        f.close()
         raise
 
 
