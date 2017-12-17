@@ -72,7 +72,7 @@ class Stage:
         comprised of the hexadecimal values
         """
         command = []
-        command += [self.address << 1]
+        #command += [self.address << 1]
         command += [60]
         for i in str(commandCode):
             command += [ord(i)]
@@ -82,7 +82,8 @@ class Stage:
 
     def write(self, command):
         bus = smbus.SMBus(1)
-        bus.write_i2c_block_data(self.address, 0, command)
+        #bus.write_i2c_block_data(self.address, 0, command)
+        bus.write_i2c_block_data(0x33, 0, command)
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
