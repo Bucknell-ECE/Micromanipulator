@@ -101,7 +101,7 @@ while True:
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
         f.write(str(temp))
         #f.close()
-        raise
+
 
 
     '''
