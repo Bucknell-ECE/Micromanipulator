@@ -56,7 +56,7 @@ class Stage:
         """
 
         command = []  # empty list to hold command
-        #command += [self.address << 1]  # address of stage bit shifted 1 left
+        # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
         for i in str(commandCode):
             command += [ord(i)]
