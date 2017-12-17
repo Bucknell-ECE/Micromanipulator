@@ -66,6 +66,13 @@ def setBounds():
 
 
 while True:
+    setBounds()
+
+    xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+    # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+
+    time.sleep(0.1)
+    '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
     if currentMillis - lastMillis < refreshRate:
@@ -83,4 +90,5 @@ while True:
             xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
             #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
-    #time.sleep(0.1)
+            #time.sleep(0.1)
+    '''
