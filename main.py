@@ -83,6 +83,7 @@ while True:
         xaxis.sendCommandNoVars('19')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
+        raise
 
     '''
     #currentMillis = datetime.now().microsecond
