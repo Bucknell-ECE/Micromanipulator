@@ -67,7 +67,7 @@ def setBounds():
 
 while True:
     #currentMillis = datetime.now().microsecond
-    currentMillis = time.time() * 6
+    currentMillis = time.time() * 1000000
     if currentMillis - lastMillis < refreshRate:
         x = 1
         print('l', lastMillis)
