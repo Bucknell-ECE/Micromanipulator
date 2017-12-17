@@ -69,10 +69,11 @@ while True:
     setBounds()
 
     xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+    print('passed')
     # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
     print(time.time())
     print(datetime.now())
-    time.sleep(0.01)
+    time.sleep(0.04)
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
