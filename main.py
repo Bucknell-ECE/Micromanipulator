@@ -78,6 +78,9 @@ while True:
         #print(datetime.now())
         #time.sleep(0.0001)
     except KeyboardInterrupt:
+        xaxis.sendCommandNoVars('19')
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        print('temp', temp)
         raise
     except:
         xaxis.sendCommandNoVars('19')
@@ -85,6 +88,7 @@ while True:
         print('temp', temp)
         raise
 
+    time.sleep(0.05)
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
