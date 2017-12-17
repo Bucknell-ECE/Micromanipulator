@@ -86,6 +86,7 @@ class Stage:
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
+        print(commandToSend)
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
