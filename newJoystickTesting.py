@@ -84,8 +84,9 @@ while True:
             print("Axis {} value: {:>6.3f}".format(i, axis))
 
     '''
-    print'X: ', joy.getX()
     print'butt :', joy.getButtons()
+    print'X: ', joy.getX()
+
     #print'Buttons: ', getButtons()
 
     #print'Throttle', joy.getThrottle()
