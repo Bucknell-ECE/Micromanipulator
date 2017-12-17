@@ -78,7 +78,6 @@ while True:
             xaxis.goToLocation(mapval(joy.getX(), 0, 1023, xlinearRangeMin, xlinearRangeMax))
             #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
-
-
+    time.sleep(0.5)
 
 
