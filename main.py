@@ -94,12 +94,12 @@ while True:
         #xaxis.sendCommandNoVars('19')
         #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         #print('temp', temp)
-        xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
-        print('temp', temp)
+        #xaxis.sendCommandNoVars('10')
+        #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        #print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
-        f.write(str(temp))
+        #f.write(str(temp))
         raise
         #f.close()
 
