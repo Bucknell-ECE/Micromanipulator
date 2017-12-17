@@ -84,6 +84,7 @@ while True:
             print("Axis {} value: {:>6.3f}".format(i, axis))
 
     '''
+    print'X: ', joy.getX()
     print'butt :', joy.getButtons()
     #print'Buttons: ', getButtons()
 
@@ -94,7 +95,7 @@ while True:
             button = event.button
             print("Button {} off".format(button))
     '''
-    print'X: ', joy.getX()
+
     print'y ', joy.getY()
     print'position', joy.getPosition()
 
