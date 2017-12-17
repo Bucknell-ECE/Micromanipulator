@@ -86,7 +86,7 @@ while True:
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
-        f.write('Keyboard Inturrupt on '+str(datetime.now()))
+        f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
         f.write(str(temp))
         #f.close()
         raise
@@ -98,7 +98,7 @@ while True:
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
-        f.write('Error Occured on '+ str(datetime.now()))
+        f.write('\n' + 'Error Occured on '+ str(datetime.now()))
         f.write(str(temp))
         #f.close()
         raise
