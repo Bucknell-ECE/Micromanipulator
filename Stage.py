@@ -98,7 +98,7 @@ class Stage:
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         #print('command no vars: ', commandToSend)
-        self.write1(commandToSend)
+        self.write(commandToSend)
 
     def calibrate(self):
         """
