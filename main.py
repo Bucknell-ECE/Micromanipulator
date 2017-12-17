@@ -77,6 +77,8 @@ while True:
         #print(time.time())
         #print(datetime.now())
         #time.sleep(0.0001)
+    except KeyboardInterrupt:
+        raise
     except:
         xaxis.sendCommandNoVars('19')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
