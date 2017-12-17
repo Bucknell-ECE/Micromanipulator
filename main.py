@@ -75,7 +75,7 @@ while True:
     # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
     #print(time.time())
     #print(datetime.now())
-    time.sleep(0.0001)
+    #time.sleep(0.0001)
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
