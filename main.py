@@ -80,10 +80,10 @@ while True:
         time.sleep(0.02)
     except KeyboardInterrupt:
         xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
@@ -92,10 +92,10 @@ while True:
         raise
     except IOError:
         xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
