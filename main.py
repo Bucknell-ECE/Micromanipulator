@@ -77,9 +77,7 @@ while True:
         if controlMode == 'position':
             setBounds()
 
-            xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900)# xlinearRangeMin, xlinearRangeMax))
+            xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
             #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
     #time.sleep(0.1)
-
-
