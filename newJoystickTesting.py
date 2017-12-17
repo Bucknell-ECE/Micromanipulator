@@ -8,19 +8,12 @@ pygame.joystick.init() # Initialize joystick module
 
 joy = CustomJoystick('Logitech', 0)
 
-
-
-
 while True:
-
-
 
     print'butt :', joy.getButtons()
     print'X: ', joy.getX()
-
     print'y ', joy.getY()
     print'position', joy.getPosition()
-
     print'-----------------------------'
     print'absolute postion' , joy.getAbsolutePosition()
 
