@@ -70,7 +70,8 @@ while True:
 
     xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
     # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
-
+    print(time.time())
+    print(datetime.now())
     time.sleep(0.001)
     '''
     #currentMillis = datetime.now().microsecond
