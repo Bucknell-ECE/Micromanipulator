@@ -82,7 +82,7 @@ class CustomJoystick:
 
 
         for event in pygame.event.get():  # User did something
-            print(event)
+            #print(event)
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
 
@@ -92,7 +92,7 @@ class CustomJoystick:
                 button = event.button
                 print('button num ', button)
                 print(buttonMap[button])
-                commands += buttonMap[button]
+                commands += [buttonMap[button]]
                 print(event)
             #if event.type == pygame.JOYBUTTONUP:
                 # print("Joystick button released.")
