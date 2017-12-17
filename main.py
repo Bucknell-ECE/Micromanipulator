@@ -18,7 +18,7 @@ axes = [xaxis]#
 # , yaxis, zaxis]
 home = [xaxis.home]#, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
-refreshRate = 200000
+refreshRate = 20000
 lastMillis = 0
 
 pygame.init() # Initialize all pygame modules
