@@ -30,18 +30,14 @@ class CustomJoystick:
         self.joystick = pygame.joystick.Joystick(number)
         pygame.init()
 
-
-
         # Used to manage how fast the screen updates
         clock = pygame.time.Clock()
 
         # Initialize the joysticks
         pygame.joystick.init()
 
-
         joystick_count = pygame.joystick.get_count()
         joystick = pygame.joystick.Joystick(0)
-
 
         # For each joystick:
         for i in range(joystick_count):
@@ -58,8 +54,6 @@ class CustomJoystick:
         currPos = self.getAxisPosition(axisIndex)
         newPos = (currPos + 1)*127.5
         return newPos
-    #def getButtons(self):
-       # fdshkj
 
 
 ############################CODE WRITTTEN BY RYDER#########################################
@@ -75,11 +69,8 @@ class CustomJoystick:
 
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
             if event.type == pygame.JOYBUTTONDOWN:
-
                 button = event.button
-
                 commands += [buttonMap[button]]
-
             clock.tick(20)
 
         return commands
@@ -109,9 +100,7 @@ class CustomJoystick:
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         absoluteX = self.getAbsoluteX() + 1
-
         return mapval(absoluteX, 0, 2, 0, 1023)
-
 
     def getY(self):
         pygame.event.get()
