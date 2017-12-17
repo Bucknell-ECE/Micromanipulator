@@ -4,7 +4,7 @@ from datetime import datetime
 from Joystick import *
 import pygame
 import smbus
-xaxis = Stage(0x32, 6000, 1)
+xaxis = Stage(0x33, 6000, 1)
 #yaxis = Stage(0x33, 6000, 1)
 #zaxis = Stage(0x34, 6000, 1)
 controlMode = 'position'
@@ -80,10 +80,10 @@ while True:
         time.sleep(0.02)
     except KeyboardInterrupt:
         xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
@@ -92,10 +92,10 @@ while True:
         raise
     except IOError:
         xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        temp = xaxis.bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
