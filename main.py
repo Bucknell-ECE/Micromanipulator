@@ -4,8 +4,8 @@ from datetime import datetime
 from Joystick import *
 import pygame
 xaxis = Stage(0x32, 6000, 1)
-yaxis = Stage(0x33, 6000, 1)
-zaxis = Stage(0x34, 6000, 1)
+#yaxis = Stage(0x33, 6000, 1)
+#zaxis = Stage(0x34, 6000, 1)
 controlMode = 'position'
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -14,8 +14,8 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
-axes = [xaxis, yaxis, zaxis]
-home = [xaxis.home, yaxis.home, zaxis.home]
+axes = [xaxis]#, yaxis, zaxis]
+home = [xaxis.home]#, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 200000
 lastMillis = 0
@@ -49,7 +49,8 @@ def setBounds():
 
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
-    boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    #boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    boundries = [home[0],  12000 - home[0]]
     constrainedLinearRange = min(boundries)
 
     scaleInput = joy.getThrottle()
@@ -59,8 +60,8 @@ def setBounds():
 
     xlinearRangeMin = xaxis.home - scaledRange +100
     xlinearRangeMax = xaxis.home + scaledRange -100
-    ylinearRangeMin = yaxis.home - scaledRange +100
-    ylinearRangeMax = yaxis.home + scaledRange -100
+    #ylinearRangeMin = yaxis.home - scaledRange +100
+    #ylinearRangeMax = yaxis.home + scaledRange -100
 
 
 while True:
