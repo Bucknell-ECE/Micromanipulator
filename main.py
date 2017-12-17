@@ -100,6 +100,7 @@ while True:
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
         f.write(str(temp))
+        raise
         #f.close()
 
 
