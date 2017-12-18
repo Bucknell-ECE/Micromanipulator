@@ -20,7 +20,7 @@ def encodeToCommand(value):
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
     for i in range(8 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 30)
+        encodeOutput.insert(0, 0x30)
     return encodeOutput
 
 class Stage:
