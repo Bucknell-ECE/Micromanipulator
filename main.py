@@ -5,7 +5,7 @@ from Joystick import *
 import pygame
 import random
 import smbus
-xaxis = Stage(0x33, 6000, 1)
+xaxis = Stage(0x04, 6000, 1)
 #yaxis = Stage(0x33, 6000, 1)
 #zaxis = Stage(0x34, 6000, 1)
 controlMode = 'position'
