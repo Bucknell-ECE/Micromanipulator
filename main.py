@@ -5,7 +5,7 @@ from Joystick import *
 import pygame
 import random
 import smbus
-xaxis = Stage(0x04, 6000, 1)
+xaxis = Stage(0x33, 6000, 1)
 xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
 #zaxis = Stage(0x34, 6000, 1)
@@ -73,9 +73,9 @@ while True:
     try:
         value = random.randrange(200,300,1)
         print(value)
-        xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
-        print(datetime.now())
-        #xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        #xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        #print(datetime.now())
+        xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print('passed')
         # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
         #print(time.time())
