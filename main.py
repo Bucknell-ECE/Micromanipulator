@@ -80,7 +80,7 @@ while True:
         #print(time.time())
         #print(datetime.now())
         #time.sleep(0.0001)
-        time.sleep(0.02)
+        time.sleep(0.05)
     except KeyboardInterrupt:
         xaxis.sendCommandNoVars('19')
         temp = xaxis.bus.read_i2c_block_data(0x32, 0)
