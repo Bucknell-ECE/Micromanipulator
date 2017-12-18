@@ -169,7 +169,11 @@ class Stage:
         bus = self.bus
         temp = bus.read_i2c_block_data(self.address, 0)
         print('temp', temp)
-        return temp
+        returnBuffer = []
+        for i in temp:
+            returnBuffer += str(chr(int(i)))
+
+        return returnBuffer
 
 
 
