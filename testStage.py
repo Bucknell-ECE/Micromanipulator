@@ -1,7 +1,7 @@
 from helper import *
 from Stage import *
 
-xaxis = Stage(0x32, 6000, 1)
+xaxis = Stage(0x33, 6000, 1)
 print(xaxis.address)
 print(xaxis.getAddress())
 print(2 * xaxis.getAddress())
