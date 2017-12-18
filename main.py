@@ -69,7 +69,7 @@ def setBounds():
 while True:
     #setBounds()
     try:
-        xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         print(datetime.now())
         #xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print('passed')
