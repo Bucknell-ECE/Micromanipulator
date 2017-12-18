@@ -83,7 +83,8 @@ class Stage:
     def write(self, command):
         bus = smbus.SMBus(1)
         #bus.write_i2c_block_data(self.address, 0, command)
-        bus.write_i2c_block_data(self.address, 0, command)
+        ##############CHANGED TO 1 BUT SHOULD BE ZERO
+        bus.write_i2c_block_data(self.address, 1, command)
 
     def write1(self, command):
         bus = smbus.SMBus(1)
