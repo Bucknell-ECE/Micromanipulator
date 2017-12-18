@@ -3,6 +3,7 @@ from Stage import *
 from datetime import datetime
 from Joystick import *
 import pygame
+import random
 import smbus
 xaxis = Stage(0x33, 6000, 1)
 #yaxis = Stage(0x33, 6000, 1)
@@ -69,7 +70,9 @@ def setBounds():
 while True:
     #setBounds()
     try:
-        xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        value = random.randrange(200,300,1)
+        print(value)
+        xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         print(datetime.now())
         #xaxis.goToLocation(mapval(500, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print('passed')
