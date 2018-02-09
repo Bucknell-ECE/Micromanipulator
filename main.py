@@ -99,6 +99,7 @@ while True:
         f.write(str(temp))
         #f.close()
         raise
+    '''
     except IOError:
         #xaxis.sendCommandNoVars('19')
         #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
@@ -112,7 +113,7 @@ while True:
         raise
         #f.close()
 
-
+    '''
 
     '''
     #currentMillis = datetime.now().microsecond
