@@ -1,7 +1,7 @@
 from helper import *
 from Stage import *
 
-xaxis = Stage(0x04, 6000, 1)
+xaxis = Stage(0x32, 6000, 1)
 print(xaxis.address)
 print(xaxis.getAddress())
 print(2 * xaxis.getAddress())
@@ -17,7 +17,7 @@ while True:
     #7. set home position
     #8. go home
     if next == 1: # read status register
-        temp = bus.read_i2c_block_data(0x33, 19)
+        temp = bus.read_i2c_block_data(0x32, 19)
         print('temp', temp)
     elif next == 2: #move to a location
         moveToNew = input('Where should the stage move next?')
@@ -39,7 +39,7 @@ while True:
         print(pos)
     elif next == 6: #calibrate
         xaxis.calibrate()
-        temp = bus.read_i2c_block_data(0x33, 0)
+        temp = bus.read_i2c_block_data(0x32, 0)
         print('temp', temp)
     elif next == 8: #Return home
         xaxis.returnHome()
