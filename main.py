@@ -71,12 +71,13 @@ def setBounds():
 while True:
     #setBounds()
     try:
-        value = random.randrange(200,300,1)
-        print(value)
+        ###value = random.randrange(200,300,1)
+        ###print(value)
         #xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print(datetime.now())
         xaxis.sendCommandNoVars('03')
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        print(joy.getX())
         xaxis.sendCommandNoVars('03')
         #print('passed')
         # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
