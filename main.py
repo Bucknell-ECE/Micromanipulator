@@ -78,7 +78,7 @@ while True:
         #xaxis.sendCommandNoVars('03')
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         print(joy.getX())
-        time.sleep(0.1)
+        time.sleep(0.01)
         xaxis.sendCommandNoVars('03')
         #print('passed')
         # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
