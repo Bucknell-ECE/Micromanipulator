@@ -98,6 +98,7 @@ while True:
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
         f.write(str(temp))
         f.close()
+        print('Completed')
         raise
     '''
     except IOError:
