@@ -97,7 +97,7 @@ while True:
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
         f.write(str(temp))
-        #f.close()
+        f.close()
         raise
     '''
     except IOError:
