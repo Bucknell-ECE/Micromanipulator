@@ -80,7 +80,7 @@ while True:
         print(joy.getX())
         #time.sleep(0.01)
        # xaxis.sendCommandNoVars('03')
-        time.sleep(0.01)
+        #time.sleep(0.01)
         #print('passed')
         # yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
         #print(time.time())
