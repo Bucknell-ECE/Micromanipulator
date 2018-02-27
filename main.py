@@ -118,6 +118,7 @@ while True:
 
     '''
 
+
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
