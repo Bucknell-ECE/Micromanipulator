@@ -112,7 +112,7 @@ class CustomJoystick:
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         absoluteThrottle = self.getAbsoluteThrottle()
-        return mapval(absoluteThrottle, 0, 2, 0, 1023)
+        return mapval(absoluteThrottle, -1, 1, 0, 1023)
 
     def getPosition(self):
         pygame.event.get()
