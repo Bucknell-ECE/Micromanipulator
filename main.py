@@ -85,6 +85,7 @@ while True:
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
+        x = joy.getX()
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
@@ -102,7 +103,7 @@ while True:
 
         #print(joy.getAbsoluteThrottle())
         #print(joy.getThrottle())
-        xaxis.goToLocation(mapval(joy.getX(), 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
