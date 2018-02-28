@@ -85,13 +85,14 @@ while True:
         #print(joy.getButtons())
         [buttons] = joy.getButtons()
         print(buttons)
-        for nums in range(buttons.count('Zup')):
-            zaxis.buildCommand('06 1', [48,48,48,48,48,48,55,56])
-            #move up120 encoder counts
+        if buttons.length != 0:
+            for nums in range(buttons.count('Zup')):
+                zaxis.buildCommand('06 1', [48,48,48,48,48,48,55,56])
+                #move up120 encoder counts
 
-        for nums in range(buttons.count('Zdown')):
-            zaxis.buildCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
-            #move down some amount 120 encoder counts
+            for nums in range(buttons.count('Zdown')):
+                zaxis.buildCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
+                #move down some amount 120 encoder counts
 
         print(joy.getAbsoluteThrottle())
         print(joy.getThrottle())
