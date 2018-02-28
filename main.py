@@ -106,7 +106,7 @@ while True:
 
         scaleInput = joy.getThrottle()
 
-        scaledRange = mapval(scaleInput, 0, 1023, 0, constrainedLinearRange)
+        scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
         print('Scaled Range = ' , scaledRange)
         xlinearRangeMin = xaxis.home - scaledRange + 100
         xlinearRangeMax = xaxis.home + scaledRange - 100
