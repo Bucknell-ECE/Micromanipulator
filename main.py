@@ -78,7 +78,7 @@ while True:
         #xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print(datetime.now())
         #xaxis.sendCommandNoVars('03')
-        currentThrottle = joy.getThrottle()
+       # currentThrottle = joy.getThrottle()
         #if currentThrottle != zaxisOld:
             #if currentThrottle - zaxisOld > 0:
                 #move up
