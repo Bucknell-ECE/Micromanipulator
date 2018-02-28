@@ -88,10 +88,12 @@ while True:
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
+                print('Theres a ZUP')
                 zaxis.buildCommand('06 1', [48,48,48,48,48,48,55,56])
                 #move up120 encoder counts
 
             for nums in range(buttons.count('Zdown')):
+                print('Theres a zdonw')
                 zaxis.buildCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
                 #move down some amount 120 encoder counts
 
