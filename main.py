@@ -78,12 +78,6 @@ while True:
             #if currentThrottle - zaxisOld > 0:
                 #move up
         #print(joy.getButtons())
-        scaleInput = joy.getThrottle()
-
-        scaledRange = mapval(scaleInput, 0, 1023, 0, constrainedLinearRange)
-
-        xlinearRangeMin = xaxis.home - scaledRange + 100
-        xlinearRangeMax = xaxis.home + scaledRange - 100
 
 
 
@@ -110,6 +104,12 @@ while True:
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, xlinearRangeMin, xlinearRangeMax))
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
+        scaleInput = joy.getThrottle()
+
+        scaledRange = mapval(scaleInput, 0, 1023, 0, constrainedLinearRange)
+
+        xlinearRangeMin = xaxis.home - scaledRange + 100
+        xlinearRangeMax = xaxis.home + scaledRange - 100
 
         time.sleep(0.1)
         ########print(joy.getX())
