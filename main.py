@@ -79,8 +79,8 @@ while True:
         #print(datetime.now())
         #xaxis.sendCommandNoVars('03')
         currentThrottle = joy.getThrottle()
-        if currentThrottle != zaxisOld:
-            if currentThrottle - zaxisOld > 0:
+        #if currentThrottle != zaxisOld:
+            #if currentThrottle - zaxisOld > 0:
                 #move up
         #print(joy.getButtons())
         [buttons] = joy.getButtons()
