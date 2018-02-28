@@ -29,7 +29,7 @@ class Stage:
         self.position = position
         self.address = address
         self.bus = smbus.SMBus(bus)
-        self.home = 3000
+        self.home = 6000
     bus = smbus.SMBus(1)
 
     def getPosition(self):
