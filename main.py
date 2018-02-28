@@ -77,10 +77,11 @@ while True:
         #xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print(datetime.now())
         #xaxis.sendCommandNoVars('03')
+        print(joy.getButtons())
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
-        print(joy.getButtons())
+
         time.sleep(0.1)
         ########print(joy.getX())
         #time.sleep(0.01)
