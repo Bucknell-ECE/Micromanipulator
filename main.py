@@ -86,7 +86,7 @@ while True:
         buttons = []
         buttons += [joy.getButtons()]
         print(buttons)
-        if buttons.length != 0:
+        if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 zaxis.buildCommand('06 1', [48,48,48,48,48,48,55,56])
                 #move up120 encoder counts
