@@ -116,7 +116,7 @@ while True:
         print('XlinMin', xlinearRangeMin)
         print('xlinmax', xlinearRangeMax)
 
-        #time.sleep(0.1)
+        time.sleep(0.01)
         ########print(joy.getX())
         #time.sleep(0.01)
        # xaxis.sendCommandNoVars('03')
