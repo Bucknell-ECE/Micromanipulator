@@ -78,6 +78,7 @@ while True:
         #print(datetime.now())
         #xaxis.sendCommandNoVars('03')
         print(joy.getButtons())
+        print(joy.getThrottle())
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
