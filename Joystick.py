@@ -17,9 +17,9 @@ xAxisNum = 0
 yAxisNum = 1
 throttleAxisNum = 2
 buttonMap = {
-    1: 'Hold',
+    1: 'Zdown',
     2: 'Zup',
-    3: 'Zdown',
+    3: 'Hold',
     4: 'ChangeMode',
 }
 
