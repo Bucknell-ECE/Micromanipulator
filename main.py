@@ -59,13 +59,7 @@ def setBounds():
     boundries = [home[0],  12000 - home[0]]
     constrainedLinearRange = min(boundries)
 
-    scaleInput = joy.getThrottle()
 
-    scaledRange = mapval(scaleInput, 0, 1023, 0, constrainedLinearRange)
-
-
-    xlinearRangeMin = xaxis.home - scaledRange +100
-    xlinearRangeMax = xaxis.home + scaledRange -100
     #ylinearRangeMin = yaxis.home - scaledRange +100
     #ylinearRangeMax = yaxis.home + scaledRange -100
 
@@ -84,6 +78,16 @@ while True:
             #if currentThrottle - zaxisOld > 0:
                 #move up
         #print(joy.getButtons())
+        scaleInput = joy.getThrottle()
+
+        scaledRange = mapval(scaleInput, 0, 1023, 0, constrainedLinearRange)
+
+        xlinearRangeMin = xaxis.home - scaledRange + 100
+        xlinearRangeMax = xaxis.home + scaledRange - 100
+
+
+
+
         buttons = []
         buttons = joy.getButtons()
         print(buttons)
