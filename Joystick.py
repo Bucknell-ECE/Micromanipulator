@@ -70,6 +70,7 @@ class CustomJoystick:
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
             if event.type == pygame.JOYBUTTONDOWN:
                 button = event.button
+                #commands += button
                 commands += [buttonMap[button]]
             clock.tick(20)
 
@@ -112,7 +113,7 @@ class CustomJoystick:
         pygame.event.get()
         #joystick = pygame.joystick.Joystick(0)
         absoluteThrottle = self.getAbsoluteThrottle()
-        return mapval(absoluteThrottle, -1, 1, 0, 1023)
+        return mapval(absoluteThrottle, -1, 1, 0, 100)
 
     def getPosition(self):
         pygame.event.get()
