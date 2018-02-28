@@ -68,8 +68,9 @@ def setBounds():
     xlinearRangeMax = xaxis.home + scaledRange -100
     #ylinearRangeMin = yaxis.home - scaledRange +100
     #ylinearRangeMax = yaxis.home + scaledRange -100
-zaxisOld = joy.getThrottle()
 
+
+sensitivity = 50
 while True:
     #setBounds()
     try:
@@ -102,7 +103,7 @@ while True:
 
         print(joy.getAbsoluteThrottle())
         print(joy.getThrottle())
-        xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
+        xaxis.goToLocation(mapval(joy.getX(), 0, 1023, xlinearRangeMin, xlinearRangeMax))
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
