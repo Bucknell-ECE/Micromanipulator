@@ -84,7 +84,7 @@ while True:
                 #move up
         #print(joy.getButtons())
         buttons = []
-        buttons += [joy.getButtons()]
+        buttons = joy.getButtons()
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
