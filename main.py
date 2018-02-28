@@ -106,16 +106,16 @@ while True:
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
-
+        #deal with the Z axis
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        print('Scaled Range = ' , scaledRange)
+       # print('Scaled Range = ' , scaledRange)
         boundries = [home[0], 12000 - home[0]]
         constrainedLinearRange = min(boundries)
-        print('crange',constrainedLinearRange)
+        #print('crange',constrainedLinearRange)
         xlinearRangeMin = xaxis.home - scaledRange + 100
         xlinearRangeMax = xaxis.home + scaledRange - 100
-        print('XlinMin', xlinearRangeMin)
-        print('xlinmax', xlinearRangeMax)
+       # print('XlinMin', xlinearRangeMin)
+        #print('xlinmax', xlinearRangeMax)
 
 
         ########print(joy.getX())
