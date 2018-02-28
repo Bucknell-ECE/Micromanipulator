@@ -6,7 +6,8 @@ import pygame
 import random
 import smbus
 xaxis = Stage(0x33, 6000, 1)
-yaxis = Stage(0x40, 6000, 1)
+#yaxis = Stage(0x40, 6000, 1)
+zaxis = Stage(0x40, 6000, 1)
 xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
 #zaxis = Stage(0x34, 6000, 1)
@@ -67,7 +68,7 @@ def setBounds():
     xlinearRangeMax = xaxis.home + scaledRange -100
     #ylinearRangeMin = yaxis.home - scaledRange +100
     #ylinearRangeMax = yaxis.home + scaledRange -100
-
+zaxisOld = joy.getThrottle()
 
 while True:
     #setBounds()
@@ -77,11 +78,25 @@ while True:
         #xaxis.goToLocation(mapval(value, 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
         #print(datetime.now())
         #xaxis.sendCommandNoVars('03')
-        print(joy.getButtons())
+        currentThrottle = joy.getThrottle()
+        if currentThrottle != zaxisOld:
+            if currentThrottle - zaxisOld > 0:
+                #move up
+        #print(joy.getButtons())
+        [buttons] = joy.getButtons()
+        print(buttons)
+        for nums in range(buttons.count('Zup')):
+            zaxis.buildCommand('06 1', [48,48,48,48,48,48,55,56])
+            #move up120 encoder counts
+
+        for nums in range(buttons.count('Zdown')):
+            zaxis.buildCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
+            #move down some amount 120 encoder counts
+
         print(joy.getAbsoluteThrottle())
         print(joy.getThrottle())
         xaxis.goToLocation(mapval(joy.getX(), 0, 1023, 100, 11900))  # xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
+        #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
         time.sleep(0.1)
