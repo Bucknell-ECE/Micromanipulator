@@ -83,7 +83,8 @@ while True:
             #if currentThrottle - zaxisOld > 0:
                 #move up
         #print(joy.getButtons())
-        [buttons] = joy.getButtons()
+        buttons = []
+        buttons += [joy.getButtons()]
         print(buttons)
         if buttons.length != 0:
             for nums in range(buttons.count('Zup')):
