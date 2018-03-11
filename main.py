@@ -59,7 +59,6 @@ def setBounds():
     boundries = [home[0],  12000 - home[0]]
     constrainedLinearRange = min(boundries)
 
-
     #ylinearRangeMin = yaxis.home - scaledRange +100
     #ylinearRangeMax = yaxis.home + scaledRange -100
 
