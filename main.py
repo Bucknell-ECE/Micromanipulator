@@ -86,6 +86,7 @@ while True:
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         x = joy.getX()
+        y = joy.gety()
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
@@ -98,6 +99,7 @@ while True:
                 print('Theres a zdonw')
                 #zaxis.sendCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
                 zaxis.zMove(1,200)
+
 
                 #move down some amount 120 encoder counts
 
