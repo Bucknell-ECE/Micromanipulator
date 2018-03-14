@@ -1,5 +1,6 @@
 import smbus
 from helper import *
+import time
 
 def encodeToCommand(value):
     """
@@ -19,7 +20,7 @@ def encodeToCommand(value):
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
     for i in range(8 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 30)
+        encodeOutput.insert(0, 0x30)
     return encodeOutput
 
 class Stage:
@@ -28,7 +29,7 @@ class Stage:
         self.position = position
         self.address = address
         self.bus = smbus.SMBus(bus)
-        self.home = 3000
+        self.home = 6000
     bus = smbus.SMBus(1)
 
     def getPosition(self):
@@ -55,7 +56,7 @@ class Stage:
         """
 
         command = []  # empty list to hold command
-        command += [self.address << 1]  # address of stage bit shifted 1 left
+        # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
         for i in str(commandCode):
             command += [ord(i)]
@@ -71,7 +72,7 @@ class Stage:
         comprised of the hexadecimal values
         """
         command = []
-        command += [self.address << 1]
+        #command += [self.address << 1]
         command += [60]
         for i in str(commandCode):
             command += [ord(i)]
@@ -82,10 +83,19 @@ class Stage:
 
     def write(self, command):
         bus = smbus.SMBus(1)
+        #bus.write_i2c_block_data(self.address, 0, command)
+        ##############CHANGED TO 1 BUT SHOULD BE ZERO
+        print('com', command)
         bus.write_i2c_block_data(self.address, 0, command)
+
+    def write1(self, command):
+        bus = smbus.SMBus(1)
+        #bus.write_i2c_block_data(self.address, 0, command)
+        bus.write_i2c_block_data(0x32, 0, command)
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
+        print(commandToSend)
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
@@ -94,7 +104,21 @@ class Stage:
         self.write(commandToSend)
 
     def calibrate(self):
+        """
+        Function that runs a calibration for the stages. Runs both forward and backwards commands.
+        :return: N/A
+        """
+        '''
+        Send to stage:
+        <87 5>/r
+        Recieve from stage:
+        
+        
+        '''
         self.sendCommand('87', [ 5])
+        time.sleep(0.2)
+        self.sendCommand('87', [ 4])
+        time.sleep(0.2)
 
     def startup(self):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
@@ -139,6 +163,30 @@ class Stage:
         :return: NA
         """
         self.goToLocation(self.home)
+
+    def read(self):
+        """
+        Reads from the output register of the stage
+        :return: List of signed values that reprsent what is on the output register of the stage
+        """
+        bus = self.bus
+        temp = bus.read_i2c_block_data(self.address, 0)
+        print('temp', temp)
+        returnBuffer = []
+        for i in temp:
+            returnBuffer += str(chr(int(i)))
+
+        return returnBuffer
+
+    def zMove(self, direction, encoderCounts):
+        '''
+
+        :param direction: The direction for Z to move. 1= up 0 = down
+        :param encoderCounts: number of encoder counts to move
+        :return: NA
+        '''
+        command = '06 ' + str(direction)
+        self.sendCommand(command, encodeToCommand(encoderCounts))
 
 
 
