@@ -1,5 +1,6 @@
 from helper import *
 from Stage import *
+from StageSPI import *
 from datetime import datetime
 from Joystick import *
 import pygame
