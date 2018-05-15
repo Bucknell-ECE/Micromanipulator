@@ -89,7 +89,7 @@ def commandToString(command):
     #     print(chr(i))
     #
     tmp = map(chr, command)
-    stringOut= str(tmp)
+    stringOut = ''.join(tmp)
     return stringOut
 
 
