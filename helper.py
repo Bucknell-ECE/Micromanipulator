@@ -88,7 +88,7 @@ def commandToString(command):
     #     stringOut += chr(i)
     #     print(chr(i))
     #
-    stringOut = list(map(chr, command))
+    stringOut = map(chr, command)
     return stringOut
 
 
