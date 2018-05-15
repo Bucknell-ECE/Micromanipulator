@@ -46,6 +46,7 @@ class StageSPI:
         axis.open(self.bus, self.device)
         axis.mode = 0b01
         axis.max_speed_hz = 1000000
+        self.axis = axis
 
     def getPosition(self):
         return int(self.position)
@@ -101,18 +102,19 @@ class StageSPI:
         # bus.write_i2c_block_data(self.address, 0, command)
         ##############CHANGED TO 1 BUT SHOULD BE ZERO
         print('com', command)
-        axis.writebytes(command)
+        self.axis.writebytes(command)
+
 
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         print(commandToSend)
-        axis.write(commandToSend)
+        self.axis.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         # print('command no vars: ', commandToSend)
-        axis.write(commandToSend)
+        self.axis.write(commandToSend)
 
     def calibrate(self):
         """
@@ -181,7 +183,7 @@ class StageSPI:
         :return: List of signed values that reprsent what is on the output register of the stage
         """
 
-        temp = axis.readbytes(EXPECTED_RETURN_LENGTH)
+        temp = self.axis.readbytes(EXPECTED_RETURN_LENGTH)
         print('temp', temp)
         returnBuffer = []
         for i in temp:
