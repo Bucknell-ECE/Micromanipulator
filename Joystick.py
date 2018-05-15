@@ -14,7 +14,7 @@ buttonMap = {
 }
 
 class CustomJoystick:
-    #will need to create a button mapping function that imports text file stuff here.
+    #will need to create a button mapping function that imports text file stuff here. THis is to get a GUI working
     def __init__(self, name, number):
         self.name = name
         self.joystick = pygame.joystick.Joystick(number)
@@ -69,17 +69,14 @@ class CustomJoystick:
 
     def getAbsoluteX(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(xAxisNum)
 
     def getAbsoluteY(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(yAxisNum)
 
     def getAbsoluteThrottle(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         return self.joystick.get_axis(throttleAxisNum)
 
     def getAbsolutePosition(self):
@@ -89,24 +86,20 @@ class CustomJoystick:
 
     def getX(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         absoluteX = self.getAbsoluteX() + 1
         return mapval(absoluteX, 0, 2, 0, 1023)
 
     def getY(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         absoluteY = self.getAbsoluteY() + 1
         return mapval(absoluteY, 0, 2, 0, 1023)
 
     def getThrottle(self):
         pygame.event.get()
-        #joystick = pygame.joystick.Joystick(0)
         absoluteThrottle = self.getAbsoluteThrottle()
         return mapval(absoluteThrottle, -1, 1, 0, 100)
 
     def getPosition(self):
         pygame.event.get()
-        #position = [round(self.joystick.get_axis(xAxisNum), 3), round(self.joystick.get_axis(yAxisNum), 3)]
         absolutePosition = [self.getAbsoluteX() + 1, self.getAbsoluteY() + 1]
         return map(lambda x: mapval(x, 0, 2, 0, 1023), absolutePosition)
