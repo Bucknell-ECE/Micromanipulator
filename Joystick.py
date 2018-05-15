@@ -1,17 +1,7 @@
 import pygame
+from helper import *
 #from helper import mapval
 
-def mapval(x, inMin, inMax, outMin, outMax):
-    """
-    Maps a value in one range to a value in another range
-    :param x: value to be mapped
-    :param inMin: minimum of the input scale
-    :param inMax: maximum of the input scale
-    :param outMin: minimum of the output scale
-    :param outMax: maximum of the output scale
-    :return: mapped value, rounded to the nearest integer value
-    """
-    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
 xAxisNum = 0
 yAxisNum = 1
