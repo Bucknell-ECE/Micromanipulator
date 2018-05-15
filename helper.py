@@ -1,10 +1,5 @@
-#import Stage
 from Stage import *
-#import smbus
 
-#bus = smbus.SMBus(1)
-#def write(self, command):
-    #bus.write_i2c_block_data(self.address, 0, command)
 def encoderConvert(value):
     ''''
     THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
