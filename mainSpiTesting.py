@@ -25,9 +25,9 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
-axes = [xaxis]#
+axes = [zaxis]#
 # , yaxis, zaxis]
-home = [xaxis.home]#, yaxis.home, zaxis.home]
+home = [zaxis.home]#, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000
 lastMillis = 0
@@ -111,7 +111,11 @@ while True:
 
         #print(joy.getAbsoluteThrottle())
         #print(joy.getThrottle())
-        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+
+
+        ################xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+
+
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
@@ -138,11 +142,11 @@ while True:
         #time.sleep(0.0001)
         ###time.sleep(0.1)
     except KeyboardInterrupt:
-        xaxis.sendCommandNoVars('19')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        #xaxis.sendCommandNoVars('19')
+        #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
-        xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        #xaxis.sendCommandNoVars('10')
+        #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
