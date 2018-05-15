@@ -52,6 +52,8 @@ def encoderCountConvert(value):
     return encodeOutput
 
 
+
+
 def encodeToCommand(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
@@ -70,8 +72,22 @@ def encodeToCommand(value):
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
     for i in range(8 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 30)
+        encodeOutput.insert(0, 0x30)
     return encodeOutput
+
+
+def commandToString(command):
+    '''
+
+    :param command: a commmand in the form of a list of hex values that correspond to the ascii characters for the
+    commmand
+    :return: String that represents the command sent
+    '''
+    stringOut = ''
+    for i in range(len(command)):
+        stringOut += chr(i)
+    return stringOut
+
 
 
 def centerAllStages(axis1, axis2, axis3):

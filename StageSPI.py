@@ -108,7 +108,8 @@ class StageSPI:
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
-        print(commandToSend)
+        #print(commandToSend)
+        print(commandToString(commandToSend))
         self.axis.writebytes(commandToSend)
 
     def sendCommandNoVars(self, commandCode):

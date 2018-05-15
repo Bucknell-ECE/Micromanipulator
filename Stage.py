@@ -1,5 +1,6 @@
 import smbus
 from helper import *
+
 import time
 
 def encodeToCommand(value):
