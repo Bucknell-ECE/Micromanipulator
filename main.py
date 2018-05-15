@@ -5,8 +5,15 @@ from Joystick import *
 import pygame
 import random
 import smbus
-xaxis = Stage(0x33, 6000, 1)
+import time
+import spidev
+
+#xaxis = Stage(0x33, 6000, 1)
 #yaxis = Stage(0x40, 6000, 1)
+xaxis = spidev.SpiDev()
+xaxis.open()
+yaxis = spidev.SpiDev()
+yaxis.open()
 zaxis = Stage(0x40, 6000, 1)
 xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)

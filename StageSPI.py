@@ -1,0 +1,186 @@
+
+from helper import *
+import time
+import spidev
+EXPECTED_RETURN_LENGTH = 16
+
+def encodeToCommand(value):
+    """
+    Builds the guts of a command to send the stage to a particular encoder count
+    Steps to figure out what should be converted in order to for command to word
+    1. Come up with command according to newscale documentation and write out the command as a series of individual chars
+    2. convert each character into its hes representation
+    3. The command can either be sent as the string of these values, or as the individual decimal values for each
+    :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
+    :return: the 8 bit output that represents
+    """
+    encodeOutput = []  # create a blank list to hold the output
+    hexValue = hex(int(value)).upper()  # convert the decimal to hex
+    valueConvert = hexValue[2:]  # remove the 0x from the hex value
+    # for each character in the input, convert it to its base 10 representation of the ascii character
+    for i in valueConvert:
+        encodeOutput += [ord(str(i))]
+    # ensure that the output is 8 bytes
+    for i in range(8 - int(len(encodeOutput))):
+        encodeOutput.insert(0, 0x30)
+    return encodeOutput
+
+
+class Stage:
+    def __init__(self, bus, device, position):
+        self.position = position
+        self.bus = bus
+        self.device = device
+        self.home = 6000
+        axis = spidev.SpiDev()
+        axis.open(bus, device)
+        axis.mode = 0b01
+        axis.max_speed_hz = 1000000
+      #this is definitely not the right way to do this. Should do something with self here.
+
+
+
+    def getPosition(self):
+        return int(self.position)
+
+    def getAddress(self):
+        return self.address
+
+    def setHome(self, location):
+        """
+        Allows user to set the home location for the particular axis
+        :param location: a location, specified in encoder counts
+        :return: NA
+        """
+        self.home = location
+
+    def setCurrentHome(self):
+        current = self.getPositionFromM3LS()
+        self.setHome(current)
+
+    def buildCommand(self, commandCode, commandVars):
+        """
+        Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
+        comprised of the hexadecimal values
+        """
+
+        command = []  # empty list to hold command
+        # command += [self.address << 1]  # address of stage bit shifted 1 left
+        command += [60]  # open carat(<)
+        for i in str(commandCode):
+            command += [ord(i)]
+        command += [32]  # space(' ')
+        command += commandVars
+        command += [62]  # close carat (>)
+        command += [13]  # carriage return(\r)
+        return command
+
+    def buildCommandNoVars(self, commandCode):
+        """
+        Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
+        comprised of the hexadecimal values
+        """
+        command = []
+        # command += [self.address << 1]
+        command += [60]
+        for i in str(commandCode):
+            command += [ord(i)]
+        command += [62]
+        command += [13]
+        return command
+
+    def write(self, command):
+
+        # bus.write_i2c_block_data(self.address, 0, command)
+        ##############CHANGED TO 1 BUT SHOULD BE ZERO
+        print('com', command)
+        axis.writebytes(command)
+
+
+    def sendCommand(self, commandCode, commandVars):
+        commandToSend = self.buildCommand(commandCode, commandVars)
+        print(commandToSend)
+        self.write(commandToSend)
+
+    def sendCommandNoVars(self, commandCode):
+        commandToSend = self.buildCommandNoVars(commandCode)
+        # print('command no vars: ', commandToSend)
+        self.write(commandToSend)
+
+    def calibrate(self):
+        """
+        Function that runs a calibration for the stages. Runs both forward and backwards commands.
+        :return: N/A
+        """
+        '''
+        Send to stage:
+        <87 5>/r
+        Recieve from stage:
+
+
+        '''
+        self.sendCommand('87', [5])
+        time.sleep(0.2)
+        self.sendCommand('87', [4])
+        time.sleep(0.2)
+
+    def startup(self):
+        # forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+        ##backwardStep =
+        self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
+
+    def getPositionFromM3LS(self):
+        """
+        Function that returns the position of the stage
+        :return: Postion of the stage in encoder counts(NOT uM!)
+
+        From newscale documentation:
+        Send : <10>
+        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
+        S is motor status
+        P is position, hex representation of encoder counts
+        E is error count. How far is the stage from where it is supposed to be?
+        """
+
+        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        temp = xaxis.readbytes(EXPECTED_RETURN_LENGTH)  # store incoming data from motor in list
+
+        rcvEncodedPosition = ''
+        for element in range(8):
+            rcvEncodedPosition += str(chr(temp[11 + element]))
+        position = int(rcvEncodedPosition, 16)
+        return position
+
+    def goToLocation(self, location):
+        """
+        Sends the stage to the location specified, in encoder counts
+        :param location: a location in encoder counts
+        :return: NA
+        """
+        print(encodeToCommand(location))
+        encodeToCommand(location)
+        self.sendCommand('08', encodeToCommand(location))
+
+    def returnHome(self):
+        """
+        Funtion that sends the stage to its home location
+        :return: NA
+        """
+        self.goToLocation(self.home)
+
+    def read(self):
+        """
+        Reads from the output register of the stage
+        :return: List of signed values that reprsent what is on the output register of the stage
+        """
+
+        temp = xaxis.readbytes(EXPECTED_RETURN_LENGTH)
+        print('temp', temp)
+        returnBuffer = []
+        for i in temp:
+            returnBuffer += str(chr(int(i)))
+
+        return returnBuffer
+
+
+
