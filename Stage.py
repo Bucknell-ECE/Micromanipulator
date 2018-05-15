@@ -1,27 +1,13 @@
+'''
+This file contains helper functions that are used by Stage, StageSPI, as well as the main function
+Last Modified: R. Nance 5/15/2018
+#####################DO NOT EDIT BELOW INFORMATION##################################
+Originating Branch: Master
+Originally Created: R. Nance 12/2017
+'''
 import smbus
 from helper import *
 import time
-
-# def encodeToCommand(value):
-#     """
-#     Builds the guts of a command to send the stage to a particular encoder count
-#     Steps to figure out what should be converted in order to for command to word
-#     1. Come up with command according to newscale documentation and write out the command as a series of individual chars
-#     2. convert each character into its hes representation
-#     3. The command can either be sent as the string of these values, or as the individual decimal values for each
-#     :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
-#     :return: the 8 bit output that represents
-#     """
-#     encodeOutput = []  # create a blank list to hold the output
-#     hexValue = hex(int(value)).upper()  # convert the decimal to hex
-#     valueConvert = hexValue[2:]  # remove the 0x from the hex value
-#     # for each character in the input, convert it to its base 10 representation of the ascii character
-#     for i in valueConvert:
-#         encodeOutput += [ord(str(i))]
-#     # ensure that the output is 8 bytes
-#     for i in range(8 - int(len(encodeOutput))):
-#         encodeOutput.insert(0, 0x30)
-#     return encodeOutput
 
 class Stage:
 
