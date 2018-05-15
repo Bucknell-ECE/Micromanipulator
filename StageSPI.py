@@ -26,7 +26,7 @@ def encodeToCommand(value):
     return encodeOutput
 
 
-class Stage:
+class StageSPI:
     def __init__(self, bus, device, position):
         self.position = position
         self.bus = bus
