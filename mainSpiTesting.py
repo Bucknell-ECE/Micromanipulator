@@ -1,3 +1,11 @@
+'''
+This file contains helper functions that are used by Stage, StageSPI, as well as the main function
+Last Modified: R. Nance 5/15/2018
+#####################DO NOT EDIT BELOW INFORMATION##################################
+Originating Branch: Master
+Originally Created: R. Nance 12/2017
+'''
+
 from helper import *
 from Stage import *
 from StageSPI import *
@@ -9,28 +17,18 @@ import smbus
 import time
 import spidev
 
-#xaxis = Stage(0x33, 6000, 1)
-#yaxis = Stage(0x40, 6000, 1)
-self = spidev.SpiDev()
+###############GLOBAL VARIABLES###################
+controlMode = 'position'
+################END GLOBAL VARIABLEs############
 
-# axis1 = spidev.SpiDev()
-# axis1.open(0, 0)
-# axis1.mode = 0b01
-# axis1.max_speed_hz = 1000000
-#
-# axis2 = spidev.SpiDev()
-# axis2.open(0, 1)
-# axis2.mode = 0b01
-# axis2.max_speed_hz = 1000000
 
 
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
 zaxis = Stage(0x40, 6000, 1)
-#xaxis.sendCommandNoVars('08')
-#yaxis = Stage(0x33, 6000, 1)
-#zaxis = Stage(0x34, 6000, 1)
-controlMode = 'position'
+
+
+
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
 xlinearRange = 12000
@@ -127,6 +125,7 @@ while True:
 
 
         xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
 
 
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))

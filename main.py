@@ -1,3 +1,11 @@
+'''
+This file contains helper functions that are used by Stage, StageSPI, as well as the main function
+Last Modified: R. Nance 5/15/2018
+#####################DO NOT EDIT BELOW INFORMATION##################################
+Originating Branch: Master
+Originally Created: R. Nance 12/2017
+'''
+
 from helper import *
 from Stage import *
 from datetime import datetime

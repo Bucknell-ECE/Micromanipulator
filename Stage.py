@@ -70,14 +70,8 @@ class Stage:
         bus = smbus.SMBus(1)
         #bus.write_i2c_block_data(self.address, 0, command)
         ##############CHANGED TO 1 BUT SHOULD BE ZERO
-        print('com', command)
+        print(commandToString(command))  # print the command in  a user readable format.
         bus.write_i2c_block_data(self.address, 0, command)
-
-    def write1(self, command):
-        bus = smbus.SMBus(1)
-        #bus.write_i2c_block_data(self.address, 0, command)
-        bus.write_i2c_block_data(0x32, 0, command)
-
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         print(commandToSend)
@@ -172,6 +166,15 @@ class Stage:
         """
         command = '06 ' + str(direction)
         self.sendCommand(command, encodeToCommand(encoderCounts))
+
+
+
+#########################DEPRECATED CODE#########################
+
+    # def write1(self, command):
+    #     bus = smbus.SMBus(1)
+    #     #bus.write_i2c_block_data(self.address, 0, command)
+    #     bus.write_i2c_block_data(0x32, 0, command)
 
 
 
