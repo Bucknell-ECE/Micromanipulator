@@ -42,10 +42,10 @@ class StageSPI:
 
       #this is definitely not the right way to do this. Should do something with self here.
 
-    axis = spidev.SpiDev()
-    axis.open(self.bus, self.device)
-    axis.mode = 0b01
-    axis1max_speed_hz = 1000000
+        axis = spidev.SpiDev()
+        axis.open(self.bus, self.device)
+        axis.mode = 0b01
+        axis.max_speed_hz = 1000000
 
     def getPosition(self):
         return int(self.position)
