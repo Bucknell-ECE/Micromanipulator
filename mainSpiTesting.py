@@ -13,19 +13,19 @@ import spidev
 #yaxis = Stage(0x40, 6000, 1)
 self = spidev.SpiDev()
 
-axis1 = spidev.SpiDev()
-axis1.open(0, 0)
-axis1.mode = 0b01
-axis1.max_speed_hz = 1000000
+# axis1 = spidev.SpiDev()
+# axis1.open(0, 0)
+# axis1.mode = 0b01
+# axis1.max_speed_hz = 1000000
+#
+# axis2 = spidev.SpiDev()
+# axis2.open(0, 1)
+# axis2.mode = 0b01
+# axis2.max_speed_hz = 1000000
 
-axis2 = spidev.SpiDev()
-axis2.open(0, 1)
-axis2.mode = 0b01
-axis2.max_speed_hz = 1000000
 
-
-xaxis = StageSPI(0, 0, 6000, axis1)
-yaxis = StageSPI(0, 1, 6000, axis2)
+xaxis = StageSPI(0, 0, 6000)
+yaxis = StageSPI(0, 1, 6000)
 zaxis = Stage(0x40, 6000, 1)
 #xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
