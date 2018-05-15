@@ -11,8 +11,8 @@ import spidev
 #xaxis = Stage(0x33, 6000, 1)
 #yaxis = Stage(0x40, 6000, 1)
 
-#xaxis = StageSPI(0, 0, 6000)
-#yaxis = StageSPI(0, 1, 6000)
+xaxis = StageSPI(0, 0, 6000)
+yaxis = StageSPI(0, 1, 6000)
 zaxis = Stage(0x40, 6000, 1)
 #xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
@@ -113,20 +113,20 @@ while True:
         #print(joy.getThrottle())
 
 
-        ################xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
 
 
         #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
         #deal with the Z axis
-       ##### scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+        scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
        # print('Scaled Range = ' , scaledRange)
-       ##### boundries = [home[0], 12000 - home[0]]
-       ##### constrainedLinearRange = min(boundries)
+        boundries = [home[0], 12000 - home[0]]
+        constrainedLinearRange = min(boundries)
         #print('crange',constrainedLinearRange)
-       ##### xlinearRangeMin = xaxis.home - scaledRange + 100
-       ##### xlinearRangeMax = xaxis.home + scaledRange - 100
+        xlinearRangeMin = xaxis.home - scaledRange + 100
+        xlinearRangeMax = xaxis.home + scaledRange - 100
        # print('XlinMin', xlinearRangeMin)
         #print('xlinmax', xlinearRangeMax)
 
