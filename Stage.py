@@ -1,6 +1,5 @@
 import smbus
 from helper import *
-
 import time
 
 # def encodeToCommand(value):
@@ -179,14 +178,15 @@ class Stage:
         return returnBuffer
 
     def zMove(self, direction, encoderCounts):
-        '''
+        """
 
         :param direction: The direction for Z to move. 1= up 0 = down
         :param encoderCounts: number of encoder counts to move
         :return: NA
-        '''
+        """
         command = '06 ' + str(direction)
         self.sendCommand(command, encodeToCommand(encoderCounts))
+
 
 
 
