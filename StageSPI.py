@@ -27,17 +27,18 @@ def encodeToCommand(value):
 
 
 class StageSPI:
-    def __init__(self, bus, device, position, axisname):
+    def __init__(self, bus, device, position, axis):
         self.position = position
         self.bus = bus
         self.device = device
         self.home = 6000
 
-        self.axis = axisname
-        axis = spidev.SpiDev()
-        axis.open(bus, device)
-        axis.mode = 0b01
-        axis.max_speed_hz = 1000000
+        self.axis = axis
+        stageAxis = axis
+        #axis = spidev.SpiDev()
+        #axis.open(bus, device)
+        #axis.mode = 0b01
+        #axis.max_speed_hz = 1000000
 
       #this is definitely not the right way to do this. Should do something with self here.
 
@@ -103,12 +104,12 @@ class StageSPI:
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         print(commandToSend)
-        self.write(commandToSend)
+        axis.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         # print('command no vars: ', commandToSend)
-        self.write(commandToSend)
+        axis.write(commandToSend)
 
     def calibrate(self):
         """
@@ -177,7 +178,7 @@ class StageSPI:
         :return: List of signed values that reprsent what is on the output register of the stage
         """
 
-        temp = xaxis.readbytes(EXPECTED_RETURN_LENGTH)
+        temp = axis.readbytes(EXPECTED_RETURN_LENGTH)
         print('temp', temp)
         returnBuffer = []
         for i in temp:
