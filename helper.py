@@ -83,10 +83,12 @@ def commandToString(command):
     commmand
     :return: String that represents the command sent
     '''
-    stringOut = ''
-    for i in range(len(command)):
-        stringOut += chr(i)
-        print(chr(i))
+    # stringOut = ''
+    # for i in range(len(command)):
+    #     stringOut += chr(i)
+    #     print(chr(i))
+    #
+    stringOut = list(map(chr, command))
     return stringOut
 
 
