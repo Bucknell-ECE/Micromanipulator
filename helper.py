@@ -76,8 +76,7 @@ def commandToString(command):
     commmand
     :return: String that represents the command sent
     """
-    print(command)
-    tmp = map(chr, command)
+    #print(command) ###FOR DEBUGGING PURPOSES ONLY###
     stringOut = ''.join(map(chr, command))
     return stringOut
 
