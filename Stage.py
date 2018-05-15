@@ -40,7 +40,6 @@ class Stage:
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
         """
-
         command = []  # empty list to hold command
         # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
@@ -58,12 +57,11 @@ class Stage:
         comprised of the hexadecimal values
         """
         command = []
-        #command += [self.address << 1]
-        command += [60]
+        command += [60]  # '<'
         for i in str(commandCode):
             command += [ord(i)]
-        command += [62]
-        command += [13]
+        command += [62]  # '>'
+        command += [13]  # '\r'
         return command
 
     def write(self, command):
@@ -72,9 +70,10 @@ class Stage:
         ##############CHANGED TO 1 BUT SHOULD BE ZERO
         print(commandToString(command))  # print the command in  a user readable format.
         bus.write_i2c_block_data(self.address, 0, command)
+
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
-        print(commandToSend)
+        print(commandToString(commandToSend))
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
@@ -91,8 +90,6 @@ class Stage:
         Send to stage:
         <87 5>/r
         Recieve from stage:
-        
-        
         '''
         self.sendCommand('87', [ 5])
         time.sleep(0.2)
@@ -132,8 +129,6 @@ class Stage:
         :param location: a location in encoder counts
         :return: NA
         """
-        print(encodeToCommand(location))
-        encodeToCommand(location)
         self.sendCommand('08', encodeToCommand(location))
 
     def returnHome(self):

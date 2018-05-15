@@ -108,13 +108,11 @@ while True:
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                #zaxis.sendCommand('06 1', [48,48,48,48,48,48,55,56])
                 zaxis.zMove(0, 200)
                 #move up120 encoder counts
 
             for nums in range(buttons.count('Zdown')):
                 print('Theres a zdonw')
-                #zaxis.sendCommand('06 0', [48, 48, 48, 48, 48, 48, 55, 56])
                 zaxis.zMove(1, 200)
 
 
