@@ -27,15 +27,18 @@ def encodeToCommand(value):
 
 
 class StageSPI:
-    def __init__(self, bus, device, position):
+    def __init__(self, bus, device, position, axisname):
         self.position = position
         self.bus = bus
         self.device = device
         self.home = 6000
+
+        self.axis = axisname
         axis = spidev.SpiDev()
         axis.open(bus, device)
         axis.mode = 0b01
         axis.max_speed_hz = 1000000
+
       #this is definitely not the right way to do this. Should do something with self here.
 
 
