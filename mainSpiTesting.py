@@ -12,8 +12,8 @@ import spidev
 #xaxis = Stage(0x33, 6000, 1)
 #yaxis = Stage(0x40, 6000, 1)
 
-xaxis = StageSPI(0, 0, 6000)
-yaxis = StageSPI(0, 1, 6000)
+xaxis = StageSPI(0, 0, 6000, 'zaxis')
+yaxis = StageSPI(0, 1, 6000, 'yaxis')
 zaxis = Stage(0x40, 6000, 1)
 #xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
