@@ -77,17 +77,17 @@ def centerAllStages(axis1, axis2, axis3):
     Stage.goToLocation(axis3, 6000)
 
 
-def mapval(x, inMin, inMax, outMin, outMax):
-    """
-    Maps a value in one range to a value in another range
-    :param x: value to be mapped
-    :param inMin: minimum of the input scale
-    :param inMax: maximum of the input scale
-    :param outMin: minimum of the output scale
-    :param outMax: maximum of the output scale
-    :return: mapped value, rounded to the nearest integer value
-    """
-    return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
+# def mapval(x, inMin, inMax, outMin, outMax):
+#     """
+#     Maps a value in one range to a value in another range
+#     :param x: value to be mapped
+#     :param inMin: minimum of the input scale
+#     :param inMax: maximum of the input scale
+#     :param outMin: minimum of the output scale
+#     :param outMax: maximum of the output scale
+#     :return: mapped value, rounded to the nearest integer value
+#     """
+#     return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
 
 def mapval(x, inMin, inMax, outMin, outMax):
     """
