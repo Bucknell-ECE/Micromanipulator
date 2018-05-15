@@ -109,12 +109,12 @@ class StageSPI:
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
         print(commandToSend)
-        self.axis.write(commandToSend)
+        self.axis.writebytes(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         # print('command no vars: ', commandToSend)
-        self.axis.write(commandToSend)
+        self.axis.writebytes(commandToSend)
 
     def calibrate(self):
         """
