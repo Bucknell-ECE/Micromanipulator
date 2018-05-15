@@ -86,6 +86,7 @@ def commandToString(command):
     stringOut = ''
     for i in range(len(command)):
         stringOut += chr(i)
+        print(chr(i))
     return stringOut
 
 
