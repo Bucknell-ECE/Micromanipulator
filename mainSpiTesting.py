@@ -93,6 +93,7 @@ while True:
         print(scaleInput)
         x = joy.getX()
         y = 1023 - joy.getY()
+        print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
