@@ -37,7 +37,7 @@ constrainedLinearRange = 12000
 
 axes = [zaxis]#
 # , yaxis, zaxis]
-home = [zaxis.home, yaxis.home, zaxis.home]
+
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
@@ -118,7 +118,7 @@ while True:
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
 
         print(scaledRange)
-
+        home = [zaxis.home, yaxis.home, zaxis.home]
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         constrainedLinearRange = min(boundries)
         xlinearRangeMin = xaxis.home - scaledRange + 100
