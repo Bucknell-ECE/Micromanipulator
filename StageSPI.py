@@ -134,7 +134,7 @@ class StageSPI:
         """
 
         self.sendCommandNoVars('10')  # send query asking about motor status and position
-        temp = xaxis.readbytes(EXPECTED_RETURN_LENGTH)  # store incoming data from motor in list
+        temp = self.read()  # store incoming data from motor in list
 
         rcvEncodedPosition = ''
         for element in range(8):
