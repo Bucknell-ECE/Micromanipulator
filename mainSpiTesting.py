@@ -117,11 +117,11 @@ while True:
         # deal with the Z axis
 
 
-        print(scaledRange)
         home = [zaxis.home, yaxis.home, zaxis.home]
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         constrainedLinearRange = min(boundries)
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+        print(scaledRange)
         xlinearRangeMin = home[0] - scaledRange + 100
         xlinearRangeMax = home[0] + scaledRange - 100
         print('XlinMin', xlinearRangeMin)
