@@ -9,7 +9,7 @@ Originally Created: R. Nance 05/2018
 from helper import *
 import time
 import spidev
-EXPECTED_RETURN_LENGTH = 16
+EXPECTED_RETURN_LENGTH = 24
 
 
 class StageSPI:
@@ -134,7 +134,7 @@ class StageSPI:
         """
 
         self.sendCommandNoVars('10')  # send query asking about motor status and position
-        time.sleep(0.1)
+        time.sleep(0.2)
         temp = self.read()  # store incoming data from motor in list
 
         rcvEncodedPosition = ''
