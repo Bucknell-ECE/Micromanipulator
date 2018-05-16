@@ -15,19 +15,17 @@ import pygame
 import random
 import smbus
 import time
-import spidev
+
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
 ################END GLOBAL VARIABLEs############
 
 
-
+#constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
 zaxis = Stage(0x40, 6000, 1)
-
-
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -36,15 +34,17 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
+
 axes = [zaxis]#
 # , yaxis, zaxis]
 home = [zaxis.home]#, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
-refreshRate = 20000
+refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
+#with pygame
 lastMillis = 0
 
-pygame.init() # Initialize all pygame modules
-pygame.joystick.init() # Initialize joystick module
+pygame.init()  # Initialize all pygame modules
+pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
@@ -59,7 +59,7 @@ def setBounds():
     Sets the bounds for position mode.
     1. determine which stop the home position is closest to
     2. determine the distance from that stop and assign it to
-    3. create an artificail box with sides equal to the distance to the closest stop
+    3. create an artificial box with sides equal to the distance to the closest stop
     4. scale the constrainedRange between based on the position of the throttle
     5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
     :return: na
@@ -96,8 +96,6 @@ while True:
                 #move up
         #print(joy.getButtons())
 
-
-
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
@@ -108,25 +106,17 @@ while True:
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                zaxis.zMove(0, 200)
-                #move up120 encoder counts
+                zaxis.zMove(0, 200) #move up120 encoder counts
 
             for nums in range(buttons.count('Zdown')):
                 print('Theres a zdonw')
-                zaxis.zMove(1, 200)
+                zaxis.zMove(1, 200) #move down some amount 120 encoder counts
 
-
-                #move down some amount 120 encoder counts
-
-        #print(joy.getAbsoluteThrottle())
-        #print(joy.getThrottle())
-
-
+    # Main commands to tell the stage to go to a location descibed by the joystick.
         xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
 
 
-        #yaxis.goToLocation(mapval(joy.getY(), 0, 1023, 100, 11900))
 
 
         #deal with the Z axis

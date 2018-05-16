@@ -1,5 +1,6 @@
 '''
-This file contains helper functions that are used by Stage, StageSPI, as well as the main function
+This file contains the stage functions for the x and y axis communicating via SPI. DO NOT USE THIS FOR COMMUNICATING
+WITH I2C Stages. It will fail.
 Last Modified: R. Nance 5/15/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
