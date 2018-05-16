@@ -97,7 +97,6 @@ while True:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
                 zaxis.zMove(0, 200) # move up120 encoder counts
-
             for nums in range(buttons.count('Zdown')):
                 print('Theres a zdonw')
                 zaxis.zMove(1, 200) # move down some amount 120 encoder counts
