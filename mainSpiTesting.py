@@ -90,6 +90,7 @@ while True:
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
+        print(scaleInput)
         x = joy.getX()
         y = 1023 - joy.getY()
         print(buttons)

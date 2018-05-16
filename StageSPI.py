@@ -141,10 +141,10 @@ class StageSPI:
         for element in range(8):
             #print(temp[6])
             #print(13 + element)
-            print(temp[int(13 + element)])
+            #print(temp[int(13 + element)])
             #print(chr(temp[11 + element]))
             rcvEncodedPosition += str(temp[13 + element])
-        print(rcvEncodedPosition)
+        #print(rcvEncodedPosition)
         position = int(rcvEncodedPosition, 16)
         print('The current position Reported by M3LS is : ', position)
         return position
