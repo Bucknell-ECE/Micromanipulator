@@ -7,7 +7,15 @@ sensitivity adjustment, speed control, set and return home. The project was prev
 transported to raspberry pi platform. 
 
 Link to Dozuki tutorial: ########
-Link to New Scale M3-LS-1.8-6 Linear Smart Stage with 6mm travel: https://www.newscaletech.com/wp-content/uploads/M3-LS-datasheet.pdf
-Link to New Scale Smart Stage website: https://www.newscaletech.com/micro-motion-modules/m3-ls-linear-smart-stages/
-Link to ThrustMaster Joystick: http://www.thrustmaster.com/products/tflight-stick-x
-Link to Molex USB Type A to Micro B Male/Male Cable: https://www.digikey.com/product-detail/en/molex-llc/0687840001/WM17145-ND/1952430
+
+Link to New Scale M3-LS-1.8-6 Linear Smart Stage with 6mm travel: 
+https://www.newscaletech.com/wp-content/uploads/M3-LS-datasheet.pdf
+
+Link to New Scale Smart Stage website: 
+https://www.newscaletech.com/micro-motion-modules/m3-ls-linear-smart-stages/
+
+Link to ThrustMaster Joystick: 
+http://www.thrustmaster.com/products/tflight-stick-x
+
+Link to Molex USB Type A to Micro B Male/Male Cable: 
+https://www.digikey.com/product-detail/en/molex-llc/0687840001/WM17145-ND/1952430
