@@ -91,7 +91,7 @@ while True:
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         x = joy.getX()
-        y = joy.getY()
+        y = 1023 - joy.getY()
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
