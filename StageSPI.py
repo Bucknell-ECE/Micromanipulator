@@ -52,6 +52,7 @@ class StageSPI:
         current = self.getPositionFromM3LS()
         print('The current home for this axis is now', current)
         self.setHome(current)
+        print('The self.home home is now ', self.home)
 
     def buildCommand(self, commandCode, commandVars):
         """
