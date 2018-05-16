@@ -121,12 +121,12 @@ while True:
         home = [zaxis.home, yaxis.home, zaxis.home]
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         constrainedLinearRange = min(boundries)
-        xlinearRangeMin = xaxis.home - scaledRange + 100
-        xlinearRangeMax = xaxis.home + scaledRange - 100
-        #print('XlinMin', xlinearRangeMin)
-        #print('xlinmax', xlinearRangeMax)
-        #print('Ylinmin', ylinearRangeMin)
-        #print('ylimmax', ylinearRangeMax)
+        xlinearRangeMin = home[0] - scaledRange + 100
+        xlinearRangeMax = home[0] + scaledRange - 100
+        print('XlinMin', xlinearRangeMin)
+        print('xlinmax', xlinearRangeMax)
+        print('Ylinmin', ylinearRangeMin)
+        print('ylimmax', ylinearRangeMax)
         print('ylinearrange', ylinearRange)
         print('xlinearRange', xlinearRange)
 
