@@ -139,6 +139,7 @@ class StageSPI:
 
         rcvEncodedPosition = ''
         for element in range(8):
+            print(temp[6])
             print(11 + element)
             print(temp[int(11 + element)])
             #print(chr(temp[11 + element]))
