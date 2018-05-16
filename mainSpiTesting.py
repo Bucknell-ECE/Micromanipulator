@@ -91,7 +91,7 @@ while True:
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         x = joy.getX()
-        y = joy.getY()
+        y = 1023 - joy.getY()
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
@@ -104,7 +104,11 @@ while True:
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
         xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        #yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
+
         yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
+
+
 
         # deal with the Z axis
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
