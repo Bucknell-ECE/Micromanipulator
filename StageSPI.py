@@ -175,7 +175,7 @@ class StageSPI:
         returnBuffer = []
         for i in temp:
             returnBuffer += str(chr(int(i)))
-
+        print(returnBuffer)
         return returnBuffer
 
 
