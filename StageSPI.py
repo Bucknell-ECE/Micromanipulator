@@ -145,7 +145,7 @@ class StageSPI:
             #print(chr(temp[11 + element]))
             rcvEncodedPosition += str(temp[13 + element])
         print(rcvEncodedPosition)
-        position = int(rcvEncodedPosition, 16)
+        position = int(rcvEncodedPosition)
         print('The current position Reported by M3LS is : ', position)
         return position
 
