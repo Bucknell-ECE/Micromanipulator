@@ -9,7 +9,7 @@ throttleAxisNum = 2
 buttonMap = {
     1: 'Zdown',
     2: 'Zup',
-    3: 'Hold',
+    3: 'Home',
     4: 'ChangeMode',
 }
 
