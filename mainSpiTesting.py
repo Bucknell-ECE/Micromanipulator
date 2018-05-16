@@ -132,7 +132,9 @@ while True:
         print('xlinearRange', xlinearRange)
 
         xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
+        print('Mapval', mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        yaxis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
+        print('mapval y ', mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
