@@ -109,8 +109,7 @@ while True:
                 print('Current Home: ', home)
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
+
 
 
 
@@ -130,6 +129,9 @@ while True:
         print('ylimmax', ylinearRangeMax)
         print('ylinearrange', ylinearRange)
         print('xlinearRange', xlinearRange)
+
+        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        yaxis.goToLocation(mapval(y, 1, 1023, ylinearRangeMin, ylinearRangeMax))
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
