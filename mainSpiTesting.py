@@ -37,7 +37,7 @@ constrainedLinearRange = 12000
 
 axes = [zaxis]#
 # , yaxis, zaxis]
-home = [zaxis.home]#, yaxis.home, zaxis.home]
+home = [zaxis.home, yaxis.home, zaxis.home]
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
@@ -72,7 +72,7 @@ def setBounds():
 
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
-    boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
     #boundries = [home[0],  12000 - home[0]]
     constrainedLinearRange = min(boundries)
 
@@ -109,7 +109,8 @@ while True:
         # deal with the Z axis
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
         # print('Scaled Range = ' , scaledRange)
-        boundries = [home[0], 12000 - home[0]]
+        #boundries = [home[0], 12000 - home[0]]
+        boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         constrainedLinearRange = min(boundries)
         # print('crange',constrainedLinearRange)
         xlinearRangeMin = xaxis.home - scaledRange + 100
