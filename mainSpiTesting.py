@@ -98,10 +98,9 @@ while True:
 
         time.sleep(0.01)
         buttons = []
-        
+        buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         x = joy.getX()
-        buttons = joy.getButtons()
         y = joy.getY()
         print(buttons)
         if len(buttons) != 0:
