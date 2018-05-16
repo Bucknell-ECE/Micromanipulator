@@ -114,7 +114,7 @@ while True:
 
         # deal with the Z axis
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        
+
         print(scaledRange)
 
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
