@@ -113,15 +113,16 @@ while True:
 
         # deal with the Z axis
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        # print('Scaled Range = ' , scaledRange)
-        #boundries = [home[0], 12000 - home[0]]
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         constrainedLinearRange = min(boundries)
-        # print('crange',constrainedLinearRange)
         xlinearRangeMin = xaxis.home - scaledRange + 100
         xlinearRangeMax = xaxis.home + scaledRange - 100
-        # print('XlinMin', xlinearRangeMin)
-        # print('xlinmax', xlinearRangeMax)
+        #print('XlinMin', xlinearRangeMin)
+        #print('xlinmax', xlinearRangeMax)
+        #print('Ylinmin', ylinearRangeMin)
+        #print('ylimmax', ylinearRangeMax)
+        print('ylinearrange', ylinearRange)
+        print('xlinearRange', xlinearRange)
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
