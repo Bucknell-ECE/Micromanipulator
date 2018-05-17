@@ -32,8 +32,8 @@ class StageI2C(Stage):
     def write(self, command):
         """
         The command to write to the stages in I2C.
-        :param command: The compiled command to be send to the stages. This should be a list of the
-        decimal values for each of the ascii characters in the command to be sent.
+        :param command: Command in the form of a list of decimal integers, each of which represents an ascii character
+        in the command to be sent to the stage.
         :return:
         """
         print(commandToString(command))  # print the command in  a user readable format.

@@ -37,6 +37,12 @@ class StageSPI(Stage):
         self.axis = axis
 
     def write(self, command):
+        """
+        Function to write to the SPI Stages.
+        :param command: Command in the form of a list of decimal integers, each of which represents an ascii character
+        in the command to be sent to the stage.
+        :return: NA
+        """
         print(commandToString(command))  # print the command in a user readable format
         self.axis.writebytes(command)
 

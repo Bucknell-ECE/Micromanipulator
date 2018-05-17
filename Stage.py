@@ -14,10 +14,10 @@ class Stage(object):
     def __init__(self, position):
         self.position = position
         self.home = 6000
-
+    @property
     def getPosition(self):
         return int(self.position)
-
+    @property
     def getAddress(self):
         return self.address
 
@@ -28,6 +28,7 @@ class Stage(object):
         :return: NA
         """
         self.home = location
+
     def setCurrentHome(self):
         current = self.getPositionFromM3LS()
         print('The current home for this axis is now', current)
@@ -54,9 +55,12 @@ class Stage(object):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
         comprised of the hexadecimal values
+
+        :param commandCode: two digit integer for the command you want to send. For example: Move to target is 08
+        :return: The command, in the form of a list of integer values each of which represents an ascii character in
+        the command that you want to send.
         """
         command = []
-
         command += [60]  # '<'
         for i in str(commandCode):
             command += [ord(i)]
