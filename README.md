@@ -7,6 +7,7 @@
 * [What is a Micromanipulator](#Whatisamicromanipulator)
 * [Installation](#Installation)
 * [Main Features](#Mainfeatures)
+  * [Main Modules](#Mainmodules)
 * [Parts Links](#Partslink)
 * [License](#License)
 
@@ -28,9 +29,8 @@ Waiting to be added
 
 <a name="Mainfeatures"></a>
 ## Main Features
-Waiting to be added
-
-
+<a name="Mainmodules"></a>
+  ### Main Modules
 
 <a name="Partslink"></a>
 ## Parts Links:
