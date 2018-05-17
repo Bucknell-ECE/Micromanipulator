@@ -125,7 +125,7 @@ while True:
         print('Starting Loop')
         home = [xaxis.home, yaxis.home, zaxis.home]
         print('Homes', home)
-        boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
+        boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
         print('boundries: ', boundries)
         constrainedLinearRange = min(boundries)
         print('constrainedlinearrange', constrainedLinearRange)
@@ -140,10 +140,10 @@ while True:
         print('ylinearrange', ylinearRange)
         print('xlinearRange', xlinearRange)
 
-        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
+        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
