@@ -83,22 +83,22 @@ def setBounds():
 
     print('Setting Linear Range')
     home = [xaxis.home, yaxis.home, zaxis.home]
-    #print('Homes', home)
+    print('Homes', home)
     boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
-    #print('boundries: ', boundries)
+    print('boundries: ', boundries)
     constrainedLinearRange = min(boundries)
-    #print('constrainedlinearrange', constrainedLinearRange)
+    print('constrainedlinearrange', constrainedLinearRange)
     scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-    #print('Scaled Range: ', scaledRange)
+    print('Scaled Range: ', scaledRange)
     xlinearRangeMin = home[0] - scaledRange + 50
     xlinearRangeMax = home[0] + scaledRange - 50
     ylinearRangeMin = yaxis.home - scaledRange + 50
     ylinearRangeMax = yaxis.home + scaledRange - 50
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
-    boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
+   # boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
     #boundries = [home[0],  12000 - home[0]]
-    constrainedLinearRange = min(boundries)
+    #constrainedLinearRange = min(boundries)
 
 
 
