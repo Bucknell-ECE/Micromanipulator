@@ -31,7 +31,7 @@ Waiting to be added
 <a name="Mainfeatures"></a>
 ## Main Features
 ---------------------
-<a name="Positionmode"></a>
+<a name="PositionMode"></a>
 ### Position Mode
 <a name="Mainmodules"></a>
 ### Modules
