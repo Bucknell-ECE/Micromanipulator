@@ -13,6 +13,7 @@ from Joystick import *
 import pygame
 import random
 import smbus
+
 import time
 import spidev
 
@@ -22,6 +23,7 @@ xaxis = spidev.SpiDev()
 xaxis.open()
 yaxis = spidev.SpiDev()
 yaxis.open()
+
 zaxis = Stage(0x40, 6000, 1)
 xaxis.sendCommandNoVars('08')
 #yaxis = Stage(0x33, 6000, 1)
@@ -101,7 +103,9 @@ while True:
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         x = joy.getX()
+
         y = joy.gety()
+
         print(buttons)
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
