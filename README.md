@@ -5,7 +5,7 @@
 * [Installation](#Installation)
 * [Main Features](#Mainfeatures)
 * [Parts Links](#Partslink)
-
+* [License](#License)
 
 <a name="Overview"></a>
 ## Overview
@@ -74,3 +74,5 @@ http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208690&uq=63
 Texas Instruments Linear Audio Amplifier:
 http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208695&uq=636416924792436006
 
+<a name="License"></a>
+## License
