@@ -47,8 +47,8 @@ refreshRate = 20000  # cant remember what this is used for but I know it is impo
 #with pygame
 lastMillis = 0
 
-pygame.init()  # Initialize all pygame modules
-pygame.joystick.init()  # Initialize joystick module
+#pygame.init()  # Initialize all pygame modules
+#pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
