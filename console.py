@@ -10,6 +10,7 @@ WHITE = (255, 255, 255)
 # information.
 class Console:
     def __init__(self):
+        pygame.init()
         pass
 
 
