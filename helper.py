@@ -11,7 +11,8 @@ def encodeToCommand(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
     Steps to figure out what should be converted in order to for command to word
-    1. Come up with command according to newscale documentation and write out the command as a series of individual chars
+    1. Come up with command according to newscale documentation and write out the command as a series of individual
+    chars
     2. convert each character into its hes representation
     3. The command can either be sent as the string of these values, or as the individual decimal values for each
     :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
@@ -29,7 +30,6 @@ def encodeToCommand(value):
     return encodeOutput
 
 
-
 def encoderConvert(value):
     ''''
     THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
@@ -41,7 +41,7 @@ def encoderConvert(value):
     encodeOutput = []
     for i in str(valueConvert):
         encodeOutput += [hex(ord(i))]
-    #ensure that the output is 8 bytes
+    # ensure that the output is 8 bytes
     for i in range(8 - int(len(encodeOutput))):
         encodeOutput.insert(0, '0x30')
     print('Encoded output is ')
@@ -64,7 +64,6 @@ def commandToString(command):
     return stringOut
 
 
-
 def centerAllStages(axis1, axis2, axis3):
 
 
@@ -81,18 +80,6 @@ def centerAllStages(axis1, axis2, axis3):
     Stage.goToLocation(axis3, 6000)
 
 
-# def mapval(x, inMin, inMax, outMin, outMax):
-#     """
-#     Maps a value in one range to a value in another range
-#     :param x: value to be mapped
-#     :param inMin: minimum of the input scale
-#     :param inMax: maximum of the input scale
-#     :param outMin: minimum of the output scale
-#     :param outMax: maximum of the output scale
-#     :return: mapped value, rounded to the nearest integer value
-#     """
-#     return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
-
 def mapval(x, inMin, inMax, outMin, outMax):
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
@@ -104,6 +91,23 @@ def mapval(x, inMin, inMax, outMin, outMax):
     :return: mapped value, rounded to the nearest integer value
     """
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
+
+
+
+
+# def centerAllStages(axis1, axis2, axis3):
+#     """
+#     Sends all stages to their central location.
+#     :param axis1: the first stage
+#     :param axis2: second stage
+#     :param axis3: third stage
+#     :return: na
+#     """
+#     #map(Stage.goToLocation(), )
+#     Stage.goToLocation(axis1, 6000)
+#     Stage.goToLocation(axis2, 6000)
+#     Stage.goToLocation(axis3, 6000)
+
 
 ##########################################OLD CODE THAT IS NOW DEPRICATED#####################
 
@@ -140,34 +144,33 @@ def mapval(x, inMin, inMax, outMin, outMax):
 #     return encodeOutput
 #
 
-def centerAllStages(axis1, axis2, axis3):
-    """
-    Sends all stages to their central location.
-    :param axis1: the first stage
-    :param axis2: second stage
-    :param axis3: third stage
-    :return: na
-    """
-    #map(Stage.goToLocation(), )
-    Stage.goToLocation(axis1, 6000)
-    Stage.goToLocation(axis2, 6000)
-    Stage.goToLocation(axis3, 6000)
+# def mapval(x, inMin, inMax, outMin, outMax):
+#     """
+#     Maps a value in one range to a value in another range
+#     :param x: value to be mapped
+#     :param inMin: minimum of the input scale
+#     :param inMax: maximum of the input scale
+#     :param outMin: minimum of the output scale
+#     :param outMax: maximum of the output scale
+#     :return: mapped value, rounded to the nearest integer value
+#     """
+#     return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
+#
 
 
-def mapval(x, inMin, inMax, outMin, outMax):
-    """
-    Maps a value in one range to a value in another range
-    :param x: value to be mapped
-    :param inMin: minimum of the input scale
-    :param inMax: maximum of the input scale
-    :param outMin: minimum of the output scale
-    :param outMax: maximum of the output scale
-    :return: mapped value, rounded to the nearest integer value
-    """
-    return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
+##################Deprecated Code#################
 
-
-
+# def mapval(x, inMin, inMax, outMin, outMax):
+#     """
+#     Maps a value in one range to a value in another range
+#     :param x: value to be mapped
+#     :param inMin: minimum of the input scale
+#     :param inMax: maximum of the input scale
+#     :param outMin: minimum of the output scale
+#     :param outMax: maximum of the output scale
+#     :return: mapped value, rounded to the nearest integer value
+#     """
+#     return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
 
 
         #####################TEST CODE ######################################
