@@ -11,8 +11,6 @@ WHITE = (255, 255, 255)
 class Console:
     def __init__(self):
         pygame.init()
-        pass
-
 
 
     class TextPrint:
@@ -37,7 +35,7 @@ class Console:
             self.x -= 10
 
 
-
+    pygame.init()
     # Set the width and height of the screen [width,height]
     size = [500, 700]
     screen = pygame.display.set_mode(size)
