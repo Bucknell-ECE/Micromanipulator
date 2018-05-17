@@ -95,7 +95,6 @@ def setBounds():
     ylinearRangeMin = yaxis.home - scaledRange + safety_margin
     ylinearRangeMax = yaxis.home + scaledRange - safety_margin
 
-
     print('XlinMin', xlinearRangeMin)
     print('xlinmax', xlinearRangeMax)
     print('Ylinmin', ylinearRangeMin)
