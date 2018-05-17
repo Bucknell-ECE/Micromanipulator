@@ -46,10 +46,10 @@ class StageI2C(Stage):
         :return: List of signed values that represent what is on the output register of the stage
         """
         temp = self.bus.read_i2c_block_data(self.address, 0)
-        print('temp', temp)
+        print('tempi2c', temp)
         return_buffer = []
         for i in temp:
             return_buffer += str(chr(int(i)))
-
+        print('Return Buffer', return_buffer)
         return return_buffer
 

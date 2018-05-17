@@ -50,7 +50,8 @@ class Console:
 
     # Get ready to print
     textPrint = TextPrint()
-
+    screen.fill(WHITE)
+    textPrint.reset()
 
     #This is the method that shouls be used in the future, where a joystick and stage object are passes to the function
     #and it does everthing that way
@@ -60,8 +61,7 @@ class Console:
     def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y_linear_range__min,
                        y_linear_range_max, axes, x_joy, y_joy):
 
-        screen.fill(WHITE)
-        textPrint.reset()
+
 
         for i in range(axes):
             ax_labels = ['X', 'Y', 'Z']
