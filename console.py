@@ -58,22 +58,22 @@ class Console:
     # def displayUpdates(self, CustomJoystick):
     #     x = CustomJoystick.getX()
 
-    def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y_linear_range__min,
-                       y_linear_range_max, axes, x_joy, y_joy):
+def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y_linear_range__min,
+                   y_linear_range_max, axes, x_joy, y_joy):
 
 
 
-        for i in range(axes):
-            ax_labels = ['X', 'Y', 'Z']
-            textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(ax_labels[i], axes[i]))
-        textPrint.unindent()
+    for i in range(axes):
+        ax_labels = ['X', 'Y', 'Z']
+        textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(ax_labels[i], axes[i]))
+    textPrint.unindent()
 
-        textPrint.printy(screen,"Scaled Range is : {:>6.3f}".format(scaled_range))
+    textPrint.printy(screen,"Scaled Range is : {:>6.3f}".format(scaled_range))
 
 
-        pygame.display.flip()
+    pygame.display.flip()
 
-        # Limit to 20 frames per second
-        clock.tick(20)
+    # Limit to 20 frames per second
+    clock.tick(20)
 
 
