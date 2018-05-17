@@ -6,7 +6,8 @@ Last Modified: R. Nance 5/15/2018
 Originating Branch: Master
 Originally Created: R. Nance 05/2018
 '''
-import Stage
+#import Stage
+from Stage import Stage
 from helper import *
 import time
 import spidev
