@@ -136,7 +136,8 @@ while True:
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        screen.displayUpdates(1,30, 1, 1, 1, 1, [xaxis.getPositionFromM3LS(), yaxis.getPositionFromM3LS(), zaxis.getPositionFromM3LS()],joy.getX(), joy.getY())
+        displayUpdates(1,30, 1, 1, 1, 1, [xaxis.getPositionFromM3LS(), yaxis.getPositionFromM3LS(), zaxis.getPositionFromM3LS()],joy.getX(), joy.getY())
+        
 
 
     except KeyboardInterrupt:
