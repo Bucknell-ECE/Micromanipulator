@@ -2,6 +2,7 @@
 
 ## Table of Contents
 * [Overview](#Overview)
+* [Parts Links](#Partslink)
 
 <a name="Overview"></a>
 ## Overview
@@ -10,6 +11,7 @@ Dr. Paliulis, who is working for the Biology department at Bucknell University, 
 In order to perform her research, Dr. Paliulis needs to utilize a glass needle to perform her test under microscope. The main objective is to use a small, sharp glass needle to probe cells under a microscope. A joystick is used for both position and velocity movement.Three M3-LS-1.8-6 Linear Smart Stages from New Scale Technologies were used to control and drive the needle. The micromanipulator offers sensitivity adjustment, speed control, set and return home. The project was previously installed and developed on arduino and was later
 transported to raspberry pi platform. 
 
+<a name="Partslink"></a>
 ## Parts Links:
 ------------------
 Link to Dozuki tutorial: ########
