@@ -35,18 +35,18 @@ class TextPrint:
         self.x -= 10
 
 
-    pygame.init()
-    # Set the width and height of the screen [width,height]
-    size = [500, 700]
-    screen = pygame.display.set_mode(size)
+pygame.init()
+# Set the width and height of the screen [width,height]
+size = [500, 700]
+screen = pygame.display.set_mode(size)
 
-    pygame.display.set_caption("My Game")
+pygame.display.set_caption("My Game")
 
-    # Used to manage how fast the screen updates
-    clock = pygame.time.Clock()
+# Used to manage how fast the screen updates
+clock = pygame.time.Clock()
 
-    # # Initialize the joysticks
-    # pygame.joystick.init()
+# # Initialize the joysticks
+# pygame.joystick.init()
 
 
 
