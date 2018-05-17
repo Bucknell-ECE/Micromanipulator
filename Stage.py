@@ -15,7 +15,6 @@ class Stage(object):
         self.position = position
         self.home = 6000
 
-
     def getPosition(self):
         return int(self.position)
 
