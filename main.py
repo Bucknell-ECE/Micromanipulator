@@ -126,10 +126,10 @@ while True:
                 zaxis.zMove(1, 200) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
-                print('Previous Home: ', home)
+                #print('Previous Home: ', home)
                 xaxis.setCurrentHome()
                 yaxis.setCurrentHome()
-                print('Current Home: ', home)
+                #print('Current Home: ', home)
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
 
