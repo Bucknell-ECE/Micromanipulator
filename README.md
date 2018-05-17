@@ -7,6 +7,7 @@
 * [What is a Micromanipulator](#Whatisamicromanipulator)
 * [Installation](#Installation)
 * [Main Features](#Mainfeatures)
+  * [Position Mode](#PositionMode)
   * [Main Modules](#Mainmodules)
 * [Parts Links](#Partslink)
 * [License](#License)
@@ -29,8 +30,11 @@ Waiting to be added
 
 <a name="Mainfeatures"></a>
 ## Main Features
+---------------------
+<a name="Positionmode"></a>
+### Position Mode
 <a name="Mainmodules"></a>
-  ### Main Modules
+### Modules
 
 <a name="Partslink"></a>
 ## Parts Links:
