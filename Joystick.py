@@ -29,7 +29,7 @@ class CustomJoystick:
 
     def __init__(self, name, number):
         self.name = name
-        self.joystick = pygame.joystick.Joystick(number)
+
         pygame.init()
 
         # Used to manage how fast the screen updates
@@ -48,6 +48,7 @@ class CustomJoystick:
             joystick.init()
         axes = joystick.get_numaxes()
         #print(axes)
+        self.joystick = pygame.joystick.Joystick(number)
     def getAxisPosition(self, axisIndex):
         joystick = pygame.joystick.Joystick(0)
         return joystick.get_axis(axisIndex)
