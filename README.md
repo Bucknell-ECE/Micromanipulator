@@ -3,6 +3,7 @@
 ![Demonstration](https://ws2.sinaimg.cn/large/006tKfTcly1freqzbwdykj31kw16okjm.jpg)
 
 ## Table of Contents
+--------------------
 * [Overview](#Overview)
 * [What is a Micromanipulator](#Whatisamicromanipulator)
 * [Installation](#Installation)
@@ -26,10 +27,12 @@ A [micromanipulator](https://en.wikipedia.org/wiki/Micromanipulator) is the devi
 
 <a name="Installation"></a>
 ## Installation
+----------------------
 Waiting to be added
 
 <a name="Mainfeatures"></a>
 ## Main Features
+---------------------
 <a name="PositionMode"></a>
 ### Position Mode
 The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "ZUp" or "ZDown" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
@@ -92,4 +95,5 @@ http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208695&uq=63
 
 <a name="License"></a>
 ## License
+-------------------
 Waiting to be added
