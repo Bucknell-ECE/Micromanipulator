@@ -2,6 +2,7 @@ import Stage
 import smbus
 import time
 from Stage import Stage
+from helper import *
 class StageI2C(Stage):
     def __init__(self, address, position, bus):
         Stage.__init__(self, position)
