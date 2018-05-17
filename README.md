@@ -1,5 +1,7 @@
 # Micromanipulator
 
+![Demonstration](https://ws2.sinaimg.cn/large/006tKfTcly1freqzbwdykj31kw16okjm.jpg)
+
 ## Table of Contents
 * [Overview](#Overview)
 * [Installation](#Installation)
