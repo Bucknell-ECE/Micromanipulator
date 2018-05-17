@@ -27,9 +27,9 @@ Waiting to be added
 <a name="Partslink"></a>
 ## Parts Links:
 ------------------
-Link to Dozuki tutorial: ########
++ Link to Dozuki tutorial: ########
 
-Link to Parts List: 
++ Link to Parts List: 
 https://drive.google.com/open?id=1GT7LfXunt-y-nxAGIBc9vhs6sIaBOghvMIJwdjmpBLg
 
 New Scale M3-LS-1.8-6 Linear Smart Stage with 6mm travel: 
