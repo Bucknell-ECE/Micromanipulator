@@ -1,12 +1,17 @@
 '''
 This file contains the stage functions for the x and y axis communicating via SPI. DO NOT USE THIS FOR COMMUNICATING
+
 WITH I2C Stages. It will fail. This only contains the Overide methods for the SPI stuff.
+
+
 Last Modified: R. Nance 5/15/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
 Originally Created: R. Nance 05/2018
 '''
+
 from Stage import Stage
+
 from helper import *
 import time
 import spidev
@@ -16,6 +21,7 @@ EXPECTED_RETURN_LENGTH = 24
 class StageSPI(Stage):
     def __init__(self, bus, device, position):
         Stage.__init__(self, position)
+
         self.position = position
         self.bus = bus
         self.device = device
@@ -35,6 +41,7 @@ class StageSPI(Stage):
         axis.mode = 0b01
         axis.max_speed_hz = 1000000
         self.axis = axis
+
 
     def write(self, command):
         """
@@ -58,6 +65,7 @@ class StageSPI(Stage):
             return_buffer += str(chr(int(i)))
         print(return_buffer)
         return return_buffer
+
 
 
 

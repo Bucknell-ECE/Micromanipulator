@@ -6,6 +6,7 @@ Last Modified: R. Nance 5/15/2018
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
 '''
+
 from helper import *
 import time
 
@@ -13,6 +14,7 @@ import time
 class Stage(object):
 
     def __init__(self, position):
+
         self.position = position
         self.home = 6000
 
@@ -68,14 +70,17 @@ class Stage(object):
         the command that you want to send.
         """
         command = []
+
         command += [60]  # '<'
         for i in str(command_code):
+
             command += [ord(i)]
         command += [62]  # '>'
         command += [13]  # '\r'
 
         return command
 
+      
     def sendCommand(self, command_code, command_vars):
         """
         Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
@@ -87,6 +92,7 @@ class Stage(object):
         command_to_send = self.buildCommand(command_code, command_vars)
         print(commandToString(command_to_send))
         self.write(command_to_send)
+
 
     def sendCommandNoVars(self, command_code):
         """
@@ -153,7 +159,9 @@ class Stage(object):
         :param location: a location in encoder counts
         :return: NA
         """
+
         #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
+
         self.sendCommand('08', encodeToCommand(location))
 
     def returnHome(self):
@@ -166,12 +174,24 @@ class Stage(object):
 
 
 
+
 #########################DEPRECATED CODE#########################
 
     # def write1(self, command):
     #     bus = smbus.SMBus(1)
     #     #bus.write_i2c_block_data(self.address, 0, command)
     #     bus.write_i2c_block_data(0x32, 0, command)
+
+
+
+
+#########################DEPRECATED CODE#########################
+
+    # def write1(self, command):
+    #     bus = smbus.SMBus(1)
+    #     #bus.write_i2c_block_data(self.address, 0, command)
+    #     bus.write_i2c_block_data(0x32, 0, command)
+
 
 
 
