@@ -83,8 +83,6 @@ def setBounds():
     constrainedLinearRange = min(boundries)
 
 
-    #ylinearRangeMin = yaxis.home - scaledRange +100
-    #ylinearRangeMax = yaxis.home + scaledRange -100
 
 
 sensitivity = 50
@@ -131,8 +129,11 @@ while True:
         print('constrainedlinearrange', constrainedLinearRange)
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
         print('Scaled Range: ', scaledRange)
-        xlinearRangeMin = home[0] - scaledRange #+ 100
-        xlinearRangeMax = home[0] + scaledRange #- 100
+        xlinearRangeMin = home[0] - scaledRange + 50
+        xlinearRangeMax = home[0] + scaledRange - 50
+        ylinearRangeMin = yaxis.home - scaledRange + 50
+        ylinearRangeMax = yaxis.home + scaledRange - 50
+
         print('XlinMin', xlinearRangeMin)
         print('xlinmax', xlinearRangeMax)
         print('Ylinmin', ylinearRangeMin)
