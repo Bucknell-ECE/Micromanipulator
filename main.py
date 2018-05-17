@@ -117,7 +117,7 @@ while True:
         # deal with the Z axis
 
         print('Starting Loop')
-        home = [zaxis.home, yaxis.home, zaxis.home]
+        home = [xaxis.home, yaxis.home, zaxis.home]
         print('Homes', home)
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         print('boundries: ', boundries)
