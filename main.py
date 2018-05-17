@@ -8,8 +8,8 @@ Originally Created: R. Nance 12/2017
 
 from helper import *
 from Stage import *
-from StageSPI import *
-from StageI2C import *
+from StageSPI import StageSPI
+from StageI2C import StageI2C
 from datetime import datetime
 from Joystick import *
 import pygame
