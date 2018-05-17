@@ -9,6 +9,7 @@ Originally Created: R. Nance 12/2017
 from helper import *
 from Stage import *
 from StageSPI import *
+from StageI2C import *
 from datetime import datetime
 from Joystick import *
 import pygame

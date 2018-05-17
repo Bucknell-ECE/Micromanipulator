@@ -9,6 +9,7 @@ Originally Created: R. Nance 12/2017
 from helper import *
 from Stage import *
 from StageSPI import *
+from StageI2C import *
 from datetime import datetime
 from Joystick import *
 import pygame
@@ -25,7 +26,7 @@ controlMode = 'position'
 #constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
-zaxis = Stage(0x40, 6000, 1)
+zaxis = StageI2C(0x40, 6000, 1)
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
