@@ -33,6 +33,12 @@ Waiting to be added
 ---------------------
 <a name="PositionMode"></a>
 ### Position Mode
+The designed micromanipulator provides user with position mode. The needle will be placed on the preset "home" position on the 
+microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. 
+
+![Joystick Diagram](https://ws2.sinaimg.cn/large/006tKfTcly1frew6yvbapj31e20xw4qp.jpg "Joystick Configuration")
+
+
 <a name="Mainmodules"></a>
 ### Modules
 
