@@ -7,8 +7,6 @@
 * [Parts Links](#Partslink)
 * [License](#License)
 
-![Demonstration](https://ws3.sinaimg.cn/large/006tKfTcly1freqkfdbiwj31kw16okjl.jpg)
-
 <a name="Overview"></a>
 ## Overview
 -------------------
