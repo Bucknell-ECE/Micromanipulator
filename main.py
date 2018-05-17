@@ -98,7 +98,7 @@ while True:
         scaleInput = joy.getThrottle()
         print(scaleInput)
         x = joy.getX()
-        y = 1023 - joy.getY()
+        y = 2000 - joy.getY()
         print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
