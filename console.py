@@ -78,6 +78,6 @@ def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y
     pygame.display.flip()
 
     # Limit to 20 frames per second
-    clock.tick(20)
+   # clock.tick(20)
 
 
