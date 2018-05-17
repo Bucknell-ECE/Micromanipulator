@@ -149,8 +149,12 @@ class Stage(object):
         temp = self.read()  # store incoming data from motor in list
 
         rcvEncodedPosition = ''
-        for element in range(8):
-            rcvEncodedPosition += str(temp[13 + element])
+        if temp[0] == 60:
+            for element in range(8):
+                rcvEncodedPosition += str(temp[13 + element])
+        elif temp[0] == 1:
+            for element in range(8):
+                rcvEncodedPosition += str(temp[11 + element])
         position = int(rcvEncodedPosition, 16)
         print('The current position Reported by M3LS is : ', position)
         return position
