@@ -151,10 +151,10 @@ class Stage(object):
         rcvEncodedPosition = ''
         print('Temp 0: ', temp[0])
         print('Temp 0 Type: ', type(temp[0]))
-        if temp[0] == '60':
+        if temp[0] == '\x01':
             for element in range(8):
                 rcvEncodedPosition += str(temp[13 + element])
-        elif temp[0] == '1':
+        elif temp[0] == '<':
             for element in range(8):
                 rcvEncodedPosition += str(temp[11 + element])
         position = int(rcvEncodedPosition, 16)
