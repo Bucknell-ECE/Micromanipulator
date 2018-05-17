@@ -23,7 +23,7 @@ class Stage(object):
     @property
     def getAddress(self):
         return self.address
-    @.setter
+    @home.setter
     def setHome(self, location):
         """
         Allows user to set the home location for the particular axis
@@ -172,7 +172,6 @@ class Stage(object):
     #     bus = smbus.SMBus(1)
     #     #bus.write_i2c_block_data(self.address, 0, command)
     #     bus.write_i2c_block_data(0x32, 0, command)
-
 
 
 
