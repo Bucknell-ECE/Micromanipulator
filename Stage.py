@@ -6,22 +6,23 @@ Last Modified: R. Nance 5/15/2018
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
 '''
-import smbus
+
 from helper import *
 import time
 
-class Stage:
 
-    def __init__(self, address, position, bus):
+class Stage(object):
+
+    def __init__(self, position):
+
         self.position = position
-        self.address = address
-        self.bus = smbus.SMBus(bus)
         self.home = 6000
-    bus = smbus.SMBus(1)
 
+    #  @property
     def getPosition(self):
         return int(self.position)
 
+    # @property
     def getAddress(self):
         return self.address
 
@@ -32,66 +33,76 @@ class Stage:
         :return: NA
         """
         self.home = location
+
     def setCurrentHome(self):
         current = self.getPositionFromM3LS()
+        print('The current home for this axis is now', current)
         self.setHome(current)
+        print('The self.home home is now ', self.home)
 
-    def buildCommand(self, commandCode, commandVars):
+    def buildCommand(self, command_code, command_vars):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
+        comprised of the hex values of each ASCII character in the command code, the optional parameters, and the
+        carriage return (\r)
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_vars: the optional parameter for the command, in list form.
+        :return:
         """
         command = []  # empty list to hold command
         # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
-        for i in str(commandCode):
+        for i in str(command_code):
             command += [ord(i)]
         command += [32]  # space(' ')
-        command += commandVars
+        command += command_vars
         command += [62]  # close carat (>)
         command += [13]  # carriage return(\r)
         return command
 
-    def buildCommandNoVars(self, commandCode):
+    def buildCommandNoVars(self, command_code):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
+        comprised of the hex values of each ASCII character in the command + the carriage return (\r)
+
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :return: The command, in the form of a list of integer values each of which represents an ascii character in
+        the command that you want to send.
         """
         command = []
 
         command += [60]  # '<'
-        for i in str(commandCode):
+        for i in str(command_code):
+
             command += [ord(i)]
         command += [62]  # '>'
         command += [13]  # '\r'
 
         return command
 
-    def write(self, command):
-        bus = smbus.SMBus(1)
-        #bus.write_i2c_block_data(self.address, 0, command)
-        ##############CHANGED TO 1 BUT SHOULD BE ZERO
+      
+    def sendCommand(self, command_code, command_vars):
+        """
+        Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
+        documentation in square brackets.
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_vars: the optional paramter for the command, in list form.
+        :return:
+        """
+        command_to_send = self.buildCommand(command_code, command_vars)
+        print(commandToString(command_to_send))
+        self.write(command_to_send)
 
-        print(commandToString(command))  # print the command in  a user readable format.
 
-        bus.write_i2c_block_data(self.address, 0, command)
-
-    def write1(self, command):
-        bus = smbus.SMBus(1)
-        #bus.write_i2c_block_data(self.address, 0, command)
-        bus.write_i2c_block_data(0x32, 0, command)
-
-    def sendCommand(self, commandCode, commandVars):
-        commandToSend = self.buildCommand(commandCode, commandVars)
-
-        print(commandToString(commandToSend))
-
-        self.write(commandToSend)
-
-    def sendCommandNoVars(self, commandCode):
-        commandToSend = self.buildCommandNoVars(commandCode)
-        #print('command no vars: ', commandToSend)
-        self.write(commandToSend)
+    def sendCommandNoVars(self, command_code):
+        """
+        Sends a command that does not have optional paramters.
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :return:
+        """
+        command_to_send = self.buildCommandNoVars(command_code)
+        print(commandToString(command_to_send))
+        self.write(command_to_send)
 
     def calibrate(self):
         """
@@ -110,6 +121,10 @@ class Stage:
         time.sleep(0.2)
 
     def startup(self):
+        """
+        Runs the Newscale recommended startup sequence. This is not yet complete. See Newscale docs page 7
+        :return: NA
+        """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
@@ -117,23 +132,25 @@ class Stage:
     def getPositionFromM3LS(self):
         """
         Function that returns the position of the stage
-        :return: Postion of the stage in encoder counts(NOT uM!)
+        :return: Position of the stage in encoder counts(NOT uM!)
 
-        From newscale documentation:
+        From Newscale documentation:
         Send : <10>
         Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
         S is motor status
         P is position, hex representation of encoder counts
         E is error count. How far is the stage from where it is supposed to be?
         """
-        bus = self.bus
-        self.sendCommandNoVars('10')  #send query asking about motor status and position
-        temp = bus.read_i2c_block_data(0x32, 0)  #store incoming data from motor in list
+
+        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        time.sleep(0.2)
+        temp = self.read()  # store incoming data from motor in list
 
         rcvEncodedPosition = ''
         for element in range(8):
-            rcvEncodedPosition += str(chr(temp[11+element]))
+            rcvEncodedPosition += str(temp[13 + element])
         position = int(rcvEncodedPosition, 16)
+        print('The current position Reported by M3LS is : ', position)
         return position
 
     def goToLocation(self, location):
@@ -142,6 +159,9 @@ class Stage:
         :param location: a location in encoder counts
         :return: NA
         """
+
+        #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
+
         self.sendCommand('08', encodeToCommand(location))
 
     def returnHome(self):
@@ -151,32 +171,17 @@ class Stage:
         """
         self.goToLocation(self.home)
 
-    def read(self):
-        """
-        Reads from the output register of the stage
-        :return: List of signed values that reprsent what is on the output register of the stage
-        """
-        bus = self.bus
-        temp = bus.read_i2c_block_data(self.address, 0)
-        print('temp', temp)
-        returnBuffer = []
-        for i in temp:
-            returnBuffer += str(chr(int(i)))
-
-        return returnBuffer
-
-    def zMove(self, direction, encoderCounts):
-
-        """
 
 
-        :param direction: The direction for Z to move. 1= up 0 = down
-        :param encoderCounts: number of encoder counts to move
-        :return: NA
 
-        """
-        command = '06 ' + str(direction)
-        self.sendCommand(command, encodeToCommand(encoderCounts))
+
+#########################DEPRECATED CODE#########################
+
+    # def write1(self, command):
+    #     bus = smbus.SMBus(1)
+    #     #bus.write_i2c_block_data(self.address, 0, command)
+    #     bus.write_i2c_block_data(0x32, 0, command)
+
 
 
 

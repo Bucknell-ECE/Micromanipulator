@@ -1,3 +1,11 @@
+'''
+This file contains the functions that the joytick uses.
+Last Modified: R. Nance 5/15/2018
+#####################DO NOT EDIT BELOW INFORMATION##################################
+Originating Branch: Joystick
+Originally Created: R. Nance 12/2017
+'''
+
 import pygame
 from helper import *
 #from helper import mapval
