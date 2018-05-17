@@ -1,5 +1,5 @@
 import pygame
-
+from Joystick import CustomJoystick
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -9,6 +9,10 @@ WHITE = (255, 255, 255)
 # It has nothing to do with the joysticks, just outputting the
 # information.
 class Console:
+    def __init__(self):
+        pass
+
+
 
     class TextPrint:
         def __init__(self):
@@ -39,97 +43,38 @@ class Console:
 
     pygame.display.set_caption("My Game")
 
-    # Loop until the user clicks the close button.
-    done = False
-
     # Used to manage how fast the screen updates
     clock = pygame.time.Clock()
 
-    # Initialize the joysticks
-    pygame.joystick.init()
+    # # Initialize the joysticks
+    # pygame.joystick.init()
 
     # Get ready to print
     textPrint = TextPrint()
 
-    # -------- Main Program Loop -----------
-    while done == False:
-        # # EVENT PROCESSING STEP
-        # for event in pygame.event.get():  # User did something
-        #     if event.type == pygame.QUIT:  # If user clicked close
-        #         done = True  # Flag that we are done so we exit this loop
-        #
-        #     # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
-        #     if event.type == pygame.JOYBUTTONDOWN:
-        #         print("Joystick button pressed.")
-        #     if event.type == pygame.JOYBUTTONUP:
-        #         print("Joystick button released.")
 
-        # DRAWING STEP
-        # First, clear the screen to white. Don't put other drawing commands
-        # above this, or they will be erased with this command.
+    #This is the method that shouls be used in the future, where a joystick and stage object are passes to the function
+    #and it does everthing that way
+    # def displayUpdates(self, CustomJoystick):
+    #     x = CustomJoystick.getX()
+
+    def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y_linear_range__min,
+                       y_linear_range_max, axes, x_joy, y_joy):
+
         screen.fill(WHITE)
         textPrint.reset()
 
-        # Get count of joysticks
-        joystick_count = pygame.joystick.get_count()
+        for i in range(axes):
+            ax_labels = ['X', 'Y', 'Z']
+            textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(ax_labels[i], axes[i]))
+        textPrint.unindent()
 
-        textPrint.printy(screen, "Number of joysticks: {}".format(joystick_count))
-        textPrint.indent()
+        textPrint.printy(screen,"Scaled Range is : {:>6.3f}".format(scaled_range))
 
-        # For each joystick:
-        for i in range(joystick_count):
-            joystick = pygame.joystick.Joystick(i)
-            joystick.init()
 
-            textPrint.printy(screen, "Joystick {}".format(i))
-            textPrint.indent()
-
-            # Get the name from the OS for the controller/joystick
-            name = joystick.get_name()
-            textPrint.printy(screen, "Joystick name: {}".format(name))
-
-            # Usually axis run in pairs, up/down for one, and left/right for
-            # the other.
-            axes = joystick.get_numaxes()
-            textPrint.printy(screen, "Number of axes: {}".format(axes))
-            textPrint.indent()
-
-            for i in range(axes):
-                axis = joystick.get_axis(i)
-                textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(i, axis))
-            textPrint.unindent()
-
-            buttons = joystick.get_numbuttons()
-            textPrint.printy(screen, "Number of buttons: {}".format(buttons))
-            textPrint.indent()
-
-            for i in range(buttons):
-                button = joystick.get_button(i)
-                textPrint.printy(screen, "Button {:>2} value: {}".format(i, button))
-            textPrint.unindent()
-
-            # Hat switch. All or nothing for direction, not like joysticks.
-            # Value comes back in an array.
-            hats = joystick.get_numhats()
-            textPrint.printy(screen, "Number of hats: {}".format(hats))
-            textPrint.indent()
-
-            for i in range(hats):
-                hat = joystick.get_hat(i)
-                textPrint.printy(screen, "Hat {} value: {}".format(i, str(hat)))
-            textPrint.unindent()
-
-            textPrint.unindent()
-
-        # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
-
-        # Go ahead and update the screen with what we've drawn.
         pygame.display.flip()
 
         # Limit to 20 frames per second
         clock.tick(20)
 
-    # Close the window and quit.
-    # If you forget this line, the program will 'hang'
-    # on exit if running from IDLE.
-    pygame.quit()
+

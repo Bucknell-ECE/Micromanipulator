@@ -18,6 +18,7 @@ from Joystick import *
 import pygame
 import random
 import time
+from console import *
 
 
 ###############GLOBAL VARIABLES###################
@@ -42,7 +43,7 @@ constrainedLinearRange = 12000
 sensitivity = 50
 
 
-#locations = [xlocation, ylocation, zlocation]
+
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
 lastMillis = 0
@@ -52,6 +53,8 @@ lastMillis = 0
 
 
 joy = CustomJoystick('Logitech', 0)
+
+screen = Console
 
 def setControlMode(newControlMode):
     controlMode = newControlMode
@@ -133,10 +136,13 @@ while True:
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        screen.displayUpdates(1,30, 1, 1, 1, 1, [xaxis.getPositionFromM3LS(), yaxis.getPositionFromM3LS(), zaxis.getPositionFromM3LS()],joy.getX(), joy.getY())
+
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
         #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        pygame.quit()
         print('temp', temp)
         #xaxis.sendCommandNoVars('10')
         #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
