@@ -9,7 +9,7 @@ Originally Created: R. Nance 12/2017
 from helper import *
 import time
 
-class Stage:
+class Stage(object):
 
     def __init__(self, position):
         self.position = position
