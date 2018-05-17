@@ -105,7 +105,7 @@ def setBounds():
 
 sensitivity = 50
 while True:
-    #setBounds()
+
     try:
 
         time.sleep(0.01)
@@ -115,6 +115,7 @@ while True:
         print(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
+        setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
