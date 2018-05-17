@@ -6,14 +6,16 @@ Last Modified: R. Nance 5/15/2018
 Originating Branch: Master
 Originally Created: R. Nance 05/2018
 '''
+import Stage
 from helper import *
 import time
 import spidev
 EXPECTED_RETURN_LENGTH = 24
 
 
-class StageSPI:
+class StageSPI(Stage):
     def __init__(self, bus, device, position):
+        Stage.__init__(self, position)
         self.position = position
         self.bus = bus
         self.device = device
@@ -100,72 +102,72 @@ class StageSPI:
         print(commandToString(commandToSend))  # print the command in a user readable format
         self.axis.writebytes(commandToSend)
 
-    def calibrate(self):
-        """
-        Function that runs a calibration for the stages. Runs both forward and backwards commands.
-        :return: N/A
-        """
-        '''
-        Send to stage:
-        <87 5>/r
-        Recieve from stage:
+    # def calibrate(self):
+    #     """
+    #     Function that runs a calibration for the stages. Runs both forward and backwards commands.
+    #     :return: N/A
+    #     """
+    #     '''
+    #     Send to stage:
+    #     <87 5>/r
+    #     Recieve from stage:
+    #
+    #
+    #     '''
+    #     self.sendCommand('87', [5])
+    #     time.sleep(0.2)
+    #     self.sendCommand('87', [4])
+    #     time.sleep(0.2)
 
+    # def startup(self):
+    #     # forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+    #     ##backwardStep =
+    #     self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
 
-        '''
-        self.sendCommand('87', [5])
-        time.sleep(0.2)
-        self.sendCommand('87', [4])
-        time.sleep(0.2)
+    # def getPositionFromM3LS(self):
+    #     """
+    #     Function that returns the position of the stage
+    #     :return: Postion of the stage in encoder counts(NOT uM!)
+    #
+    #     From newscale documentation:
+    #     Send : <10>
+    #     Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
+    #     S is motor status
+    #     P is position, hex representation of encoder counts
+    #     E is error count. How far is the stage from where it is supposed to be?
+    #     """
+    #
+    #     self.sendCommandNoVars('10')  # send query asking about motor status and position
+    #     time.sleep(0.2)
+    #     temp = self.read()  # store incoming data from motor in list
+    #
+    #     rcvEncodedPosition = ''
+    #     for element in range(8):
+    #         #print(temp[6])
+    #         #print(13 + element)
+    #         #print(temp[int(13 + element)])
+    #         #print(chr(temp[11 + element]))
+    #         rcvEncodedPosition += str(temp[13 + element])
+    #     #print(rcvEncodedPosition)
+    #     position = int(rcvEncodedPosition, 16)
+    #     print('The current position Reported by M3LS is : ', position)
+    #     return position
 
-    def startup(self):
-        # forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
-        ##backwardStep =
-        self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
+    # def goToLocation(self, location):
+    #     """
+    #     Sends the stage to the location specified, in encoder counts
+    #     :param location: a location in encoder counts
+    #     :return: NA
+    #     """
+    #     #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
+    #     self.sendCommand('08', encodeToCommand(location))
 
-    def getPositionFromM3LS(self):
-        """
-        Function that returns the position of the stage
-        :return: Postion of the stage in encoder counts(NOT uM!)
-
-        From newscale documentation:
-        Send : <10>
-        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
-        S is motor status
-        P is position, hex representation of encoder counts
-        E is error count. How far is the stage from where it is supposed to be?
-        """
-
-        self.sendCommandNoVars('10')  # send query asking about motor status and position
-        time.sleep(0.2)
-        temp = self.read()  # store incoming data from motor in list
-
-        rcvEncodedPosition = ''
-        for element in range(8):
-            #print(temp[6])
-            #print(13 + element)
-            #print(temp[int(13 + element)])
-            #print(chr(temp[11 + element]))
-            rcvEncodedPosition += str(temp[13 + element])
-        #print(rcvEncodedPosition)
-        position = int(rcvEncodedPosition, 16)
-        print('The current position Reported by M3LS is : ', position)
-        return position
-
-    def goToLocation(self, location):
-        """
-        Sends the stage to the location specified, in encoder counts
-        :param location: a location in encoder counts
-        :return: NA
-        """
-        #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
-        self.sendCommand('08', encodeToCommand(location))
-
-    def returnHome(self):
-        """
-        Funtion that sends the stage to its home location
-        :return: NA
-        """
-        self.goToLocation(self.home)
+    # def returnHome(self):
+    #     """
+    #     Funtion that sends the stage to its home location
+    #     :return: NA
+    #     """
+    #     self.goToLocation(self.home)
 
     def read(self):
         """
