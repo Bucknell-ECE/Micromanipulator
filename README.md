@@ -20,7 +20,7 @@ transported to raspberry pi platform.
 <a name="Whatisamicromanipulator"></a>
 ## What is a Micromanipulator?
 ---------------------
-A micromanipulator is the device that is used to do manipulation and interact with testing samples under microscope. The Micromanipulator is controlled by a joystick and driven with three linear smart stages. The micromanipulator can achieve the precision of level of movement that couldn't be achieved by human hands and manual tools. 
+A [micromanipulator](https://en.wikipedia.org/wiki/Micromanipulator) is the device that is used to do manipulation and interact with testing samples under microscope. The Micromanipulator is controlled by a joystick and driven with three linear smart stages. The micromanipulator can achieve the precision of level of movement that couldn't be achieved by human hands and manual tools. 
 
 <a name="Installation"></a>
 ## Installation
