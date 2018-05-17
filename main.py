@@ -96,9 +96,15 @@ def setBounds():
     ylinearRangeMax = yaxis.home + scaledRange - 50
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
-   # boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
+    # boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
     #boundries = [home[0],  12000 - home[0]]
     #constrainedLinearRange = min(boundries)
+    print('XlinMin', xlinearRangeMin)
+    print('xlinmax', xlinearRangeMax)
+    print('Ylinmin', ylinearRangeMin)
+    print('ylimmax', ylinearRangeMax)
+    print('ylinearrange', ylinearRange)
+    print('xlinearRange', xlinearRange)
 
 
 
