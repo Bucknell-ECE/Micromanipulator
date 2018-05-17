@@ -17,9 +17,8 @@ class StageI2C(Stage):
         Stage.__init__(self, position)
         self.position = position
         self.address = address
-        self.bus = smbus.SMBus(bus)
+        self.bus = smbus.SMBus(bus)  # Initialize the SMBus(I2C, lookup the differences)
         self.home = 6000
-    #bus = smbus.SMBus(1)  # initialize the SMBus (I2C bus) on the pi. The bus we use is 1.
 
     def zMove(self, direction, encoder_counts):
         """
@@ -37,7 +36,6 @@ class StageI2C(Stage):
         decimal values for each of the ascii characters in the command to be sent.
         :return:
         """
-        #bus = smbus.SMBus(1)
         print(commandToString(command))  # print the command in  a user readable format.
         self.bus.write_i2c_block_data(self.address, 0, command)
 
@@ -47,7 +45,6 @@ class StageI2C(Stage):
         be read back but I am not entirely sure. This should be checked.
         :return: List of signed values that represent what is on the output register of the stage
         """
-        #bus = self.bus
         temp = self.bus.read_i2c_block_data(self.address, 0)
         print('temp', temp)
         return_buffer = []
