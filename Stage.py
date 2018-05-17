@@ -23,6 +23,7 @@ class Stage(object):
     @property
     def getAddress(self):
         return self.address
+
     @home.setter
     def setHome(self, location):
         """
