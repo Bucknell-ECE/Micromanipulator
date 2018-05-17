@@ -63,7 +63,7 @@ def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y
 
 
 
-    for i in range(axes):
+    for i in range(len(axes)):
         ax_labels = ['X', 'Y', 'Z']
         textPrint.printy(screen, "Axis {} value: {:>6.3f}".format(ax_labels[i], axes[i]))
     textPrint.unindent()
