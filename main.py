@@ -23,13 +23,13 @@ import time
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
+safety_margin = 50
 ################END GLOBAL VARIABLEs############
 
 
 #constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
-
 zaxis = StageI2C(0x40, 6000, 1)
 
 
@@ -40,9 +40,8 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
+sensitivity = 50
 
-axes = [zaxis]#
-# , yaxis, zaxis]
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -78,6 +77,7 @@ def setBounds():
     global ylinearRangeMin
     global ylinearRangeMax
     global constrainedLinearRange
+    global safty_margin
 
     # deal with the Z axis
 
@@ -109,7 +109,7 @@ def setBounds():
 
 
 
-sensitivity = 50
+
 while True:
 
     try:
