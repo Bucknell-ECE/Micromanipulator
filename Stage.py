@@ -9,14 +9,17 @@ Originally Created: R. Nance 12/2017
 from helper import *
 import time
 
+
 class Stage(object):
 
     def __init__(self, position):
         self.position = position
         self.home = 6000
+
     @property
     def getPosition(self):
         return int(self.position)
+
     @property
     def getAddress(self):
         return self.address
@@ -69,16 +72,27 @@ class Stage(object):
 
         return command
 
-    def sendCommand(self, commandCode, commandVars):
-        commandToSend = self.buildCommand(commandCode, commandVars)
-        print(commandToString(commandToSend))
-        self.write(commandToSend)
+    def sendCommand(self, command_code, command_vars):
+        """
+        Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
+        documentation in square brackets.
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_vars: the optional paramter for the command, in list form.
+        :return:
+        """
+        command_to_send = self.buildCommand(command_code, command_vars)
+        print(commandToString(command_to_send))
+        self.write(command_to_send)
 
-    def sendCommandNoVars(self, commandCode):
-        commandToSend = self.buildCommandNoVars(commandCode)
-        #print('command no vars: ', commandToSend)
-        print(commandToString(commandToSend))
-        self.write(commandToSend)
+    def sendCommandNoVars(self, command_code):
+        """
+        Sends a command that does not have optional paramters.
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :return:
+        """
+        command_to_send = self.buildCommandNoVars(command_code)
+        print(commandToString(command_to_send))
+        self.write(command_to_send)
 
     def calibrate(self):
         """
@@ -97,6 +111,10 @@ class Stage(object):
         time.sleep(0.2)
 
     def startup(self):
+        """
+        Runs the newscale reccomended startup sequence. This is not yet complete. See Newscale docs page 7
+        :return: NA
+        """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
@@ -129,6 +147,7 @@ class Stage(object):
         position = int(rcvEncodedPosition, 16)
         print('The current position Reported by M3LS is : ', position)
         return position
+
     def goToLocation(self, location):
         """
         Sends the stage to the location specified, in encoder counts
