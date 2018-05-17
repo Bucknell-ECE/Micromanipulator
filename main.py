@@ -131,8 +131,8 @@ while True:
         print('constrainedlinearrange', constrainedLinearRange)
         scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
         print('Scaled Range: ', scaledRange)
-        xlinearRangeMin = home[0] - scaledRange + 100
-        xlinearRangeMax = home[0] + scaledRange - 100
+        xlinearRangeMin = home[0] - scaledRange #+ 100
+        xlinearRangeMax = home[0] + scaledRange #- 100
         print('XlinMin', xlinearRangeMin)
         print('xlinmax', xlinearRangeMax)
         print('Ylinmin', ylinearRangeMin)
