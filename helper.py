@@ -14,7 +14,9 @@ def encodeToCommand(value):
     Steps to figure out what should be converted in order to for command to word
     1. Come up with command according to newscale documentation and write out the command as a series of individual
     chars
+
     2. convert each character into its hex representation
+
     3. The command can either be sent as the string of these values, or as the individual decimal values for each
     :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
     :return: the 8 bit output that represents

@@ -29,6 +29,7 @@ safety_margin = 50
 #constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
+
 zaxis = StageI2C(0x40, 6000, 1)
 
 
