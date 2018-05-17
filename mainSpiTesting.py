@@ -1,8 +1,8 @@
 '''
-This file contains helper functions that are used by Stage, StageSPI, as well as the main function
+This file contains testing information for the SPI stuff.
 Last Modified: R. Nance 5/15/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
-Originating Branch: Master
+Originating Branch: SPI_DevLocal
 Originally Created: R. Nance 12/2017
 '''
 

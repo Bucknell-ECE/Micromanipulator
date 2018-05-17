@@ -1,3 +1,10 @@
+'''
+This file contains the the submethods for the I2C Stages.
+Last Modified: R. Nance 5/15/2018
+#####################DO NOT EDIT BELOW INFORMATION##################################
+Originating Branch: MergeStageClasses
+Originally Created: R. Nance 12/2017
+'''
 import Stage
 import smbus
 import time
@@ -36,8 +43,9 @@ class StageI2C(Stage):
 
     def read(self):
         """
-        Reads from the output register of the stage
-        :return: List of signed values that reprsent what is on the output register of the stage
+        Reads from the output register of the stage. I think that there may be a limit to the number of bits that can
+        be read back but I am not entirely sure. This should be checked.
+        :return: List of signed values that represent what is on the output register of the stage
         """
         #bus = self.bus
         temp = self.bus.read_i2c_block_data(self.address, 0)
