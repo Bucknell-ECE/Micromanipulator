@@ -16,15 +16,14 @@ class Stage(object):
         self.position = position
         self.home = 6000
 
-    @property
+    #  @property
     def getPosition(self):
         return int(self.position)
 
-    @property
+    # @property
     def getAddress(self):
         return self.address
 
-    @home.setter
     def setHome(self, location):
         """
         Allows user to set the home location for the particular axis
