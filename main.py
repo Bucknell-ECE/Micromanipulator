@@ -68,6 +68,9 @@ def setBounds():
     3. create an artificial box with sides equal to the distance to the closest stop
     4. scale the constrainedRange between based on the position of the throttle
     5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
+    with a small offset for safety, so that the stages never run into the stops.
+
+    ####TOT
     :return: na
     """
     global xlinearRangeMin
@@ -76,6 +79,21 @@ def setBounds():
     global ylinearRangeMax
     global constrainedLinearRange
 
+    # deal with the Z axis
+
+    print('Setting Linear Range')
+    home = [xaxis.home, yaxis.home, zaxis.home]
+    #print('Homes', home)
+    boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    #print('boundries: ', boundries)
+    constrainedLinearRange = min(boundries)
+    #print('constrainedlinearrange', constrainedLinearRange)
+    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+    #print('Scaled Range: ', scaledRange)
+    xlinearRangeMin = home[0] - scaledRange + 50
+    xlinearRangeMax = home[0] + scaledRange - 50
+    ylinearRangeMin = yaxis.home - scaledRange + 50
+    ylinearRangeMax = yaxis.home + scaledRange - 50
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
     boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
@@ -120,26 +138,26 @@ while True:
 
         # deal with the Z axis
 
-        print('Starting Loop')
-        home = [xaxis.home, yaxis.home, zaxis.home]
-        print('Homes', home)
-        boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
-        print('boundries: ', boundries)
-        constrainedLinearRange = min(boundries)
-        print('constrainedlinearrange', constrainedLinearRange)
-        scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        print('Scaled Range: ', scaledRange)
-        xlinearRangeMin = home[0] - scaledRange + 50
-        xlinearRangeMax = home[0] + scaledRange - 50
-        ylinearRangeMin = yaxis.home - scaledRange + 50
-        ylinearRangeMax = yaxis.home + scaledRange - 50
-
-        print('XlinMin', xlinearRangeMin)
-        print('xlinmax', xlinearRangeMax)
-        print('Ylinmin', ylinearRangeMin)
-        print('ylimmax', ylinearRangeMax)
-        print('ylinearrange', ylinearRange)
-        print('xlinearRange', xlinearRange)
+        # print('Starting Loop')
+        # home = [xaxis.home, yaxis.home, zaxis.home]
+        # print('Homes', home)
+        # boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+        # print('boundries: ', boundries)
+        # constrainedLinearRange = min(boundries)
+        # print('constrainedlinearrange', constrainedLinearRange)
+        # scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+        # print('Scaled Range: ', scaledRange)
+        # xlinearRangeMin = home[0] - scaledRange + 50
+        # xlinearRangeMax = home[0] + scaledRange - 50
+        # ylinearRangeMin = yaxis.home - scaledRange + 50
+        # ylinearRangeMax = yaxis.home + scaledRange - 50
+        #
+        # print('XlinMin', xlinearRangeMin)
+        # print('xlinmax', xlinearRangeMax)
+        # print('Ylinmin', ylinearRangeMin)
+        # print('ylimmax', ylinearRangeMax)
+        # print('ylinearrange', ylinearRange)
+        # print('xlinearRange', xlinearRange)
 
         xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
