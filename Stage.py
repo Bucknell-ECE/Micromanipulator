@@ -23,7 +23,7 @@ class Stage(object):
     @property
     def getAddress(self):
         return self.address
-
+    @.setter
     def setHome(self, location):
         """
         Allows user to set the home location for the particular axis
@@ -38,34 +38,38 @@ class Stage(object):
         self.setHome(current)
         print('The self.home home is now ', self.home)
 
-    def buildCommand(self, commandCode, commandVars):
+    def buildCommand(self, command_code, command_vars):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
+        comprised of the hex values of each ASCII character in the command code, the optional parameters, and the
+        carriage return (\r)
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_vars: the optional parameter for the command, in list form.
+        :return:
         """
         command = []  # empty list to hold command
         # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
-        for i in str(commandCode):
+        for i in str(command_code):
             command += [ord(i)]
         command += [32]  # space(' ')
-        command += commandVars
+        command += command_vars
         command += [62]  # close carat (>)
         command += [13]  # carriage return(\r)
         return command
 
-    def buildCommandNoVars(self, commandCode):
+    def buildCommandNoVars(self, command_code):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
+        comprised of the hex values of each ASCII character in the command + the carriage return (\r)
 
-        :param commandCode: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
         :return: The command, in the form of a list of integer values each of which represents an ascii character in
         the command that you want to send.
         """
         command = []
         command += [60]  # '<'
-        for i in str(commandCode):
+        for i in str(command_code):
             command += [ord(i)]
         command += [62]  # '>'
         command += [13]  # '\r'
@@ -112,7 +116,7 @@ class Stage(object):
 
     def startup(self):
         """
-        Runs the newscale reccomended startup sequence. This is not yet complete. See Newscale docs page 7
+        Runs the Newscale recommended startup sequence. This is not yet complete. See Newscale docs page 7
         :return: NA
         """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
@@ -122,9 +126,9 @@ class Stage(object):
     def getPositionFromM3LS(self):
         """
         Function that returns the position of the stage
-        :return: Postion of the stage in encoder counts(NOT uM!)
+        :return: Position of the stage in encoder counts(NOT uM!)
 
-        From newscale documentation:
+        From Newscale documentation:
         Send : <10>
         Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
         S is motor status
@@ -138,12 +142,7 @@ class Stage(object):
 
         rcvEncodedPosition = ''
         for element in range(8):
-            #print(temp[6])
-            #print(13 + element)
-            #print(temp[int(13 + element)])
-            #print(chr(temp[11 + element]))
             rcvEncodedPosition += str(temp[13 + element])
-        #print(rcvEncodedPosition)
         position = int(rcvEncodedPosition, 16)
         print('The current position Reported by M3LS is : ', position)
         return position
