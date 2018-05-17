@@ -58,23 +58,34 @@ class Stage:
         comprised of the hexadecimal values
         """
         command = []
+
         command += [60]  # '<'
         for i in str(commandCode):
             command += [ord(i)]
         command += [62]  # '>'
         command += [13]  # '\r'
+
         return command
 
     def write(self, command):
         bus = smbus.SMBus(1)
         #bus.write_i2c_block_data(self.address, 0, command)
         ##############CHANGED TO 1 BUT SHOULD BE ZERO
+
         print(commandToString(command))  # print the command in  a user readable format.
+
         bus.write_i2c_block_data(self.address, 0, command)
+
+    def write1(self, command):
+        bus = smbus.SMBus(1)
+        #bus.write_i2c_block_data(self.address, 0, command)
+        bus.write_i2c_block_data(0x32, 0, command)
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
+
         print(commandToString(commandToSend))
+
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
@@ -91,6 +102,7 @@ class Stage:
         Send to stage:
         <87 5>/r
         Recieve from stage:
+
         '''
         self.sendCommand('87', [ 5])
         time.sleep(0.2)
@@ -154,11 +166,14 @@ class Stage:
         return returnBuffer
 
     def zMove(self, direction, encoderCounts):
+
         """
+
 
         :param direction: The direction for Z to move. 1= up 0 = down
         :param encoderCounts: number of encoder counts to move
         :return: NA
+
         """
         command = '06 ' + str(direction)
         self.sendCommand(command, encodeToCommand(encoderCounts))
@@ -171,6 +186,7 @@ class Stage:
     #     bus = smbus.SMBus(1)
     #     #bus.write_i2c_block_data(self.address, 0, command)
     #     bus.write_i2c_block_data(0x32, 0, command)
+
 
 
 

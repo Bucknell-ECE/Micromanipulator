@@ -29,6 +29,7 @@ def encodeToCommand(value):
     return encodeOutput
 
 
+
 def encoderConvert(value):
     ''''
     THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
@@ -63,7 +64,10 @@ def commandToString(command):
     return stringOut
 
 
+
 def centerAllStages(axis1, axis2, axis3):
+
+
     """
     Sends all stages to their central location.
     :param axis1: the first stage
@@ -135,6 +139,36 @@ def mapval(x, inMin, inMax, outMin, outMax):
 #     #print(encodeOutput[1] + encodeOutput[2])
 #     return encodeOutput
 #
+
+def centerAllStages(axis1, axis2, axis3):
+    """
+    Sends all stages to their central location.
+    :param axis1: the first stage
+    :param axis2: second stage
+    :param axis3: third stage
+    :return: na
+    """
+    #map(Stage.goToLocation(), )
+    Stage.goToLocation(axis1, 6000)
+    Stage.goToLocation(axis2, 6000)
+    Stage.goToLocation(axis3, 6000)
+
+
+def mapval(x, inMin, inMax, outMin, outMax):
+    """
+    Maps a value in one range to a value in another range
+    :param x: value to be mapped
+    :param inMin: minimum of the input scale
+    :param inMax: maximum of the input scale
+    :param outMin: minimum of the output scale
+    :param outMax: maximum of the output scale
+    :return: mapped value, rounded to the nearest integer value
+    """
+    return round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin)
+
+
+
+
 
         #####################TEST CODE ######################################
 
