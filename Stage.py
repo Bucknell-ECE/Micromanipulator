@@ -31,7 +31,9 @@ class Stage:
         self.home = location
     def setCurrentHome(self):
         current = self.getPositionFromM3LS()
+        print('The current home for this axis is now', current)
         self.setHome(current)
+        print('The self.home home is now ', self.home)
 
     def buildCommand(self, commandCode, commandVars):
         """
@@ -66,14 +68,13 @@ class Stage:
 
     def sendCommand(self, commandCode, commandVars):
         commandToSend = self.buildCommand(commandCode, commandVars)
-
         print(commandToString(commandToSend))
-
         self.write(commandToSend)
 
     def sendCommandNoVars(self, commandCode):
         commandToSend = self.buildCommandNoVars(commandCode)
         #print('command no vars: ', commandToSend)
+        print(commandToString(commandToSend))
         self.write(commandToSend)
 
     def calibrate(self):

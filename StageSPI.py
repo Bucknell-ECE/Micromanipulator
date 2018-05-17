@@ -36,71 +36,70 @@ class StageSPI(Stage):
         axis.max_speed_hz = 1000000
         self.axis = axis
 
-    def getPosition(self):
-        return int(self.position)
+    # def getPosition(self):
+    #     return int(self.position)
+    #
+    # def getAddress(self):
+    #     return self.address
+    #
+    # def setHome(self, location):
+    #     """
+    #     Allows user to set the home location for the particular axis
+    #     :param location: a location, specified in encoder counts
+    #     :return: NA
+    #     """
+    #     self.home = location
+    #
+    # def setCurrentHome(self):
+    #     current = self.getPositionFromM3LS()
+    #     print('The current home for this axis is now', current)
+    #     self.setHome(current)
+    #     print('The self.home home is now ', self.home)
 
-    def getAddress(self):
-        return self.address
-
-    def setHome(self, location):
-        """
-        Allows user to set the home location for the particular axis
-        :param location: a location, specified in encoder counts
-        :return: NA
-        """
-        self.home = location
-
-    def setCurrentHome(self):
-        current = self.getPositionFromM3LS()
-        print('The current home for this axis is now', current)
-        self.setHome(current)
-        print('The self.home home is now ', self.home)
-
-    def buildCommand(self, commandCode, commandVars):
-        """
-        Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
-        """
-
-        command = []  # empty list to hold command
-        # command += [self.address << 1]  # address of stage bit shifted 1 left
-        command += [60]  # open carat(<)
-        for i in str(commandCode):
-            command += [ord(i)]
-        command += [32]  # space(' ')
-        command += commandVars
-        command += [62]  # close carat (>)
-        command += [13]  # carriage return(\r)
-        return command
-
-    def buildCommandNoVars(self, commandCode):
-        """
-        Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hexadecimal values
-        """
-        command = []
-        # command += [self.address << 1]
-        command += [60]
-        for i in str(commandCode):
-            command += [ord(i)]
-        command += [62]
-        command += [13]
-        return command
+    # def buildCommand(self, commandCode, commandVars):
+    #     """
+    #     Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
+    #     comprised of the hexadecimal values
+    #     """
+    #     command = []  # empty list to hold command
+    #     # command += [self.address << 1]  # address of stage bit shifted 1 left
+    #     command += [60]  # open carat(<)
+    #     for i in str(commandCode):
+    #         command += [ord(i)]
+    #     command += [32]  # space(' ')
+    #     command += commandVars
+    #     command += [62]  # close carat (>)
+    #     command += [13]  # carriage return(\r)
+    #     return command
+    #
+    # def buildCommandNoVars(self, commandCode):
+    #     """
+    #     Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
+    #     comprised of the hexadecimal values
+    #     """
+    #     command = []
+    #     # command += [self.address << 1]
+    #     command += [60]
+    #     for i in str(commandCode):
+    #         command += [ord(i)]
+    #     command += [62]
+    #     command += [13]
+    #     return command
 
     def write(self, command):
         print(commandToString(command))  # print the command in a user readable format
         self.axis.writebytes(command)
 
-    def sendCommand(self, commandCode, commandVars):
-        commandToSend = self.buildCommand(commandCode, commandVars)
-        #print(commandToSend)
-        print(commandToString(commandToSend))
-        self.axis.writebytes(commandToSend)
-
-    def sendCommandNoVars(self, commandCode):
-        commandToSend = self.buildCommandNoVars(commandCode)
-        print(commandToString(commandToSend))  # print the command in a user readable format
-        self.axis.writebytes(commandToSend)
+    # def sendCommand(self, commandCode, commandVars):
+    #     commandToSend = self.buildCommand(commandCode, commandVars)
+    #     #print(commandToSend)
+    #     print(commandToString(commandToSend))
+    #     self.axis.writebytes(commandToSend)
+    #
+    # def sendCommandNoVars(self, commandCode):
+    #     commandToSend = self.buildCommandNoVars(commandCode)
+    #     print(commandToString(commandToSend))  # print the command in a user readable format
+    #     self.axis.writebytes(commandToSend)
 
     # def calibrate(self):
     #     """
