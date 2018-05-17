@@ -17,12 +17,12 @@ from datetime import datetime
 from Joystick import *
 import pygame
 import random
-import smbus
 import time
 
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
+safety_margin = 50
 ################END GLOBAL VARIABLEs############
 
 
@@ -40,9 +40,8 @@ ylinearRangeMin = 0
 ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
+sensitivity = 50
 
-axes = [zaxis]#
-# , yaxis, zaxis]
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -68,6 +67,9 @@ def setBounds():
     3. create an artificial box with sides equal to the distance to the closest stop
     4. scale the constrainedRange between based on the position of the throttle
     5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
+    with a small offset for safety, so that the stages never run into the stops.
+
+    ####TOT
     :return: na
     """
     global xlinearRangeMin
@@ -75,30 +77,45 @@ def setBounds():
     global ylinearRangeMin
     global ylinearRangeMax
     global constrainedLinearRange
+    global safty_margin
 
+
+    print('Setting Linear Range')
+    home = [xaxis.home, yaxis.home, zaxis.home]
+    print('Homes', home)
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
-    boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
-    #boundries = [home[0],  12000 - home[0]]
+    boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    print('boundries: ', boundries)
     constrainedLinearRange = min(boundries)
+    print('constrainedlinearrange', constrainedLinearRange)
+    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+    print('Scaled Range: ', scaledRange)
+    xlinearRangeMin = home[0] - scaledRange + safety_margin
+    xlinearRangeMax = home[0] + scaledRange - safety_margin
+    ylinearRangeMin = yaxis.home - scaledRange + safety_margin
+    ylinearRangeMax = yaxis.home + scaledRange - safety_margin
 
 
-    #ylinearRangeMin = yaxis.home - scaledRange +100
-    #ylinearRangeMax = yaxis.home + scaledRange -100
+    print('XlinMin', xlinearRangeMin)
+    print('xlinmax', xlinearRangeMax)
+    print('Ylinmin', ylinearRangeMin)
+    print('ylimmax', ylinearRangeMax)
+    print('ylinearrange', ylinearRange)
+    print('xlinearRange', xlinearRange)
 
 
-sensitivity = 50
 while True:
-    #setBounds()
-    try:
 
+    try:
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         print(scaleInput)
         x = joy.getX()
-        y = 1023 - joy.getY()
+        y = 2000 - joy.getY()
+        setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
@@ -110,40 +127,14 @@ while True:
                 zaxis.zMove(1, 200) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
-                print('Previous Home: ', home)
                 xaxis.setCurrentHome()
                 yaxis.setCurrentHome()
-                print('Current Home: ', home)
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-
-
-
-
-        # deal with the Z axis
-
-        print('Starting Loop')
-        home = [zaxis.home, yaxis.home, zaxis.home]
-        print('Homes', home)
-        boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
-        print('boundries: ', boundries)
-        constrainedLinearRange = min(boundries)
-        print('constrainedlinearrange', constrainedLinearRange)
-        scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        print('Scaled Range: ', scaledRange)
-        xlinearRangeMin = home[0] - scaledRange + 100
-        xlinearRangeMax = home[0] + scaledRange - 100
-        print('XlinMin', xlinearRangeMin)
-        print('xlinmax', xlinearRangeMax)
-        print('Ylinmin', ylinearRangeMin)
-        print('ylimmax', ylinearRangeMax)
-        print('ylinearrange', ylinearRange)
-        print('xlinearRange', xlinearRange)
-
-        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
+        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')

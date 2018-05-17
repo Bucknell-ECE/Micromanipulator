@@ -43,7 +43,10 @@ class Stage(object):
     def buildCommand(self, command_code, command_vars):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hex values of each ASCII character in the command code, the optional parameters, and the
+
+        comprised of the decimal(##CHANGE TO HEX?##)  values of each ASCII character in the command code, the optional
+        parameters, and the
+
         carriage return (\r)
         :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
         :param command_vars: the optional parameter for the command, in list form.
@@ -63,7 +66,10 @@ class Stage(object):
     def buildCommandNoVars(self, command_code):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
-        comprised of the hex values of each ASCII character in the command + the carriage return (\r)
+
+        comprised of the decimal(##CHANGE TO HEX?##) values of each ASCII character in the command + the carriage
+        return (\r)
+
 
         :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
         :return: The command, in the form of a list of integer values each of which represents an ascii character in
