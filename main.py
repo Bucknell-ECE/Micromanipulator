@@ -1,14 +1,18 @@
 '''
+
 This file contains the main loop to be run
+
 Last Modified: R. Nance 5/15/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
 '''
+
 from helper import *
 from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
+
 from datetime import datetime
 from Joystick import *
 import pygame
@@ -25,7 +29,9 @@ controlMode = 'position'
 #constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
 yaxis = StageSPI(0, 1, 6000)
+
 zaxis = StageI2C(0x40, 6000, 1)
+
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
