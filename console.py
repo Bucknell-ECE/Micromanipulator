@@ -58,9 +58,13 @@ class TextPrint:
 def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y_linear_range__min,
                    y_linear_range_max, axes, x_joy, y_joy):
     # Get ready to print
+    global screen
+    global clock
+    global size
     textPrint = TextPrint()
-    size = [500, 700]
-    screen = pygame.display.set_mode(size)
+    # size = [500, 700]
+    # clock = pygame.time.Clock()
+    # screen = pygame.display.set_mode(size)
     screen.fill(WHITE)
     textPrint.reset()
     for i in range(len(axes)):
