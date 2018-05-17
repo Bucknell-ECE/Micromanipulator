@@ -149,6 +149,8 @@ class Stage(object):
         temp = self.read()  # store incoming data from motor in list
 
         rcvEncodedPosition = ''
+        print('Temp 0: ', temp[0])
+        print('Temp 0 Type: ', type(temp[0]))
         if temp[0] == '60':
             for element in range(8):
                 rcvEncodedPosition += str(temp[13 + element])
