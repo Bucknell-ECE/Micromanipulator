@@ -59,6 +59,7 @@ def displayUpdates(self, scaled_range, x_linear_range_min, x_linear_range_max, y
                    y_linear_range_max, axes, x_joy, y_joy):
     # Get ready to print
     textPrint = TextPrint()
+    screen = pygame.display.set_mode(size)
     screen.fill(WHITE)
     textPrint.reset()
     for i in range(len(axes)):
