@@ -50,49 +50,41 @@ The designed micromanipulator provides user with position mode. The microneedle 
 + Link to Dozuki tutorial: ########
 
 + Link to Parts List: 
-https://drive.google.com/open?id=1GT7LfXunt-y-nxAGIBc9vhs6sIaBOghvMIJwdjmpBLg
+https://drive.google.com/open?id=1ucY0XXdSG67SAkqAeAms21Gy_4KU3A-f
 
-+ New Scale M3-LS-1.8-6 Linear Smart Stage with 6mm travel: 
-https://www.newscaletech.com/wp-content/uploads/M3-LS-datasheet.pdf
++ CONN USB JACK TYPE A HORIZON R/A 151-1080-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244052&uq=636622310614761080
 
-+ New Scale Smart Stage website: 
-https://www.newscaletech.com/micro-motion-modules/m3-ls-linear-smart-stages/
++ CRYSTAL 12MHZ 12PF SMD 535-13381-1-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244104&uq=636622310614771081
 
-+ ThrustMaster Joystick: 
-http://www.thrustmaster.com/products/tflight-stick-x
++ Hirose Electric Co Ltd FH12-10S-0.5SH(55) HFJ110CT-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244151&uq=636622310614771081
 
-+ Molex USB Type A to Micro B Male/Male Cable: 
-https://www.digikey.com/product-detail/en/molex-llc/0687840001/WM17145-ND/1952430
++ Maxim Integrated MAX3421EEHJ+ MAX3421EEHJ+-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244279&uq=636622310614771081
 
-+ RJ-45 Connector:
-https://www.digikey.com/catalog/en/partgroup/mrj-series/6840
++ Texas Instruments LM386MX-1/NOPB LM386MX-1/NOPBCT-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244418&uq=636622310614781082
 
-+ Amphenol FCI Flat Felx Connector: 
-https://www.digikey.com/product-detail/en/amphenol-fci/SFV10R-2STE1HLF/609-4306-1-ND/2626757
++ KEMET C0402C220J5GACTU 399-1015-1-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261245631&uq=636622310614781082
 
-+ EDAC Inc USB Jack: 
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208039&uq=636416921826397418
++ Samtec Inc. SSQ-118-03-T-D SAM1204-18-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261245662&uq=636622310614791083
 
-+ Abracon LLC Crystal 12MHZ: 
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208037&uq=636416921826407419
++ Recom Power RAC06-05SC 945-1409-5-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261245724&uq=636622310614791083
 
-+ Maxim Integrated Max Chip:
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208034&uq=636416921826417420
++ Qualtek 703W-00/53 Q219-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261246023&uq=636622310614791083
 
-+ Qualtek Power Receptacle:
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208689&uq=636416924792456008
++ Keystone Electronics 4527 36-4527-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261246232&uq=636622310614801084
 
-+ Keystone Fuse Holder Cartridge:
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208687&uq=636416924792456008
++ Adafruit Industries LLC 254 1528-1462-ND
+https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261246277&uq=636622310614801084
 
-+ Recom Power AC/DC Converter:
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208688&uq=636416924792446007
-
-+ Samtec Inc Header Receptacle: 
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208690&uq=636416924792446007
-
-+ Texas Instruments Linear Audio Amplifier:
-http://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=239208695&uq=636416924792436006
 
 <a name="License"></a>
 ## License

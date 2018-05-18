@@ -133,6 +133,7 @@ while True:
                 print('Reset home to the center of the stage')
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
+
         # Main commands to tell the stage to go to a location descibed by the joystick.
         xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
