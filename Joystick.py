@@ -20,6 +20,7 @@ buttonMap = {
     2: 'Zup',
     3: 'Home',
     4: 'ChangeMode',
+    9: 'ResetHome'
 }
 
 class CustomJoystick:
