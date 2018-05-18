@@ -50,7 +50,7 @@ The designed micromanipulator provides user with position mode. The microneedle 
 + Link to Dozuki tutorial: ########
 
 + Link to Parts List: 
-https://drive.google.com/open?id=1GT7LfXunt-y-nxAGIBc9vhs6sIaBOghvMIJwdjmpBLg
+https://drive.google.com/open?id=1ucY0XXdSG67SAkqAeAms21Gy_4KU3A-f
 
 + CONN USB JACK TYPE A HORIZON R/A 151-1080-ND
 https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261244052&uq=636622310614761080
