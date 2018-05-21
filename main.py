@@ -135,10 +135,10 @@ while True:
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
             for nums in range(buttons.count('Z Sensitivity Up')):
-                print('Z sensitivity up by 50')
+                print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
             for nums in range(buttons.count('Z Sensitivity Down')):
-                print('Z sensitivity up down 50')
+                print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
