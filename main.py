@@ -41,6 +41,7 @@ ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
 sensitivity = 50
+Zsensitivity = 200
 
 
 #locations = [xlocation, ylocation, zlocation]
@@ -121,10 +122,10 @@ while True:
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                zaxis.zMove(0, 200) # move up120 encoder counts
+                zaxis.zMove(0, Zsensitivity) # move up120 encoder counts
             for nums in range(buttons.count('Zdown')):
                 print('Theres a zdonw')
-                zaxis.zMove(1, 200) # move down some amount 120 encoder counts
+                zaxis.zMove(1, Zsensitivity) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
                 xaxis.setCurrentHome()
@@ -133,6 +134,12 @@ while True:
                 print('Reset home to the center of the stage')
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
+            for nums in range(buttons.count('Z Sensitivity Up')):
+                print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
+                Zsensitivity += 50
+            for nums in range(buttons.count('Z Sensitivity Down')):
+                print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
+                Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
         xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
