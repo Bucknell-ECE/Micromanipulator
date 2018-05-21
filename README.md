@@ -57,6 +57,11 @@ Button 10: Reset Home to the center of stage </br>
 Button +/- : Adjusting the sensitivity of X and Y. Due to configuration issue, the "-" sign represent maximum sensitivity, the "+" sign
 represent minimum sensitivity
 
+### Linear Smart Stage Configuration:
+08: Move to Target </br>
+<08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). This command is used in function *goToLocation* </br>
+
+
 <a name="Partslink"></a>
 ## Parts Links:
 ------------------
