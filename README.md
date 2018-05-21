@@ -7,6 +7,7 @@
 * [Overview](#Overview)
 * [What is a Micromanipulator](#Whatisamicromanipulator)
 * [Installation](#Installation)
+* [Testing and Configuration](#Configuration)
 * [Main Features](#Mainfeatures)
   * [Position Mode](#PositionMode)
   * [Main Modules](#Mainmodules)
@@ -38,11 +39,66 @@ Waiting to be added
 The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "ZUp" or "ZDown" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
 
 ### Joystick Configuration ###
-![Joystick Diagram](https://ws2.sinaimg.cn/large/006tKfTcly1frew6yvbapj31e20xw4qp.jpg "Joystick Configuration")
+![Joystick Diagram](https://ws4.sinaimg.cn/large/006tNc79ly1frjnske1qzj30i20jw0y0.jpg "Joystick Configuration")
 
 
 <a name="Mainmodules"></a>
 ### Modules
+
+<a name="Configuration"></a>
+## Testing and Configuration
+--------------
+### Joystick Guide
+Button 2: Z Down </br>
+Button 3: Z Up </br>
+Button 4: Set Home </br>
+Button 8: Z sensitivity increase </br>
+Button 9: Z sensitivity decrease </br>
+Button 10: Reset Home to the center of stage </br>
+Button +/- : Adjusting the sensitivity of X and Y. Due to configuration issue, the "-" sign represent maximum sensitivity, the "+" sign
+represent minimum sensitivity
+
+### Linear Smart Stage Configuration:
+**06**: Move Closed-Loop step </br>
+<06 D[SSSSSSSS]> If D=1, motor runs forward. If D=0, motor runs in reverse. Set D to N to set the step size without moving the actuator. 
+This command is used in the *startup* function to finish the start up steps. The *startup* function is not yet finished. 
+
+**08**: Move to Target </br>
+<08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
+There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
+
+**10**: View Closed-Loop Status and Position
+<10>. Read back <10 SSSSSS PPPPPPPP EEEEEEEE>. </br>
+SSSSSS is the motor status. </br>
+PPPPPPPP is the absolute position in encoder count. </br>
+EEEEEEEE is the position error in encoder counts. </br>
+The table for motor status refer to Page 16-18 in M3-LS-1.8-6 Smart Stage manual </br>
+This command is used in function *getPositionFromM3LS* </br>
+
+**87**: Run Frequency Calibration </br>
+<87 D[ XX]> D is the calibration movement direction and calibration type. </br>
+If Bit 0 of D is 0, calibration run in reverse. Else, calibration runs in forward </br>
+If Bit 1 of D is 0, frequency calibration sweep. Else, incremental frequency calibration sweep only </br>
+If Bit 2 of D is 1, automated calibration sweep followed by an incremental frequency calibration sweep </br>
+Bit 3 to 7 are all set to 0 </br>
+This command is used in function *calibrate* </br>
+
+### Rasberry Pi Terminal
+Setting Linear Range </br>
+Home axis [x,y,z] </br>
+Boundries (4 numbers will be displayed, the first and third one are the distance from needle to the x boundries. The second and fouth one are the distance from needle to the y boundries.) </br>
+Constraint Linear Range (The distance from needle to closest boundries) </br>
+Scaled Range (Range of motion) </br>
+XlimMin (Lower boundery of x) </br> 
+xlimmax (Upper boundery of x)</br>
+Ylimmin (Lower boundery of y)</br>
+ylimmax (Upper boundery of y)</br>
+Y Linear Range </br>
+X Linear Range </br>
+X, Y in scale of 1000 </br>
+
+X position </br>
+Y position </br>
 
 <a name="Partslink"></a>
 ## Parts Links:
