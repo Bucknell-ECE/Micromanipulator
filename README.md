@@ -59,7 +59,16 @@ represent minimum sensitivity
 
 ### Linear Smart Stage Configuration:
 08: Move to Target </br>
-<08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). This command is used in function *goToLocation* </br>
+<08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
+There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
+
+87: Run Frequency Calibration </br>
+<87 D[ XX]> D is the calibration movement direction and calibration type. </br>
+If Bit 0 of D is 0, calibration run in reverse. Else, calibration runs in forward </br>
+If Bit 1 of D is 0, frequency calibration sweep. Else, incremental frequency calibration sweep only </br>
+If Bit 2 of D is 1, automated calibration sweep followed by an incremental frequency calibration sweep </br>
+Bit 3 to 7 are all set to 0 </br>
+
 
 
 <a name="Partslink"></a>
