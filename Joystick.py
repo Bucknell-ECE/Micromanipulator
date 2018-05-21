@@ -20,6 +20,8 @@ buttonMap = {
     2: 'Zup',
     3: 'Home',
     4: 'ChangeMode',
+    7: 'Z Sensitivity Up',
+    8: 'Z Sensitivity Down',
     9: 'ResetHome'
 }
 
