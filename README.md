@@ -59,7 +59,7 @@ Button +/- : Adjusting the sensitivity of X and Y. Due to configuration issue, t
 represent minimum sensitivity
 
 ### Linear Smart Stage Configuration:
-**06**: Move Closed-Loop step <\br>
+**06**: Move Closed-Loop step </br>
 <06 D[SSSSSSSS]> If D=1, motor runs forward. If D=0, motor runs in reverse. Set D to N to set the step size without moving the actuator. 
 This command is used in the *startup* function to finish the start up steps. The *startup* function is not yet finished. 
 
@@ -73,7 +73,7 @@ SSSSSS is the motor status. </br>
 PPPPPPPP is the absolute position in encoder count. </br>
 EEEEEEEE is the position error in encoder counts. </br>
 The table for motor status refer to Page 16-18 in M3-LS-1.8-6 Smart Stage manual </br>
-This command is used in function *getPositionFromM3LS* <\br>
+This command is used in function *getPositionFromM3LS* </br>
 
 **87**: Run Frequency Calibration </br>
 <87 D[ XX]> D is the calibration movement direction and calibration type. </br>
