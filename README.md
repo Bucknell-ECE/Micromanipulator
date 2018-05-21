@@ -62,12 +62,21 @@ represent minimum sensitivity
 <08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
 There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
 
+10: View Closed-Loop Status and Position
+<10>. Read back <10 SSSSSS PPPPPPPP EEEEEEEE>. </br>
+SSSSSS is the motor status. </br>
+PPPPPPPP is the absolute position in encoder count. </br>
+EEEEEEEE is the position error in encoder counts. </br>
+The table for motor status refer to Page 16-18 in M3-LS-1.8-6 Smart Stage manual </br>
+This command is used in function *getPositionFromM3LS* <\br>
+
 87: Run Frequency Calibration </br>
 <87 D[ XX]> D is the calibration movement direction and calibration type. </br>
 If Bit 0 of D is 0, calibration run in reverse. Else, calibration runs in forward </br>
 If Bit 1 of D is 0, frequency calibration sweep. Else, incremental frequency calibration sweep only </br>
 If Bit 2 of D is 1, automated calibration sweep followed by an incremental frequency calibration sweep </br>
 Bit 3 to 7 are all set to 0 </br>
+This command is used in function *calibrate* </br>
 
 
 
