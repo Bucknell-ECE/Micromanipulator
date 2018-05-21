@@ -46,14 +46,14 @@ The designed micromanipulator provides user with position mode. The microneedle 
 ### Modules
 
 <a name="Configuration"></a>
-## Configuration
+## Testing and Configuration
 --------------
 ### Joystick Guide
-Button 3: Z Up
-Button 4: Z Down
-Button 8: Z sensitivity increase
-Button 9: Z sensitivity decrease
-Button 10: Reset Home to the center of stage
+Button 3: Z Up </br>
+Button 4: Z Down </br>
+Button 8: Z sensitivity increase </br>
+Button 9: Z sensitivity decrease </br>
+Button 10: Reset Home to the center of stage </br>
 Button +/- : Adjusting the sensitivity of X and Y. Due to configuration issue, the "-" sign represent maximum sensitivity, the "+" sign
 represent minimum sensitivity
 
