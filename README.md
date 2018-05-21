@@ -49,8 +49,9 @@ The designed micromanipulator provides user with position mode. The microneedle 
 ## Testing and Configuration
 --------------
 ### Joystick Guide
+Button 2: Z Down </br>
 Button 3: Z Up </br>
-Button 4: Z Down </br>
+Button 4: Set Home </br>
 Button 8: Z sensitivity increase </br>
 Button 9: Z sensitivity decrease </br>
 Button 10: Reset Home to the center of stage </br>
