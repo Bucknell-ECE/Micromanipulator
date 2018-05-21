@@ -83,7 +83,22 @@ If Bit 2 of D is 1, automated calibration sweep followed by an incremental frequ
 Bit 3 to 7 are all set to 0 </br>
 This command is used in function *calibrate* </br>
 
+### Rasberry Pi Terminal
+Setting Linear Range <\br>
+Home axis [x,y,z] <\br>
+Boundries (4 numbers will be displayed, the first and third one are the distance from needle to the x boundries. The second and fouth one are the distance from needle to the y boundries.) <\br>
+Constraint Linear Range (The distance from needle to closest boundries) <\br>
+Scaled Range (Range of motion) <\br>
+XlimMin (Lower boundery of x) <\br> 
+xlimmax (Upper boundery of x)<\br>
+Ylimmin (Lower boundery of y)<\br>
+ylimmax (Upper boundery of y)<\br>
+Y Linear Range <\br>
+X Linear Range <\br>
+X, Y in scale of 1000 <\br>
 
+X position <\br>
+Y position <\br>
 
 <a name="Partslink"></a>
 ## Parts Links:
