@@ -58,6 +58,10 @@ Button +/- : Adjusting the sensitivity of X and Y. Due to configuration issue, t
 represent minimum sensitivity
 
 ### Linear Smart Stage Configuration:
+**06**: Move Closed-Loop step <\br>
+<06 D[SSSSSSSS]> If D=1, motor runs forward. If D=0, motor runs in reverse. Set D to N to set the step size without moving the actuator. 
+This command is used in the *startup* function to finish the start up steps. The *startup* function is not yet finished. 
+
 **08**: Move to Target </br>
 <08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
 There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
