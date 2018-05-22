@@ -112,8 +112,8 @@ def setBounds():
     # zaxis.MotorDirection(z_status)
     # xaxis.Running(x_status)
     # zaxis.Running(z_status)
-    # print('Getstatus X',xaxis.getstatus())
-    # print('Getstatus Z',zaxis.getstatus())
+    print('Getstatus X',xaxis.getstatus())
+    print('Getstatus Z',zaxis.getstatus())
 
 while True:
 
