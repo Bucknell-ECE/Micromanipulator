@@ -72,10 +72,10 @@ class StageSPI(Stage):
         temp = self.read()  # store incoming data from motor in list
         return temp
 
-        rcvEncodedStatus = ''
-        for element in range(6):
-            rcvEncodedStatus += str(temp[6 + element])
-        print(rcvEncodedStatus)
+        # rcvEncodedStatus = ''
+        # for element in range(6):
+        #     rcvEncodedStatus += str(temp[6 + element])
+        # print(rcvEncodedStatus)
 
         # status = ''
         # for element in range(len(rcvEncodedStatus)):
