@@ -164,7 +164,7 @@ class Stage(object):
         time.sleep(0.2)
         temp = self.read()  # store incoming data from motor in list
 
-        rcvEncodedStatus = []
+        rcvEncodedStatus = ''
         for element in range(6):
             rcvEncodedStatus += str(temp[6 + element])
         status = int(rcvEncodedStatus, 16)
