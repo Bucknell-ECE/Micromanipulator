@@ -15,6 +15,7 @@ from Stage import Stage
 from helper import *
 import time
 import spidev
+import binascii
 EXPECTED_RETURN_LENGTH = 24
 
 
