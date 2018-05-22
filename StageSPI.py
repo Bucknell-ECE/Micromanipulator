@@ -73,19 +73,19 @@ class StageSPI(Stage):
         temp = self.read()  # store incoming data from motor in list
         return temp
 
-        # rcvEncodedStatus = ''
-        # for element in range(6):
-        #     rcvEncodedStatus += str(temp[6 + element])
-        # print(rcvEncodedStatus)
+        rcvEncodedStatus = ''
+        for element in range(6):
+            rcvEncodedStatus += str(temp[6 + element])
+        print(rcvEncodedStatus)
 
-        # status = ''
-        # for element in range(len(rcvEncodedStatus)):
-        #     #binary_string = binascii.unhexlify(rcvEncodedStatus[element])
-        #     #status += binary_string
-        #     binary_string = format(int(rcvEncodedStatus[element]),'04b')
-        #     status += binary_string
-        #
-        # return status
+        status = ''
+        for element in range(len(rcvEncodedStatus)):
+            #binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+            #status += binary_string
+            binary_string = format(int(rcvEncodedStatus[element]),'04b')
+            status += binary_string
+
+        return status
 
         #return status
 
