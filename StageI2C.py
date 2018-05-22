@@ -62,7 +62,7 @@ class StageI2C(Stage):
         rcvEncodedStatus = ''
         for element in range(6):
             rcvEncodedStatus += str(temp[4 + element])
-        #return rcvEncodedStatus
+        print(rcvEncodedStatus)
 
         status = ''
         for element in range(len(rcvEncodedStatus)):

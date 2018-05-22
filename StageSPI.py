@@ -75,7 +75,7 @@ class StageSPI(Stage):
         rcvEncodedStatus = ''
         for element in range(6):
             rcvEncodedStatus += str(temp[6 + element])
-        #return rcvEncodedStatus
+        print(rcvEncodedStatus)
 
         status = ''
         for element in range(len(rcvEncodedStatus)):
