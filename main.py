@@ -104,8 +104,14 @@ def setBounds():
     print('ylimmax', ylinearRangeMax)
     print('ylinearrange', ylinearRange)
     print('xlinearRange', xlinearRange)
-    print('Getstatus X',xaxis.getstatus())
-    print('Getstatus Z', zaxis.getstatus())
+
+    x_status = xaxis.getstatus()
+    z_status = zaxis.getstatus()
+
+    xaxis.MotorDirection(x_status)
+    zaxis.MotorDirection(z_status)
+    # print('Getstatus X',xaxis.getstatus())
+    # print('Getstatus Z', zaxis.getstatus())
 
 while True:
 
