@@ -78,9 +78,10 @@ class StageSPI(Stage):
             rcvEncodedStatus += str(temp[6 + element])
         return rcvEncodedStatus
 
-        # status = ''
-        # for element in range(len(rcvEncodedStatus)):
-        #     binary_string = binascii.unhexlify(rcvEncodedStatus[element])
-        #     status += binary_string
-        # return status
+        status = ''
+        for element in range(len(rcvEncodedStatus)):
+            #binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+            #status += binary_string
+            print(rcvEncodedStatus[element])
+        #return status
 
