@@ -167,8 +167,7 @@ class Stage(object):
         rcvEncodedStatus = ''
         for element in range(6):
             rcvEncodedStatus += str(temp[6 + element])
-        status = int(rcvEncodedStatus, 16)
-        return status
+        return rcvEncodedStatus
 
     def goToLocation(self, location):
         """
