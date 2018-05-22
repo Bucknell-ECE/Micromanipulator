@@ -104,7 +104,8 @@ def setBounds():
     print('ylimmax', ylinearRangeMax)
     print('ylinearrange', ylinearRange)
     print('xlinearRange', xlinearRange)
-
+    print('Getstatus X',xaxis.getstatus())
+    print('Getstatus Z', zaxis.getstatus())
 
 while True:
 

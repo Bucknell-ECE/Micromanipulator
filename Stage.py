@@ -159,6 +159,12 @@ class Stage(object):
         print('The current position Reported by M3LS is : ', position)
         return position
 
+    def getstatus(self):
+        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        time.sleep(0.2)
+        temp = self.read()  # store incoming data from motor in list
+        return temp
+
     def goToLocation(self, location):
         """
         Sends the stage to the location specified, in encoder counts
