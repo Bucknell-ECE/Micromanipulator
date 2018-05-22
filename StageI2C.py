@@ -74,3 +74,15 @@ class StageI2C(Stage):
 
         return status
         # return status
+
+    def MotorDirection(self,status):
+        if status[1] == '0':
+            print('Running Reverse')
+        else:
+            print('Running Forward')
+
+    def Running (self, status):
+        if status[1] == '0':
+            print('Motor is not running')
+        else:
+            print('Motor is running')
