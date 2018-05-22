@@ -163,12 +163,12 @@ class Stage(object):
         self.sendCommandNoVars('10')  # send query asking about motor status and position
         time.sleep(0.2)
         temp = self.read()  # store incoming data from motor in list
-        return temp
+        #return temp
 
-        # rcvEncodedStatus = ''
-        # for element in range(6):
-        #     rcvEncodedStatus += str(temp[6 + element])
-        # return rcvEncodedStatus
+        rcvEncodedStatus = ''
+        for element in range(6):
+            rcvEncodedStatus += str(temp[6 + element])
+        return rcvEncodedStatus
 
     def goToLocation(self, location):
         """
