@@ -8,6 +8,7 @@ Originally Created: R. Nance 12/2017
 import Stage
 import smbus
 import time
+import binascii
 from Stage import Stage
 from helper import *
 
@@ -62,4 +63,10 @@ class StageI2C(Stage):
         rcvEncodedStatus = ''
         for element in range(6):
             rcvEncodedStatus += str(temp[4 + element])
-        return rcvEncodedStatus
+        #return rcvEncodedStatus
+
+        status = ''
+        for element in range(length(rcvEncodedStatus)):
+            binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+            status += binary_string
+        return status
