@@ -85,7 +85,7 @@ class StageSPI(Stage):
             binary_string = format(int(rcvEncodedStatus[element]),'04b')
             status += binary_string
 
-        print(status)
+        return status
 
         #return status
 
