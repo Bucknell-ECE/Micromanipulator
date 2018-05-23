@@ -61,18 +61,19 @@ class StageI2C(Stage):
 
         rcvEncodedStatus = ''
         for element in range(6):
-            rcvEncodedStatus += str(temp[4 + element])
-        #print(rcvEncodedStatus)
+            rcvEncodedStatus += format(int(str(temp[4 + element])), '04b')
+        print(rcvEncodedStatus)
 
-        status = ''
-        for element in range(len(rcvEncodedStatus)):
-            # binary_string = binascii.unhexlify(rcvEncodedStatus[element])
-            # status += binary_string
-            binary_string = format(int(rcvEncodedStatus[element]),'04b')
-            status += binary_string
 
-        return status
+        # status = ''
+        # for element in range(len(rcvEncodedStatus)):
+        #     # binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+        #     # status += binary_string
+        #     binary_string = format(int(rcvEncodedStatus[element]),'04b')
+        #     status += binary_string
+        #
         # return status
+        # # return status
 
     # def MotorDirection(self,status):
     #     if status[1] == '0':

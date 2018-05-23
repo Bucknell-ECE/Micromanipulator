@@ -107,7 +107,7 @@ def setBounds():
 
     # x_status = xaxis.getstatus()
     # z_status = zaxis.getstatus()
-    #
+
     # xaxis.MotorDirection(x_status)
     # zaxis.MotorDirection(z_status)
     # xaxis.Running(x_status)
