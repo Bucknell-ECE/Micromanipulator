@@ -112,8 +112,7 @@ def setBounds():
     # zaxis.MotorDirection(z_status)
     # xaxis.Running(x_status)
     # zaxis.Running(z_status)
-    print('Getstatus X',xaxis.getstatus())
-    print('Getstatus Z',zaxis.getstatus())
+
 
 while True:
 
@@ -128,12 +127,14 @@ while True:
         setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
+        print('Getstatus X', xaxis.getstatus())
+        print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
                 zaxis.zMove(0, Zsensitivity) # move up120 encoder counts
             for nums in range(buttons.count('Zdown')):
-                print('Theres a zdonw')
+                print('Theres a ZDOWN')
                 zaxis.zMove(1, Zsensitivity) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
