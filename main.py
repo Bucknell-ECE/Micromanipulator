@@ -58,12 +58,6 @@ joy = CustomJoystick('Logitech', 0)
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-def SoundPlay():
-    pygame.mixer.init()
-    pygame.mixer.music.load("36626699.mp3")
-    pygame.mixer.music.play()
-    while pygame.mixer.music.get_busy() == True:
-        continue
 
 
 def setBounds():
@@ -133,8 +127,9 @@ while True:
         setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
-        SoundPlay()
-        #AudioNoti(x,y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
+        X = mapval(x,0,2000,xlinearRangeMin,xlinearRangeMax)
+        Y = mapval(y,0,2000,ylinearRangeMin,ylinearRangeMax)
+        AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
         #print('Getstatus X', xaxis.getstatus())
         #print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
