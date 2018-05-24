@@ -127,8 +127,9 @@ while True:
         setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
-        print('Getstatus X', xaxis.getstatus())
-        print('Getstatus Z', zaxis.getstatus())
+        AudioNoti(x,y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
+        #print('Getstatus X', xaxis.getstatus())
+        #print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')

@@ -155,7 +155,13 @@ def mapval(x, inMin, inMax, outMin, outMax):
     """
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
-
+def AudioNoti(x,y,xMin,xMax,yMin,yMax):
+    if x == xMin or x == xMax or y == yMin or y == yMax:
+        pygame.mixer.init()
+        pygame.mixer.music.load("36626699.mp3")
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy() == True:
+            continue
 
 
 # def centerAllStages(axis1, axis2, axis3):
