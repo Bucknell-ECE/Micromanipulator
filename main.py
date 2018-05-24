@@ -125,10 +125,11 @@ while True:
         x = joy.getX()
         y = 2000 - joy.getY()
         setBounds()
+        AudioNoti(x,y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
         print('X: ', x, 'Y', y)
         print(buttons)
-        print('Getstatus X', xaxis.getstatus())
-        print('Getstatus Z', zaxis.getstatus())
+        # print('Getstatus X', xaxis.getstatus())
+        # print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
