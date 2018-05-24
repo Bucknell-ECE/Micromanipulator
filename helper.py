@@ -6,7 +6,7 @@ Originating Branch: Master
 Originally Created: R. Nance 03/2018
 '''
 
-
+import pygame
 
 def encodeToCommand(value):
     """
