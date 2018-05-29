@@ -13,6 +13,7 @@ from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 
+from guizero import App
 from datetime import datetime
 from Joystick import *
 import pygame
@@ -52,6 +53,8 @@ lastMillis = 0
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
+app = App(title="Micromanipulator")
+app.display()
 
 joy = CustomJoystick('Logitech', 0)
 
