@@ -13,7 +13,6 @@ from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 
-from Tkinter import *
 from datetime import datetime
 from Joystick import *
 import pygame
@@ -53,7 +52,8 @@ lastMillis = 0
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
-#root = Tk(className = 'Micromanipulator')
+# root = Tk(className = 'Micromanipulator')
+# root.mainloop()
 
 joy = CustomJoystick('Logitech', 0)
 
@@ -165,7 +165,6 @@ while True:
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        #root.mainloop()
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
