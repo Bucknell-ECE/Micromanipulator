@@ -52,8 +52,9 @@ lastMillis = 0
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
-# root = Tk(className = 'Micromanipulator')
-# root.mainloop()
+root = Tk(className = 'Micromanipulator')
+root.after(0)
+root.mainloop()
 
 joy = CustomJoystick('Logitech', 0)
 
