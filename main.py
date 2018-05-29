@@ -149,7 +149,6 @@ while True:
                 yaxis.setHome(6000)
             for nums in range(buttons.count('GetStatus')):
                 print('Getstatus X', xaxis.getstatus())
-
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
