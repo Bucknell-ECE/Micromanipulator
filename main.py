@@ -35,6 +35,7 @@ zaxis = StageI2C(0x40, 6000, 1)
 
 xaxis.startup()
 yaxis.startup()
+zaxis.startup()
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -124,8 +125,7 @@ while True:
 
     try:
         #print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
-        print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
-        #print('start up test', xaxis.sendCommand('06',[48] + [32] + encodeToCommand(100)))
+        #print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
