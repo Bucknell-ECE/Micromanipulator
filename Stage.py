@@ -109,7 +109,7 @@ class Stage(object):
         :return:
         """
         command_to_send = self.buildCommandNoVars(command_code)
-        print(commandToString(command_to_send))
+        #print(commandToString(command_to_send))
         self.write(command_to_send)
 
     def calibrate(self):
