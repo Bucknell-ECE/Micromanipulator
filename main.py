@@ -125,8 +125,9 @@ while True:
 
     try:
         #print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
-        print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
-        #print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100))) Test result: <06 0 00000064>\r
+        #print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
+        print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
+        #Test result: <06 0 00000064>\r
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
