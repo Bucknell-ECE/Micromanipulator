@@ -123,6 +123,8 @@ def setBounds():
 while True:
 
     try:
+        print('xaxis location',xaxis.getPositionFromM3LS())
+        #print('go to location test', sendCommand('08', encodeToCommand(location)))
         #print('start up test', xaxis.sendCommand('06',[48] + [32] + encodeToCommand(100)))
         time.sleep(0.01)
         buttons = []
