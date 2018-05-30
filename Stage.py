@@ -133,7 +133,7 @@ class Stage(object):
         """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
-        self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
+        #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
         self.sendCommand('06', ['0x30'] + ['0x20'] + encoderToCommand(100))
         #self.calibrate()
 
