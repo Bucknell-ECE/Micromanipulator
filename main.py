@@ -33,6 +33,8 @@ yaxis = StageSPI(0, 1, 6000)
 
 zaxis = StageI2C(0x40, 6000, 1)
 
+xaxis.startup()
+yaxis.startup()
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -121,8 +123,7 @@ def setBounds():
 while True:
 
     try:
-        print('start up test', xaxis.sendCommand('06',[48] + [32] + encodeToCommand(100)))
-        #print('start up test', encodeToCommand(100))
+        #print('start up test', xaxis.sendCommand('06',[48] + [32] + encodeToCommand(100)))
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
