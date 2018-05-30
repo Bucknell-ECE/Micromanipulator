@@ -97,7 +97,7 @@ class Stage(object):
         """
         command_to_send = self.buildCommand(command_code, command_vars)
         print(commandToString(command_to_send))
-        self.write(command_to_send)
+        #self.write(command_to_send)
 
 
     def sendCommandNoVars(self, command_code):
