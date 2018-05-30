@@ -96,7 +96,8 @@ class Stage(object):
         :return:
         """
         command_to_send = self.buildCommand(command_code, command_vars)
-        print(commandToString(command_to_send))
+        print(command_to_send)
+        #print(commandToString(command_to_send))
         #self.write(command_to_send)
 
 
