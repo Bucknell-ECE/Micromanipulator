@@ -96,10 +96,10 @@ class Stage(object):
         :return:
         """
         command_to_send = self.buildCommand(command_code, command_vars)
-        return command_to_send
+        #return command_to_send
         #return(commandToString(command_to_send))
-        #print(commandToString(command_to_send))
-        #self.write(command_to_send)
+        print(commandToString(command_to_send))
+        self.write(command_to_send)
 
 
     def sendCommandNoVars(self, command_code):
@@ -138,7 +138,7 @@ class Stage(object):
         #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
         self.sendCommand('06', [48] + [32] + encodeToCommand(100))
         self.sendCommand('06', [49] + [32] + encodeToCommand(100))
-        #self.calibrate()
+        self.calibrate()
 
     def getPositionFromM3LS(self):
         """
