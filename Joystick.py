@@ -29,7 +29,7 @@ buttonMap = {
 class CustomJoystick:
     #will need to create a button mapping function that imports text file stuff here. THis is to get a GUI working
 
-    #will need to create a button mapping function that imports text file stuff here.
+    #will need to create a button mapping function that imports text file stuff here.`
 
     def __init__(self, name, number):
         self.name = name

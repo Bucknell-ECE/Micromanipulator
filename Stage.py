@@ -134,7 +134,7 @@ class Stage(object):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
-        #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderToCommand(100))
+        self.sendCommand('06', ['0x30'] + ['0x20'] + encoderToCommand(100))
         #self.calibrate()
 
     def getPositionFromM3LS(self):
@@ -162,16 +162,6 @@ class Stage(object):
         print('The current position Reported by M3LS is : ', position)
         return position
 
-    # def getstatus(self):
-    #     self.sendCommandNoVars('10')  # send query asking about motor status and position
-    #     time.sleep(0.2)
-    #     temp = self.read()  # store incoming data from motor in list
-    #     return temp
-    #
-    #     rcvEncodedStatus = ''
-    #     for element in range(6):
-    #         rcvEncodedStatus += str(temp[6 + element])
-    #     return rcvEncodedStatus
 
     def goToLocation(self, location):
         """
