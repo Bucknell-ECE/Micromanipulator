@@ -121,7 +121,7 @@ def setBounds():
 while True:
 
     try:
-        print('start up test', xaxis.sendCommand('06',['48'] + ['32']))
+        print('start up test', xaxis.sendCommand('06',[48] + [32]))
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
