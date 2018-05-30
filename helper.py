@@ -156,9 +156,7 @@ def mapval(x, inMin, inMax, outMin, outMax):
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
 def AudioNoti(x,y,xMin,xMax,yMin,yMax):
-    X = mapval(x, 0, 2000, xMin, xMax)
-    Y = mapval(x, 0, 2000, yMin, yMax)
-    if X == xMin or X == xMax or Y == yMin or Y == yMax:
+    if x == xMin or x == xMax or y == yMin or y == yMax:
         print('Hit the boundary')
         pygame.mixer.init()
         pygame.mixer.music.load("36626699.mp3")
