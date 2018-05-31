@@ -117,7 +117,6 @@ def setBounds():
     # xaxis.MotorDirection(x_status)
     # zaxis.MotorDirection(z_status)
     # xaxis.Running(x_status)
-    # zaxis.Running(z_status)
 
 
 while True:
