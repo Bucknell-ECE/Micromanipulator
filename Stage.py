@@ -91,7 +91,7 @@ class Stage(object):
         """
         Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
         documentation in square brackets.
-        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
+        :param command_code: two digit integer for the command you want to send. For example: Move to target is 08........
         :param command_vars: the optional paramter for the command, in list form.
         :return:
         """
