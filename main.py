@@ -19,7 +19,7 @@ from Tkinter import *
 import pygame
 import random
 import time
-
+import signal
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
@@ -160,8 +160,8 @@ while True:
                 print('Getstatus X', xaxis.getstatus())
                 print('Getstatus Y', yaxis.getstatus())
                 print('Getstatus Z', zaxis.getstatus())
-                while buttons.count('GetStatus') == 1:
-                    buttons = joy.getButtons()
+                signal.pause()
+
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
