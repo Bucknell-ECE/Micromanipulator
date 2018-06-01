@@ -46,7 +46,7 @@ ylinearRange = 12000
 constrainedLinearRange = 12000
 sensitivity = 50
 Zsensitivity = 200
-
+getstatus = 0
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -157,11 +157,14 @@ while True:
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
             for nums in range(buttons.count('GetStatus')):
+                getstatus = 1
                 print('Getstatus X', xaxis.getstatus())
                 print('Getstatus Y', yaxis.getstatus())
                 print('Getstatus Z', zaxis.getstatus())
-                while buttons.count('GetStatus') == 1:
-                    signal.pause()
+                while getstatus == 1:
+                    buttons = joy.getButtons()
+                    if buttons.count('GetStatus') == 1:
+                        getstatus = 0
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
