@@ -157,14 +157,14 @@ while True:
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
             for nums in range(buttons.count('GetStatus')):
-                getstatus = 1
-                statusx = xaxis.getstatus()
-                statusinfo(statusx)
-                statusy = yaxis.getstatus()
-                statusinfo(statusy)
-                #print('Getstatus X', xaxis.getstatus())
-               #print('Getstatus Y', yaxis.getstatus())
-               #print('Getstatus Z', zaxis.getstatus())
+                # getstatus = 1
+                # statusx = xaxis.getstatus()
+                # statusinfo(statusx)
+                # statusy = yaxis.getstatus()
+                # statusinfo(statusy)
+                print('Getstatus X', xaxis.getstatus())
+                print('Getstatus Y', yaxis.getstatus())
+                print('Getstatus Z', zaxis.getstatus())
                 # while getstatus == 1:
                 #     buttons = joy.getButtons()
                 #     if buttons.count('GetStatus'):
