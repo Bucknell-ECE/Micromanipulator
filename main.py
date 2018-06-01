@@ -160,8 +160,8 @@ while True:
                 print('Getstatus X', xaxis.getstatus())
                 print('Getstatus Y', yaxis.getstatus())
                 print('Getstatus Z', zaxis.getstatus())
-                while button.count('GetStatus') == 0:
-                    button = joy.getButtons()
+                while buttons.count('GetStatus') == 0:
+                    buttons = joy.getButtons()
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
