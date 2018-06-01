@@ -157,7 +157,7 @@ while True:
                 xaxis.setHome(6000)
                 yaxis.setHome(6000)
             for nums in range(buttons.count('GetStatus')):
-                # getstatus = 1
+                getstatus = 1
                 # statusx = xaxis.getstatus()
                 # statusinfo(statusx)
                 # statusy = yaxis.getstatus()
