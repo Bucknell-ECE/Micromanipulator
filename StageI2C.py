@@ -64,7 +64,6 @@ class StageI2C(Stage):
             rcvEncodedStatus += str(temp[4 + element])
         #print(rcvEncodedStatus)
 
-
         status = ''
         for element in range(len(rcvEncodedStatus)):
             # binary_string = binascii.unhexlify(rcvEncodedStatus[element])
