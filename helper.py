@@ -164,8 +164,33 @@ def AudioNoti(x,y,xMin,xMax,yMin,yMax):
         while pygame.mixer.music.get_busy() == True:
             continue
 
-
-
+def statusinfo(status):
+    if status[0] == '1':
+        print('The position error exceeds the stall detection threshold while motor is running')
+    if status[3] == '1':
+        print('Maintenance mode enabled')
+    if status[4] == '1':
+        print('Motor moving towards target position')
+    if status[7] == '1':
+        print('Encoded Error occur')
+    if status[8] == '1':
+        print('Background job active')
+    if status[13] == '1':
+        print('Reverse travel limit reached')
+    if status[14] == '1':
+        print('Forward travel limit reached')
+    if status[20] == '1':
+        print('Motor Communication ok')
+    if status[20] == '0':
+        print('Motor Communication not good')
+    if status[21] == '1':
+        print('Motor is running')
+    if status[21] == '0':
+        print('Motor is not running')
+    if status[22] == '1':
+        print('Motor going forward')
+    if status[22] == '0':
+        print('Motor going backward')
 # def centerAllStages(axis1, axis2, axis3):
 #     """
 #     Sends all stages to their central location.

@@ -158,14 +158,18 @@ while True:
                 yaxis.setHome(6000)
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
-                print('Getstatus X', xaxis.getstatus())
-                print('Getstatus Y', yaxis.getstatus())
-                print('Getstatus Z', zaxis.getstatus())
+                statusx = xaxis.getstatus()
+                statusinfo(statusx)
+                statusy = yaxis.getstatus()
+                statusinfo(statusy)
+                #print('Getstatus X', xaxis.getstatus())
+               #print('Getstatus Y', yaxis.getstatus())
+               #print('Getstatus Z', zaxis.getstatus())
                 # while getstatus == 1:
                 #     buttons = joy.getButtons()
                 #     if buttons.count('GetStatus'):
                 #         getstatus = 0
-                # signal.pause()
+                signal.pause()
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
