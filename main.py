@@ -165,7 +165,7 @@ while True:
                 #     buttons = joy.getButtons()
                 #     if buttons.count('GetStatus'):
                 #         getstatus = 0
-                signal.pause()
+                # signal.pause()
             for nums in range(buttons.count('Z Sensitivity Up')):
                 print('Z sensitivity up by 50, Now the sensitivity is',Zsensitivity)
                 Zsensitivity += 50
