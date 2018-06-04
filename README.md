@@ -1,6 +1,6 @@
 # Micromanipulator
 
-![Demonstration](https://ws2.sinaimg.cn/large/006tKfTcly1freqzbwdykj31kw16okjm.jpg)
+![Demonstration](https://ws1.sinaimg.cn/large/006tKfTcly1frzp397kb4j31kw11j1ky.jpg)
 
 ## Table of Contents
 --------------------
