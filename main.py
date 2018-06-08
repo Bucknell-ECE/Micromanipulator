@@ -125,7 +125,6 @@ while True:
         # Test result: <06 0 00000064>\r
         root = Tk(className='Micromanipulator')
         positionx = Label(root)
-        positionx['text'] = ('Position X:', x)
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
@@ -134,6 +133,7 @@ while True:
         x = joy.getX()
         y = 2000 - joy.getY()
         setBounds()
+        positionx['text'] = ('Position X:', x)
         print('X: ', x, 'Y', y)
         print(buttons)
         X = mapval(x,0,2000,xlinearRangeMin,xlinearRangeMax)
