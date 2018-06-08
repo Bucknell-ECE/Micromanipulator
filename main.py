@@ -136,7 +136,7 @@ while True:
         print(buttons)
         X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
         Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
-        # AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
+        AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
         # print('Getstatus X', xaxis.getstatus())
         # print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
