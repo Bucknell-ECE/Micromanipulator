@@ -159,7 +159,7 @@ def AudioNoti(x,y,xMin,xMax,yMin,yMax):
     if x == xMin or x == xMax or y == yMin or y == yMax:
         print('Hit the boundary')
         pygame.mixer.init()
-        pygame.mixer.music.load("beep-01a.mp3")
+        pygame.mixer.music.load("37210703.mp3")
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy() == True:
             continue
