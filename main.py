@@ -47,7 +47,8 @@ constrainedLinearRange = 12000
 sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
-
+x = 0
+y = 0
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
@@ -116,11 +117,10 @@ def setBounds():
     # xaxis.Running(x_status)
 
 def main():
+
     while True:
 
         try:
-            global x
-            global y
             #print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
             #print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
             #print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
@@ -200,7 +200,7 @@ def main():
 
 root = Tk(className='Micromanipulator')
 positionx=Label(root)
-positionx['text']= ('Position X',x)
+positionx['text']= ('Position X', x)
 positionx.pack()
 root.after(0,main())
 root.mainloop()
