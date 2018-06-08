@@ -204,40 +204,40 @@ positionx['text']= ('Position X',x)
 positionx.pack()
 root.after(0,main())
 root.mainloop()
-    '''
-    except IOError:
-        #xaxis.sendCommandNoVars('19')
-        #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
-        #print('temp', temp)
-        xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
-        print('temp', temp)
-        f = open('errorLog.txt', 'a')
-        f.write('\n' + 'Error Occured on '+ str(datetime.now()))
-        #f.write(str(temp))
-        raise
-        #f.close()
 
-    '''
+'''
+except IOError:
+    #xaxis.sendCommandNoVars('19')
+    #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+    #print('temp', temp)
+    xaxis.sendCommandNoVars('10')
+    temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+    print('temp', temp)
+    f = open('errorLog.txt', 'a')
+    f.write('\n' + 'Error Occured on '+ str(datetime.now()))
+    #f.write(str(temp))
+    raise
+    #f.close()
 
+'''
 
-    '''
-    #currentMillis = datetime.now().microsecond
-    currentMillis = time.time() * 1000000
-    if currentMillis - lastMillis < refreshRate:
-        x = 1
-        print('l', lastMillis)
-        print(currentMillis)
-    else:
-        print('running')
-        lastMillis = currentMillis
-        #if controlMode == 'velocity':
-            #fsdjfl
-        if controlMode == 'position':
-            setBounds()
+'''
+#currentMillis = datetime.now().microsecond
+currentMillis = time.time() * 1000000
+if currentMillis - lastMillis < refreshRate:
+    x = 1
+    print('l', lastMillis)
+    print(currentMillis)
+else:
+    print('running')
+    lastMillis = currentMillis
+    #if controlMode == 'velocity':
+        #fsdjfl
+    if controlMode == 'position':
+        setBounds()
 
-            xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-            #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+        xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
+        #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
-            #time.sleep(0.1)
-    '''
+        #time.sleep(0.1)
+'''
