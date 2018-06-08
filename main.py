@@ -56,9 +56,6 @@ lastMillis = 0
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
-# root = Tk(className = 'Micromanipulator')
-# root.after(0)
-# root.mainloop()
 
 joy = CustomJoystick('Logitech', 0)
 
@@ -126,6 +123,9 @@ while True:
         #print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
         #print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
         # Test result: <06 0 00000064>\r
+        root = Tk(className='Micromanipulator')
+        positionx = Label(root)
+        positionx['text'] = ('Position X:', x)
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
@@ -182,6 +182,8 @@ while True:
         print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        positionx.pack()
+        root.mainloop()
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
