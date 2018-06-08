@@ -183,7 +183,7 @@ while True:
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         positionx.pack()
-        root.mainloop()
+        #root.mainloop()
 
     except KeyboardInterrupt:
         #xaxis.sendCommandNoVars('19')
