@@ -47,6 +47,7 @@ constrainedLinearRange = 12000
 sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
+global scaleInput
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -116,85 +117,86 @@ def setBounds():
     # xaxis.Running(x_status)
 
 
+def main():
+    while True:
 
-while True:
+        try:
+            # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
+            # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
+            # print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
+            # Test result: <06 0 00000064>\r
+            time.sleep(0.01)
+            buttons = []
+            buttons = joy.getButtons()
+            scaleInput = joy.getThrottle()
+            print(scaleInput)
+            x = joy.getX()
+            y = 2000 - joy.getY()
+            setBounds()
+            print('X: ', x, 'Y', y)
+            print(buttons)
+            X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
+            Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
+            AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
+            # print('Getstatus X', xaxis.getstatus())
+            # print('Getstatus Z', zaxis.getstatus())
+            if len(buttons) != 0:
+                for nums in range(buttons.count('Zup')):
+                    print('Theres a ZUP')
+                    zaxis.zMove(0, Zsensitivity)  # move up120 encoder counts
+                for nums in range(buttons.count('Zdown')):
+                    print('Theres a ZDOWN')
+                    zaxis.zMove(1, Zsensitivity)  # move down some amount 120 encoder counts
+                for nums in range(buttons.count('Home')):
+                    print('Setting home as current position')
+                    xaxis.setCurrentHome()
+                    yaxis.setCurrentHome()
+                for nums in range(buttons.count('ResetHome')):
+                    print('Reset home to the center of the stage')
+                    xaxis.setHome(6000)
+                    yaxis.setHome(6000)
+                for nums in range(buttons.count('GetStatus')):
+                    getstatus = 1
+                    # statusx = xaxis.getstatus()
+                    # statusinfo(statusx)
+                    # statusy = yaxis.getstatus()
+                    # statusinfo(statusy)
+                    print('Getstatus X', xaxis.getstatus())
+                    print('Getstatus Y', yaxis.getstatus())
+                    print('Getstatus Z', zaxis.getstatus())
+                    while getstatus == 1:
+                        buttons = joy.getButtons()
+                        if buttons.count('GetStatus'):
+                            getstatus = 0
+                            # signal.pause()
+                for nums in range(buttons.count('Z Sensitivity Up')):
+                    print('Z sensitivity up by 50, Now the sensitivity is', Zsensitivity)
+                    Zsensitivity += 50
+                for nums in range(buttons.count('Z Sensitivity Down')):
+                    print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
+                    Zsensitivity -= 50
 
-    try:
-        # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
-        # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
-        # print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
-        # Test result: <06 0 00000064>\r
-        time.sleep(0.01)
-        buttons = []
-        buttons = joy.getButtons()
-        scaleInput = joy.getThrottle()
-        print(scaleInput)
-        x = joy.getX()
-        y = 2000 - joy.getY()
-        setBounds()
-        print('X: ', x, 'Y', y)
-        print(buttons)
-        X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
-        Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
-        AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
-        # print('Getstatus X', xaxis.getstatus())
-        # print('Getstatus Z', zaxis.getstatus())
-        if len(buttons) != 0:
-            for nums in range(buttons.count('Zup')):
-                print('Theres a ZUP')
-                zaxis.zMove(0, Zsensitivity)  # move up120 encoder counts
-            for nums in range(buttons.count('Zdown')):
-                print('Theres a ZDOWN')
-                zaxis.zMove(1, Zsensitivity)  # move down some amount 120 encoder counts
-            for nums in range(buttons.count('Home')):
-                print('Setting home as current position')
-                xaxis.setCurrentHome()
-                yaxis.setCurrentHome()
-            for nums in range(buttons.count('ResetHome')):
-                print('Reset home to the center of the stage')
-                xaxis.setHome(6000)
-                yaxis.setHome(6000)
-            for nums in range(buttons.count('GetStatus')):
-                getstatus = 1
-                # statusx = xaxis.getstatus()
-                # statusinfo(statusx)
-                # statusy = yaxis.getstatus()
-                # statusinfo(statusy)
-                print('Getstatus X', xaxis.getstatus())
-                print('Getstatus Y', yaxis.getstatus())
-                print('Getstatus Z', zaxis.getstatus())
-                while getstatus == 1:
-                    buttons = joy.getButtons()
-                    if buttons.count('GetStatus'):
-                        getstatus = 0
-                        # signal.pause()
-            for nums in range(buttons.count('Z Sensitivity Up')):
-                print('Z sensitivity up by 50, Now the sensitivity is', Zsensitivity)
-                Zsensitivity += 50
-            for nums in range(buttons.count('Z Sensitivity Down')):
-                print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
-                Zsensitivity -= 50
-
-        # Main commands to tell the stage to go to a location descibed by the joystick.
-        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+            # Main commands to tell the stage to go to a location descibed by the joystick.
+            xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+            print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+            yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+            print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
 
-    except KeyboardInterrupt:
-        # xaxis.sendCommandNoVars('19')
-        # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
-        print('temp', temp)
-        # xaxis.sendCommandNoVars('10')
-        # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
-        print('temp', temp)
-        f = open('errorLog.txt', 'a')
-        f.write('\n' + 'Keyboard Inturrupt on ' + str(datetime.now()))
-        f.write(str(temp))
-        f.close()
-        print('Completed')
-        raise
+        except KeyboardInterrupt:
+            # xaxis.sendCommandNoVars('19')
+            # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+            print('temp', temp)
+            # xaxis.sendCommandNoVars('10')
+            # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+            print('temp', temp)
+            f = open('errorLog.txt', 'a')
+            f.write('\n' + 'Keyboard Inturrupt on ' + str(datetime.now()))
+            f.write(str(temp))
+            f.close()
+            print('Completed')
+            raise
+main()
 
 # root = Tk(className='Micromanipulator')
 # positionx=Label(root)
