@@ -183,10 +183,10 @@ def main():
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        root=Tk()
-        positionx = Label(root, text = ('Postion x is ',x))
-        positionx.pack()
-        root.update_idletasks()
+        # root=Tk()
+        # positionx = Label(root, text = ('Postion x is ',x))
+        # positionx.pack()
+        # root.update_idletasks()
 
     except KeyboardInterrupt:
         # xaxis.sendCommandNoVars('19')
