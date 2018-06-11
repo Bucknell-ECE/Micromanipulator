@@ -201,6 +201,7 @@ def main():
         print('Completed')
         raise
 
+main()
 # root = Tk()
 # positionx = Label(root, text = "welcome")
 # positionx.pack()
