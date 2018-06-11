@@ -187,7 +187,6 @@ def main():
         positionx = Label(root, text = ('Postion x is ',x))
         positionx.pack()
         root.update_idletasks()
-        root.update()
 
     except KeyboardInterrupt:
         # xaxis.sendCommandNoVars('19')
