@@ -118,7 +118,7 @@ def setBounds():
 
 
 def main():
-
+    global scaleInput
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
         # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
