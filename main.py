@@ -48,7 +48,6 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
-x = 0
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -61,7 +60,6 @@ pygame.joystick.init()  # Initialize joystick module
 
 joy = CustomJoystick('Logitech', 0)
 
-root = Tk()
 
 def setControlMode(newControlMode):
     controlMode = newControlMode
@@ -185,6 +183,9 @@ def main():
         yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
+        root=Tk()
+        positionx = Label(root, text = ('Postion x is ',x))
+        positionx.pack()
 
     except KeyboardInterrupt:
         # xaxis.sendCommandNoVars('19')
@@ -200,13 +201,15 @@ def main():
         print('Completed')
         raise
 
-while True:
-    root = Tk(className = 'Micromanipulator')
-    positionx = Label(root)
-    positionx['text'] = x
-    positionx.pack()
-    root.after(0,main)
-    root.mainloop()
+# root = Tk()
+# positionx = Label(root, text = "welcome")
+# positionx.pack()
+# while True:
+#     root.update()
+#     main()
+#     positionx['text'] = x
+#     positionx.pack()
+
 # root = Tk(className='Micromanipulator')
 # positionx=Label(root)
 # positionx['text']= ('Position X', x)
