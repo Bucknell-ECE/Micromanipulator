@@ -186,6 +186,7 @@ def main():
         root=Tk()
         positionx = Label(root, text = ('Postion x is ',x))
         positionx.pack()
+        root.update_idletasks()
         root.update()
 
     except KeyboardInterrupt:
