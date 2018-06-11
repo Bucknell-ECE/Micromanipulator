@@ -186,6 +186,7 @@ def main():
         root=Tk()
         positionx = Label(root, text = ('Postion x is ',x))
         positionx.pack()
+        root.update()
 
     except KeyboardInterrupt:
         # xaxis.sendCommandNoVars('19')
@@ -201,7 +202,8 @@ def main():
         print('Completed')
         raise
 
-main()
+while True:
+    main()
 # root = Tk()
 # positionx = Label(root, text = "welcome")
 # positionx.pack()
