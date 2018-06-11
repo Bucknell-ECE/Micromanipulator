@@ -196,7 +196,7 @@ def main():
         # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
-        f.write('\n' + 'Keyboard Inturrupt on ' + str(datetime.now()))
+        f.write('\n' + 'Keyboard Interrupt on ' + str(datetime.now()))
         f.write(str(temp))
         f.close()
         print('Completed')
