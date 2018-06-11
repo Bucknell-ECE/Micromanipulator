@@ -48,6 +48,7 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
+x = 0
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -59,6 +60,8 @@ pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
+
+root = Tk()
 
 def setControlMode(newControlMode):
     controlMode = newControlMode
@@ -119,6 +122,7 @@ def setBounds():
 
 def main():
     global scaleInput
+    global x
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
         # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
@@ -197,8 +201,12 @@ def main():
         raise
 
 while True:
-    main()
-
+    root = Tk(className = 'Micromanipulator')
+    positionx = Label(root)
+    positionx['text'] = x
+    positionx.pack()
+    root.after(0,main)
+    root.mainloop()
 # root = Tk(className='Micromanipulator')
 # positionx=Label(root)
 # positionx['text']= ('Position X', x)
