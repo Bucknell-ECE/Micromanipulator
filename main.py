@@ -43,6 +43,7 @@ constrainedLinearRange = 12000
 sensitivity = 50
 Zsensitivity = 200
 
+#random comment
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
