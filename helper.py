@@ -191,6 +191,16 @@ def statusinfo(status):
         print('Motor going forward')
     if status[22] == '0':
         print('Motor going backward')
+
+def sensitivityread():
+    file = open("sensitivity scale.txt","r")
+    return file.read()
+
+def sensitivitywrite(scaleInput):
+    f = open("sensitivity scale.txt", "w+")
+    f.truncate()
+    f.write(str(scaleInput))
+
 # def centerAllStages(axis1, axis2, axis3):
 #     """
 #     Sends all stages to their central location.

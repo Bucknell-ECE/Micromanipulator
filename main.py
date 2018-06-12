@@ -203,14 +203,14 @@ def main():
         print('Completed')
         raise
 
-while True:
-    root=Tk()
-    positionx = Label(root, text = ('Postion x is ', x))
-    positionx.pack()
-    root.mainloop()
-    root.quit()
-    main()
-    
+# while True:
+#     root=Tk()
+#     positionx = Label(root, text = ('Postion x is ', x))
+#     positionx.pack()
+#     root.mainloop()
+#     root.quit()
+#     main()
+
 # root = Tk()
 # positionx = Label(root, text = "welcome")
 # positionx.pack()
@@ -220,12 +220,7 @@ while True:
 #     positionx['text'] = x
 #     positionx.pack()
 
-# root = Tk(className='Micromanipulator')
-# positionx=Label(root)
-# positionx['text']= ('Position X', x)
-# positionx.pack()
-# root.after(0,main())
-# root.mainloop()
+
 
 '''
 except IOError:
