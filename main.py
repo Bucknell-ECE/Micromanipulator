@@ -20,6 +20,7 @@ import pygame
 import random
 import time
 import signal
+import os.path
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
@@ -48,7 +49,9 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
-scaleInput = int(sensitivityread())
+if os.path.exists("/Micromanipulator/sensitivity scale.txt"):
+    scaleInput = sensitivityread()
+
 x = 1000
 
 #locations = [xlocation, ylocation, zlocation]
