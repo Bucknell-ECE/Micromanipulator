@@ -49,7 +49,7 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
-if os.path.exists("/Micromanipulator/sensitivity scale.txt"):
+if os.path.exists("/Micromanipulator/sensitivity.txt"):
     scaleInput = sensitivityread()
 
 x = 1000
