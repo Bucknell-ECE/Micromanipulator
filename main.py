@@ -49,7 +49,8 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
-scaleInput = sensitivityread()
+print('test',sensitivityread())
+time.sleep(5)
 
 x = 1000
 
