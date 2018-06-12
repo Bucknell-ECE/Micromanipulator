@@ -49,7 +49,8 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
-scaleInput = int(sensitivityread())
+if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
+    scaleInput = sensitivityread()
 print('test',scaleInput)
 time.sleep(5)
 
@@ -135,7 +136,8 @@ def main():
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
-        scaleInput = joy.getThrottle()
+        if joy.getThrottle() != 50:
+            scaleInput = scaleInput = joy.getThrottle()
         print(scaleInput)
         sensitivitywrite(scaleInput)
         x = joy.getX()
