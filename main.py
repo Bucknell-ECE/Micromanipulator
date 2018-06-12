@@ -203,6 +203,8 @@ def main():
         print('Completed')
         raise
 
+while True:
+    main()
 # while True:
 #     root=Tk()
 #     positionx = Label(root, text = ('Postion x is ', x))
