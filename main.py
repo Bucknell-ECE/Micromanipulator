@@ -48,6 +48,7 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
+scaleInput = int(sensitivityread())
 x = 1000
 
 #locations = [xlocation, ylocation, zlocation]
@@ -132,6 +133,7 @@ def main():
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         print(scaleInput)
+        sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
         setBounds()
