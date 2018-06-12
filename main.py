@@ -48,6 +48,7 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
+x = 1000
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -203,7 +204,11 @@ def main():
         raise
 
 while True:
-    main()
+    root=Tk()
+    positionx = Label(root, text = ('Postion x is ', x))
+    positionx.pack()
+    root.after(0, main)
+    root.mainloop()
 # root = Tk()
 # positionx = Label(root, text = "welcome")
 # positionx.pack()
