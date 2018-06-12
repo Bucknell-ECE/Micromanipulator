@@ -209,6 +209,8 @@ while True:
     positionx.pack()
     root.after(0, main)
     root.mainloop()
+    time.sleep(0.1)
+    root.destroy()
 # root = Tk()
 # positionx = Label(root, text = "welcome")
 # positionx.pack()
