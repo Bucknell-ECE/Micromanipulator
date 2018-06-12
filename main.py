@@ -136,8 +136,7 @@ def main():
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
-        if joy.getThrottle() != 50:
-            scaleInput = joy.getThrottle()
+        scaleInput = joy.getThrottle()
         print(scaleInput)
         sensitivitywrite(scaleInput)
         x = joy.getX()
