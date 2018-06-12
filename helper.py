@@ -193,11 +193,11 @@ def statusinfo(status):
         print('Motor going backward')
 
 def sensitivityread():
-    file = open("sensitivity scale.txt","r")
+    file = open("sensitivity.txt","r")
     return file.read()
 
 def sensitivitywrite(scaleInput):
-    f = open("sensitivity scale.txt", "w+")
+    f = open("sensitivity.txt", "w+")
     f.truncate()
     f.write(str(scaleInput))
 
