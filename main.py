@@ -137,7 +137,8 @@ def main():
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
-        print(scaleInput)
+        print('Test Point 2',scaleInput)
+        time.sleep(2)
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
