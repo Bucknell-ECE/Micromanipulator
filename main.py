@@ -213,14 +213,18 @@ def main():
 
 # while True:
 #     main()
+def exitTK():
+    global root
+    root.destroy()
+
 while True:
     root=Tk()
     main()
     positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
+    root.after(0,exitTK)
     root.mainloop()
-    time.sleep(0.05)
-    root.destroy()
+    
 
 # root = Tk()
 # positionx = Label(root, text = "welcome")
