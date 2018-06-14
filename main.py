@@ -221,12 +221,12 @@ def exitTK():
 
 while True:
     root=Tk()
+    root.after(50,exitTK)
     main()
     positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
     positiony = Label(root, text = ('Position y is ', y))
     positiony.pack()
-    root.after(50,exitTK)
     root.mainloop()
 
 
