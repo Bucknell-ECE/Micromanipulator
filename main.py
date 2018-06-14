@@ -222,7 +222,7 @@ while True:
     main()
     positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
-    root.after(50,exitTK)
+    root.after(5,exitTK)
     root.mainloop()
 
 
