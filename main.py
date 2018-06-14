@@ -232,13 +232,16 @@ def main():
 
 root = Tk()
 positionx = Label(root, text = "welcome")
+positiony = Label(root, text = "welcome")
 positionx.pack()
+positiony.pack()
 while True:
     root.update()
     main()
     positionx['text'] = ('Position x is ',x)
     positionx.pack()
-
+    positiony['text'] = ('Position y is ',y)
+    positiony.pack()
 
 
 '''
