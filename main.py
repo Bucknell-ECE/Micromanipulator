@@ -246,7 +246,7 @@ while True:
     positiony['text'] = ('Position y is ',y)
     positiony.pack()
     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
-    sensitivity_scale().pack()
+    sensitivity_scale.pack()
 
 '''
 except IOError:
