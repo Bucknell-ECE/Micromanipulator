@@ -233,8 +233,11 @@ def main():
 root = Tk()
 positionx = Label(root, text = "welcome")
 positiony = Label(root, text = "welcome")
+sensitivity_scale = Label(root, text = "welcome")
 positionx.pack()
 positiony.pack()
+sensitivity_scale.pack()
+
 while True:
     root.update()
     main()
@@ -242,7 +245,8 @@ while True:
     positionx.pack()
     positiony['text'] = ('Position y is ',y)
     positiony.pack()
-
+    sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
+    sensitivity_scale().pack()
 
 '''
 except IOError:
