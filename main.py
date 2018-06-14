@@ -215,38 +215,38 @@ def main():
 
 # while True:
 #     main()
-# def exitTK():
-#     global root
-#     root.destroy()
-#
-# while True:
-#     root=Tk()
-#     main()
-#     positionx = Label(root, text = ('Postion x is ', x))
-#     positionx.pack()
-#     positiony = Label(root, text = ('Position y is ', y))
-#     positiony.pack()
-#     root.after(50,exitTK)
-#     root.mainloop()
-
-
-root = Tk()
-positionx = Label(root, text = "welcome")
-positiony = Label(root, text = "welcome")
-sensitivity_scale = Label(root, text = "welcome")
-positionx.pack()
-positiony.pack()
-sensitivity_scale.pack()
+def exitTK():
+    global root
+    root.destroy()
 
 while True:
-    root.update()
+    root=Tk()
     main()
-    positionx['text'] = ('Position x is ',x)
+    positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
-    positiony['text'] = ('Position y is ',y)
+    positiony = Label(root, text = ('Position y is ', y))
     positiony.pack()
-    sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
-    sensitivity_scale.pack()
+    root.after(50,exitTK)
+    root.mainloop()
+
+
+# root = Tk()
+# positionx = Label(root, text = "welcome")
+# positiony = Label(root, text = "welcome")
+# sensitivity_scale = Label(root, text = "welcome")
+# positionx.pack()
+# positiony.pack()
+# sensitivity_scale.pack()
+#
+# while True:
+#     root.update()
+#     main()
+#     positionx['text'] = ('Position x is ',x)
+#     positionx.pack()
+#     positiony['text'] = ('Position y is ',y)
+#     positiony.pack()
+#     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
+#     sensitivity_scale.pack()
 
 '''
 except IOError:
