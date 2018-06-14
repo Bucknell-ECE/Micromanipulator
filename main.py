@@ -218,7 +218,6 @@ while True:
     main()
     positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
-    root.withdraw()
     root.mainloop()
 
 
