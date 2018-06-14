@@ -236,7 +236,7 @@ positionx.pack()
 while True:
     root.update()
     main()
-    positionx['text'] = x
+    positionx['text'] = ('Position x is ',x)
     positionx.pack()
 
 
