@@ -211,15 +211,16 @@ def main():
         print('Completed')
         raise
 
-while True:
-    main()
 # while True:
-#     root=Tk()
-#     positionx = Label(root, text = ('Postion x is ', x))
-#     positionx.pack()
-#     root.mainloop()
-#     root.quit()
 #     main()
+while True:
+    root=Tk()
+    main()
+    positionx = Label(root, text = ('Postion x is ', x))
+    positionx.pack()
+    root.withdraw()
+    root.mainloop()
+
 
 # root = Tk()
 # positionx = Label(root, text = "welcome")
