@@ -52,7 +52,7 @@ scaleInput = 0
 if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
     scaleInput = sensitivityread()
 print('test',scaleInput)
-time.sleep(5)
+#time.sleep(5)
 
 x = 1000
 
@@ -138,7 +138,7 @@ def main():
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         print('Test Point 2',scaleInput)
-        time.sleep(2)
+        #time.sleep(2)
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
