@@ -238,6 +238,10 @@ while True:
 # positiony.pack()
 # sensitivity_scale.pack()
 #
+# def quit():
+#     global root
+#     root.destroy()
+
 # while True:
 #     root.update()
 #     main()
@@ -247,6 +251,7 @@ while True:
 #     positiony.pack()
 #     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
 #     sensitivity_scale.pack()
+
 
 '''
 except IOError:
