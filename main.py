@@ -215,29 +215,29 @@ def main():
 
 # while True:
 #     main()
-def exitTK():
-    global root
-    root.destroy()
-
-while True:
-    root=Tk()
-    root.after(50,exitTK)
-    main()
-    positionx = Label(root, text = ('Postion x is ', x))
-    positionx.pack()
-    positiony = Label(root, text = ('Position y is ', y))
-    positiony.pack()
-    root.mainloop()
-
-
-# root = Tk()
-# positionx = Label(root, text = "welcome")
-# positionx.pack()
+# def exitTK():
+#     global root
+#     root.destroy()
+#
 # while True:
-#     root.update()
+#     root=Tk()
 #     main()
-#     positionx['text'] = x
+#     positionx = Label(root, text = ('Postion x is ', x))
 #     positionx.pack()
+#     positiony = Label(root, text = ('Position y is ', y))
+#     positiony.pack()
+#     root.after(50,exitTK)
+#     root.mainloop()
+
+
+root = Tk()
+positionx = Label(root, text = "welcome")
+positionx.pack()
+while True:
+    root.update()
+    main()
+    positionx['text'] = x
+    positionx.pack()
 
 
 
