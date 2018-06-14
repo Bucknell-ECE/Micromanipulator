@@ -55,6 +55,7 @@ print('test',scaleInput)
 #time.sleep(5)
 
 x = 1000
+y = 1000
 
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
@@ -128,6 +129,7 @@ def setBounds():
 def main():
     global scaleInput
     global x
+    global y
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
         # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
@@ -222,7 +224,9 @@ while True:
     main()
     positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
-    root.after(20,exitTK)
+    positiony = Label(root, text = ('Position y is ', y))
+    positiony.pack()
+    root.after(50,exitTK)
     root.mainloop()
 
 
