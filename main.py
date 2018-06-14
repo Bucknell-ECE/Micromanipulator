@@ -36,7 +36,7 @@ zaxis = StageI2C(0x40, 6000, 1)
 
 xaxis.startup()
 yaxis.startup()
-zaxis.startup()
+#zaxis.startup()
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
