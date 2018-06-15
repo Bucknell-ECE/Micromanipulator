@@ -126,11 +126,11 @@ def setBounds():
     # xaxis.Running(x_status)
 
 
-# def main():
-#     global scaleInput
-#     global x
-#     global y
-while True:
+def main():
+    global scaleInput
+    global x
+    global y
+
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
         # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
@@ -233,29 +233,29 @@ while True:
 #     root.mainloop()
 
 
-# root = Tk()
-# positionx = Label(root, text = "welcome")
-# positiony = Label(root, text = "welcome")
-# sensitivity_scale = Label(root, text = "welcome")
-# exit = Button(root, text = "Quit", command = quit)
-# positionx.pack()
-# positiony.pack()
-# sensitivity_scale.pack()
-# exit.pack()
-#
-# def quit():
-#     global root
-#     root.destroy()
-#
-# while True:
-#     root.update()
-#     main()
-#     positionx['text'] = ('Position x is ',x)
-#     positionx.pack()
-#     positiony['text'] = ('Position y is ',y)
-#     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
-#     sensitivity_scale.pack()
+root = Tk()
+positionx = Label(root, text = "welcome")
+positiony = Label(root, text = "welcome")
+sensitivity_scale = Label(root, text = "welcome")
+exit = Button(root, text = "Quit", command = quit)
+positionx.pack()
+positiony.pack()
+sensitivity_scale.pack()
+exit.pack()
+
+def quit():
+    global root
+    root.destroy()
+
+while True:
+    root.update()
+    main()
+    positionx['text'] = ('Position x is ',x)
+    positionx.pack()
+    positiony['text'] = ('Position y is ',y)
+    positiony.pack()
+    sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
+    sensitivity_scale.pack()
 
 
 '''
