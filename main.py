@@ -218,44 +218,44 @@ def main():
 #     main()
 
 #Refreshing Rate of 0.05s
-# def exitTK():
-#     global root
-#     root.destroy()
-#
-# while True:
-#     root=Tk()
-#     main()
-#     positionx = Label(root, text = ('Postion x is ', x))
-#     positionx.pack()
-#     positiony = Label(root, text = ('Position y is ', y))
-#     positiony.pack()
-#     root.after(50,exitTK)
-#     root.mainloop()
-
-
-root = Tk(className = 'Micromanipulator')
-positionx = Label(root, text = "welcome", bg = "red", fg = "white")
-positiony = Label(root, text = "welcome", bg = "red", fg = "white")
-sensitivity_scale = Label(root, text = "welcome", bg = "red", fg = "white")
-exit = Button(root, text = "Quit", command = quit)
-positionx.pack()
-positiony.pack()
-sensitivity_scale.pack()
-exit.pack()
-
-def quit():
+def exitTK():
     global root
-    root.quit()
+    root.destroy()
 
 while True:
-    root.update()
+    root=Tk()
     main()
-    positionx['text'] = ('Position x is ',x)
+    positionx = Label(root, text = ('Postion x is ', x))
     positionx.pack()
-    positiony['text'] = ('Position y is ',y)
+    positiony = Label(root, text = ('Position y is ', y))
     positiony.pack()
-    sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
-    sensitivity_scale.pack()
+    root.after(50,exitTK)
+    root.mainloop()
+
+
+# root = Tk(className = 'Micromanipulator')
+# positionx = Label(root, text = "welcome")
+# positiony = Label(root, text = "welcome")
+# sensitivity_scale = Label(root, text = "welcome")
+# exit = Button(root, text = "Quit", command = quit)
+# positionx.pack()
+# positiony.pack()
+# sensitivity_scale.pack()
+# exit.pack()
+#
+# def quit():
+#     global root
+#     root.quit()
+#
+# while True:
+#     root.update()
+#     main()
+#     positionx['text'] = ('Position x is ',x)
+#     positionx.pack()
+#     positiony['text'] = ('Position y is ',y)
+#     positiony.pack()
+#     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
+#     sensitivity_scale.pack()
 
 
 '''
