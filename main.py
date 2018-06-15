@@ -234,9 +234,9 @@ def main():
 
 
 root = Tk(className = 'Micromanipulator')
-positionx = Label(root, text = "welcome")
-positiony = Label(root, text = "welcome")
-sensitivity_scale = Label(root, text = "welcome")
+positionx = Label(root, text = "welcome", bg = "red", fg = "white")
+positiony = Label(root, text = "welcome", bg = "red", fg = "white")
+sensitivity_scale = Label(root, text = "welcome", bg = "red", fg = "white")
 exit = Button(root, text = "Quit", command = quit)
 positionx.pack()
 positiony.pack()
