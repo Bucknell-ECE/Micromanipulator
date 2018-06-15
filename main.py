@@ -225,7 +225,7 @@ def exitTK():
 while True:
     root=Tk()
     main()
-    positionx = Label(root, text = ('Postion x is ', x))
+    positionx = Label(root, text = ('Position x is ', x))
     positionx.pack()
     positiony = Label(root, text = ('Position y is ', y))
     positiony.pack()
