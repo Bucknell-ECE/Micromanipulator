@@ -244,7 +244,8 @@ sensitivity_scale.pack()
 exit.pack()
 
 def quit():
-    break
+    global root
+    root.quit()
 
 while True:
     root.update()
