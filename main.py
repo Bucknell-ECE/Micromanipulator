@@ -215,42 +215,46 @@ def main():
 
 # while True:
 #     main()
-def exitTK():
+
+#Refreshing Rate of 0.05s
+# def exitTK():
+#     global root
+#     root.destroy()
+#
+# while True:
+#     root=Tk()
+#     main()
+#     positionx = Label(root, text = ('Postion x is ', x))
+#     positionx.pack()
+#     positiony = Label(root, text = ('Position y is ', y))
+#     positiony.pack()
+#     root.after(50,exitTK)
+#     root.mainloop()
+
+
+root = Tk()
+positionx = Label(root, text = "welcome")
+positiony = Label(root, text = "welcome")
+sensitivity_scale = Label(root, text = "welcome")
+exit = Button(root, text = "Quit", command = quit)
+positionx.pack()
+positiony.pack()
+sensitivity_scale.pack()
+exit.pack()
+
+def quit():
     global root
     root.destroy()
 
 while True:
-    root=Tk()
+    root.update()
     main()
-    positionx = Label(root, text = ('Postion x is ', x))
+    positionx['text'] = ('Position x is ',x)
     positionx.pack()
-    positiony = Label(root, text = ('Position y is ', y))
+    positiony['text'] = ('Position y is ',y)
     positiony.pack()
-    root.after(50,exitTK)
-    root.mainloop()
-
-
-# root = Tk()
-# positionx = Label(root, text = "welcome")
-# positiony = Label(root, text = "welcome")
-# sensitivity_scale = Label(root, text = "welcome")
-# positionx.pack()
-# positiony.pack()
-# sensitivity_scale.pack()
-#
-# def quit():
-#     global root
-#     root.destroy()
-
-# while True:
-#     root.update()
-#     main()
-#     positionx['text'] = ('Position x is ',x)
-#     positionx.pack()
-#     positiony['text'] = ('Position y is ',y)
-#     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
-#     sensitivity_scale.pack()
+    sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
+    sensitivity_scale.pack()
 
 
 '''
