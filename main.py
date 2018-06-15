@@ -233,7 +233,7 @@ def main():
 #     root.mainloop()
 
 
-root = Tk()
+root = Tk(className = 'Micromanipulator')
 positionx = Label(root, text = "welcome")
 positiony = Label(root, text = "welcome")
 sensitivity_scale = Label(root, text = "welcome")
