@@ -238,22 +238,22 @@ def main():
 #     root.after(50,exitTK)
 #     root.mainloop()
 
-class App(threading.Thread):
-    def __init__(self, tk_root):
-        self.root = tk_root
-        threading.Thread.__init__(self)
-        self.start()
-    def run(self):
-        loop_active = True
-        while loop_active:
-            user_input = raw_input("Command")
-            if user_input == 'exit':
-                loop_active = False
-                self.root.quit()
-                self.root.update()
-            else:
-                label = Label(self.root, text = user_input)
-                label.pack()
+# class App(threading.Thread):
+#     def __init__(self, tk_root):
+#         self.root = tk_root
+#         threading.Thread.__init__(self)
+#         self.start()
+#     def run(self):
+#         loop_active = True
+#         while loop_active:
+#             user_input = raw_input("Command")
+#             if user_input == 'exit':
+#                 loop_active = False
+#                 self.root.quit()
+#                 self.root.update()
+#             else:
+#                 label = Label(self.root, text = user_input)
+#                 label.pack()
 
 
 # root = Tk(className = 'Micromanipulator')
