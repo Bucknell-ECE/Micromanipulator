@@ -248,6 +248,9 @@ positionx = Label(root, text = "welcome")
 positiony = Label(root, text = "welcome")
 sensitivity_scale = Label(root, text = "welcome")
 exit = Button(root, text = "Quit", command = quit)
+statusx = Label(root, text = 'welcome')
+statusy = Label(root, text = 'welcome')
+statusz = Label(root, text = 'welcome')
 positionx.pack()
 positiony.pack()
 sensitivity_scale.pack()
@@ -266,6 +269,12 @@ while True:
     positiony.pack()
     sensitivity_scale['text'] = ('Sensitivity Level is ', scaleInput)
     sensitivity_scale.pack()
+    statusx['text'] = ('x status is ', xstatus)
+    statusx.pack()
+    statusy['text'] = ('y status is ', ystatus)
+    statusy.pack()
+    statusz['text'] = ('z status is ', zstatus)
+    statusz.pack()
 
 
 '''
