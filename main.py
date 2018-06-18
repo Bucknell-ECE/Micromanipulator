@@ -224,19 +224,19 @@ def main():
 #     main()
 
 #Refreshing Rate of 0.05s
-def exitTK():
-    global root
-    root.destroy()
-
-while True:
-    root=Tk()
-    main()
-    positionx = Label(root, text = ('Position x is ', x))
-    positionx.pack()
-    positiony = Label(root, text = ('Position y is ', y))
-    positiony.pack()
-    root.after(50,exitTK)
-    root.mainloop()
+# def exitTK():
+#     global root
+#     root.destroy()
+#
+# while True:
+#     root=Tk()
+#     main()
+#     positionx = Label(root, text = ('Position x is ', x))
+#     positionx.pack()
+#     positiony = Label(root, text = ('Position y is ', y))
+#     positiony.pack()
+#     root.after(50,exitTK)
+#     root.mainloop()
 
 class App(threading.Thread):
     def __init__(self, tk_root):
