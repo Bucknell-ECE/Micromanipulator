@@ -254,6 +254,9 @@ statusz = Label(root, text = 'welcome')
 positionx.pack()
 positiony.pack()
 sensitivity_scale.pack()
+statusx.pack()
+statusy.pack()
+statusz.pack()
 exit.pack()
 
 def quit():
