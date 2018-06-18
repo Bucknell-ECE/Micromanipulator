@@ -136,9 +136,9 @@ class Stage(object):
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
         ##backwardStep =
         #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
-        self.sendCommand('06', [48] + [32] + encodeToCommand(100))
-        self.sendCommand('06', [49] + [32] + encodeToCommand(100))
-        self.calibrate()
+        self.sendCommand('06', [48] + [32] + encodeToCommand(3000))
+        self.sendCommand('06', [49] + [32] + encodeToCommand(3000))
+        #self.calibrate()
 
     def getPositionFromM3LS(self):
         """
