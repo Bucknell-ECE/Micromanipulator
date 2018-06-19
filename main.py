@@ -277,7 +277,7 @@ def print_time(threadName, delay, counter):
         counter -= 1
 
 root = Tk(className = 'Micromanipulator')
-frame = Frame(root, width = 300, height =300)
+root.geometry("300x300")
 positionx = Label(root, text = "welcome")
 positiony = Label(root, text = "welcome")
 sensitivity_scale = Label(root, text = "welcome")
@@ -285,7 +285,6 @@ exit = Button(root, text = "Quit", command = quit)
 statusx = Label(root, text = 'welcome')
 statusy = Label(root, text = 'welcome')
 statusz = Label(root, text = 'welcome')
-frame.pack()
 positionx.pack()
 positiony.pack()
 sensitivity_scale.pack()
