@@ -165,6 +165,15 @@ class Stage(object):
         print('The current position Reported by M3LS is : ', position)
         return position
 
+    def GetCloseLoopSpeed(self):
+        self.sendCommandNoVars('10')
+        time.sleep(0.2)
+        temp = self.read()
+        print('This is speed',temp)
+
+        speed = int(temp,16)
+        return speed
+
 
     def goToLocation(self, location):
         """
