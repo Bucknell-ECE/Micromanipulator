@@ -171,8 +171,7 @@ class Stage(object):
         temp = self.read()
         print('This is speed',temp)
 
-        speed = int(temp,16)
-        return speed
+
 
 
     def goToLocation(self, location):
