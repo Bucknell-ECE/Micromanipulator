@@ -223,59 +223,59 @@ def main():
         print('Completed')
         raise
 
-# while True:
-#     main()
+while True:
+    main()
 
 #Refreshing Rate of 0.05s
-def exitTK():
-    global root
-    root.destroy()
-
-while True:
-    root=Tk()
-    main()
-    positionx = Label(root, text = ('Position x is ', x))
-    positionx.pack()
-    positiony = Label(root, text = ('Position y is ', y))
-    positiony.pack()
-    root.after(50,exitTK)
-    root.mainloop()
-
-class App(threading.Thread):
-    def __init__(self, tk_root):
-        self.root = tk_root
-        threading.Thread.__init__(self)
-        self.start()
-    def run(self):
-        loop_active = True
-        while loop_active:
-            user_input = raw_input("Command")
-            if user_input == 'exit':
-                loop_active = False
-                self.root.quit()
-                self.root.update()
-            else:
-                label = Label(self.root, text = user_input)
-                label.pack()
-
-
-class myThread(threading.Thread):
-    def __init__(self, threadID, name, counter):
-        threading.Thread.__init__(self)
-        self.threadID = threadID
-        self.name = name
-        self.counter = counter
-    def run(self):
-        print("Starting" + self.name)
-        print_time(self.name, self.counter, 5)
-        print("Exiting" + self.name)
-
-def print_time(threadName, delay, counter):
-    while counter:
-        if exitFlag:
-            (threading.Thread).exit()
-        time.sleep(delay)
-        counter -= 1
+# def exitTK():
+#     global root
+#     root.destroy()
+#
+# while True:
+#     root=Tk()
+#     main()
+#     positionx = Label(root, text = ('Position x is ', x))
+#     positionx.pack()
+#     positiony = Label(root, text = ('Position y is ', y))
+#     positiony.pack()
+#     root.after(50,exitTK)
+#     root.mainloop()
+#
+# class App(threading.Thread):
+#     def __init__(self, tk_root):
+#         self.root = tk_root
+#         threading.Thread.__init__(self)
+#         self.start()
+#     def run(self):
+#         loop_active = True
+#         while loop_active:
+#             user_input = raw_input("Command")
+#             if user_input == 'exit':
+#                 loop_active = False
+#                 self.root.quit()
+#                 self.root.update()
+#             else:
+#                 label = Label(self.root, text = user_input)
+#                 label.pack()
+#
+#
+# class myThread(threading.Thread):
+#     def __init__(self, threadID, name, counter):
+#         threading.Thread.__init__(self)
+#         self.threadID = threadID
+#         self.name = name
+#         self.counter = counter
+#     def run(self):
+#         print("Starting" + self.name)
+#         print_time(self.name, self.counter, 5)
+#         print("Exiting" + self.name)
+#
+# def print_time(threadName, delay, counter):
+#     while counter:
+#         if exitFlag:
+#             (threading.Thread).exit()
+#         time.sleep(delay)
+#         counter -= 1
 
 # root = Tk(className = 'Micromanipulator')
 # root.geometry("400x150")
