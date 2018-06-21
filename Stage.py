@@ -166,7 +166,7 @@ class Stage(object):
         return position
 
     def GetCloseLoopSpeed(self):
-        self.sendCommandNoVars('10')
+        self.sendCommandNoVars('40')
         time.sleep(0.2)
         temp = self.read()
         print('This is speed',temp)
