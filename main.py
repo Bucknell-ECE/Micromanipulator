@@ -81,7 +81,7 @@ def setControlMode(newControlMode):
 print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand('0001')))
 time.sleep(3)
 
-print('test1',xaxis.goToLocation(500))
+print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 time.sleep(5)
 
 def setBounds():
