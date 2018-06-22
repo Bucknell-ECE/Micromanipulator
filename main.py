@@ -78,10 +78,8 @@ joy = CustomJoystick('Logitech', 0)
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-print('hexoutput',hextocommand('001400'))
+xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand('0001'))
 time.sleep(5)
-
-
 def setBounds():
     """
     Sets the bounds for position mode.
