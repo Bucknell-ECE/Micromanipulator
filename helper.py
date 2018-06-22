@@ -53,6 +53,7 @@ def encoderConvert(value):
     return encodeOutput
 
 def hextocommand(command):
+    encodeOutput = []
     for i in command:
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
