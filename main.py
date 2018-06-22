@@ -78,11 +78,10 @@ joy = CustomJoystick('Logitech', 0)
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-time.sleep(3)
-
-print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
-time.sleep(5)
+# print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
+xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001'))
+# print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
+# time.sleep(5)
 
 def setBounds():
     """
@@ -158,6 +157,7 @@ def main():
         print('X: ', x, 'Y', y)
         print(buttons)
         print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
+        time.sleep(1)
         X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
         Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
         #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
