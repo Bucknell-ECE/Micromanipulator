@@ -154,6 +154,7 @@ def main():
         print('X: ', x, 'Y', y)
         print(buttons)
         print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
+        print('This is Y closed loop speed', yaxis.GetCloseLoopSpeed())
         X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
         Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
         #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
