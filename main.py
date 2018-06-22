@@ -78,7 +78,7 @@ joy = CustomJoystick('Logitech', 0)
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001')))
+print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
 time.sleep(3)
 
 print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
