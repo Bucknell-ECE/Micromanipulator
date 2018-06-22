@@ -78,7 +78,7 @@ joy = CustomJoystick('Logitech', 0)
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-print('hexoutput',hextocommand(001400))
+print('hexoutput',hextocommand('001400'))
 time.sleep(5)
 
 
