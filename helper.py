@@ -57,10 +57,18 @@ def hextocommand(command):
     for i in command:
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
-    for i in range(8 - int(len(encodeOutput))):
+    for i in range(6 - int(len(encodeOutput))):
         encodeOutput.insert(0, 0x30)
     return encodeOutput
 
+def hextocommand1(command):
+    encodeOutput = []
+    for i in command:
+        encodeOutput += [ord(str(i))]
+    # ensure that the output is 8 bytes
+    for i in range(4 - int(len(encodeOutput))):
+        encodeOutput.insert(0, 0x30)
+    return encodeOutput
 
 def commandToString(command):
     """
