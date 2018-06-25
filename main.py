@@ -205,7 +205,7 @@ def main():
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
 
-        xaxis.movesteps(1000)
+        xaxis.sendCommand('06',[48] + [32] + encodeToCommand(1000))
         time.sleep(5)
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
