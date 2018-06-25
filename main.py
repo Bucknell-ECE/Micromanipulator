@@ -143,6 +143,7 @@ def main():
     global zstatus
     global xcoordinate
     global ycoordinate
+    global Zsensitivity
 
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
