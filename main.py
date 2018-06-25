@@ -154,7 +154,7 @@ def main():
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
-        setBounds()
+        #setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
@@ -204,10 +204,13 @@ def main():
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        if x < 1000:
+            xaxis.movesteps(1000)
+            time.sleep(5)
+        # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))

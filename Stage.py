@@ -96,10 +96,10 @@ class Stage(object):
         :return:
         """
         command_to_send = self.buildCommand(command_code, command_vars)
-        #return command_to_send
+        return command_to_send
         #return(commandToString(command_to_send))
         #print(commandToString(command_to_send))
-        self.write(command_to_send)
+        #self.write(command_to_send)
 
 
     def sendCommandNoVars(self, command_code):
@@ -184,6 +184,10 @@ class Stage(object):
         #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
 
         self.sendCommand('08', encodeToCommand(location))
+
+    def movesteps(self,steps):
+
+        self.sendCommand('06',[48] + [32] + encodeToCommand(steps))
 
     def returnHome(self):
         """
