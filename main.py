@@ -251,8 +251,8 @@ def main():
         print('Completed')
         raise
 #
-while True:
-    main()
+# while True:
+#     main()
 
 #Refreshing Rate of 0.05s
 # def exitTK():
@@ -305,42 +305,42 @@ while True:
 #         time.sleep(delay)
 #         counter -= 1
 
-# root = Tk(className = 'Micromanipulator')
-# root.geometry("400x150")
-# positionx = Label(root, text = "welcome")
-# positiony = Label(root, text = "welcome")
-# sensitivity_scale = Label(root, text = "welcome")
-# exit = Button(root, text = "Quit", command = quit)
-# statusx = Label(root, text = 'welcome')
-# statusy = Label(root, text = 'welcome')
-# statusz = Label(root, text = 'welcome')
-# positionx.pack()
-# positiony.pack()
-# sensitivity_scale.pack()
-# statusx.pack()
-# statusy.pack()
-# statusz.pack()
-# exit.pack()
-#
-# def quit():
-#     global root
-#     root.quit()
-#
-# while True:
-#     root.update()
-#     main()
-#     positionx['text'] = ('Position x is ',xcoordinate)
-#     positionx.pack()
-#     positiony['text'] = ('Position y is ',ycoordinate)
-#     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scaleInput)
-#     sensitivity_scale.pack()
-#     statusx['text'] = ('x status is ', xstatus)
-#     statusx.pack()
-#     statusy['text'] = ('y status is ', ystatus)
-#     statusy.pack()
-#     statusz['text'] = ('z status is ', zstatus)
-#     statusz.pack()
+root = Tk(className = 'Micromanipulator')
+root.geometry("400x150")
+positionx = Label(root, text = "welcome")
+positiony = Label(root, text = "welcome")
+sensitivity_scale = Label(root, text = "welcome")
+exit = Button(root, text = "Quit", command = quit)
+statusx = Label(root, text = 'welcome')
+statusy = Label(root, text = 'welcome')
+statusz = Label(root, text = 'welcome')
+positionx.pack()
+positiony.pack()
+sensitivity_scale.pack()
+statusx.pack()
+statusy.pack()
+statusz.pack()
+exit.pack()
+
+def quit():
+    global root
+    root.quit()
+
+while True:
+    root.update()
+    main()
+    positionx['text'] = ('Position x is ',xcoordinate)
+    positionx.pack()
+    positiony['text'] = ('Position y is ',ycoordinate)
+    positiony.pack()
+    sensitivity_scale['text'] = ('Sensitivity Percentage is ', scaleInput)
+    sensitivity_scale.pack()
+    statusx['text'] = ('x status is ', xstatus)
+    statusx.pack()
+    statusy['text'] = ('y status is ', ystatus)
+    statusy.pack()
+    statusz['text'] = ('z status is ', zstatus)
+    statusz.pack()
 
 
 '''
