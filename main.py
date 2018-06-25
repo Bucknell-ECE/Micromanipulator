@@ -177,8 +177,8 @@ def main():
                 yaxis.setCurrentHome()
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
-                xaxis.setHome(6000)
-                yaxis.setHome(6000)
+                xaxis.goToLocation(1000)
+                yaxis.goTolocation(1000)
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
                 # statusx = xaxis.getstatus()
