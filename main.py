@@ -207,6 +207,8 @@ def main():
         if x < 1000:
             print('X moving left')
             xaxis.sendCommand('06',[48] + [32] + encodeToCommand(1000))
+        elif x > 1000:
+            xaxis.sendCommand('06', [49] + [32] + encodeToCommand(1000))
 
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
