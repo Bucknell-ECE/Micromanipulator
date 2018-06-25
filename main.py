@@ -154,7 +154,7 @@ def main():
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
-        setBounds()
+        # setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
@@ -210,10 +210,10 @@ def main():
         # elif x > 1000:
         #     xaxis.sendCommand('06', [49] + [32] + encodeToCommand(50))
 
-        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
