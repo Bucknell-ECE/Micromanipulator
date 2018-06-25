@@ -79,8 +79,8 @@ def setControlMode(newControlMode):
     controlMode = newControlMode
 
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000003')+[32]+hextocommand1('0001'))
-yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000003')+[32]+hextocommand1('0001'))
+xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
+yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 # time.sleep(5)
 
@@ -206,7 +206,7 @@ def main():
         # Main commands to tell the stage to go to a location descibed by the joystick.
 
         xaxis.sendCommand('06',[48] + [32] + encodeToCommand(1000))
-        time.sleep(5)
+
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
