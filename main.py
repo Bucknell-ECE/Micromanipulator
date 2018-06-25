@@ -322,9 +322,9 @@ def quit():
 while True:
     root.update()
     main()
-    positionx['text'] = ('Position x is ',x)
+    positionx['text'] = ('Position x is ',xcoordinate)
     positionx.pack()
-    positiony['text'] = ('Position y is ',y)
+    positiony['text'] = ('Position y is ',ycoordinate)
     positiony.pack()
     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scaleInput)
     sensitivity_scale.pack()
