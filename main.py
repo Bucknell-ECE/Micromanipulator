@@ -182,7 +182,9 @@ def main():
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
                 xaxis.goToLocation(1000)
+                xcoordinate = 1000
                 yaxis.goToLocation(1000)
+                ycoordinate = 1000
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
                 # statusx = xaxis.getstatus()
