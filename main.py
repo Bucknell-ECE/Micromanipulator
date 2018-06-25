@@ -63,6 +63,8 @@ print('test',scaleInput)
 x = 1000
 y = 1000
 
+xcoordinate = 1000
+ycoordinate = 1000
 #locations = [xlocation, ylocation, zlocation]
 refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
@@ -139,6 +141,8 @@ def main():
     global xstatus
     global ystatus
     global zstatus
+    global xcoordinate
+    global ycoordinate
 
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
@@ -206,12 +210,16 @@ def main():
         # Main commands to tell the stage to go to a location descibed by the joystick.
         if x < 1000:
             xaxis.sendCommand('06',[48] + [32] + encodeToCommand(8))
+            xcoordinate -= 8
         elif x > 1000:
             xaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
+            xcoordinate += 8
         if y < 1000:
             yaxis.sendCommand('06', [48] + [32] + encodeToCommand(8))
+            ycoordinate -= 8
         elif y > 1000:
             yaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
+            ycoordinate += 8
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
