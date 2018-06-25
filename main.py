@@ -204,9 +204,9 @@ def main():
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        if x < 1000:
-            xaxis.movesteps(1000)
-            time.sleep(5)
+
+        xaxis.movesteps(1000)
+        time.sleep(5)
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
