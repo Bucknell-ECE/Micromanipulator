@@ -214,8 +214,8 @@ def main():
         if x < 1000:
             xaxis.sendCommand('06',[48] + [32] + encodeToCommand(8))
             xcoordinate -= mapval(8,0,6000,0,2000)
-            # if xcoordinate <= 0:
-            #     xcoordinate = 0
+            if xcoordinate <= 0:
+                xcoordinate = 0
         elif x > 1000:
             xaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
             xcoordinate += mapval(8,0,9000,0,2000)
