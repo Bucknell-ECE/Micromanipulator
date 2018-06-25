@@ -251,8 +251,8 @@ def main():
         print('Completed')
         raise
 #
-# while True:
-#     main()
+while True:
+    main()
 
 #Refreshing Rate of 0.05s
 # def exitTK():
