@@ -75,7 +75,6 @@ pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
-starttime = time.clock()
 elasped = 0
 count = 0
 
@@ -267,12 +266,12 @@ def main():
         f.close()
         print('Completed')
         raise
-#
-while True:
+starttime = time.clock()
+while elasped <= 1:
     main()
-    # elasped =  time.clock() - starttime
-    # count += 1
-    # print('This is count',count)
+    elasped =  time.clock() - starttime
+    count += 1
+    print('This is count',count)
 
 
 #Refreshing Rate of 0.05s
