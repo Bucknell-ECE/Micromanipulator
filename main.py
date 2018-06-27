@@ -241,7 +241,7 @@ def main():
             if xcoordinate <= 0:
                 xcoordinate = 0
         elif x > 1000:
-            xaxis.sendCommand('05', [49] + [32] + encodeToCommand(1000))
+            xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
             xcoordinate += mapval(8,0,12000,0,2000)
             if xcoordinate >= 2000:
                 xcoordinate = 2000
