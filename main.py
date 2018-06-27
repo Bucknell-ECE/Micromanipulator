@@ -266,10 +266,10 @@ def main():
         f.close()
         print('Completed')
         raise
-starttime = time.clock()
+starttime = time.time()
 while elasped <= 1:
     main()
-    elasped =  time.clock() - starttime
+    elasped =  time.time() - starttime
     count += 1
     print('This is count',count)
 
