@@ -83,7 +83,7 @@ def setControlMode(newControlMode):
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
-xaxis.sendCommand('09',hextocommand2('40'))
+# xaxis.sendCommand('09',hextocommand2('40'))
 #xaxis.Openloop()
 xaxis.ViewMode()
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
@@ -214,37 +214,37 @@ def main():
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        # if x < 1000:
-        #     xaxis.sendCommand('06',[48] + [32] + encodeToCommand(8))
-        #     xcoordinate -= mapval(8,0,6000,0,2000)
-        #     if xcoordinate <= 0:
-        #         xcoordinate = 0
-        # elif x > 1000:
-        #     xaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
-        #     xcoordinate += mapval(8,0,12000,0,2000)
-        #     if xcoordinate >= 2000:
-        #         xcoordinate = 2000
-        # if y < 1000:
-        #     yaxis.sendCommand('06', [48] + [32] + encodeToCommand(8))
-        #     ycoordinate -= mapval(8,0,12000,0,12000)
-        # elif y > 1000:
-        #     yaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
-        #     ycoordinate += mapval(8,0,2000,0,12000)
+        if x < 1000:
+            xaxis.sendCommand('06',[48] + [32] + encodeToCommand(8))
+            xcoordinate -= mapval(8,0,6000,0,2000)
+            if xcoordinate <= 0:
+                xcoordinate = 0
+        elif x > 1000:
+            xaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
+            xcoordinate += mapval(8,0,12000,0,2000)
+            if xcoordinate >= 2000:
+                xcoordinate = 2000
+        if y < 1000:
+            yaxis.sendCommand('06', [48] + [32] + encodeToCommand(8))
+            ycoordinate -= mapval(8,0,12000,0,12000)
+        elif y > 1000:
+            yaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
+            ycoordinate += mapval(8,0,2000,0,12000)
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        if x < 1000:
-            xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(1000))
-            xcoordinate -= mapval(8,0,6000,0,2000)
-            if xcoordinate <= 0:
-                xcoordinate = 0
-        elif x > 1000:
-            xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-            xcoordinate += mapval(8,0,12000,0,2000)
-            if xcoordinate >= 2000:
-                xcoordinate = 2000
+        # if x < 1000:
+        #     xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(1000))
+        #     xcoordinate -= mapval(8,0,6000,0,2000)
+        #     if xcoordinate <= 0:
+        #         xcoordinate = 0
+        # elif x > 1000:
+        #     xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
+        #     xcoordinate += mapval(8,0,12000,0,2000)
+        #     if xcoordinate >= 2000:
+        #         xcoordinate = 2000
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
