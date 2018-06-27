@@ -61,12 +61,21 @@ def hextocommand(command):
         encodeOutput.insert(0, 0x30)
     return encodeOutput
 
-def hextocommand1(command):
+def hextocommand4(command):
     encodeOutput = []
     for i in command:
         encodeOutput += [ord(str(i))]
     # ensure that the output is 8 bytes
     for i in range(4 - int(len(encodeOutput))):
+        encodeOutput.insert(0, 0x30)
+    return encodeOutput
+
+def hextocommand2(command):
+    encodeOutput = []
+    for i in command:
+        encodeOutput += [ord(str(i))]
+    # ensure that the output is 8 bytes
+    for i in range(2 - int(len(encodeOutput))):
         encodeOutput.insert(0, 0x30)
     return encodeOutput
 
