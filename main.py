@@ -234,16 +234,15 @@ def main():
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        if x < 1000:
-            xaxis.sendCommand('05',[48] + [32] + encodeToCommand(8))
-            xcoordinate -= mapval(8,0,6000,0,2000)
-            if xcoordinate <= 0:
-                xcoordinate = 0
-        elif x > 1000:
-            xaxis.sendCommand('05', [49] + [32] + encodeToCommand(8))
-            xcoordinate += mapval(8,0,12000,0,2000)
-            if xcoordinate >= 2000:
-                xcoordinate = 2000
+        xaxis.sendCommand('05',[48] + [32] + encodeToCommand(1000))
+        #     xcoordinate -= mapval(8,0,6000,0,2000)
+        #     if xcoordinate <= 0:
+        #         xcoordinate = 0
+        # elif x > 1000:
+        #     xaxis.sendCommand('05', [49] + [32] + encodeToCommand(8))
+        #     xcoordinate += mapval(8,0,12000,0,2000)
+        #     if xcoordinate >= 2000:
+        #         xcoordinate = 2000
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
