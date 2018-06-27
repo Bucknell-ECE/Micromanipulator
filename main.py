@@ -162,7 +162,7 @@ def main():
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
-        setBounds()
+        #setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
