@@ -81,11 +81,11 @@ def setControlMode(newControlMode):
     controlMode = newControlMode
 
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-# xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
-# yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand1('0001'))
+xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand1('0001'))
+yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand1('0001'))
 # xaxis.sendCommand('09',hextocommand2('40'))
-xaxis.Openloop()
-xaxis.ViewMode()
+# xaxis.Openloop()
+# xaxis.ViewMode()
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 # time.sleep(5)
 
