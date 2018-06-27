@@ -86,6 +86,7 @@ def setControlMode(newControlMode):
 # xaxis.sendCommand('09',hextocommand2('40'))
 #xaxis.Openloop()
 xaxis.ViewMode()
+time.sleep(5)
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 # time.sleep(5)
 
