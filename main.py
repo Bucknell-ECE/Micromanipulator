@@ -268,11 +268,11 @@ def main():
         print('Completed')
         raise
 #
-while elasped < 1:
+while True:
     main()
-    elasped =  time.clock() - starttime
-    count += 1
-    print('This is count',count)
+    # elasped =  time.clock() - starttime
+    # count += 1
+    # print('This is count',count)
 
 
 #Refreshing Rate of 0.05s
