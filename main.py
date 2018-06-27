@@ -87,7 +87,7 @@ def setControlMode(newControlMode):
 xaxis.sendCommand('20',[48])
 xaxis.sendCommand('20', [82])
 time.sleep(0.2)
-temp = self.read()
+temp = xaxis.read()
 print('This is the mode',temp)
 time.sleep(2)
 xaxis.sendCommand('09',hextocommand2('40'))
