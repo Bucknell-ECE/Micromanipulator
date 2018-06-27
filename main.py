@@ -268,7 +268,7 @@ def main():
 
 starttime = time.time()
 
-while elasped <= 1:
+while True:
     main()
     # elasped =  time.time() - starttime
     # count += 1
