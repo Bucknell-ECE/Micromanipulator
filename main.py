@@ -234,7 +234,7 @@ def main():
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        xaxis.sendCommand('05',[48] + [32] + encodeToCommand(1000))
+        xaxis.sendCommand('05',[48] + [32] + encodeToCommand4digit(1000))
         #     xcoordinate -= mapval(8,0,6000,0,2000)
         #     if xcoordinate <= 0:
         #         xcoordinate = 0
