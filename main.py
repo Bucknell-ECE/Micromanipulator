@@ -75,7 +75,9 @@ pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
-
+starttime = time.clock()
+elasped = 0
+count = 0
 
 def setControlMode(newControlMode):
     controlMode = newControlMode
@@ -147,6 +149,7 @@ def main():
     global xcoordinate
     global ycoordinate
     global Zsensitivity
+
 
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
@@ -265,8 +268,12 @@ def main():
         print('Completed')
         raise
 #
-while True:
+while elasped < 1:
     main()
+    elasped =  time.clock() - starttime
+    count += 1
+    print('This is count',count)
+
 
 #Refreshing Rate of 0.05s
 # def exitTK():
