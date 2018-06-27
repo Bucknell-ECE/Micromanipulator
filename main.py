@@ -241,10 +241,9 @@ def main():
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        if x < 1000:
-            xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-        elif x > 1000:
-            xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+
+        xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+        xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
