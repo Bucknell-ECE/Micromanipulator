@@ -82,11 +82,12 @@ def setControlMode(newControlMode):
     controlMode = newControlMode
 
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# xaxis.sendCommand('09',hextocommand2('40'))
-# xaxis.Openloop()
-# xaxis.ViewMode()
+# xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
+# yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
+xaxis.Openloop()
+xaxis.ViewMode()
+time.sleep(2)
+xaxis.sendCommand('09',hextocommand2('40'))
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 # time.sleep(5)
 
@@ -164,7 +165,7 @@ def main():
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
-        setBounds()
+        #setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
         # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
@@ -232,21 +233,15 @@ def main():
         # elif y > 1000:
         #     yaxis.sendCommand('06', [49] + [32] + encodeToCommand(8))
         #     ycoordinate += mapval(8,0,2000,0,12000)
-        xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+        # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        # if x < 1000:
-        #     xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(1000))
-        #     xcoordinate -= mapval(8,0,6000,0,2000)
-        #     if xcoordinate <= 0:
-        #         xcoordinate = 0
-        # elif x > 1000:
-        #     xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-        #     xcoordinate += mapval(8,0,12000,0,2000)
-        #     if xcoordinate >= 2000:
-        #         xcoordinate = 2000
+        if x < 1000:
+            xaxis.sendCommand('05', [48] + [32] + encodeToCommand4digit(1000))
+        elif x > 1000:
+            xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
@@ -266,12 +261,14 @@ def main():
         f.close()
         print('Completed')
         raise
+
 starttime = time.time()
+
 while elasped <= 1:
     main()
-    elasped =  time.time() - starttime
-    count += 1
-    print('This is count',count)
+    # elasped =  time.time() - starttime
+    # count += 1
+    # print('This is count',count)
 
 
 #Refreshing Rate of 0.05s
