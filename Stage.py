@@ -198,7 +198,7 @@ class Stage(object):
 
 
     def Openloop(self):
-        self.sendCommand('20', [48])
+        self.sendCommand('20', [49])
 
     def ViewMode(self):
         self.sendCommand('20', [82])
