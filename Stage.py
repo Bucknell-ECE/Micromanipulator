@@ -197,8 +197,14 @@ class Stage(object):
         self.goToLocation(self.home)
 
 
+    def Openloop(self):
+        self.sendCommand('20', [49])
 
-
+    def ViewMode(self):
+        self.sendCommand('20', [82])
+        time.sleep(0.2)
+        temp = self.read()
+        print('This is the mode',temp)
 
 #########################DEPRECATED CODE#########################
 
