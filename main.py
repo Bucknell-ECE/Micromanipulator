@@ -270,9 +270,9 @@ starttime = time.time()
 
 while elasped <= 1:
     main()
-    # elasped =  time.time() - starttime
-    # count += 1
-    # print('This is count',count)
+    elasped =  time.time() - starttime
+    count += 1
+    print('This is count',count)
 
 
 #Refreshing Rate of 0.05s
