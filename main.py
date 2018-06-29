@@ -253,9 +253,9 @@ def main():
         # Move Open Loop Steps
         xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
         # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-        # time.sleep(0.2)
-        # temp2 = xaxis.read()
-        # print("This is feedback",temp2)
+        time.sleep(0.2)
+        temp2 = xaxis.read()
+        print("This is feedback",temp2)
         #xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
 
         # root=Tk()
