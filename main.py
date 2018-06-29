@@ -86,6 +86,7 @@ def setControlMode(newControlMode):
 # yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
 xaxis.sendCommand('20',[48])
 yaxis.sendCommand('20',[48])
+time.sleep(3)
 # xaxis.sendCommand('20',[82])
 # time.sleep(0.2)
 # temp = xaxis.read()
