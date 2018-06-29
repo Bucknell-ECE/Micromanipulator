@@ -16,7 +16,7 @@ from helper import *
 import time
 import spidev
 import binascii
-EXPECTED_RETURN_LENGTH = 31
+EXPECTED_RETURN_LENGTH = 50
 
 
 class StageSPI(Stage):
