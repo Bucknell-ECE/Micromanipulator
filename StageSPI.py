@@ -68,9 +68,12 @@ class StageSPI(Stage):
         return return_buffer
 
     def getstatus(self):
-        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        """Get current status information
+        return a series of bits that correspond to the table on the reference manual <10>
+        """
+        self.sendCommandNoVars('10')
         time.sleep(0.2)
-        temp = self.read()  # store incoming data from motor in list
+        temp = self.read()
         #return temp
 
         rcvEncodedStatus = ''

@@ -77,6 +77,8 @@ def encoderConvert(value):
     return encodeOutput
 
 def hextocommand(command):
+    """From heximal number to 6 digit command
+    """
     encodeOutput = []
     for i in command:
         encodeOutput += [ord(str(i))]
@@ -86,6 +88,8 @@ def hextocommand(command):
     return encodeOutput
 
 def hextocommand4(command):
+    """From heximal number to 4 digit command
+        """
     encodeOutput = []
     for i in command:
         encodeOutput += [ord(str(i))]
@@ -95,6 +99,8 @@ def hextocommand4(command):
     return encodeOutput
 
 def hextocommand2(command):
+    """From heximal number to 2 digit command
+        """
     encodeOutput = []
     for i in command:
         encodeOutput += [ord(str(i))]
@@ -204,6 +210,7 @@ def mapval(x, inMin, inMax, outMin, outMax):
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
 def AudioNoti(x,y,xMin,xMax,yMin,yMax):
+    "Play Audio Notification when hit the boundary"
     if x == xMin or x == xMax or y == yMin or y == yMax:
         print('Hit the boundary')
         pygame.mixer.init()
@@ -213,6 +220,7 @@ def AudioNoti(x,y,xMin,xMax,yMin,yMax):
             continue
 
 def statusinfo(status):
+    """Status information correspond to that table in Reference Manual <10>"""
     if status[0] == '1':
         print('The position error exceeds the stall detection threshold while motor is running')
     if status[3] == '1':

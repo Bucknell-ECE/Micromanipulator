@@ -166,6 +166,9 @@ class Stage(object):
         return position
 
     def GetCloseLoopSpeed(self):
+        """Get Close Loop Speed information
+        return close loop speed
+        """
         self.sendCommandNoVars('40')
         time.sleep(0.2)
         temp = self.read()
@@ -198,9 +201,15 @@ class Stage(object):
 
 
     def Openloop(self):
+        """Set the stage into open loop mode
+        :return NA
+        """
         self.sendCommand('20', [48])
 
     def ViewMode(self):
+        """View the current Mode
+        return the current mode information
+        """
         self.sendCommand('20', [82])
         time.sleep(0.2)
         temp = self.read()
