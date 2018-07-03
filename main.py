@@ -82,12 +82,12 @@ def setControlMode(newControlMode):
     controlMode = newControlMode
 
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-# xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
-# yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-xaxis.sendCommand('20',[48])
-yaxis.sendCommand('20',[48])
+# xaxis.sendCommand('20',[48])
+# yaxis.sendCommand('20',[48])
 # xaxis.sendCommand('20',[82])
 # time.sleep(0.2)
 # temp = xaxis.read()
@@ -95,8 +95,8 @@ yaxis.sendCommand('20',[48])
 # time.sleep(5)
 # xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-xaxis.sendCommand('09',hextocommand2('80'))
-yaxis.sendCommand('09',hextocommand2('80'))
+# xaxis.sendCommand('09',hextocommand2('80'))
+# yaxis.sendCommand('09',hextocommand2('80'))
 # xaxis.sendCommandNoVars('09')
 # time.sleep(0.2)
 # temp1 = xaxis.read()
@@ -231,38 +231,38 @@ def main():
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        # if x < 1000:
-        #     xaxis.sendCommand('06',[48] + [32] + encodeToCommand(5))
-        #     xcoordinate -= mapval(8,0,6000,0,2000)
-        #     if xcoordinate <= 0:
-        #         xcoordinate = 0
-        # elif x > 1000:
-        #     xaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-        #     xcoordinate += mapval(8,0,12000,0,2000)
-        #     if xcoordinate >= 2000:
-        #         xcoordinate = 2000
-        # if y < 1000:
-        #     yaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
-        #     ycoordinate -= mapval(8,0,12000,0,12000)
-        # elif y > 1000:
-        #     yaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-        #     ycoordinate += mapval(8,0,2000,0,12000)
+        if x < 1000:
+            xaxis.sendCommand('06',[48] + [32] + encodeToCommand(5))
+            xcoordinate -= mapval(8,0,6000,0,2000)
+            if xcoordinate <= 0:
+                xcoordinate = 0
+        elif x > 1000:
+            xaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
+            xcoordinate += mapval(8,0,12000,0,2000)
+            if xcoordinate >= 2000:
+                xcoordinate = 2000
+        if y < 1000:
+            yaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
+            ycoordinate -= mapval(8,0,12000,0,12000)
+        elif y > 1000:
+            yaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
+            ycoordinate += mapval(8,0,2000,0,12000)
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
         #Move Open Loop Steps
-        yaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-        # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-        time.sleep(0.2)
-        temp2 = yaxis.read()
-        print("This is feedback",temp2)
+        # yaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+        # # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
+        # time.sleep(0.2)
+        # temp2 = yaxis.read()
+        # print("This is feedback",temp2)
 
-        yaxis.sendCommandNoVars('52')
-        time.sleep(0.2)
-        temp3 = yaxis.read()
-        print("This is interval", temp3)
+        # yaxis.sendCommandNoVars('52')
+        # time.sleep(0.2)
+        # temp3 = yaxis.read()
+        # print("This is interval", temp3)
 
         #xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
 
