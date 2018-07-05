@@ -70,6 +70,7 @@ closeloopspeed = configParser.get('[Micromanipulator-config]','closeloopspeed')
 # closeloopstep = 5
 # closeloopspeed = '000200'
 print('closeloopstep',closeloopstep)
+time.sleep(2)
 xstatus = ''
 ystatus = ''
 zstatus = ''
