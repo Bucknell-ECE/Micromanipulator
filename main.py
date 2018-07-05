@@ -52,6 +52,7 @@ Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
 closeloopstep = 5
+closeloopspeed = '000200'
 xstatus = ''
 ystatus = ''
 zstatus = ''
@@ -83,8 +84,9 @@ def setControlMode(newControlMode):
     controlMode = newControlMode
 
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-# xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
-# yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+xaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+yaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # xaxis.sendCommand('20',[48])
