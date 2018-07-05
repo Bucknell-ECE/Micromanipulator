@@ -51,6 +51,7 @@ sensitivity = 50
 Zsensitivity = 200
 getstatus = 0
 scaleInput = 0
+closeloopstep = 5
 xstatus = ''
 ystatus = ''
 zstatus = ''
@@ -86,8 +87,8 @@ def setControlMode(newControlMode):
 # yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-xaxis.Openloop()
-yaxis.Openloop()
+# xaxis.sendCommand('20',[48])
+# yaxis.sendCommand('20',[48])
 # xaxis.sendCommand('20',[82])
 # time.sleep(0.2)
 # temp = xaxis.read()
@@ -95,13 +96,8 @@ yaxis.Openloop()
 # time.sleep(5)
 # xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-xaxis.sendCommand('09',hextocommand2('FF'))
-yaxis.sendCommand('09',hextocommand2('FF'))
-# xaxis.sendCommandNoVars('09')
-# time.sleep(0.2)
-# temp1 = xaxis.read()
-# print('This is the mode',temp1)
-# time.sleep(5)
+# xaxis.sendCommand('09',hextocommand2('FF'))
+# yaxis.sendCommand('09',hextocommand2('FF'))
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
 # time.sleep(5)
 
@@ -163,7 +159,7 @@ def main():
     global xcoordinate
     global ycoordinate
     global Zsensitivity
-
+    global closeloopstep
 
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
@@ -233,64 +229,50 @@ def main():
                 Zsensitivity -= 50
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
-        # if x < 1000:
-        #     xaxis.sendCommand('06',[48] + [32] + encodeToCommand(5))
-        #     xcoordinate -= mapval(8,0,6000,0,2000)
-        #     if xcoordinate <= 0:
-        #         xcoordinate = 0
-        # elif x > 1000:
-        #     xaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-        #     xcoordinate += mapval(8,0,12000,0,2000)
-        #     if xcoordinate >= 2000:
-        #         xcoordinate = 2000
-        # if y < 1000:
-        #     yaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
-        #     ycoordinate -= mapval(8,0,12000,0,12000)
-        # elif y > 1000:
-        #     yaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-        #     ycoordinate += mapval(8,0,2000,0,12000)
+        #Close Loop Movements:
+        if x < 1000:
+            xaxis.sendCommand('06',[48] + [32] + encodeToCommand(closeloopstep))
+            xcoordinate -= mapval(8,0,6000,0,2000)
+            if xcoordinate <= 0:
+                xcoordinate = 0
+        elif x > 1000:
+            xaxis.sendCommand('06', [49] + [32] + encodeToCommand(closeloopstep))
+            xcoordinate += mapval(8,0,12000,0,2000)
+            if xcoordinate >= 2000:
+                xcoordinate = 2000
+        if y < 1000:
+            yaxis.sendCommand('06', [48] + [32] + encodeToCommand(closeloopstep))
+            ycoordinate -= mapval(8,0,12000,0,12000)
+        elif y > 1000:
+            yaxis.sendCommand('06', [49] + [32] + encodeToCommand(closeloopstep))
+            ycoordinate += mapval(8,0,2000,0,12000)
 
+        #Position Mode
 
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        #Move Open Loop Steps
-        if x < 1000:
-            xaxis.sendCommandNoVars('01')
-            xaxis.MoveOpenLoopSteps(5,48)
-            xcoordinate -= mapval(8,0,6000,0,2000)
-            if xcoordinate <= 0:
-                xcoordinate = 0
-        elif x > 1000:
-            xaxis.sendCommandNoVars('01')
-            xaxis.MoveOpenLoopSteps(5, 49)
-            xcoordinate += mapval(8,0,12000,0,2000)
-            if xcoordinate >= 2000:
-                xcoordinate = 2000
-        if y < 1000:
-            yaxis.sendCommandNoVars('01')
-            yaxis.MoveOpenLoopSteps(5, 48)
-        elif y > 1000:
-            yaxis.sendCommandNoVars('01')
-            yaxis.MoveOpenLoopSteps(5, 49)
-        # # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-        # time.sleep(0.2)
-        # temp2 = yaxis.read()
-        # print("This is feedback",temp2)
-
-        # yaxis.sendCommandNoVars('52')
-        # time.sleep(0.2)
-        # temp3 = yaxis.read()
-        # print("This is interval", temp3)
-
-        #xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-
-        # root=Tk()
-        # positionx = Label(root, text = ('Postion x is ',x))
-        # positionx.pack()
-        # root.update_idletasks()
+        #Open Loop Movement
+        # if x < 1000:
+        #     xaxis.sendCommandNoVars('01')
+        #     xaxis.MoveOpenLoopSteps(5,48)
+        #     xcoordinate -= mapval(8,0,6000,0,2000)
+        #     if xcoordinate <= 0:
+        #         xcoordinate = 0
+        # elif x > 1000:
+        #     xaxis.sendCommandNoVars('01')
+        #     xaxis.MoveOpenLoopSteps(5, 49)
+        #     xcoordinate += mapval(8,0,12000,0,2000)
+        #     if xcoordinate >= 2000:
+        #         xcoordinate = 2000
+        # if y < 1000:
+        #     yaxis.sendCommandNoVars('01')
+        #     yaxis.MoveOpenLoopSteps(5, 48)
+        # elif y > 1000:
+        #     yaxis.sendCommandNoVars('01')
+        #     yaxis.MoveOpenLoopSteps(5, 49)
 
     except KeyboardInterrupt:
         # xaxis.sendCommandNoVars('19')
