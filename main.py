@@ -43,19 +43,19 @@ yaxis.startup()
 
 configParser = ConfigParser.ConfigParser()
 configParser.readfp(open(r'/home/pi/Micromanipulator/Micro-config.txt'))
-xlinearRangeMin = configParser.get('[Micromanipulator-config]','xlinearRangeMin')
-xlinearRangeMax = configParser.get('[Micromanipulator-config]','xlinearRangeMax')
+xlinearRangeMin = configParser.get('Micromanipulator-config','xlinearRangeMin')
+xlinearRangeMax = configParser.get('Micromanipulator-config','xlinearRangeMax')
 xlinearRange = 12000
-ylinearRangeMin = configParser.get('[Micromanipulator-config]','ylinearRangeMin')
-ylinearRangeMax = configParser.get('[Micromanipulator-config]','ylinearRangeMax')
+ylinearRangeMin = configParser.get('Micromanipulator-config','ylinearRangeMin')
+ylinearRangeMax = configParser.get('Micromanipulator-config','ylinearRangeMax')
 ylinearRange = 12000
-constrainedLinearRange = configParser.get('[Micromanipulator-config]','constrainedLinearRange')
-sensitivity = configParser.get('[Micromanipulator-config]','sensitivity')
-Zsensitivity = configParser.get('[Micromanipulator-config]','Zsensitivity')
+constrainedLinearRange = configParser.get('Micromanipulator-config','constrainedLinearRange')
+sensitivity = configParser.get('Micromanipulator-config','sensitivity')
+Zsensitivity = configParser.get('Micromanipulator-config','Zsensitivity')
 getstatus = 0
 scaleInput = 0
-closeloopstep = configParser.get('[Micromanipulator-config]','closeloopstep')
-closeloopspeed = configParser.get('[Micromanipulator-config]','closeloopspeed')
+closeloopstep = configParser.get('Micromanipulator-config','closeloopstep')
+closeloopspeed = configParser.get('Micromanipulator-config','closeloopspeed')
 # xlinearRangeMin = 0
 # xlinearRangeMax = 12000
 # xlinearRange = 12000
