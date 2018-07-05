@@ -1,0 +1,11 @@
+[Micromanipulator-config]
+xlinearRangeMin = 0
+xlinearRangeMax = 12000
+ylinearRangeMin = 0
+ylinearRangeMax = 12000
+ylinearRange = 12000
+constrainedLinearRange = 12000
+sensitivity = 50
+Zsensitivity = 200
+closeloopstep = 5
+closeloopspeed = '000200'
