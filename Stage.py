@@ -216,7 +216,7 @@ class Stage(object):
         print('This is the mode',temp)
 
     def MoveOpenLoopSteps(self,steps,direction):
-        sendCommand('05',[direction] + [32] + encodeToCommand4digit(steps) + [32] + hextocommand4('186A') + [32] + hextocommand4('0C35'))
+        self.sendCommand('05',[direction] + [32] + encodeToCommand4digit(steps) + [32] + hextocommand4('186A') + [32] + hextocommand4('0C35'))
 #########################DEPRECATED CODE#########################
 
     # def write1(self, command):
