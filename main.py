@@ -44,7 +44,6 @@ yaxis.startup()
 configParser = ConfigParser.ConfigParser()
 configParser.readfp(open(r'/home/pi/Micromanipulator/Micro-config.txt'))
 xlinearRangeMin = int(configParser.get('Micromanipulator-config','xlinearRangeMin'))
-
 xlinearRangeMax = int(configParser.get('Micromanipulator-config','xlinearRangeMax'))
 xlinearRange = 12000
 ylinearRangeMin = int(configParser.get('Micromanipulator-config','ylinearRangeMin'))
