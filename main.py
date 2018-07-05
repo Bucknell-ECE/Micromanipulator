@@ -57,19 +57,6 @@ getstatus = 0
 scaleInput = 0
 closeloopstep = int(configParser.get('Micromanipulator-config','closeloopstep'))
 closeloopspeed = configParser.get('Micromanipulator-config','closeloopspeed')
-# xlinearRangeMin = 0
-# xlinearRangeMax = 12000
-# xlinearRange = 12000
-# ylinearRangeMin = 0
-# ylinearRangeMax = 12000
-# ylinearRange = 12000
-# constrainedLinearRange = 12000
-# sensitivity = 50
-# Zsensitivity = 200
-# getstatus = 0
-# scaleInput = 0
-# closeloopstep = 5
-# closeloopspeed = '000200'
 xstatus = ''
 ystatus = ''
 zstatus = ''
@@ -100,7 +87,6 @@ count = 0
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
-# print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
 xaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 yaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 
@@ -181,29 +167,20 @@ def main():
     global closeloopstep
 
     try:
-        # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
-        # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
-        # print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
-        # Test result: <06 0 00000064>\r
         time.sleep(0.01)
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         print('Test Point 2',scaleInput)
-        #time.sleep(2)
         sensitivitywrite(scaleInput)
         x = joy.getX()
         y = 2000 - joy.getY()
         #setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
-        # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
-        # time.sleep(1)
         X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
         Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
         #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
-        # print('Getstatus X', xaxis.getstatus())
-        # print('Getstatus Z', zaxis.getstatus())
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
@@ -217,18 +194,10 @@ def main():
                 yaxis.setCurrentHome()
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
-                # xaxis.CLoseloop()
-                # yaxis.CLoseloop()
                 xaxis.goToLocation(6000)
                 yaxis.goToLocation(6000)
-                # xaxis.Openloop()
-                # yaxis.Openloop()
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
-                # statusx = xaxis.getstatus()
-                # statusinfo(statusx)
-                # statusy = yaxis.getstatus()
-                # statusinfo(statusy)
                 xstatus = xaxis.getstatus()
                 ystatus = yaxis.getstatus()
                 zstatus = zaxis.getstatus()
@@ -247,7 +216,6 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
                 Zsensitivity -= 50
 
-        # Main commands to tell the stage to go to a location descibed by the joystick.
         #Close Loop Movements:
         if x < 1000:
             xaxis.sendCommand('06',[48] + [32] + encodeToCommand(closeloopstep))
