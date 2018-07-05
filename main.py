@@ -91,6 +91,8 @@ yaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+
 
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
+
+#Activiate Open Loop
 # xaxis.sendCommand('20',[48])
 # yaxis.sendCommand('20',[48])
 # xaxis.sendCommand('20',[82])
@@ -98,8 +100,6 @@ yaxis.sendCommand('40',hextocommand(closeloopspeed)+[32]+hextocommand('00000A')+
 # temp = xaxis.read()
 # print('This is the mode',temp)
 # time.sleep(5)
-# xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
 # xaxis.sendCommand('09',hextocommand2('FF'))
 # yaxis.sendCommand('09',hextocommand2('FF'))
 # print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
@@ -215,7 +215,7 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
                 Zsensitivity -= 50
 
-        #Close Loop Movements:
+        #Close Loop Velocity Movements:
         if x < 1000:
             xaxis.sendCommand('06',[48] + [32] + encodeToCommand(closeloopstep))
             xcoordinate -= mapval(8,0,6000,0,2000)
@@ -240,7 +240,7 @@ def main():
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        #Open Loop Movement
+        #Open Loop Velocity Movement
         # if x < 1000:
         #     xaxis.sendCommandNoVars('01')
         #     xaxis.MoveOpenLoopSteps(5,48)
@@ -334,6 +334,8 @@ while elasped <= 1:
 #         time.sleep(delay)
 #         counter -= 1
 
+
+#Working GUI
 # root = Tk(className = 'Micromanipulator')
 # root.geometry("400x150")
 # positionx = Label(root, text = "welcome")
