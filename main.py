@@ -23,6 +23,7 @@ import signal
 import os.path
 import subprocess
 import threading
+import ConfigParser
 
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
@@ -40,19 +41,34 @@ xaxis.startup()
 yaxis.startup()
 #zaxis.startup()
 
-xlinearRangeMin = 0
-xlinearRangeMax = 12000
+configParser = ConfigParser.ConfigParser()
+configParser.readfp(open(r'/home/pi/Micromanipulator/Micro-config.txt'))
+xlinearRangeMin = configParser.get('[Micromanipulator-config]','xlinearRangeMin')
+xlinearRangeMax = configParser.get('[Micromanipulator-config]','xlinearRangeMax')
 xlinearRange = 12000
-ylinearRangeMin = 0
-ylinearRangeMax = 12000
+ylinearRangeMin = configParser.get('[Micromanipulator-config]','ylinearRangeMin')
+ylinearRangeMax = configParser.get('[Micromanipulator-config]','ylinearRangeMax')
 ylinearRange = 12000
-constrainedLinearRange = 12000
-sensitivity = 50
-Zsensitivity = 200
+constrainedLinearRange = configParser.get('[Micromanipulator-config]','constrainedLinearRange')
+sensitivity = configParser.get('[Micromanipulator-config]','sensitivity')
+Zsensitivity = configParser.get('[Micromanipulator-config]','Zsensitivity')
 getstatus = 0
 scaleInput = 0
-closeloopstep = 5
-closeloopspeed = '000200'
+closeloopstep = configParser.get('[Micromanipulator-config]','closeloopstep')
+closeloopspeed = configParser.get('[Micromanipulator-config]','closeloopspeed')
+# xlinearRangeMin = 0
+# xlinearRangeMax = 12000
+# xlinearRange = 12000
+# ylinearRangeMin = 0
+# ylinearRangeMax = 12000
+# ylinearRange = 12000
+# constrainedLinearRange = 12000
+# sensitivity = 50
+# Zsensitivity = 200
+# getstatus = 0
+# scaleInput = 0
+# closeloopstep = 5
+# closeloopspeed = '000200'
 xstatus = ''
 ystatus = ''
 zstatus = ''
