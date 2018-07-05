@@ -95,8 +95,8 @@ print('This is the mode',temp)
 time.sleep(5)
 # xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-xaxis.sendCommand('09',hextocommand2('80'))
-yaxis.sendCommand('09',hextocommand2('80'))
+xaxis.sendCommand('09',hextocommand2('FF'))
+yaxis.sendCommand('09',hextocommand2('FF'))
 xaxis.sendCommandNoVars('09')
 time.sleep(0.2)
 temp1 = xaxis.read()
@@ -247,6 +247,8 @@ def main():
         # elif y > 1000:
         #     yaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
         #     ycoordinate += mapval(8,0,2000,0,12000)
+
+
         # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
