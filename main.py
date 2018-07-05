@@ -257,22 +257,22 @@ def main():
         #Move Open Loop Steps
         if x < 1000:
             xaxis.sendCommandNoVars('01')
-            xaxis.MoveOpenLoopSteps(50,48)
+            xaxis.MoveOpenLoopSteps(10,48)
             xcoordinate -= mapval(8,0,6000,0,2000)
             if xcoordinate <= 0:
                 xcoordinate = 0
         elif x > 1000:
             xaxis.sendCommandNoVars('01')
-            xaxis.MoveOpenLoopSteps(50, 49)
+            xaxis.MoveOpenLoopSteps(10, 49)
             xcoordinate += mapval(8,0,12000,0,2000)
             if xcoordinate >= 2000:
                 xcoordinate = 2000
         if y < 1000:
             yaxis.sendCommandNoVars('01')
-            yaxis.MoveOpenLoopSteps(50, 48)
+            yaxis.MoveOpenLoopSteps(10, 48)
         elif y > 1000:
             yaxis.sendCommandNoVars('01')
-            yaxis.MoveOpenLoopSteps(50, 49)
+            yaxis.MoveOpenLoopSteps(10, 49)
         # # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
         # time.sleep(0.2)
         # temp2 = yaxis.read()
