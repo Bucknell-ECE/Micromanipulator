@@ -165,14 +165,6 @@ class Stage(object):
         print('The current position Reported by M3LS is : ', position)
         return position
 
-    def GetCloseLoopSpeed(self):
-        """Get Close Loop Speed information
-        return close loop speed
-        """
-        self.sendCommandNoVars('40')
-        time.sleep(0.2)
-        temp = self.read()
-        print('This is speed',temp)
 
 
 
@@ -199,6 +191,11 @@ class Stage(object):
         """
         self.goToLocation(self.home)
 
+    def CLoseloop(self):
+        """Set the stage into close loop mode
+                :return NA
+                """
+        self.sendCommand('20', [49])
 
     def Openloop(self):
         """Set the stage into open loop mode

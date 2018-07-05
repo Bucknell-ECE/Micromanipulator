@@ -202,10 +202,12 @@ def main():
                 yaxis.setCurrentHome()
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
+                xaxis.CLoseloop()
+                yaxis.CLoseloop()
                 xaxis.goToLocation(6000)
-                xcoordinate = 1000
                 yaxis.goToLocation(6000)
-                ycoordinate = 1000
+                xaxis.Openloop()
+                yaxis.Openloop()
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
                 # statusx = xaxis.getstatus()
