@@ -1,3 +1,5 @@
+## not used (7/5/18)
+
 import spidev
 import time
 spi = spidev.SpiDev() # create spi object

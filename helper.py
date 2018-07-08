@@ -58,7 +58,7 @@ def encodeToCommand4digit(value):
 
 
 def encoderConvert(value):
-    ''''
+    '''
     THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
     Function that takes in a value in decimal and outputs the hex ascii version of it, by taking each number of the hex
     value and sending that digit as a hex number

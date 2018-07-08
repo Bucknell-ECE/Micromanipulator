@@ -1,3 +1,5 @@
+## unused (7/5/18)
+
 '''
 
 This file contains testing information for the SPI stuff.
@@ -22,6 +24,7 @@ import time
 
 
 ###############GLOBAL VARIABLES###################
+
 controlMode = 'position'
 ################END GLOBAL VARIABLEs############
 

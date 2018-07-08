@@ -1,3 +1,5 @@
+## unused, but useful to review (7/5/18)
+
 import pygame
 import time
 
