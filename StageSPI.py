@@ -35,7 +35,7 @@ class StageSPI(Stage):
         #axis.mode = 0b01
         #axis.max_speed_hz = 1000000
 
-      #this is definitely not the right way to do this. Should do something with self here.
+        # this is definitely not the right way to do this. Should do something with self here.
 
         axis = spidev.SpiDev()
         axis.open(self.bus, self.device)

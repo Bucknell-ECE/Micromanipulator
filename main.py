@@ -27,8 +27,8 @@ import threading
 ###############GLOBAL VARIABLES###################
 controlMode = 'position'
 safety_margin = 50
-################END GLOBAL VARIABLEs############
-
+################END GLOBAL VARIABLES############
+## TODO Eliminate global variables (research Python memory usage with global vars)
 
 #constructors for the stages
 xaxis = StageSPI(0, 0, 6000)
@@ -163,7 +163,6 @@ def main():
     global xcoordinate
     global ycoordinate
     global Zsensitivity
-
 
     try:
         # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
