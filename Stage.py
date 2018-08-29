@@ -18,7 +18,7 @@ class Stage(object):
         self.position = position    # initialize position parameter
         self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
-    #  @property
+    #  @property TODO What does @property do, and should I use it?
     def getPosition(self):
         return int(self.position)
 
@@ -35,7 +35,7 @@ class Stage(object):
         self.home = location
 
     def setCurrentHome(self):
-        current = self.getPositionFromM3LS()    ## TODO What is the difference here from getPositionFromM3LS(self)?
+        current = self.getPositionFromM3LS()    ## old_TODO What is the difference here from getPositionFromM3LS(self)?
                                                 # The getPositionFromM3LS method is called from within setCurrentHome,
                                                 # thus passing its value to "current". "self" is the parameter through which
                                                 # the "getPositionFromM3LS" method is called. (Different from a function.)
@@ -144,7 +144,7 @@ class Stage(object):
         #print(commandToString(command_to_send))
         self.write(command_to_send)
 
-    def calibrate(self):
+    def calibrate(self): # TODO How do x- and y- stages (that communicate via SPI) run the calibration routine?
         """
         Function that runs a calibration for the stages. Runs both forward and backwards commands.
         :return: N/A
@@ -152,7 +152,7 @@ class Stage(object):
         '''
         Send to stage:
         <87 5>/r
-        Recieve from stage:
+        Receive from stage:
 
         '''
         self.sendCommand('87', [ 5])
@@ -162,7 +162,7 @@ class Stage(object):
 
     def startup(self):
         """
-        Runs the Newscale recommended startup sequence. This is not yet complete. See Newscale docs page 7
+        Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
         :return: NA
         """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
