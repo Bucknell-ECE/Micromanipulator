@@ -18,7 +18,7 @@ class Stage(object):
         self.position = position    # initialize position parameter
         self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
-    #  @property TODO What does @property do, and should I use it?
+     # @property TODO What does @property do, and should I use it?
     def getPosition(self):
         return int(self.position)
 
@@ -35,7 +35,7 @@ class Stage(object):
         self.home = location
 
     def setCurrentHome(self):
-        current = self.getPositionFromM3LS()    ## old_TODO What is the difference here from getPositionFromM3LS(self)?
+        current = self.getPositionFromM3LS()    # old_TODO What is the difference here from getPositionFromM3LS(self)?
                                                 # The getPositionFromM3LS method is called from within setCurrentHome,
                                                 # thus passing its value to "current". "self" is the parameter through which
                                                 # the "getPositionFromM3LS" method is called. (Different from a function.)
@@ -50,7 +50,7 @@ class Stage(object):
     def getPositionFromM3LS(self):
         """
         Function that returns the position of the stage
-        :return: Position of the stage in encoder counts(NOT uM!)
+        :return: Position of the stage in encoder counts (NOT uM!)
 
         From Newscale documentation:
         Send : <10>
@@ -165,12 +165,12 @@ class Stage(object):
         Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
         :return: NA
         """
-        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']  # [1 000000064]
         ##backwardStep =
         #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
         self.sendCommand('06', [48] + [32] + encodeToCommand(100))
         self.sendCommand('06', [49] + [32] + encodeToCommand(100))
-        #self.calibrate()
+        # self.calibrate() TODO Turn this back on
 
     def GetCloseLoopSpeed(self):
         """Get Close Loop Speed information

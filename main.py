@@ -1,21 +1,20 @@
-'''
-
+"""
 This file contains the main loop to be run
 
 Last Modified: Zheng Tian 6/29/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
-'''
+"""
 
 from helper import *
 from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
+from Joystick import *
 
 from datetime import datetime
-from Joystick import *
-from Tkinter import *
+from tkinter import * ## was originally "Tkinter"
 import pygame
 import random
 import time
@@ -24,21 +23,10 @@ import os.path
 import subprocess
 import threading
 
-###############GLOBAL VARIABLES###################
-controlMode = 'position'
+###############GLOBAL VARIABLES################### ## TODO Find out how to eliminate global variables
+
+controlMode = 'position'  # TODO Where does one change this to 'velocity'?
 safety_margin = 50
-################END GLOBAL VARIABLES############
-## TODO Eliminate global variables (research Python memory usage with global vars)
-
-#constructors for the stages
-xaxis = StageSPI(0, 0, 6000)
-yaxis = StageSPI(0, 1, 6000)
-
-zaxis = StageI2C(0x40, 6000, 1)
-
-xaxis.startup()
-yaxis.startup()
-#zaxis.startup()
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -55,9 +43,23 @@ xstatus = ''
 ystatus = ''
 zstatus = ''
 
+################END GLOBAL VARIABLES############
+
+
+# Constructors for the stages
+xaxis = StageSPI(0, 0, 6000)
+yaxis = StageSPI(0, 1, 6000)
+
+zaxis = StageI2C(0x40, 6000, 1)
+
+xaxis.startup()
+yaxis.startup()
+#zaxis.startup()
+
+
 if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
     scaleInput = sensitivityread()
-print('test',scaleInput)
+print('test', scaleInput)
 #time.sleep(5)
 
 x = 1000
@@ -75,15 +77,20 @@ pygame.joystick.init()  # Initialize joystick module
 
 
 joy = CustomJoystick('Logitech', 0)
-elasped = 0
+elapsed = 0
 count = 0
+
 
 def setControlMode(newControlMode):
     controlMode = newControlMode
 
+
 # print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
 xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+# Set closed-loop speeds (C&C Ref. Guide, p. 19)
+
+
 # xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
 # xaxis.sendCommand('20',[48])
@@ -229,9 +236,9 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
                 Zsensitivity -= 50
 
-        # Main commands to tell the stage to go to a location descibed by the joystick.
+        # Main commands to tell the stage to go to a location described by the joystick.
         if x < 1000:
-            xaxis.sendCommand('06',[48] + [32] + encodeToCommand(5))
+            xaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
             xcoordinate -= mapval(8,0,6000,0,2000)
             if xcoordinate <= 0:
                 xcoordinate = 0
@@ -240,6 +247,7 @@ def main():
             xcoordinate += mapval(8,0,12000,0,2000)
             if xcoordinate >= 2000:
                 xcoordinate = 2000
+
         if y < 1000:
             yaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
             ycoordinate -= mapval(8,0,12000,0,12000)
@@ -286,9 +294,9 @@ def main():
 
 starttime = time.time()
 
-while elasped <= 1:
+while elapsed <= 1:
     main()
-    # elasped =  time.time() - starttime
+    # elapsed =  time.time() - starttime
     # count += 1
     # print('This is count',count)
 

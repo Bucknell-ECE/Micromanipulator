@@ -18,7 +18,7 @@ class StageI2C(Stage):
         Stage.__init__(self, position)
         self.position = position
         self.address = address
-        self.bus = smbus.SMBus(bus)  # Initialize the SMBus(I2C, lookup the differences)
+        self.bus = smbus.SMBus(bus)  # Initialize the SMBus (I2C, lookup the differences)
         self.home = 6000
 
     def zMove(self, direction, encoder_counts):

@@ -8,7 +8,7 @@ Originally Created: R. Nance 12/2017
 
 import pygame
 from helper import *
-#from helper import mapval
+# from helper import mapval
 
 
 
@@ -27,9 +27,7 @@ buttonMap = {
 }
 
 class CustomJoystick:
-    #will need to create a button mapping function that imports text file stuff here. THis is to get a GUI working
-
-    #will need to create a button mapping function that imports text file stuff here.`
+    # TODO Will need to create a button mapping function that imports text file stuff here.
 
     def __init__(self, name, number):
         self.name = name
@@ -37,7 +35,7 @@ class CustomJoystick:
         pygame.init()
 
         # Used to manage how fast the screen updates
-        clock = pygame.time.Clock()
+        self.clock = pygame.time.Clock()  # TODO Unused?
 
         # Initialize the joysticks
         pygame.joystick.init()
@@ -52,6 +50,7 @@ class CustomJoystick:
             joystick.init()
         axes = joystick.get_numaxes()
         #print(axes)
+
     def getAxisPosition(self, axisIndex):
         joystick = pygame.joystick.Joystick(0)
         return joystick.get_axis(axisIndex)
@@ -64,7 +63,7 @@ class CustomJoystick:
 
 ############################CODE WRITTTEN BY RYDER#########################################
     def getButtons(self):
-        clock = pygame.time.Clock()
+        # clock = pygame.time.Clock()  # TODO Verify how parameters are passed between __init__ method and this fn
 
         commands = []
 

@@ -11,17 +11,18 @@ Originally Created: R. Nance 05/2018
 '''
 
 from Stage import Stage
-
 from helper import *
+
 import time
 import spidev
 import binascii
-EXPECTED_RETURN_LENGTH = 31
+
+EXPECTED_RETURN_LENGTH = 31  # TODO Message from stage is expected to be 31 bytes long (verify in C&C Ref. Guide)
 
 
 class StageSPI(Stage):
     def __init__(self, bus, device, position):
-        Stage.__init__(self, position)
+        Stage.__init__(self, position)  # StageSPI is a child class of Stage -- inherits everything from Stage
 
         self.position = position
         self.bus = bus
@@ -35,7 +36,7 @@ class StageSPI(Stage):
         #axis.mode = 0b01
         #axis.max_speed_hz = 1000000
 
-        # this is definitely not the right way to do this. Should do something with self here.
+        # TODO figure out the differences between these two
 
         axis = spidev.SpiDev()
         axis.open(self.bus, self.device)
@@ -72,7 +73,7 @@ class StageSPI(Stage):
         return a series of bits that correspond to the table on the reference manual <10>
         """
         self.sendCommandNoVars('10')
-        time.sleep(0.2)
+        time.sleep(0.2)  # TODO Magic number! (Ask Ryder.)
         temp = self.read()
         #return temp
 
