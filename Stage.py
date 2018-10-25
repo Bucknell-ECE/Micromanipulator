@@ -170,7 +170,7 @@ class Stage(object):
         #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
         self.sendCommand('06', [48] + [32] + encodeToCommand(100))
         self.sendCommand('06', [49] + [32] + encodeToCommand(100))
-        # self.calibrate() TODO Turn this back on
+        # self.calibrate()  # TODO Turn this back on
 
     def GetCloseLoopSpeed(self):
         """Get Close Loop Speed information

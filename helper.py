@@ -239,7 +239,7 @@ def statusinfo(status):
     if status[22] == '0':
         print('Motor going backward')
 
-def sensitivityread():
+def sensitivity_read():
     file = open("sensitivity.txt", "r")
     return file.read()
 
@@ -255,8 +255,8 @@ def sensitivitywrite(scaleInput):
 
 #print('This is a test')
 #start = input('Please indicate an initial position for the stage')
-#xaxis = Stage('0x63', start, 1)
-#print(xaxis.getPosition())
+#x_axis = Stage('0x63', start, 1)
+#print(x_axis.getPosition())
 
 
 
@@ -264,7 +264,7 @@ def sensitivitywrite(scaleInput):
 #print(encoderConvert(value))
 #testing = encoderConvert(value)
 #print(testing[0])
-#commandTest = buildCommand('0x33', '08', encoderConvert(xaxis.getPosition()))
+#commandTest = buildCommand('0x33', '08', encoderConvert(x_axis.getPosition()))
 #print(commandTest)
 
 

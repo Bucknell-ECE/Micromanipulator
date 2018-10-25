@@ -3,10 +3,10 @@
 from helper import *
 from Stage import *
 
-xaxis = Stage(0x33, 6000, 1)
-print(xaxis.address)
-print(xaxis.getAddress())
-print(2 * xaxis.getAddress())
+x_axis = Stage(0x33, 6000, 1)
+print(x_axis.address)
+print(x_axis.getAddress())
+print(2 * x_axis.getAddress())
 while True:
     bus = smbus.SMBus(1)
     next = input('What do you want to do next?')
@@ -23,34 +23,34 @@ while True:
         print('temp', temp)
     elif next == 2: #move to a location
         moveToNew = input('Where should the stage move next?')
-        # com = xaxis.buildCommand('08',encoderConvert(moveToNew))
+        # com = x_axis.buildCommand('08',encoderConvert(moveToNew))
         # print(com)
-        # xaxis.calibrate()
+        # x_axis.calibrate()
         # bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
-        xaxis.sendCommand('08', encoderCountConvert(moveToNew))
+        x_axis.sendCommand('08', encoderCountConvert(moveToNew))
     elif next == 3: #get full status
-        xaxis.sendCommandNoVars('19')
+        x_axis.sendCommandNoVars('19')
         temp = bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
     elif next == 4:# read firmware version
-        xaxis.sendCommandNoVars('01')
+        x_axis.sendCommandNoVars('01')
         temp = bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
     elif next == 5: #get current postion
-        pos = xaxis.getPositionFromM3LS()
+        pos = x_axis.getPositionFromM3LS()
         print(pos)
     elif next == 6: #calibrate
-        xaxis.calibrate()
+        x_axis.calibrate()
         temp = bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
     elif next == 8: #Return home
-        xaxis.returnHome()
+        x_axis.returnHome()
     elif next == 7:
         newHome = input('Enter -1 to set current location as home, or enter postiion to set home')
         if newHome == -1:
-            xaxis.setCurrentHome()
+            x_axis.setCurrentHome()
         else:
-            xaxis.setHome(newHome)
+            x_axis.setHome(newHome)
 
 
 

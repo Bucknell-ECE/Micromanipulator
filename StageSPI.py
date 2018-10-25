@@ -41,7 +41,7 @@ class StageSPI(Stage):
         axis = spidev.SpiDev()
         axis.open(self.bus, self.device)
         axis.mode = 0b01
-        axis.max_speed_hz = 1000000
+        axis.max_speed_hz = 1000000  # TODO Responsiveness of 1 MHz? (Is this used anywhere?)
         self.axis = axis
 
 
@@ -73,7 +73,7 @@ class StageSPI(Stage):
         return a series of bits that correspond to the table on the reference manual <10>
         """
         self.sendCommandNoVars('10')
-        time.sleep(0.2)  # TODO Magic number! (Ask Ryder.)
+        time.sleep(0.2)  # TODO Magic number! Try playing around with this.
         temp = self.read()
         #return temp
 

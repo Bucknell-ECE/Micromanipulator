@@ -30,9 +30,9 @@ controlMode = 'position'
 
 
 #constructors for the stages
-xaxis = StageSPI(0, 0, 6000)
-yaxis = StageSPI(0, 1, 6000)
-zaxis = Stage(0x40, 6000, 1)
+x_axis = StageSPI(0, 0, 6000)
+y_axis = StageSPI(0, 1, 6000)
+z_axis = Stage(0x40, 6000, 1)
 
 xlinearRangeMin = 0
 xlinearRangeMax = 12000
@@ -42,11 +42,11 @@ ylinearRangeMax = 12000
 ylinearRange = 12000
 constrainedLinearRange = 12000
 
-axes = [zaxis]#
-# , yaxis, zaxis]
+axes = [z_axis]#
+# , y_axis, z_axis]
 
 #locations = [xlocation, ylocation, zlocation]
-refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
+REFRESH_RATE = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
 #with pygame
 lastMillis = 0
 
@@ -84,8 +84,8 @@ def setBounds():
     constrainedLinearRange = min(boundries)
 
 
-    #ylinearRangeMin = yaxis.home - scaledRange +100
-    #ylinearRangeMax = yaxis.home + scaledRange -100
+    #ylinearRangeMin = y_axis.home - scaledRange +100
+    #ylinearRangeMax = y_axis.home + scaledRange -100
 
 
 sensitivity = 50
@@ -105,15 +105,15 @@ while True:
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                zaxis.zMove(0, 200) # move up120 encoder counts
+                z_axis.zMove(0, 200) # move up120 encoder counts
             for nums in range(buttons.count('Zdown')):
                 print('Theres a zdonw')
-                zaxis.zMove(1, 200) # move down some amount 120 encoder counts
+                z_axis.zMove(1, 200) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
                 print('Previous Home: ', home)
-                xaxis.setCurrentHome()
-                yaxis.setCurrentHome()
+                x_axis.setCurrentHome()
+                y_axis.setCurrentHome()
                 print('Current Home: ', home)
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
@@ -124,7 +124,7 @@ while True:
         # deal with the Z axis
 
         print('Starting Loop')
-        home = [zaxis.home, yaxis.home, zaxis.home]
+        home = [z_axis.home, y_axis.home, z_axis.home]
         print('Homes', home)
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         print('boundries: ', boundries)
@@ -141,17 +141,17 @@ while True:
         print('ylinearrange', ylinearRange)
         print('xlinearRange', xlinearRange)
 
-        xaxis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
+        x_axis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
         print('Mapval', mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        yaxis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
+        y_axis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
         print('mapval y ', mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
 
     except KeyboardInterrupt:
-        #xaxis.sendCommandNoVars('19')
-        #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        #x_axis.sendCommandNoVars('19')
+        #temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
-        #xaxis.sendCommandNoVars('10')
-        #temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        #x_axis.sendCommandNoVars('10')
+        #temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Inturrupt on '+str(datetime.now()))
@@ -161,11 +161,11 @@ while True:
         raise
     '''
     except IOError:
-        #xaxis.sendCommandNoVars('19')
-        #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+        #x_axis.sendCommandNoVars('19')
+        #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
         #print('temp', temp)
-        xaxis.sendCommandNoVars('10')
-        temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        x_axis.sendCommandNoVars('10')
+        temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Error Occured on '+ str(datetime.now()))
@@ -179,7 +179,7 @@ while True:
     '''
     #currentMillis = datetime.now().microsecond
     currentMillis = time.time() * 1000000
-    if currentMillis - lastMillis < refreshRate:
+    if currentMillis - lastMillis < REFRESH_RATE:
         x = 1
         print('l', lastMillis)
         print(currentMillis)
@@ -191,8 +191,8 @@ while True:
         if controlMode == 'position':
             setBounds()
 
-            xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-            #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+            x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
+            #y_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
             #time.sleep(0.1)
     '''

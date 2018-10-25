@@ -12,8 +12,8 @@ from helper import *
 
 
 
-xAxisNum = 0
-yAxisNum = 1
+x_axisNum = 0
+x_axisNum = 1
 throttleAxisNum = 2
 buttonMap = {
     1: 'Zdown',
@@ -61,7 +61,7 @@ class CustomJoystick:
         return newPos
 
 
-############################CODE WRITTTEN BY RYDER#########################################
+############################CODE WRITTEN BY RYDER#########################################
     def getButtons(self):
         # clock = pygame.time.Clock()  # TODO Verify how parameters are passed between __init__ method and this fn
 
@@ -72,7 +72,7 @@ class CustomJoystick:
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
 
-            # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+            # Possible joystick actions: JOx_axisMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
             if event.type == pygame.JOYBUTTONDOWN:
                 button = event.button
                 #commands += button
@@ -87,14 +87,14 @@ class CustomJoystick:
 
         #joystick = pygame.joystick.Joystick(0)
 
-        return self.joystick.get_axis(xAxisNum)
+        return self.joystick.get_axis(x_axisNum)
 
     def getAbsoluteY(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        return self.joystick.get_axis(yAxisNum)
+        return self.joystick.get_axis(x_axisNum)
 
     def getAbsoluteThrottle(self):
         pygame.event.get()
@@ -105,7 +105,7 @@ class CustomJoystick:
 
     def getAbsolutePosition(self):
         pygame.event.get()
-        position = [round(self.joystick.get_axis(xAxisNum), 3), round(self.joystick.get_axis(yAxisNum), 3)]
+        position = [round(self.joystick.get_axis(x_axisNum), 3), round(self.joystick.get_axis(x_axisNum), 3)]
         return position
 
     def getX(self):
