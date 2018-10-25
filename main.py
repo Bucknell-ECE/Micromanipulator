@@ -12,6 +12,7 @@ from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 from Joystick import *
+from main_parameters import *  # TODO Do I need to import variables if they are defined in a different file (but not class)?
 
 from datetime import datetime
 from tkinter import * ## was originally "Tkinter"
@@ -22,29 +23,6 @@ import signal
 import os.path
 import subprocess
 import threading
-
-###############GLOBAL VARIABLES################### ## TODO Find out how to eliminate global variables
-
-controlMode = 'position'  # TODO Create function to change this to 'velocity' mode
-safety_margin = 50  # TODO Change to use M3-LS "Soft Limits"
-
-xlinearRangeMin = 0
-xlinearRangeMax = 12000
-xlinearRange = 12000
-ylinearRangeMin = 0
-ylinearRangeMax = 12000
-ylinearRange = 12000
-constrainedLinearRange = 12000
-sensitivity = 50
-Zsensitivity = 200
-getstatus = 0
-scaleInput = 0
-x_status = ''
-y_status = ''
-z_status = ''
-
-################END GLOBAL VARIABLES############
-
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)
@@ -62,7 +40,7 @@ if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
 print('test', scaleInput)
 #time.sleep(5)
 
-x = 1000
+x = 1000  # TODO What the heck are these? Are they constants, or variables?
 y = 1000
 
 x_coordinate = 1000  # TODO Should this be placed in the __init__ constructor?
@@ -131,14 +109,12 @@ def setBounds():
     ylinearRangeMin = x_axis.home - scaledRange + safety_margin
     ylinearRangeMax = x_axis.home + scaledRange - safety_margin
 
-
     print('XlinMin', xlinearRangeMin)
     print('xlinmax', xlinearRangeMax)
     print('Ylinmin', ylinearRangeMin)
-    print('ylimmax', ylinearRangeMax)
+    print('ylinmax', ylinearRangeMax)
     print('ylinearrange', ylinearRange)
     print('xlinearRange', xlinearRange)
-
 
 
 
