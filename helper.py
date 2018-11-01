@@ -8,6 +8,49 @@ Originally Created: R. Nance 03/2018
 
 import pygame
 
+def setBounds():
+    """
+    Sets the bounds for position mode.
+    1. determine which stop the home position is closest to
+    2. determine the distance from that stop and assign it to
+    3. create an artificial box with sides equal to the distance to the closest stop
+    4. scale the constrainedRange between based on the position of the throttle
+    5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
+    with a small offset for safety, so that the stages never run into the stops.
+
+    ####TOT
+    :return: na
+    """
+    global xlinearRangeMin  # TODO Try to get rid of these.
+    global xlinearRangeMax
+    global ylinearRangeMin
+    global ylinearRangeMax
+    global constrainedLinearRange
+    global safety_margin
+
+    print('Setting Linear Range')
+    home = [x_axis.home, y_axis.home, z_axis.home]
+    print('Homes', home)
+    # Find which stop the stage is closest to
+    # [left, bottom, right, top]
+    boundaries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    print('boundaries: ', boundaries)
+    constrainedLinearRange = min(boundaries)
+    print('constrainedlinearrange', constrainedLinearRange)
+    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
+    print('Scaled Range: ', scaledRange)
+    xlinearRangeMin = home[0] - scaledRange + safety_margin
+    xlinearRangeMax = home[0] + scaledRange - safety_margin
+    ylinearRangeMin = x_axis.home - scaledRange + safety_margin
+    ylinearRangeMax = x_axis.home + scaledRange - safety_margin
+
+    print('XlinMin', xlinearRangeMin)
+    print('xlinmax', xlinearRangeMax)
+    print('Ylinmin', ylinearRangeMin)
+    print('ylinmax', ylinearRangeMax)
+    print('ylinearrange', ylinearRange)
+    print('xlinearRange', xlinearRange)
+
 def encodeToCommand(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count

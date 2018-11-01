@@ -12,7 +12,7 @@ from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 from Joystick import *
-from main_parameters import *  # TODO Do I need to import variables if they are defined in a different file (but not class)?
+from main_parameters import *  # May be a temporary file just for housekeeping.
 
 from datetime import datetime
 from tkinter import * ## was originally "Tkinter"
@@ -70,52 +70,6 @@ y_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+
 # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
 ## Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 # TODO Make it so that these settings can be changed manually through the RPi terminal.
-
-
-def setBounds():
-    """
-    Sets the bounds for position mode.
-    1. determine which stop the home position is closest to
-    2. determine the distance from that stop and assign it to
-    3. create an artificial box with sides equal to the distance to the closest stop
-    4. scale the constrainedRange between based on the position of the throttle
-    5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
-    with a small offset for safety, so that the stages never run into the stops.
-
-    ####TOT
-    :return: na
-    """
-    global xlinearRangeMin
-    global xlinearRangeMax
-    global ylinearRangeMin
-    global ylinearRangeMax
-    global constrainedLinearRange
-    global safety_margin
-
-
-    print('Setting Linear Range')
-    home = [x_axis.home, y_axis.home, z_axis.home]
-    print('Homes', home)
-    # Find which stop the stage is closest to
-    # [left, bottom, right, top]
-    boundaries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
-    print('boundaries: ', boundaries)
-    constrainedLinearRange = min(boundaries)
-    print('constrainedlinearrange', constrainedLinearRange)
-    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-    print('Scaled Range: ', scaledRange)
-    xlinearRangeMin = home[0] - scaledRange + safety_margin
-    xlinearRangeMax = home[0] + scaledRange - safety_margin
-    ylinearRangeMin = x_axis.home - scaledRange + safety_margin
-    ylinearRangeMax = x_axis.home + scaledRange - safety_margin
-
-    print('XlinMin', xlinearRangeMin)
-    print('xlinmax', xlinearRangeMax)
-    print('Ylinmin', ylinearRangeMin)
-    print('ylinmax', ylinearRangeMax)
-    print('ylinearrange', ylinearRange)
-    print('xlinearRange', xlinearRange)
-
 
 
 def main():
