@@ -1,21 +1,21 @@
-'''
-
+"""
 This file contains the main loop to be run
 
 Last Modified: Zheng Tian 6/29/2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
-'''
+"""
 
 from helper import *
 from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
+from Joystick import *
+from main_parameters import *  # May be a temporary file just for housekeeping.
 
 from datetime import datetime
-from Joystick import *
-from Tkinter import *
+from tkinter import * ## was originally "Tkinter"
 import pygame
 import random
 import time
@@ -24,153 +24,74 @@ import os.path
 import subprocess
 import threading
 
-###############GLOBAL VARIABLES###################
-controlMode = 'position'
-safety_margin = 50
-################END GLOBAL VARIABLEs############
+# Constructors for the stages
+x_axis = StageSPI(0, 0, 6000)
+y_axis = StageSPI(0, 1, 6000)
 
+z_axis = StageI2C(0x40, 6000, 1)
 
-#constructors for the stages
-xaxis = StageSPI(0, 0, 6000)
-yaxis = StageSPI(0, 1, 6000)
+x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
+y_axis.startup()
+#z_axis.startup()  # TODO May want to uncomment this so we can calibrate z-motion.
 
-zaxis = StageI2C(0x40, 6000, 1)
-
-xaxis.startup()
-yaxis.startup()
-#zaxis.startup()
-
-xlinearRangeMin = 0
-xlinearRangeMax = 12000
-xlinearRange = 12000
-ylinearRangeMin = 0
-ylinearRangeMax = 12000
-ylinearRange = 12000
-constrainedLinearRange = 12000
-sensitivity = 50
-Zsensitivity = 200
-getstatus = 0
-scaleInput = 0
-xstatus = ''
-ystatus = ''
-zstatus = ''
 
 if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
-    scaleInput = sensitivityread()
-print('test',scaleInput)
+    scaleInput = sensitivity_read()
+print('test', scaleInput)
 #time.sleep(5)
 
-x = 1000
+x = 1000  # TODO What the heck are these? Are they constants, or variables?
 y = 1000
 
-xcoordinate = 1000
-ycoordinate = 1000
+x_coordinate = 1000  # TODO Should this be placed in the __init__ constructor?
+y_coordinate = 1000
 #locations = [xlocation, ylocation, zlocation]
-refreshRate = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
-#with pygame
+REFRESH_RATE = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
+#with pygame  -- (Ryder)
 lastMillis = 0
 
+
+## Joystick initialization block
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
-
 joy = CustomJoystick('Logitech', 0)
-elasped = 0
+elapsed = 0
 count = 0
 
-def setControlMode(newControlMode):
+
+def setControlMode(newControlMode):  # TODO This can be changed through Tony's code at bottom of this file.
     controlMode = newControlMode
 
-# print('test',xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-xaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
-yaxis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
-# xaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-# yaxis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-# xaxis.sendCommand('20',[48])
-# yaxis.sendCommand('20',[48])
-# xaxis.sendCommand('20',[82])
-# time.sleep(0.2)
-# temp = xaxis.read()
-# print('This is the mode',temp)
-# time.sleep(5)
-# xaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# yaxis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# xaxis.sendCommand('09',hextocommand2('80'))
-# yaxis.sendCommand('09',hextocommand2('80'))
-# xaxis.sendCommandNoVars('09')
-# time.sleep(0.2)
-# temp1 = xaxis.read()
-# print('This is the mode',temp1)
-# time.sleep(5)
-# print('test1',xaxis.sendCommand('08',encodeToCommand(500)))
-# time.sleep(5)
 
-def setBounds():
-    """
-    Sets the bounds for position mode.
-    1. determine which stop the home position is closest to
-    2. determine the distance from that stop and assign it to
-    3. create an artificial box with sides equal to the distance to the closest stop
-    4. scale the constrainedRange between based on the position of the throttle
-    5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
-    with a small offset for safety, so that the stages never run into the stops.
-
-    ####TOT
-    :return: na
-    """
-    global xlinearRangeMin
-    global xlinearRangeMax
-    global ylinearRangeMin
-    global ylinearRangeMax
-    global constrainedLinearRange
-    global safty_margin
-
-
-    print('Setting Linear Range')
-    home = [xaxis.home, yaxis.home, zaxis.home]
-    print('Homes', home)
-    # Find which stop the stage is closest to
-    # [left, bottom, right, top]
-    boundries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
-    print('boundries: ', boundries)
-    constrainedLinearRange = min(boundries)
-    print('constrainedlinearrange', constrainedLinearRange)
-    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-    print('Scaled Range: ', scaledRange)
-    xlinearRangeMin = home[0] - scaledRange + safety_margin
-    xlinearRangeMax = home[0] + scaledRange - safety_margin
-    ylinearRangeMin = yaxis.home - scaledRange + safety_margin
-    ylinearRangeMax = yaxis.home + scaledRange - safety_margin
-
-
-    print('XlinMin', xlinearRangeMin)
-    print('xlinmax', xlinearRangeMax)
-    print('Ylinmin', ylinearRangeMin)
-    print('ylimmax', ylinearRangeMax)
-    print('ylinearrange', ylinearRange)
-    print('xlinearRange', xlinearRange)
-
-
+# print('test',x_axis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
+x_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+y_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+# 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
+## Setting closed-loop speeds (C&C Ref. Guide, p. 19)
+# TODO Make it so that these settings can be changed manually through the RPi terminal.
 
 
 def main():
     global scaleInput
     global x
     global y
-    global xstatus
-    global ystatus
-    global zstatus
-    global xcoordinate
-    global ycoordinate
+    global x_status
+    global y_status
+    global z_status
+    global x_coordinate
+    global y_coordinate
     global Zsensitivity
 
+    try:  ## Loop for mapping joystick movements to M3-LS commands
 
-    try:
-        # print('xaxis location',xaxis.getPositionFromM3LS()), location in 12000
-        # print('go to location test', xaxis.sendCommand('08', encodeToCommand(3000)))
-        # print('command test', xaxis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
+        # print('x_axis location',x_axis.getPositionFromM3LS()), location in 12000
+        # print('go to location test', x_axis.sendCommand('08', encodeToCommand(3000)))
+        # print('command test', x_axis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
         # Test result: <06 0 00000064>\r
-        time.sleep(0.01)
+
+        time.sleep(0.01)  # Delay for 10 ms so as not to overload SPI registers.
+                          # TODO Can we decrease this to improve response time?
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
@@ -182,42 +103,43 @@ def main():
         #setBounds()
         print('X: ', x, 'Y', y)
         print(buttons)
-        # print('This is X closed loop speed', xaxis.GetCloseLoopSpeed())
+
+        # print('X-axis closed-loop speed: ', x_axis.GetCloseLoopSpeed())
         # time.sleep(1)
         X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
         Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
         #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
-        # print('Getstatus X', xaxis.getstatus())
-        # print('Getstatus Z', zaxis.getstatus())
+        # print('Getstatus X', x_axis.getstatus())
+        # print('Getstatus Z', z_axis.getstatus())
         if len(buttons) != 0:
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                zaxis.zMove(0, Zsensitivity)  # move up120 encoder counts
+                z_axis.zMove(0, Zsensitivity)  # move up120 encoder counts
             for nums in range(buttons.count('Zdown')):
                 print('Theres a ZDOWN')
-                zaxis.zMove(1, Zsensitivity)  # move down some amount 120 encoder counts
+                z_axis.zMove(1, Zsensitivity)  # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
-                xaxis.setCurrentHome()
-                yaxis.setCurrentHome()
+                x_axis.setCurrentHome()
+                x_axis.setCurrentHome()
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
-                xaxis.goToLocation(6000)
-                xcoordinate = 1000
-                yaxis.goToLocation(6000)
-                ycoordinate = 1000
+                x_axis.goToLocation(6000)
+                x_coordinate = 1000
+                x_axis.goToLocation(6000)
+                y_coordinate = 1000
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
-                # statusx = xaxis.getstatus()
+                # statusx = x_axis.getstatus()
                 # statusinfo(statusx)
-                # statusy = yaxis.getstatus()
+                # statusy = x_axis.getstatus()
                 # statusinfo(statusy)
-                xstatus = xaxis.getstatus()
-                ystatus = yaxis.getstatus()
-                zstatus = zaxis.getstatus()
-                print('Getstatus X', xstatus)
-                print('Getstatus Y', ystatus)
-                print('Getstatus Z', zstatus)
+                x_status = x_axis.getstatus()
+                y_status = y_axis.getstatus()
+                z_status = z_axis.getstatus()
+                print('Getstatus X', x_status)
+                print('Getstatus Y', y_status)
+                print('Getstatus Z', z_status)
                 while getstatus == 1:
                     buttons = joy.getButtons()
                     if buttons.count('GetStatus'):
@@ -230,41 +152,42 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
                 Zsensitivity -= 50
 
-        # Main commands to tell the stage to go to a location descibed by the joystick.
+        # Main commands to tell the stage to go to a location described by the joystick.
         if x < 1000:
-            xaxis.sendCommand('06',[48] + [32] + encodeToCommand(5))
-            xcoordinate -= mapval(8,0,6000,0,2000)
-            if xcoordinate <= 0:
-                xcoordinate = 0
+            x_axis.sendCommand('06', [48] + [32] + encodeToCommand(5))
+            x_coordinate -= mapval(8,0,6000,0,2000)
+            if x_coordinate <= 0:
+                x_coordinate = 0
         elif x > 1000:
-            xaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-            xcoordinate += mapval(8,0,12000,0,2000)
-            if xcoordinate >= 2000:
-                xcoordinate = 2000
+            x_axis.sendCommand('06', [49] + [32] + encodeToCommand(5))
+            x_coordinate += mapval(8,0,12000,0,2000)
+            if x_coordinate >= 2000:
+                x_coordinate = 2000
+
         if y < 1000:
-            yaxis.sendCommand('06', [48] + [32] + encodeToCommand(5))
-            ycoordinate -= mapval(8,0,12000,0,12000)
+            x_axis.sendCommand('06', [48] + [32] + encodeToCommand(5))
+            y_coordinate -= mapval(8,0,12000,0,12000)
         elif y > 1000:
-            yaxis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-            ycoordinate += mapval(8,0,2000,0,12000)
-        # xaxis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+            x_axis.sendCommand('06', [49] + [32] + encodeToCommand(5))
+            y_coordinate += mapval(8,0,2000,0,12000)
+        # x_axis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
         # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        # yaxis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+        # x_axis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
         # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
         #Move Open Loop Steps
-        # yaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-        # # xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
+        # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+        # # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
         # time.sleep(0.2)
-        # temp2 = yaxis.read()
+        # temp2 = x_axis.read()
         # print("This is feedback",temp2)
 
-        # yaxis.sendCommandNoVars('52')
+        # x_axis.sendCommandNoVars('52')
         # time.sleep(0.2)
-        # temp3 = yaxis.read()
+        # temp3 = x_axis.read()
         # print("This is interval", temp3)
 
-        #xaxis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+        #x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
 
         # root=Tk()
         # positionx = Label(root, text = ('Postion x is ',x))
@@ -272,11 +195,11 @@ def main():
         # root.update_idletasks()
 
     except KeyboardInterrupt:
-        # xaxis.sendCommandNoVars('19')
-        # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        # x_axis.sendCommandNoVars('19')
+        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
-        # xaxis.sendCommandNoVars('10')
-        # temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+        # x_axis.sendCommandNoVars('10')
+        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
         f.write('\n' + 'Keyboard Interrupt on ' + str(datetime.now()))
@@ -287,9 +210,9 @@ def main():
 
 starttime = time.time()
 
-while elasped <= 1:
+while elapsed <= 1:
     main()
-    # elasped =  time.time() - starttime
+    # elapsed =  time.time() - starttime
     # count += 1
     # print('This is count',count)
 
@@ -369,27 +292,27 @@ while elasped <= 1:
 # while True:
 #     root.update()
 #     main()
-#     positionx['text'] = ('Position x is ',xcoordinate)
+#     positionx['text'] = ('Position x is ',x_coordinate)
 #     positionx.pack()
-#     positiony['text'] = ('Position y is ',ycoordinate)
+#     positiony['text'] = ('Position y is ',y_coordinate)
 #     positiony.pack()
 #     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scaleInput)
 #     sensitivity_scale.pack()
-#     statusx['text'] = ('x status is ', xstatus)
+#     statusx['text'] = ('x status is ', x_status)
 #     statusx.pack()
-#     statusy['text'] = ('y status is ', ystatus)
+#     statusy['text'] = ('y status is ', y_status)
 #     statusy.pack()
-#     statusz['text'] = ('z status is ', zstatus)
+#     statusz['text'] = ('z status is ', z_status)
 #     statusz.pack()
 
 
 '''
 except IOError:
-    #xaxis.sendCommandNoVars('19')
-    #temp = xaxis.bus.read_i2c_block_data(0x32, 0)
+    #x_axis.sendCommandNoVars('19')
+    #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
     #print('temp', temp)
-    xaxis.sendCommandNoVars('10')
-    temp = xaxis.bus.read_i2c_block_data(0x33, 0)
+    x_axis.sendCommandNoVars('10')
+    temp = x_axis.bus.read_i2c_block_data(0x33, 0)
     print('temp', temp)
     f = open('errorLog.txt', 'a')
     f.write('\n' + 'Error Occured on '+ str(datetime.now()))
@@ -402,7 +325,7 @@ except IOError:
 '''
 #currentMillis = datetime.now().microsecond
 currentMillis = time.time() * 1000000
-if currentMillis - lastMillis < refreshRate:
+if currentMillis - lastMillis < REFRESH_RATE:
     x = 1
     print('l', lastMillis)
     print(currentMillis)
@@ -414,8 +337,8 @@ else:
     if controlMode == 'position':
         setBounds()
 
-        xaxis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-        #yaxis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+        x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
+        #x_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
 
         #time.sleep(0.1)
 '''

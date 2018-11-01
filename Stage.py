@@ -15,10 +15,10 @@ class Stage(object):
 
     def __init__(self, position):
 
-        self.position = position
-        self.home = 6000
+        self.position = position    # initialize position parameter
+        self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
-    #  @property
+     # @property TODO What does @property do, and should I use it?
     def getPosition(self):
         return int(self.position)
 
@@ -35,10 +35,42 @@ class Stage(object):
         self.home = location
 
     def setCurrentHome(self):
-        current = self.getPositionFromM3LS()
+        current = self.getPositionFromM3LS()    # old_TODO What is the difference here from getPositionFromM3LS(self)?
+                                                # The getPositionFromM3LS method is called from within setCurrentHome,
+                                                # thus passing its value to "current". "self" is the parameter through which
+                                                # the "getPositionFromM3LS" method is called. (Different from a function.)
+                                                #
+                                                # Note, this makes more intuitive sense than "current = getPositionFromM3LS",
+                                                # which would imply setting a variable equal to a function (even if
+                                                # that function returns a value).
         print('The current home for this axis is now', current)
         self.setHome(current)
         print('The self.home home is now ', self.home)
+
+    def getPositionFromM3LS(self):
+        """
+        Function that returns the position of the stage
+        :return: Position of the stage in encoder counts (NOT uM!)
+
+        From Newscale documentation:
+        Send : <10>
+        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
+        S is motor status
+        P is position, hex representation of encoder counts
+        E is error count. How far is the stage from where it is supposed to be?
+        """
+
+        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        time.sleep(0.2)     ## TODO What is the purpose of this delay?
+        temp = self.read()  # store incoming data from motor in list
+        print ('This is temp',temp)
+
+        rcvEncodedPosition = ''
+        for element in range(8):
+            rcvEncodedPosition += str(temp[13 + element])
+        position = int(rcvEncodedPosition, 16)
+        print('The current position Reported by M3LS is : ', position)
+        return position
 
     def buildCommand(self, command_code, command_vars):
         """
@@ -86,7 +118,7 @@ class Stage(object):
 
         return command
 
-      
+
     def sendCommand(self, command_code, command_vars):
         """
         Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
@@ -112,7 +144,7 @@ class Stage(object):
         #print(commandToString(command_to_send))
         self.write(command_to_send)
 
-    def calibrate(self):
+    def calibrate(self): # TODO How do x- and y- stages (that communicate via SPI) run the calibration routine?
         """
         Function that runs a calibration for the stages. Runs both forward and backwards commands.
         :return: N/A
@@ -120,7 +152,7 @@ class Stage(object):
         '''
         Send to stage:
         <87 5>/r
-        Recieve from stage:
+        Receive from stage:
 
         '''
         self.sendCommand('87', [ 5])
@@ -130,40 +162,15 @@ class Stage(object):
 
     def startup(self):
         """
-        Runs the Newscale recommended startup sequence. This is not yet complete. See Newscale docs page 7
+        Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
         :return: NA
         """
-        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']
+        #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']  # [1 000000064]
         ##backwardStep =
         #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
         self.sendCommand('06', [48] + [32] + encodeToCommand(100))
         self.sendCommand('06', [49] + [32] + encodeToCommand(100))
-        #self.calibrate()
-
-    def getPositionFromM3LS(self):
-        """
-        Function that returns the position of the stage
-        :return: Position of the stage in encoder counts(NOT uM!)
-
-        From Newscale documentation:
-        Send : <10>
-        Receive: <10 SSSSSS PPPPPPPP EEEEEEEE>
-        S is motor status
-        P is position, hex representation of encoder counts
-        E is error count. How far is the stage from where it is supposed to be?
-        """
-
-        self.sendCommandNoVars('10')  # send query asking about motor status and position
-        time.sleep(0.2)
-        temp = self.read()  # store incoming data from motor in list
-        print ('This is temp',temp)
-
-        rcvEncodedPosition = ''
-        for element in range(8):
-            rcvEncodedPosition += str(temp[13 + element])
-        position = int(rcvEncodedPosition, 16)
-        print('The current position Reported by M3LS is : ', position)
-        return position
+        # self.calibrate()  # TODO Turn this back on
 
     def GetCloseLoopSpeed(self):
         """Get Close Loop Speed information
