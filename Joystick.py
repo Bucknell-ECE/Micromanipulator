@@ -8,19 +8,20 @@ Originally Created: R. Nance 12/2017
 
 import pygame
 from helper import *
-# from helper import mapval
+# from helper import map_val
 
 
 
-x_axisNum = 0
-x_axisNum = 1
-throttleAxisNum = 2
-buttonMap = {
+x_axis_NUM = 0
+y_axis_NUM = 1
+throttle_axis_NUM = 2
+
+button_map = {
     1: 'Zdown',
     2: 'Zup',
     3: 'Home',
     4: 'ChangeMode',
-    6: 'GetStatus',
+    6: 'get_status',
     7: 'Z Sensitivity Up',
     8: 'Z Sensitivity Down',
     9: 'ResetHome'
@@ -51,18 +52,21 @@ class CustomJoystick:
         axes = joystick.get_numaxes()
         #print(axes)
 
-    def getAxisPosition(self, axisIndex):
-        joystick = pygame.joystick.Joystick(0)
-        return joystick.get_axis(axisIndex)
 
-    def convertPosition(self, axisIndex):
-        currPos = self.getAxisPosition(axisIndex)
-        newPos = (currPos + 1)*127.5
-        return newPos
+    def get_axis_position(self, axis_index):
+        joystick = pygame.joystick.Joystick(0)
+        return joystick.get_axis(axis_index)
+
+
+    def convertPosition(self, axis_index):
+        curr_pos = self.get_axis_position(axis_index)
+        new_pos = (curr_pos + 1)*127.5  # TODO What's going on here?
+        return new_pos
+
 
 
 ############################CODE WRITTEN BY RYDER#########################################
-    def getButtons(self):
+    def get_buttons(self):
 
         commands = []
 
@@ -71,66 +75,74 @@ class CustomJoystick:
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
 
-            # Possible joystick actions: JOx_axisMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+            # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
+            # TODO Verify these options with pygame documentation.
             if event.type == pygame.JOYBUTTONDOWN:
                 button = event.button
                 #commands += button
-                commands += [buttonMap[button]]
+                commands += [button_map[button]]
             clock.tick(20)
 
         return commands
 
 
-    def getAbsoluteX(self):
+    def get_absolute_x(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        return self.joystick.get_axis(x_axisNum)
+        return self.joystick.get_axis(x_axis_NUM)
 
-    def getAbsoluteY(self):
+
+    def get_absolute_y(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        return self.joystick.get_axis(x_axisNum)
+        return self.joystick.get_axis(y_axis_NUM)
 
-    def getAbsoluteThrottle(self):
+
+    def get_absolute_throttle(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        return self.joystick.get_axis(throttleAxisNum)
+        return self.joystick.get_axis(throttle_axis_NUM)
 
-    def getAbsolutePosition(self):
+
+    def get_absolute_position(self):
         pygame.event.get()
-        position = [round(self.joystick.get_axis(x_axisNum), 3), round(self.joystick.get_axis(x_axisNum), 3)]
+        position = [round(self.joystick.get_axis(x_axis_NUM), 3), round(self.joystick.get_axis(y_axis_NUM), 3)]
         return position
 
-    def getX(self):
+
+    def get_x(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        absoluteX = self.getAbsoluteX() + 1
-        return mapval(absoluteX, 0, 2, 0, 2000)
+        absolute_x = self.get_absolute_x() + 1
+        return map_val(absolute_x, 0, 2, 0, 2000)
 
-    def getY(self):
+
+    def get_y(self):
         pygame.event.get()
 
         #joystick = pygame.joystick.Joystick(0)
 
-        absoluteY = self.getAbsoluteY() + 1
-        return mapval(absoluteY, 0, 2, 0, 2000)
+        absolute_y = self.get_absolute_y() + 1
+        return map_val(absolute_y, 0, 2, 0, 2000)
 
-    def getThrottle(self):
+
+    def get_throttle (self):
         pygame.event.get()
 
-        absoluteThrottle = self.getAbsoluteThrottle()
-        return mapval(absoluteThrottle, -1, 1, 0, 100)
+        absolute_throttle = self.get_absolute_throttle()
+        return map_val(absolute_throttle, -1, 1, 0, 100)
 
-    def getPosition(self):
+
+    def get_position(self):
         pygame.event.get()
 
-        absolutePosition = [self.getAbsoluteX() + 1, self.getAbsoluteY() + 1]
-        return map(lambda x: mapval(x, 0, 2, 0, 2000), absolutePosition)
+        absolute_position = [self.get_absolute_x() + 1, self.get_absolute_y() + 1]
+        return map(lambda x: map_val(x, 0, 2, 0, 2000), absolute_position)

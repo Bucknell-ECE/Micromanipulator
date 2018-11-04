@@ -9,7 +9,7 @@ Originally Created: R. Nance 03/2018
 import pygame
 
 
-def setBounds():
+def set_bounds():
     """
     Sets the bounds for position mode.
     1. determine which stop the home position is closest to
@@ -22,15 +22,15 @@ def setBounds():
     ####TOT
     :return: na
     """
-    global xlinearRangeMin  # TODO Try to get rid of these.
-    global xlinearRangeMax
-    global ylinearRangeMin
-    global ylinearRangeMax
+    global x_linear_range_min  # TODO Find alternative method of instantiating these variables.
+    global x_linear_range_max
+    global y_linear_range_min
+    global y_linear_range_max
     global constrainedLinearRange
     global safety_margin
 
     print('Setting Linear Range')
-    home = [x_axis.home, y_axis.home, z_axis.home]
+    home = [x_axis.home, y_axis.home, z_axis.home]  # FIXME Is this a function, or a
     print('Homes', home)
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
@@ -38,22 +38,24 @@ def setBounds():
     print('boundaries: ', boundaries)
     constrainedLinearRange = min(boundaries)
     print('constrainedlinearrange', constrainedLinearRange)
-    scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-    print('Scaled Range: ', scaledRange)
-    xlinearRangeMin = home[0] - scaledRange + safety_margin
-    xlinearRangeMax = home[0] + scaledRange - safety_margin
-    ylinearRangeMin = x_axis.home - scaledRange + safety_margin
-    ylinearRangeMax = x_axis.home + scaledRange - safety_margin
 
-    print('XlinMin', xlinearRangeMin)
-    print('xlinmax', xlinearRangeMax)
-    print('Ylinmin', ylinearRangeMin)
-    print('ylinmax', ylinearRangeMax)
+    scaledRange = map_val(scale_input, 0, 100, 0, constrainedLinearRange)
+    print('Scaled Range: ', scaledRange)
+
+    x_linear_range_min = home[0] - scaledRange + safety_margin
+    x_linear_range_max = home[0] + scaledRange - safety_margin
+    y_linear_range_min = x_axis.home - scaledRange + safety_margin
+    y_linear_range_max = x_axis.home + scaledRange - safety_margin
+
+    print('XlinMin', x_linear_range_min)
+    print('xlinmax', x_linear_range_max)
+    print('Ylinmin', y_linear_range_min)
+    print('ylinmax', y_linear_range_max)
     print('ylinearrange', ylinearRange)
     print('xlinearRange', xlinearRange)
 
 
-def encodeToCommand(value):
+def encode_to_command(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
     Steps to figure out what should be converted in order to for command to word
@@ -63,7 +65,7 @@ def encodeToCommand(value):
     2. convert each character into its hex representation
 
     3. The command can either be sent as the string of these values, or as the individual decimal values for each
-    :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
+    :param: value: integer between 0 and 12000, representing the encoder count of the location to travel to.
     :return: the 8 bit output that represents
     """
     encodeOutput = []  # create a blank list to hold the output
@@ -78,7 +80,7 @@ def encodeToCommand(value):
     return encodeOutput
 
 
-def encodeToCommand4digit(value):
+def encode_to_command4digit(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
     Steps to figure out what should be converted in order to for command to word
@@ -123,7 +125,7 @@ def encoderConvert(value):
     return encodeOutput
 
 
-def hextocommand(command):
+def hex_to_command(command):
     """From heximal number to 6 digit command
     """
     encodeOutput = []
@@ -135,7 +137,7 @@ def hextocommand(command):
     return encodeOutput
 
 
-def hextocommand4(command):
+def hex_to_command4(command):
     """From heximal number to 4 digit command
         """
     encodeOutput = []
@@ -147,7 +149,7 @@ def hextocommand4(command):
     return encodeOutput
 
 
-def hextocommand2(command):
+def hex_to_command2(command):
     """From heximal number to 2 digit command
         """
     encodeOutput = []
@@ -159,7 +161,7 @@ def hextocommand2(command):
     return encodeOutput
 
 
-def commandToString(command):
+def command_to_string(command):
     """
     Function that prints user readable information to the console. THis is not necessary for operation, however it is
     helpful for readability and debugging purposes
@@ -172,7 +174,7 @@ def commandToString(command):
     return stringOut
 
 
-def mapval(x, inMin, inMax, outMin, outMax):
+def map_val(x, inMin, inMax, outMin, outMax):  # TODO I still have no idea how/why this works. --Jacquelyn
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
     :param x: value to be mapped
@@ -182,7 +184,7 @@ def mapval(x, inMin, inMax, outMin, outMax):
     :param outMax: maximum of the output scale
     :return: mapped value, rounded to the nearest integer value
     """
-    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
+    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))  # The '0' specifies int output
 
 
 ##########################################OLD CODE THAT IS NOW DEPRICATED#####################
@@ -230,13 +232,13 @@ def centerAllStages(axis1, axis2, axis3):
     :param axis3: third stage
     :return: na
     """
-    #map(Stage.goToLocation(), )
-    Stage.goToLocation(axis1, 6000)
-    Stage.goToLocation(axis2, 6000)
-    Stage.goToLocation(axis3, 6000)
+    #map(Stage.go_to_location(), )
+    Stage.go_to_location(axis1, 6000)
+    Stage.go_to_location(axis2, 6000)
+    Stage.go_to_location(axis3, 6000)
 
 
-def mapval(x, inMin, inMax, outMin, outMax):
+def map_val(x, inMin, inMax, outMin, outMax):
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
     :param x: value to be mapped
@@ -295,10 +297,10 @@ def sensitivity_read():
     return file.read()
 
 
-def sensitivitywrite(scaleInput):
+def sensitivity_write(scale_input):
     f = open("sensitivity.txt", "w+")
     f.truncate()
-    f.write(str(scaleInput))
+    f.write(str(scale_input))
 
 
         #####################TEST CODE ######################################
@@ -308,7 +310,7 @@ def sensitivitywrite(scaleInput):
 #print('This is a test')
 #start = input('Please indicate an initial position for the stage')
 #x_axis = Stage('0x63', start, 1)
-#print(x_axis.getPosition())
+#print(x_axis.get_position())
 
 
 
@@ -316,7 +318,7 @@ def sensitivitywrite(scaleInput):
 #print(encoderConvert(value))
 #testing = encoderConvert(value)
 #print(testing[0])
-#commandTest = buildCommand('0x33', '08', encoderConvert(x_axis.getPosition()))
+#commandTest = build_command('0x33', '08', encoderConvert(x_axis.get_position()))
 #print(commandTest)
 
 

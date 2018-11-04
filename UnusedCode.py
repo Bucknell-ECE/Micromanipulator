@@ -1,48 +1,48 @@
 ## From main.py
 
-# x_axis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-# y_axis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('000033')+[32]+hextocommand('0000CD')+[32]+hextocommand4('0001'))
-# x_axis.sendCommand('20',[48])
-# y_axis.sendCommand('20',[48])
-# x_axis.sendCommand('20',[82])
+# x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('000033')+[32]+hex_to_command('0000CD')+[32]+hex_to_command4('0001'))
+# y_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('000033')+[32]+hex_to_command('0000CD')+[32]+hex_to_command4('0001'))
+# x_axis.send_command('20',[48])
+# y_axis.send_command('20',[48])
+# x_axis.send_command('20',[82])
 # time.sleep(0.2)
 # temp = x_axis.read()
 # print('This is the mode',temp)
 # time.sleep(5)
-# x_axis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# y_axis.sendCommand('40',hextocommand('000400')+[32]+hextocommand('00000A')+[32]+hextocommand('000006')+[32]+hextocommand4('0001'))
-# x_axis.sendCommand('09',hextocommand2('80'))
-# x_axis.sendCommand('09',hextocommand2('80'))
-# x_axis.sendCommandNoVars('09')
+# x_axis.send_command('40',hex_to_command('000400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000006')+[32]+hex_to_command4('0001'))
+# y_axis.send_command('40',hex_to_command('000400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000006')+[32]+hex_to_command4('0001'))
+# x_axis.send_command('09',hex_to_command2('80'))
+# x_axis.send_command('09',hex_to_command2('80'))
+# x_axis.send_command_no_vars('09')
 # time.sleep(0.2)
 # temp1 = x_axis.read()
 # print('This is the mode',temp1)
 # time.sleep(5)
-# print('test1',x_axis.sendCommand('08',encodeToCommand(500)))
+# print('test1',x_axis.send_command('08',encode_to_command(500)))
 # time.sleep(5)
 
 
 
 ## From main.py, potentially for showing joystick feedback in GUI?
 
-# x_axis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-# print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-# x_axis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-# print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+# x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+# print('map_val', map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+# x_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
+# print('map_val y ', map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
 
 # Move Open Loop Steps
-# x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-# # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
+# x_axis.send_command('05', [49] + [32] + encode_to_command4digit(100)+[32]+hex_to_command4('186A')+[32]+hex_to_command4('0C35'))
+# # x_axis.send_command('05', [49] + [32] + encode_to_command4digit(1000))
 # time.sleep(0.2)
 # temp2 = x_axis.read()
 # print("This is feedback",temp2)
 
-# x_axis.sendCommandNoVars('52')
+# x_axis.send_command_no_vars('52')
 # time.sleep(0.2)
 # temp3 = x_axis.read()
 # print("This is interval", temp3)
 
-# x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+# x_axis.send_command('05', [49] + [32] + encode_to_command4digit(1000)+[32]+hex_to_command4('186A')+[32]+hex_to_command4('0C35'))
 
 # root=Tk()
 # positionx = Label(root, text = ('Postion x is ',x))
@@ -69,10 +69,10 @@ else:
     #if controlMode == 'velocity':
         #fsdjfl
     if controlMode == 'position':
-        setBounds()
+        set_bounds()
 
-        x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-        #x_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+        x_axis.go_to_location(map_val(joy.get_x(), 0, 1023,100, 11900))# x_linear_range_min, x_linear_range_max))
+        #x_axis.go_to_location(map_val(joy.get_y(), 0, 255, y_linear_range_min, y_linear_range_max))
 
         #time.sleep(0.1)
 '''

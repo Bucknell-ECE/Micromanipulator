@@ -43,8 +43,8 @@ class StageSPI(Stage):
         in the command to be sent to the stage.
         :return: NA
         """
-        print(commandToString(command))  # print the command in a user readable format
-        self.axis.writebytes(command)
+        print(command_to_string(command))  # print the command in a user readable format
+        self.axis.writebytes(command)  # 'writebytes(foo)' is an SpiDev() command
 
 
     def read(self):
@@ -52,7 +52,7 @@ class StageSPI(Stage):
         Reads from the output register of the stage
         :return: List of signed values that represent what is on the output register of the stage
         """
-        temp = self.axis.readbytes(EXPECTED_RETURN_LENGTH)
+        temp = self.axis.readbytes(EXPECTED_RETURN_LENGTH)  # SpiDev() command
         print('temp', temp)
         return_buffer = []
         for i in temp:
@@ -61,25 +61,25 @@ class StageSPI(Stage):
         return return_buffer
 
 
-    def getstatus(self):
+    def get_status(self):
         """Get current status information
         return a series of bits that correspond to the table on the reference manual <10>
         """
-        self.sendCommandNoVars('10')
+        self.send_command_no_vars('10')
         time.sleep(0.2)  # TODO Magic number! Try playing around with this.
         temp = self.read()
         #return temp
 
-        rcvEncodedStatus = ''
+        rcv_encoded_status = ''
         for element in range(6):
-            rcvEncodedStatus += str(temp[6 + element])
-        print(rcvEncodedStatus)
+            rcv_encoded_status += str(temp[6 + element])
+        print(rcv_encoded_status)
 
         status = ''
-        for element in range(len(rcvEncodedStatus)):
-            #binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+        for element in range(len(rcv_encoded_status)):
+            #binary_string = binascii.unhexlify(rcv_encoded_status[element])
             #status += binary_string
-            binary_string = format(int(rcvEncodedStatus[element]),'04b')
+            binary_string = format(int(rcv_encoded_status[element]),'04b')
             status += binary_string
 
         return status

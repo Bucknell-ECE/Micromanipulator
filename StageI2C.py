@@ -21,14 +21,16 @@ class StageI2C(Stage):
         self.bus = smbus.SMBus(bus)  # Initialize the SMBus (I2C, lookup the differences)
         self.home = 6000
 
-    def zMove(self, direction, encoder_counts):
+
+    def z_move(self, direction, encoder_counts):
         """
         :param direction: The direction for Z to move. 1= up 0 = down
         :param encoder_counts: number of encoder counts to move
         :return: NA
         """
         command = '06 ' + str(direction)
-        self.sendCommand(command, encodeToCommand(encoder_counts))
+        self.send_command(command, encode_to_command(encoder_counts))
+
 
     def write(self, command):
         """
@@ -37,8 +39,9 @@ class StageI2C(Stage):
         in the command to be sent to the stage.
         :return:
         """
-        print(commandToString(command))  # print the command in  a user readable format.
+        print(command_to_string(command))  # print the command in  a user readable format.
         self.bus.write_i2c_block_data(self.address, 0, command)
+
 
     def read(self):
         """
@@ -54,21 +57,22 @@ class StageI2C(Stage):
 
         return return_buffer
 
-    def getstatus(self):
-        self.sendCommandNoVars('10')  # send query asking about motor status and position
+
+    def get_status(self):
+        self.send_command_no_vars('10')  # send query asking about motor status and position
         temp = self.read()  # store incoming data from motor in list
         #return temp
 
-        rcvEncodedStatus = ''
+        rcv_encoded_status = ''
         for element in range(6):
-            rcvEncodedStatus += str(temp[4 + element])
-        #print(rcvEncodedStatus)
+            rcv_encoded_status += str(temp[4 + element])
+        #print(rcv_encoded_status)
 
         status = ''
-        for element in range(len(rcvEncodedStatus)):
-            # binary_string = binascii.unhexlify(rcvEncodedStatus[element])
+        for element in range(len(rcv_encoded_status)):
+            # binary_string = binascii.unhexlify(rcv_encoded_status[element])
             # status += binary_string
-            binary_string = format(int(rcvEncodedStatus[element]),'04b')
+            binary_string = format(int(rcv_encoded_status[element]),'04b')
             status += binary_string
 
         return status

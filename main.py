@@ -1,7 +1,7 @@
 """
 This file contains the main loop to be run
 
-Last Modified: Zheng Tian 6/29/2018
+Last Modified: Jacquelyn Scott, November 2018
 #####################DO NOT EDIT BELOW INFORMATION##################################
 Originating Branch: Master
 Originally Created: R. Nance 12/2017
@@ -28,7 +28,7 @@ import threading
 x_axis = StageSPI(0, 0, 6000)
 y_axis = StageSPI(0, 1, 6000)
 
-z_axis = StageI2C(0x40, 6000, 1)
+z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean for an I2C address?
 
 x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
 y_axis.startup()
@@ -36,11 +36,11 @@ y_axis.startup()
 
 
 if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
-    scaleInput = sensitivity_read()
-print('test', scaleInput)
+    scale_input = sensitivity_read()
+print('test', scale_input)
 #time.sleep(5)
 
-# "x" and "y" will be overwritten with the "joy.getX() and ".getY()" functions.
+# "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
 x = 1000
 y = 1000
 
@@ -62,16 +62,16 @@ count = 0
 #     controlMode = newControlMode
 
 
-# print('test',x_axis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
-x_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
-y_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
+# print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
+x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
+y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
 # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
 # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 # TODO Make it so that these settings can be changed manually through the RPi terminal.
 
 
 def main():
-    global scaleInput
+    global scale_input
     global x
     global y
     global x_status
@@ -84,81 +84,86 @@ def main():
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
-        # print('x_axis location',x_axis.getPositionFromM3LS()), location in 12000
-        # print('go to location test', x_axis.sendCommand('08', encodeToCommand(3000)))
-        # print('command test', x_axis.sendCommand('06', [48] + [32] + encodeToCommand(100)))
+        # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
+        # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
+        # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
         # Test result: <06 0 00000064>\r
 
         time.sleep(0.01)  # Delay for 10 ms so as not to overload SPI registers.
                           # TODO Can we decrease this to improve response time?
 
         buttons = []
-        buttons = joy.getButtons()
-        scaleInput = joy.getThrottle()
-        print('Test Point 2',scaleInput)
+        buttons = joy.get_buttons()
+        scale_input = joy.get_throttle ()
+        print('Test Point 2', scale_input)
         #time.sleep(2)
 
-        sensitivitywrite(scaleInput)  # TODO What does 'sensitivitywrite(foo)' do?
-        x = joy.getX()
-        y = 2000 - joy.getY()
+        sensitivity_write(scale_input)  # Stores new sensitivity in a text file.
 
-        #setBounds()  # Come back to this later.
+        x = joy.get_x()
+        y = 2000 - joy.get_y()
+
+        set_bounds()  # Sets bounds with settings stored in text files
 
         print('X: ', x, 'Y', y)
         print(buttons)
 
-        # print('X-axis closed-loop speed: ', x_axis.GetCloseLoopSpeed())
+        # print('X-axis closed-loop speed: ', x_axis.get_closed_loop_speed())
         # time.sleep(1)
-        X = mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax)
-        Y = mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax)
-        #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
-        # print('Getstatus X', x_axis.getstatus())
-        # print('Getstatus Z', z_axis.getstatus())
+
+        # TODO Difference between map_val here vs. below?
+
+        X = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
+        Y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+
+        #AudioNoti(X,Y,x_linear_range_min,x_linear_range_max,y_linear_range_min,y_linear_range_max)
+        # print('get_status X', x_axis.get_status())
+        # print('get_status Z', z_axis.get_status())
 
         if len(buttons) != 0:
             # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
 
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                z_axis.zMove(0, z_sensitivity)  # move z-axis up by z_sensitivity
+                z_axis.z_move(0, z_sensitivity)  # move z-axis up by z_sensitivity
 
             for nums in range(buttons.count('Zdown')):
                 print('Theres a ZDOWN')
-                z_axis.zMove(1, z_sensitivity)  # move down some amount 120 encoder counts
+                z_axis.z_move(1, z_sensitivity)  # move z-axis down by z_sensitivity
 
             for nums in range(buttons.count('Home')):  # Returns no. of times that "Home" is
                 print('Setting home as current position')
-                x_axis.setCurrentHome()
-                x_axis.setCurrentHome()
+                x_axis.set_current_home()
+                x_axis.set_current_home()
 
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
-                x_axis.goToLocation(6000)
+                x_axis.go_to_location(6000)
                 x_coordinate = 1000
-                x_axis.goToLocation(6000)
+                x_axis.go_to_location(6000)
                 y_coordinate = 1000
 
-            for nums in range(buttons.count('GetStatus')):
-                getstatus = 1
+            for nums in range(buttons.count('get_status')):
+                get_status = 1
 
-                # statusx = x_axis.getstatus()
+                # statusx = x_axis.get_status()
                 # statusinfo(statusx)
-                # statusy = x_axis.getstatus()
+                # statusy = x_axis.get_status()
                 # statusinfo(statusy)
 
-                x_status = x_axis.getstatus()
-                y_status = y_axis.getstatus()
-                z_status = z_axis.getstatus()
-                print('Getstatus X', x_status)
-                print('Getstatus Y', y_status)
-                print('Getstatus Z', z_status)
+                x_status = x_axis.get_status()
+                y_status = y_axis.get_status()
+                z_status = z_axis.get_status()
+                print('get_status X', x_status)
+                print('get_status Y', y_status)
+                print('get_status Z', z_status)
 
 
                 # TODO What is this loop doing here?
-                while getstatus == 1:
-                    buttons = joy.getButtons()
-                    if buttons.count('GetStatus'):
-                        getstatus = 0
+                while get_status == 1:
+                    buttons = joy.get_buttons()
+                    if buttons.count('get_status'):
+                        get_status = 0
                         # signal.pause()
 
             for nums in range(buttons.count('Z Sensitivity Up')):
@@ -169,31 +174,31 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
                 z_sensitivity -= 50
 
-        # Main commands to tell the stage to go to a location described by the joystick.
+        # Main commands to tell the stage to go to a location described by the joystick.  # TODO HELP, RYDER!
         if x < 1000:
-            x_axis.sendCommand('06', [48] + [32] + encodeToCommand(5))
-            x_coordinate -= mapval(8,0,6000,0,2000)
+            x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
+            x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
             if x_coordinate <= 0:
                 x_coordinate = 0
         elif x > 1000:
-            x_axis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-            x_coordinate += mapval(8,0,12000,0,2000)
+            x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+            x_coordinate += map_val(8,0,12000,0,2000)
             if x_coordinate >= 2000:
                 x_coordinate = 2000
 
         if y < 1000:
-            x_axis.sendCommand('06', [48] + [32] + encodeToCommand(5))
-            y_coordinate -= mapval(8,0,12000,0,12000)
+            x_axis.send_command('06', [48] + [32] + encode_to_command(5))
+            y_coordinate -= map_val(8,0,12000,0,12000)
         elif y > 1000:
-            x_axis.sendCommand('06', [49] + [32] + encodeToCommand(5))
-            y_coordinate += mapval(8,0,2000,0,12000)
+            x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+            y_coordinate += map_val(8,0,2000,0,12000)
 
 
     except KeyboardInterrupt:
-        # x_axis.sendCommandNoVars('19')
+        # x_axis.send_command_no_vars('19')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
-        # x_axis.sendCommandNoVars('10')
+        # x_axis.send_command_no_vars('10')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
@@ -203,11 +208,11 @@ def main():
         print('Completed')
         raise
 
-starttime = time.time()
+start_time = time.time()
 
 while elapsed <= 1:
     main()
-    # elapsed =  time.time() - starttime
+    # elapsed =  time.time() - start_time
     # count += 1
     # print('This is count',count)
 
@@ -291,7 +296,7 @@ while elapsed <= 1:
 #     positionx.pack()
 #     positiony['text'] = ('Position y is ',y_coordinate)
 #     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scaleInput)
+#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scale_input)
 #     sensitivity_scale.pack()
 #     statusx['text'] = ('x status is ', x_status)
 #     statusx.pack()
@@ -303,10 +308,10 @@ while elapsed <= 1:
 
 '''
 except IOError:
-    #x_axis.sendCommandNoVars('19')
+    #x_axis.send_command_no_vars('19')
     #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
     #print('temp', temp)
-    x_axis.sendCommandNoVars('10')
+    x_axis.send_command_no_vars('10')
     temp = x_axis.bus.read_i2c_block_data(0x33, 0)
     print('temp', temp)
     f = open('errorLog.txt', 'a')

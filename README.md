@@ -65,7 +65,7 @@ This command is used in the *startup* function to finish the start up steps. The
 
 **08**: Move to Target </br>
 <08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
-There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
+There is no reading back from this command. This command is used in function *go_to_location* to drive the stage to move </br>
 
 **10**: View Closed-Loop Status and Position
 <10>. Read back <10 SSSSSS PPPPPPPP EEEEEEEE>. </br>
@@ -73,7 +73,7 @@ SSSSSS is the motor status. </br>
 PPPPPPPP is the absolute position in encoder count. </br>
 EEEEEEEE is the position error in encoder counts. </br>
 The table for motor status refer to Page 16-18 in M3-LS-1.8-6 Smart Stage manual </br>
-This command is used in function *getPositionFromM3LS* </br>
+This command is used in function *get_position_from_M3LS* </br>
 
 **87**: Run Frequency Calibration </br>
 <87 D[ XX]> D is the calibration movement direction and calibration type. </br>
