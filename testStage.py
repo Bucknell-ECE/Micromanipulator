@@ -5,8 +5,8 @@ from Stage import *
 
 x_axis = Stage(0x33, 6000, 1)
 print(x_axis.address)
-print(x_axis.getAddress())
-print(2 * x_axis.getAddress())
+print(x_axis.get_address())
+print(2 * x_axis.get_address())
 while True:
     bus = smbus.SMBus(1)
     next = input('What do you want to do next?')
@@ -23,7 +23,7 @@ while True:
         print('temp', temp)
     elif next == 2: #move to a location
         moveToNew = input('Where should the stage move next?')
-        # com = x_axis.build_command('08',encoderConvert(moveToNew))
+        # com = x_axis.build_command('08',encoder_convert(moveToNew))
         # print(com)
         # x_axis.calibrate()
         # bus.write_i2c_block_data(0x32, 0, [100, 60, 48, 56, 32, 48, 48, 48, 48, 48, 51, 69, 56, 62, 13])
@@ -50,7 +50,7 @@ while True:
         if newHome == -1:
             x_axis.set_current_home()
         else:
-            x_axis.setHome(newHome)
+            x_axis.set_home(newHome)
 
 
 

@@ -17,14 +17,14 @@ y_axis_NUM = 1
 throttle_axis_NUM = 2
 
 button_map = {
-    1: 'Zdown',
-    2: 'Zup',
+    1: 'z_down',
+    2: 'z_up',
     3: 'Home',
-    4: 'ChangeMode',
+    4: 'change_mode',
     6: 'get_status',
     7: 'Z Sensitivity Up',
     8: 'Z Sensitivity Down',
-    9: 'ResetHome'
+    9: 'Reset_home'
 }
 
 class CustomJoystick:

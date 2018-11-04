@@ -9,7 +9,6 @@ Originally Created: R. Nance 12/2017
 
 from helper import *
 import time
-## TEST
 
 class Stage(object):
 
@@ -26,11 +25,11 @@ class Stage(object):
 
 
     # @property
-    def getAddress(self):
+    def get_address(self):
         return self.address
 
 
-    def setHome(self, location):
+    def set_home(self, location):
         """
         Allows user to set the home location for the particular axis
         :param location: a location, specified in encoder counts
@@ -43,7 +42,7 @@ class Stage(object):
         current = self.get_position_from_M3LS()
 
         print('The current home for this axis is now', current)
-        self.setHome(current)
+        self.set_home(current)
         print('The self.home home is now ', self.home)
 
 
@@ -66,9 +65,12 @@ class Stage(object):
         print ('This is temp',temp)
 
         rcv_encoded_position = ''
+
         for element in range(8):
             rcv_encoded_position += str(temp[13 + element])
+
         position = int(rcv_encoded_position, 16)
+
         print('The current position Reported by M3LS is : ', position)
         return position
 
@@ -88,8 +90,10 @@ class Stage(object):
         command = []  # empty list to hold command
         # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
+
         for i in str(command_code):
             command += [ord(i)]
+
         command += [32]  # space(' ')
         command += command_vars
         command += [62]  # close carat (>)
@@ -166,12 +170,12 @@ class Stage(object):
 
     def startup(self):
         """
-        Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
+        TODO Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs, page 7.
         :return: NA
         """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']  # [1 000000064]
         ##backwardStep =
-        #self.send_command('06', ['0x31'] + ['0x20'] + encoderConvert(64))
+        #self.send_command('06', ['0x31'] + ['0x20'] + encoder_convert(64))
         self.send_command('06', [48] + [32] + encode_to_command(100))
         self.send_command('06', [49] + [32] + encode_to_command(100))
         # self.calibrate()  # TODO Turn this back on

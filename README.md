@@ -36,7 +36,7 @@ Waiting to be added
 ---------------------
 <a name="PositionMode"></a>
 ### Position Mode
-The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "ZUp" or "ZDown" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
+The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "z_up" or "z_down" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
 
 ### Joystick Configuration ###
 ![Joystick Diagram](https://ws4.sinaimg.cn/large/006tNc79ly1frjnske1qzj30i20jw0y0.jpg "Joystick Configuration")

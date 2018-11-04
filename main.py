@@ -123,12 +123,12 @@ def main():
         if len(buttons) != 0:
             # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
 
-            for nums in range(buttons.count('Zup')):
-                print('Theres a ZUP')
+            for nums in range(buttons.count('z_up')):
+                print('Theres a z_up')
                 z_axis.z_move(0, z_sensitivity)  # move z-axis up by z_sensitivity
 
-            for nums in range(buttons.count('Zdown')):
-                print('Theres a ZDOWN')
+            for nums in range(buttons.count('z_down')):
+                print('Theres a z_down')
                 z_axis.z_move(1, z_sensitivity)  # move z-axis down by z_sensitivity
 
             for nums in range(buttons.count('Home')):  # Returns no. of times that "Home" is
@@ -136,7 +136,7 @@ def main():
                 x_axis.set_current_home()
                 x_axis.set_current_home()
 
-            for nums in range(buttons.count('ResetHome')):
+            for nums in range(buttons.count('Reset_home')):
                 print('Reset home to the center of the stage')
                 x_axis.go_to_location(6000)
                 x_coordinate = 1000

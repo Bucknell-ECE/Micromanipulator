@@ -26,33 +26,35 @@ def set_bounds():
     global x_linear_range_max
     global y_linear_range_min
     global y_linear_range_max
-    global constrainedLinearRange
+    global constrained_linear_range
     global safety_margin
 
+
+    # TODO Review the following block of code (e.g., home = [...]).
     print('Setting Linear Range')
-    home = [x_axis.home, y_axis.home, z_axis.home]  # FIXME Is this a function, or a
+    home = [x_axis.home, y_axis.home, z_axis.home]  # FIXME Is this a function, or just a list?
     print('Homes', home)
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
     boundaries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
     print('boundaries: ', boundaries)
-    constrainedLinearRange = min(boundaries)
-    print('constrainedlinearrange', constrainedLinearRange)
+    constrained_linear_range = min(boundaries)
+    print('constrained_linear_range', constrained_linear_range)
 
-    scaledRange = map_val(scale_input, 0, 100, 0, constrainedLinearRange)
-    print('Scaled Range: ', scaledRange)
+    scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+    print('Scaled Range: ', scaled_range)
 
-    x_linear_range_min = home[0] - scaledRange + safety_margin
-    x_linear_range_max = home[0] + scaledRange - safety_margin
-    y_linear_range_min = x_axis.home - scaledRange + safety_margin
-    y_linear_range_max = x_axis.home + scaledRange - safety_margin
+    x_linear_range_min = home[0] - scaled_range + safety_margin
+    x_linear_range_max = home[0] + scaled_range - safety_margin
+    y_linear_range_min = x_axis.home - scaled_range + safety_margin
+    y_linear_range_max = x_axis.home + scaled_range - safety_margin
 
-    print('XlinMin', x_linear_range_min)
-    print('xlinmax', x_linear_range_max)
-    print('Ylinmin', y_linear_range_min)
-    print('ylinmax', y_linear_range_max)
-    print('ylinearrange', ylinearRange)
-    print('xlinearRange', xlinearRange)
+    print('Xlin_min', x_linear_range_min)
+    print('xlin_max', x_linear_range_max)
+    print('Ylin_min', y_linear_range_min)
+    print('ylin_max', y_linear_range_max)
+    print('y_linear_range', y_linear_range)
+    print('x_linear_range', x_linear_range)
 
 
 def encode_to_command(value):
@@ -68,16 +70,17 @@ def encode_to_command(value):
     :param: value: integer between 0 and 12000, representing the encoder count of the location to travel to.
     :return: the 8 bit output that represents
     """
-    encodeOutput = []  # create a blank list to hold the output
-    hexValue = hex(int(value)).upper()  # convert the decimal to hex
-    valueConvert = hexValue[2:]  # remove the 0x from the hex value
+    encode_output = []  # create a blank list to hold the output
+    hex_value = hex(int(value)).upper()  # convert the decimal to hex
+    value_convert = hex_value[2:]  # remove the 0x from the hex value
+    
     # for each character in the input, convert it to its base 10 representation of the ascii character
-    for i in valueConvert:
-        encodeOutput += [ord(str(i))]
+    for i in value_convert:
+        encode_output += [ord(str(i))]
     # ensure that the output is 8 bytes
-    for i in range(8 - int(len(encodeOutput))):  # pads with zeros for len(encodeOutput) < 8
-        encodeOutput.insert(0, 0x30)
-    return encodeOutput
+    for i in range(8 - int(len(encode_output))):  # pads with zeros for len(encode_output) < 8
+        encode_output.insert(0, 0x30)
+    return encode_output
 
 
 def encode_to_command4digit(value):
@@ -93,98 +96,104 @@ def encode_to_command4digit(value):
     :param value: integer between 0 and 12000, representing the encoder count of the location to travel to.
     :return: the 8 bit output that represents
     """
-    encodeOutput = []  # create a blank list to hold the output
-    hexValue = hex(int(value)).upper()  # convert the decimal to hex
-    valueConvert = hexValue[2:]  # remove the 0x from the hex value
+    encode_output = []  # create a blank list to hold the output
+    hex_value = hex(int(value)).upper()  # convert the decimal to hex
+    value_convert = hex_value[2:]  # remove the 0x from the hex value
+    
     # for each character in the input, convert it to its base 10 representation of the ascii character
-    for i in valueConvert:
-        encodeOutput += [ord(str(i))]
+    for i in value_convert:
+        encode_output += [ord(str(i))]
     # ensure that the output is 8 bytes
-    for i in range(4 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 0x30)
-    return encodeOutput
+    for i in range(4 - int(len(encode_output))):
+        encode_output.insert(0, 0x30)
+    return encode_output
 
 
-def encoderConvert(value):
+def encoder_convert(value):
     '''
     THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
     Function that takes in a value in decimal and outputs the hex ascii version of it, by taking each number of the hex
     value and sending that digit as a hex number
     '''
-    hexValue = hex(int(value)).upper() #convert the decimal to hex
-    valueConvert = hexValue[2:]#remove the 0x from the hex value
-    encodeOutput = []
-    for i in str(valueConvert):
-        encodeOutput += [hex(ord(i))]
+    
+    hex_value = hex(int(value)).upper() #convert the decimal to hex
+    value_convert = hex_value[2:]#remove the 0x from the hex value
+    encode_output = []
+    for i in str(value_convert):
+        encode_output += [hex(ord(i))]
+    
     # ensure that the output is 8 bytes
-    for i in range(8 - int(len(encodeOutput))):
-        encodeOutput.insert(0, '0x30')
+    for i in range(8 - int(len(encode_output))):
+        encode_output.insert(0, '0x30')
+    
     print('Encoded output is ')
-    print('EncoderCount Output', encodeOutput)
-    print(encodeOutput[1] + encodeOutput[2])
-    return encodeOutput
-
+    print('EncoderCount Output', encode_output)
+    print(encode_output[1] + encode_output[2])
+    
+    return encode_output
+## deprecated function
 
 def hex_to_command(command):
     """From heximal number to 6 digit command
     """
-    encodeOutput = []
+    encode_output = []
     for i in command:
-        encodeOutput += [ord(str(i))]
+        encode_output += [ord(str(i))]
+    
     # ensure that the output is 8 bytes
-    for i in range(6 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 0x30)  # after each zero, insert a space
-    return encodeOutput
+    for i in range(6 - int(len(encode_output))):
+        encode_output.insert(0, 0x30)  # after each zero, insert a space
+    return encode_output
 
 
 def hex_to_command4(command):
     """From heximal number to 4 digit command
         """
-    encodeOutput = []
+    encode_output = []
     for i in command:
-        encodeOutput += [ord(str(i))]
+        encode_output += [ord(str(i))]
     # ensure that the output is 8 bytes
-    for i in range(4 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 0x30)
-    return encodeOutput
+    for i in range(4 - int(len(encode_output))):
+        encode_output.insert(0, 0x30)
+    return encode_output
 
 
 def hex_to_command2(command):
-    """From heximal number to 2 digit command
+    """From hexadecimal number to 2 digit command
         """
-    encodeOutput = []
+    encode_output = []
     for i in command:
-        encodeOutput += [ord(str(i))]
+        encode_output += [ord(str(i))]
     # ensure that the output is 8 bytes
-    for i in range(2 - int(len(encodeOutput))):
-        encodeOutput.insert(0, 0x30)
-    return encodeOutput
+    for i in range(2 - int(len(encode_output))):
+        encode_output.insert(0, 0x30)
+    return encode_output
 
 
 def command_to_string(command):
     """
     Function that prints user readable information to the console. THis is not necessary for operation, however it is
     helpful for readability and debugging purposes
-    :param command: a commmand in the form of a list of hex values that correspond to the ascii characters for the
-    commmand
+    :param command: a command in the form of a list of hex values that correspond to the ascii characters for the
+    command
     :return: String that represents the command sent
     """
     #print(command) ###FOR DEBUGGING PURPOSES ONLY###
-    stringOut = ''.join(map(chr, command))
-    return stringOut
+    string_out = ''.join(map(chr, command))
+    return string_out
 
 
-def map_val(x, inMin, inMax, outMin, outMax):  # TODO I still have no idea how/why this works. --Jacquelyn
+def map_val(x, in_min, in_max, out_min, out_max):  # TODO I still have no idea how/why this works. --Jacquelyn
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
     :param x: value to be mapped
-    :param inMin: minimum of the input scale
-    :param inMax: maximum of the input scale
-    :param outMin: minimum of the output scale
-    :param outMax: maximum of the output scale
+    :param in_min: minimum of the input scale
+    :param in_max: maximum of the input scale
+    :param out_min: minimum of the output scale
+    :param out_max: maximum of the output scale
     :return: mapped value, rounded to the nearest integer value
     """
-    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))  # The '0' specifies int output
+    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))  # The '0' specifies int output
 
 
 ##########################################OLD CODE THAT IS NOW DEPRICATED#####################
@@ -205,21 +214,21 @@ def map_val(x, inMin, inMax, outMin, outMax):  # TODO I still have no idea how/w
 #     :return: the 8 bit output that represents
 #     '''
 #
-#     encodeOutput = [] # create a blank list to hold the output
-#     hexValue = hex(int(value)).upper()  # convert the decimal to hex
-#     valueConvert = hexValue[2:]  # remove the 0x from the hex value
-#     # print(valueConvert)
+#     encode_output = [] # create a blank list to hold the output
+#     hex_value = hex(int(value)).upper()  # convert the decimal to hex
+#     value_convert = hex_value[2:]  # remove the 0x from the hex value
+#     # print(value_convert)
 #     # for each character in the input, convert it to its base 10 representation of the ascii character
-#     for i in valueConvert:
-#         encodeOutput += [ord(str(i))]
+#     for i in value_convert:
+#         encode_output += [ord(str(i))]
 #     # ensure that the output is 8 bytes
-#     for i in range(8 - int(len(encodeOutput))):
-#         encodeOutput.insert(0, 30)
-#     # print(encodeOutput)
+#     for i in range(8 - int(len(encode_output))):
+#         encode_output.insert(0, 30)
+#     # print(encode_output)
 #
-#     #print('EncoderCOunt OUtput', encodeOutput)
-#     #print(encodeOutput[1] + encodeOutput[2])
-#     return encodeOutput
+#     #print('EncoderCOunt OUtput', encode_output)
+#     #print(encode_output[1] + encode_output[2])
+#     return encode_output
 #
 
 def centerAllStages(axis1, axis2, axis3):
@@ -238,17 +247,17 @@ def centerAllStages(axis1, axis2, axis3):
     Stage.go_to_location(axis3, 6000)
 
 
-def map_val(x, inMin, inMax, outMin, outMax):
+def map_val(x, in_min, in_max, out_min, out_max):
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
     :param x: value to be mapped
-    :param inMin: minimum of the input scale
-    :param inMax: maximum of the input scale
-    :param outMin: minimum of the output scale
-    :param outMax: maximum of the output scale
+    :param in_min: minimum of the input scale
+    :param in_max: maximum of the input scale
+    :param out_min: minimum of the output scale
+    :param out_max: maximum of the output scale
     :return: mapped value, rounded to the nearest integer value
     """
-    return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
+    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))
 
 
 def AudioNoti(x,y,xMin,xMax,yMin,yMax):
@@ -315,10 +324,10 @@ def sensitivity_write(scale_input):
 
 
 #value = input('Type a value in')
-#print(encoderConvert(value))
-#testing = encoderConvert(value)
+#print(encoder_convert(value))
+#testing = encoder_convert(value)
 #print(testing[0])
-#commandTest = build_command('0x33', '08', encoderConvert(x_axis.get_position()))
+#commandTest = build_command('0x33', '08', encoder_convert(x_axis.get_position()))
 #print(commandTest)
 
 

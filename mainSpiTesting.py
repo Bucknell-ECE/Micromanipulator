@@ -36,11 +36,11 @@ z_axis = Stage(0x40, 6000, 1)
 
 x_linear_range_min = 0
 x_linear_range_max = 12000
-xlinearRange = 12000
+x_linear_range = 12000
 y_linear_range_min = 0
 y_linear_range_max = 12000
-ylinearRange = 12000
-constrainedLinearRange = 12000
+y_linear_range = 12000
+constrained_linear_range = 12000
 
 axes = [z_axis]#
 # , y_axis, z_axis]
@@ -75,17 +75,17 @@ def set_bounds():
     global x_linear_range_max
     global y_linear_range_min
     global y_linear_range_max
-    global constrainedLinearRange
+    global constrained_linear_range
 
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
     boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
     #boundries = [home[0],  12000 - home[0]]
-    constrainedLinearRange = min(boundries)
+    constrained_linear_range = min(boundries)
 
 
-    #y_linear_range_min = y_axis.home - scaledRange +100
-    #y_linear_range_max = y_axis.home + scaledRange -100
+    #y_linear_range_min = y_axis.home - scaled_range +100
+    #y_linear_range_max = y_axis.home + scaled_range -100
 
 
 sensitivity = 50
@@ -103,10 +103,10 @@ while True:
         print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
-            for nums in range(buttons.count('Zup')):
-                print('Theres a ZUP')
+            for nums in range(buttons.count('z_up')):
+                print('Theres a z_up')
                 z_axis.z_move(0, 200) # move up120 encoder counts
-            for nums in range(buttons.count('Zdown')):
+            for nums in range(buttons.count('z_down')):
                 print('Theres a zdonw')
                 z_axis.z_move(1, 200) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
@@ -128,18 +128,18 @@ while True:
         print('Homes', home)
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         print('boundries: ', boundries)
-        constrainedLinearRange = min(boundries)
-        print('constrainedlinearrange', constrainedLinearRange)
-        scaledRange = map_val(scale_input, 0, 100, 0, constrainedLinearRange)
-        print('Scaled Range: ', scaledRange)
-        x_linear_range_min = home[0] - scaledRange + 100
-        x_linear_range_max = home[0] + scaledRange - 100
-        print('XlinMin', x_linear_range_min)
-        print('xlinmax', x_linear_range_max)
-        print('Ylinmin', y_linear_range_min)
+        constrained_linear_range = min(boundries)
+        print('constrained_linear_range', constrained_linear_range)
+        scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+        print('Scaled Range: ', scaled_range)
+        x_linear_range_min = home[0] - scaled_range + 100
+        x_linear_range_max = home[0] + scaled_range - 100
+        print('Xlin_min', x_linear_range_min)
+        print('xlin_max', x_linear_range_max)
+        print('Ylin_min', y_linear_range_min)
         print('ylimmax', y_linear_range_max)
-        print('ylinearrange', ylinearRange)
-        print('xlinearRange', xlinearRange)
+        print('y_linear_range', y_linear_range)
+        print('x_linear_range', x_linear_range)
 
         x_axis.go_to_location(map_val(x, 0, 1023, x_linear_range_min, x_linear_range_max))
         print('map_val', map_val(x, 0, 1023, x_linear_range_min, x_linear_range_max))
