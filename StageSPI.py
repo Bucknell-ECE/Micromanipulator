@@ -55,6 +55,7 @@ class StageSPI(Stage):
         print(commandToString(command))  # print the command in a user readable format
         self.axis.writebytes(command)
 
+
     def read(self):
         """
         Reads from the output register of the stage
@@ -67,6 +68,7 @@ class StageSPI(Stage):
             return_buffer += str(chr(int(i)))
         print(return_buffer)
         return return_buffer
+
 
     def getstatus(self):
         """Get current status information

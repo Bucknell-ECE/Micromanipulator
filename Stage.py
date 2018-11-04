@@ -9,7 +9,7 @@ Originally Created: R. Nance 12/2017
 
 from helper import *
 import time
-
+## TEST
 
 class Stage(object):
 
@@ -118,7 +118,7 @@ class Stage(object):
 
         return command
 
-      
+
     def sendCommand(self, command_code, command_vars):
         """
         Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale

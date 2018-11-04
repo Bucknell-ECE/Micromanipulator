@@ -8,6 +8,7 @@ Originally Created: R. Nance 03/2018
 
 import pygame
 
+
 def setBounds():
     """
     Sets the bounds for position mode.
@@ -50,6 +51,7 @@ def setBounds():
     print('ylinmax', ylinearRangeMax)
     print('ylinearrange', ylinearRange)
     print('xlinearRange', xlinearRange)
+
 
 def encodeToCommand(value):
     """
@@ -155,6 +157,7 @@ def hextocommand2(command):
         encodeOutput.insert(0, 0x30)
     return encodeOutput
 
+
 def commandToString(command):
     """
     Function that prints user readable information to the console. THis is not necessary for operation, however it is
@@ -179,6 +182,7 @@ def mapval(x, inMin, inMax, outMin, outMax):
     :return: mapped value, rounded to the nearest integer value
     """
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
+
 
 ##########################################OLD CODE THAT IS NOW DEPRICATED#####################
 
@@ -243,6 +247,7 @@ def mapval(x, inMin, inMax, outMin, outMax):
     """
     return int(round((x - inMin) * (outMax - outMin) / (inMax - inMin) + outMin, 0))
 
+
 def AudioNoti(x,y,xMin,xMax,yMin,yMax):
     "Play Audio Notification when hit the boundary"
     if x == xMin or x == xMax or y == yMin or y == yMax:
@@ -252,6 +257,7 @@ def AudioNoti(x,y,xMin,xMax,yMin,yMax):
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy():  # Queries whether .play() is still running; if not, continues the loop.
             continue
+
 
 def statusinfo(status):
     """Status information corresponds to that table in Reference Manual <10>"""
@@ -282,9 +288,11 @@ def statusinfo(status):
     if status[22] == '0':
         print('Motor going backward')
 
+
 def sensitivity_read():
     file = open("sensitivity.txt", "r")
     return file.read()
+
 
 def sensitivitywrite(scaleInput):
     f = open("sensitivity.txt", "w+")
