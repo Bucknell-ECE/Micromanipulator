@@ -23,3 +23,56 @@
 
 
 
+## From main.py, potentially for showing joystick feedback in GUI?
+
+# x_axis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+# print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
+# x_axis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+# print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
+
+# Move Open Loop Steps
+# x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+# # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
+# time.sleep(0.2)
+# temp2 = x_axis.read()
+# print("This is feedback",temp2)
+
+# x_axis.sendCommandNoVars('52')
+# time.sleep(0.2)
+# temp3 = x_axis.read()
+# print("This is interval", temp3)
+
+# x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
+
+# root=Tk()
+# positionx = Label(root, text = ('Postion x is ',x))
+# positionx.pack()
+# root.update_idletasks()
+
+#
+## From main.py, changing control mode between 'velocity' and 'position'.
+#
+
+'''
+REFRESH_RATE = 20000
+lastMillis = 0
+
+#currentMillis = datetime.now().microsecond
+currentMillis = time.time() * 1000000
+if currentMillis - lastMillis < REFRESH_RATE:
+    x = 1
+    print('l', lastMillis)
+    print(currentMillis)
+else:
+    print('running')
+    lastMillis = currentMillis
+    #if controlMode == 'velocity':
+        #fsdjfl
+    if controlMode == 'position':
+        setBounds()
+
+        x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
+        #x_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+
+        #time.sleep(0.1)
+'''

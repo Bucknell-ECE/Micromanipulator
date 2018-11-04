@@ -18,13 +18,16 @@ class Stage(object):
         self.position = position    # initialize position parameter
         self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
+
      # @property TODO What does @property do, and should I use it?
     def getPosition(self):
         return int(self.position)
 
+
     # @property
     def getAddress(self):
         return self.address
+
 
     def setHome(self, location):
         """
@@ -34,18 +37,14 @@ class Stage(object):
         """
         self.home = location
 
+
     def setCurrentHome(self):
-        current = self.getPositionFromM3LS()    # old_TODO What is the difference here from getPositionFromM3LS(self)?
-                                                # The getPositionFromM3LS method is called from within setCurrentHome,
-                                                # thus passing its value to "current". "self" is the parameter through which
-                                                # the "getPositionFromM3LS" method is called. (Different from a function.)
-                                                #
-                                                # Note, this makes more intuitive sense than "current = getPositionFromM3LS",
-                                                # which would imply setting a variable equal to a function (even if
-                                                # that function returns a value).
+        current = self.getPositionFromM3LS()
+
         print('The current home for this axis is now', current)
         self.setHome(current)
         print('The self.home home is now ', self.home)
+
 
     def getPositionFromM3LS(self):
         """
@@ -72,6 +71,7 @@ class Stage(object):
         print('The current position Reported by M3LS is : ', position)
         return position
 
+
     def buildCommand(self, command_code, command_vars):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
@@ -94,6 +94,7 @@ class Stage(object):
         command += [62]  # close carat (>)
         command += [13]  # carriage return(\r)
         return command
+
 
     def buildCommandNoVars(self, command_code):
         """
@@ -144,7 +145,8 @@ class Stage(object):
         #print(commandToString(command_to_send))
         self.write(command_to_send)
 
-    def calibrate(self): # TODO How do x- and y- stages (that communicate via SPI) run the calibration routine?
+
+    def calibrate(self):
         """
         Function that runs a calibration for the stages. Runs both forward and backwards commands.
         :return: N/A
@@ -160,6 +162,7 @@ class Stage(object):
         self.sendCommand('87', [ 4])
         time.sleep(0.2)
 
+
     def startup(self):
         """
         Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
@@ -172,6 +175,7 @@ class Stage(object):
         self.sendCommand('06', [49] + [32] + encodeToCommand(100))
         # self.calibrate()  # TODO Turn this back on
 
+
     def GetCloseLoopSpeed(self):
         """Get Close Loop Speed information
         return close loop speed
@@ -180,8 +184,6 @@ class Stage(object):
         time.sleep(0.2)
         temp = self.read()
         print('This is speed',temp)
-
-
 
 
     def goToLocation(self, location):
@@ -195,9 +197,11 @@ class Stage(object):
 
         self.sendCommand('08', encodeToCommand(location))
 
+
     def movesteps(self,steps):
 
         self.sendCommand('06',[48] + [32] + encodeToCommand(steps))
+
 
     def returnHome(self):
         """
@@ -213,6 +217,7 @@ class Stage(object):
         """
         self.sendCommand('20', [48])
 
+
     def ViewMode(self):
         """View the current Mode
         return the current mode information
@@ -221,6 +226,7 @@ class Stage(object):
         time.sleep(0.2)
         temp = self.read()
         print('This is the mode',temp)
+
 
 #########################DEPRECATED CODE#########################
 

@@ -29,15 +29,6 @@ class StageSPI(Stage):
         self.device = device
         self.home = 6000
 
-        #self.axis = axis
-        #stageAxis = axis
-        #axis = spidev.SpiDev()
-        #axis.open(bus, device)
-        #axis.mode = 0b01
-        #axis.max_speed_hz = 1000000
-
-        # TODO figure out the differences between these two
-
         axis = spidev.SpiDev()
         axis.open(self.bus, self.device)
         axis.mode = 0b01

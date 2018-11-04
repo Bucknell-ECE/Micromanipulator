@@ -27,7 +27,7 @@ buttonMap = {
 }
 
 class CustomJoystick:
-    # TODO Will need to create a button mapping function that imports text file stuff here.
+    # FIXME Will need to create a button mapping function that imports text file stuff here.
 
     def __init__(self, name, number):
         self.name = name
@@ -35,7 +35,7 @@ class CustomJoystick:
         pygame.init()
 
         # Used to manage how fast the screen updates
-        self.clock = pygame.time.Clock()  # TODO Unused?
+        self.clock = pygame.time.Clock()
 
         # Initialize the joysticks
         pygame.joystick.init()
@@ -63,7 +63,6 @@ class CustomJoystick:
 
 ############################CODE WRITTEN BY RYDER#########################################
     def getButtons(self):
-        # clock = pygame.time.Clock()  # TODO Verify how parameters are passed between __init__ method and this fn
 
         commands = []
 

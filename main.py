@@ -32,7 +32,7 @@ z_axis = StageI2C(0x40, 6000, 1)
 
 x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
 y_axis.startup()
-#z_axis.startup()  # TODO May want to uncomment this so we can calibrate z-motion.
+#z_axis.startup()  # FIXME We need visual feedback on the z-axis (i.e., depth, axis sensitivity)
 
 
 if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
@@ -40,15 +40,13 @@ if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
 print('test', scaleInput)
 #time.sleep(5)
 
-x = 1000  # TODO What the heck are these? Are they constants, or variables?
+# "x" and "y" will be overwritten with the "joy.getX() and ".getY()" functions.
+x = 1000
 y = 1000
 
-x_coordinate = 1000  # TODO Should this be placed in the __init__ constructor?
+x_coordinate = 1000
 y_coordinate = 1000
 #locations = [xlocation, ylocation, zlocation]
-REFRESH_RATE = 20000  # cant remember what this is used for but I know it is important. I think it has something to do
-#with pygame  -- (Ryder)
-lastMillis = 0
 
 
 ## Joystick initialization block
@@ -60,15 +58,15 @@ elapsed = 0
 count = 0
 
 
-def setControlMode(newControlMode):  # TODO This can be changed through Tony's code at bottom of this file.
-    controlMode = newControlMode
+# def setControlMode(newControlMode):  # NOTE Control <ode can be toggled using Tony's code in 'UnusedCode.py'.
+#     controlMode = newControlMode
 
 
 # print('test',x_axis.sendCommand('40',hextocommand('001400')+[32]+hextocommand('00000A')+[32]+hextocommand('000033')+[32]+hextocommand1('0001')))
 x_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 y_axis.sendCommand('40',hextocommand('000200')+[32]+hextocommand('00000A')+[32]+hextocommand('00000C')+[32]+hextocommand4('0001'))
 # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
-## Setting closed-loop speeds (C&C Ref. Guide, p. 19)
+# NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 # TODO Make it so that these settings can be changed manually through the RPi terminal.
 
 
@@ -81,9 +79,10 @@ def main():
     global z_status
     global x_coordinate
     global y_coordinate
-    global Zsensitivity
+    global z_sensitivity
 
-    try:  ## Loop for mapping joystick movements to M3-LS commands
+    # Loop for mapping joystick movements to M3-LS commands
+    try:
 
         # print('x_axis location',x_axis.getPositionFromM3LS()), location in 12000
         # print('go to location test', x_axis.sendCommand('08', encodeToCommand(3000)))
@@ -92,15 +91,19 @@ def main():
 
         time.sleep(0.01)  # Delay for 10 ms so as not to overload SPI registers.
                           # TODO Can we decrease this to improve response time?
+
         buttons = []
         buttons = joy.getButtons()
         scaleInput = joy.getThrottle()
         print('Test Point 2',scaleInput)
         #time.sleep(2)
-        sensitivitywrite(scaleInput)
+
+        sensitivitywrite(scaleInput)  # TODO What does 'sensitivitywrite(foo)' do?
         x = joy.getX()
         y = 2000 - joy.getY()
-        #setBounds()
+
+        #setBounds()  # Come back to this later.
+
         print('X: ', x, 'Y', y)
         print(buttons)
 
@@ -111,46 +114,60 @@ def main():
         #AudioNoti(X,Y,xlinearRangeMin,xlinearRangeMax,ylinearRangeMin,ylinearRangeMax)
         # print('Getstatus X', x_axis.getstatus())
         # print('Getstatus Z', z_axis.getstatus())
+
         if len(buttons) != 0:
+            # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
+
             for nums in range(buttons.count('Zup')):
                 print('Theres a ZUP')
-                z_axis.zMove(0, Zsensitivity)  # move up120 encoder counts
+                z_axis.zMove(0, z_sensitivity)  # move z-axis up by z_sensitivity
+
             for nums in range(buttons.count('Zdown')):
                 print('Theres a ZDOWN')
-                z_axis.zMove(1, Zsensitivity)  # move down some amount 120 encoder counts
-            for nums in range(buttons.count('Home')):
+                z_axis.zMove(1, z_sensitivity)  # move down some amount 120 encoder counts
+
+            for nums in range(buttons.count('Home')):  # Returns no. of times that "Home" is
                 print('Setting home as current position')
                 x_axis.setCurrentHome()
                 x_axis.setCurrentHome()
+
             for nums in range(buttons.count('ResetHome')):
                 print('Reset home to the center of the stage')
                 x_axis.goToLocation(6000)
                 x_coordinate = 1000
                 x_axis.goToLocation(6000)
                 y_coordinate = 1000
+
             for nums in range(buttons.count('GetStatus')):
                 getstatus = 1
+
                 # statusx = x_axis.getstatus()
                 # statusinfo(statusx)
                 # statusy = x_axis.getstatus()
                 # statusinfo(statusy)
+
                 x_status = x_axis.getstatus()
                 y_status = y_axis.getstatus()
                 z_status = z_axis.getstatus()
                 print('Getstatus X', x_status)
                 print('Getstatus Y', y_status)
                 print('Getstatus Z', z_status)
+
+
+                # TODO What is this loop doing here?
                 while getstatus == 1:
                     buttons = joy.getButtons()
                     if buttons.count('GetStatus'):
                         getstatus = 0
                         # signal.pause()
+
             for nums in range(buttons.count('Z Sensitivity Up')):
-                print('Z sensitivity up by 50, Now the sensitivity is', Zsensitivity)
-                Zsensitivity += 50
+                print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
+                z_sensitivity += 50
+
             for nums in range(buttons.count('Z Sensitivity Down')):
-                print('Z sensitivity up down 50, Now the sensitivity is', Zsensitivity)
-                Zsensitivity -= 50
+                print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
+                z_sensitivity -= 50
 
         # Main commands to tell the stage to go to a location described by the joystick.
         if x < 1000:
@@ -170,29 +187,7 @@ def main():
         elif y > 1000:
             x_axis.sendCommand('06', [49] + [32] + encodeToCommand(5))
             y_coordinate += mapval(8,0,2000,0,12000)
-        # x_axis.goToLocation(mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        # print('Mapval', mapval(x, 0, 2000, xlinearRangeMin, xlinearRangeMax))
-        # x_axis.goToLocation(mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
-        # print('mapval y ', mapval(y, 0, 2000, ylinearRangeMin, ylinearRangeMax))
 
-        #Move Open Loop Steps
-        # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(100)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-        # # x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000))
-        # time.sleep(0.2)
-        # temp2 = x_axis.read()
-        # print("This is feedback",temp2)
-
-        # x_axis.sendCommandNoVars('52')
-        # time.sleep(0.2)
-        # temp3 = x_axis.read()
-        # print("This is interval", temp3)
-
-        #x_axis.sendCommand('05', [49] + [32] + encodeToCommand4digit(1000)+[32]+hextocommand4('186A')+[32]+hextocommand4('0C35'))
-
-        # root=Tk()
-        # positionx = Label(root, text = ('Postion x is ',x))
-        # positionx.pack()
-        # root.update_idletasks()
 
     except KeyboardInterrupt:
         # x_axis.sendCommandNoVars('19')
@@ -320,25 +315,4 @@ except IOError:
     raise
     #f.close()
 
-'''
-
-'''
-#currentMillis = datetime.now().microsecond
-currentMillis = time.time() * 1000000
-if currentMillis - lastMillis < REFRESH_RATE:
-    x = 1
-    print('l', lastMillis)
-    print(currentMillis)
-else:
-    print('running')
-    lastMillis = currentMillis
-    #if controlMode == 'velocity':
-        #fsdjfl
-    if controlMode == 'position':
-        setBounds()
-
-        x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-        #x_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
-
-        #time.sleep(0.1)
 '''

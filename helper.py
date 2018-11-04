@@ -77,6 +77,7 @@ def encodeToCommand(value):
         encodeOutput.insert(0, 0x30)
     return encodeOutput
 
+
 def encodeToCommand4digit(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
