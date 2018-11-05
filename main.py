@@ -12,6 +12,7 @@ from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 from Joystick import *
+from helper import *
 from main_parameters import *  # May be a temporary file just for housekeeping.
 
 from datetime import datetime
@@ -68,6 +69,54 @@ y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+
 # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
 # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 # TODO Make it so that these settings can be changed manually through the RPi terminal.
+
+def set_bounds():
+    """
+    Sets the bounds for position mode.
+    1. determine which stop the home position is closest to
+    2. determine the distance from that stop and assign it to
+    3. create an artificial box with sides equal to the distance to the closest stop
+    4. scale the constrainedRange between based on the position of the throttle
+    5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
+    with a small offset for safety, so that the stages never run into the stops.
+
+    ####TOT
+    :return: na
+    """
+    global x_linear_range_min  # TODO Find alternative method of instantiating these variables.
+    global x_linear_range_max
+    global y_linear_range_min
+    global y_linear_range_max
+    global constrained_linear_range
+    global safety_margin
+
+
+    # TODO Review the following block of code (e.g., home = [...]).
+    print('Setting Linear Range')
+    home = [x_axis.home, y_axis.home, z_axis.home]  # FIXME Is this a function, or just a list?
+    print('Homes', home)
+    # Find which stop the stage is closest to
+    # [left, bottom, right, top]
+    boundaries = [home[0], home[1], 12000 - home[0], 12000 - home[1]]
+    print('boundaries: ', boundaries)
+    constrained_linear_range = min(boundaries)
+    print('constrained_linear_range', constrained_linear_range)
+
+    scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+    print('Scaled Range: ', scaled_range)
+
+    x_linear_range_min = home[0] - scaled_range + safety_margin
+    x_linear_range_max = home[0] + scaled_range - safety_margin
+    y_linear_range_min = x_axis.home - scaled_range + safety_margin
+    y_linear_range_max = x_axis.home + scaled_range - safety_margin
+
+    print('Xlin_min', x_linear_range_min)
+    print('xlin_max', x_linear_range_max)
+    print('Ylin_min', y_linear_range_min)
+    print('ylin_max', y_linear_range_max)
+
+    print('y_linear_range', y_linear_range_max - y_linear_range_min)
+    print('x_linear_range', x_linear_range_max - x_linear_range_min)
 
 
 def main():
