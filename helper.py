@@ -7,7 +7,6 @@ Originally Created: R. Nance 03/2018
 '''
 
 import pygame
-from main import x_axis, y_axis, z_axis
 
 
 def encode_to_command(value):
