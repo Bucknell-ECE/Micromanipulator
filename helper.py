@@ -54,8 +54,9 @@ def set_bounds():
     print('xlin_max', x_linear_range_max)
     print('Ylin_min', y_linear_range_min)
     print('ylin_max', y_linear_range_max)
-    print('y_linear_range', y_linear_range)
-    print('x_linear_range', x_linear_range)
+
+    print('y_linear_range', y_linear_range_max - y_linear_range_min)
+    print('x_linear_range', x_linear_range_max - x_linear_range_min)
 
 
 def encode_to_command(value):
