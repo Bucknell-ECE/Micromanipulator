@@ -112,6 +112,7 @@ def main():
         # time.sleep(1)
 
         # TODO Difference between map_val here vs. below?
+        # TODO Also, are X and Y used anywhere?
 
         X = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
         Y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
