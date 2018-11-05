@@ -8,7 +8,7 @@ Originally Created: R. Nance 12/2017
 '''
 
 from helper import *
-from helper import encode_to_command
+from helper import encode_to_command()
 import time
 
 class Stage(object):
