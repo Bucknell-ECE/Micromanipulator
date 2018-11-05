@@ -12,11 +12,11 @@ joy = CustomJoystick('Logitech', 0)
 
 while True:
 
-    print'butt :', joy.getButtons()
-    print'X: ', joy.getX()
-    print'y ', joy.getY()
-    print'position', joy.getPosition()
+    print'butt :', joy.get_buttons()
+    print'X: ', joy.get_x()
+    print'y ', joy.get_y()
+    print'position', joy.get_position()
     print'-----------------------------'
-    print'absolute postion' , joy.getAbsolutePosition()
+    print'absolute postion' , joy.get_absolute_position()
 
     time.sleep(1)

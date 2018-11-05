@@ -34,13 +34,13 @@ x_axis = StageSPI(0, 0, 6000)
 y_axis = StageSPI(0, 1, 6000)
 z_axis = Stage(0x40, 6000, 1)
 
-xlinearRangeMin = 0
-xlinearRangeMax = 12000
-xlinearRange = 12000
-ylinearRangeMin = 0
-ylinearRangeMax = 12000
-ylinearRange = 12000
-constrainedLinearRange = 12000
+x_linear_range_min = 0
+x_linear_range_max = 12000
+x_linear_range = 12000
+y_linear_range_min = 0
+y_linear_range_max = 12000
+y_linear_range = 12000
+constrained_linear_range = 12000
 
 axes = [z_axis]#
 # , y_axis, z_axis]
@@ -61,7 +61,7 @@ def setControlMode(newControlMode):
 
 
 
-def setBounds():
+def set_bounds():
     """
     Sets the bounds for position mode.
     1. determine which stop the home position is closest to
@@ -71,49 +71,49 @@ def setBounds():
     5. Set LinearRangeMin values to home position - constrainedRange and max values to home position + constrainedRange
     :return: na
     """
-    global xlinearRangeMin
-    global xlinearRangeMax
-    global ylinearRangeMin
-    global ylinearRangeMax
-    global constrainedLinearRange
+    global x_linear_range_min
+    global x_linear_range_max
+    global y_linear_range_min
+    global y_linear_range_max
+    global constrained_linear_range
 
     # Find which stop the stage is closest to
     # [left, bottom, right, top]
     boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
     #boundries = [home[0],  12000 - home[0]]
-    constrainedLinearRange = min(boundries)
+    constrained_linear_range = min(boundries)
 
 
-    #ylinearRangeMin = y_axis.home - scaledRange +100
-    #ylinearRangeMax = y_axis.home + scaledRange -100
+    #y_linear_range_min = y_axis.home - scaled_range +100
+    #y_linear_range_max = y_axis.home + scaled_range -100
 
 
 sensitivity = 50
 while True:
-    #setBounds()
+    #set_bounds()
     try:
 
         time.sleep(0.01)
         buttons = []
-        buttons = joy.getButtons()
-        scaleInput = joy.getThrottle()
-        print(scaleInput)
-        x = joy.getX()
-        y = 1023 - joy.getY()
+        buttons = joy.get_buttons()
+        scale_input = joy.get_throttle ()
+        print(scale_input)
+        x = joy.get_x()
+        y = 1023 - joy.get_y()
         print('X: ', x, 'Y', y)
         print(buttons)
         if len(buttons) != 0:
-            for nums in range(buttons.count('Zup')):
-                print('Theres a ZUP')
-                z_axis.zMove(0, 200) # move up120 encoder counts
-            for nums in range(buttons.count('Zdown')):
+            for nums in range(buttons.count('z_up')):
+                print('Theres a z_up')
+                z_axis.z_move(0, 200) # move up120 encoder counts
+            for nums in range(buttons.count('z_down')):
                 print('Theres a zdonw')
-                z_axis.zMove(1, 200) # move down some amount 120 encoder counts
+                z_axis.z_move(1, 200) # move down some amount 120 encoder counts
             for nums in range(buttons.count('Home')):
                 print('Setting home as current position')
                 print('Previous Home: ', home)
-                x_axis.setCurrentHome()
-                y_axis.setCurrentHome()
+                x_axis.set_current_home()
+                y_axis.set_current_home()
                 print('Current Home: ', home)
 
         # Main commands to tell the stage to go to a location descibed by the joystick.
@@ -128,29 +128,29 @@ while True:
         print('Homes', home)
         boundries = [home[0], home[1], 12001 - home[0], 12001 - home[1]]
         print('boundries: ', boundries)
-        constrainedLinearRange = min(boundries)
-        print('constrainedlinearrange', constrainedLinearRange)
-        scaledRange = mapval(scaleInput, 0, 100, 0, constrainedLinearRange)
-        print('Scaled Range: ', scaledRange)
-        xlinearRangeMin = home[0] - scaledRange + 100
-        xlinearRangeMax = home[0] + scaledRange - 100
-        print('XlinMin', xlinearRangeMin)
-        print('xlinmax', xlinearRangeMax)
-        print('Ylinmin', ylinearRangeMin)
-        print('ylimmax', ylinearRangeMax)
-        print('ylinearrange', ylinearRange)
-        print('xlinearRange', xlinearRange)
+        constrained_linear_range = min(boundries)
+        print('constrained_linear_range', constrained_linear_range)
+        scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+        print('Scaled Range: ', scaled_range)
+        x_linear_range_min = home[0] - scaled_range + 100
+        x_linear_range_max = home[0] + scaled_range - 100
+        print('Xlin_min', x_linear_range_min)
+        print('xlin_max', x_linear_range_max)
+        print('Ylin_min', y_linear_range_min)
+        print('ylimmax', y_linear_range_max)
+        print('y_linear_range', y_linear_range)
+        print('x_linear_range', x_linear_range)
 
-        x_axis.goToLocation(mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        print('Mapval', mapval(x, 0, 1023, xlinearRangeMin, xlinearRangeMax))
-        y_axis.goToLocation(mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
-        print('mapval y ', mapval(y, 0, 1023, ylinearRangeMin, ylinearRangeMax))
+        x_axis.go_to_location(map_val(x, 0, 1023, x_linear_range_min, x_linear_range_max))
+        print('map_val', map_val(x, 0, 1023, x_linear_range_min, x_linear_range_max))
+        y_axis.go_to_location(map_val(y, 0, 1023, y_linear_range_min, y_linear_range_max))
+        print('map_val y ', map_val(y, 0, 1023, y_linear_range_min, y_linear_range_max))
 
     except KeyboardInterrupt:
-        #x_axis.sendCommandNoVars('19')
+        #x_axis.send_command_no_vars('19')
         #temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
-        #x_axis.sendCommandNoVars('10')
+        #x_axis.send_command_no_vars('10')
         #temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
@@ -161,10 +161,10 @@ while True:
         raise
     '''
     except IOError:
-        #x_axis.sendCommandNoVars('19')
+        #x_axis.send_command_no_vars('19')
         #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
         #print('temp', temp)
-        x_axis.sendCommandNoVars('10')
+        x_axis.send_command_no_vars('10')
         temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         print('temp', temp)
         f = open('errorLog.txt', 'a')
@@ -189,10 +189,10 @@ while True:
         #if controlMode == 'velocity':
             #fsdjfl
         if controlMode == 'position':
-            setBounds()
+            set_bounds()
 
-            x_axis.goToLocation(mapval(joy.getX(), 0, 1023,100, 11900))# xlinearRangeMin, xlinearRangeMax))
-            #y_axis.goToLocation(mapval(joy.gety(), 0, 255, ylinearRangeMin, ylinearRangeMax))
+            x_axis.go_to_location(map_val(joy.get_x(), 0, 1023,100, 11900))# x_linear_range_min, x_linear_range_max))
+            #y_axis.go_to_location(map_val(joy.get_y(), 0, 255, y_linear_range_min, y_linear_range_max))
 
             #time.sleep(0.1)
     '''

@@ -36,7 +36,7 @@ Waiting to be added
 ---------------------
 <a name="PositionMode"></a>
 ### Position Mode
-The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "ZUp" or "ZDown" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
+The designed micromanipulator provides user with position mode. The microneedle will be placed on the preset "home" position on the microscope stage. The user can also later redefine the "home" position by using "set home" key on Joystick. The user can move the Joystick to adjust the X and Y position of the microneedle and then pressed "z_up" or "z_down" button to adjust the Z position. When the user finishe operation and release all buttons, the microneedle will automatically return back to the "home" position.  
 
 ### Joystick Configuration ###
 ![Joystick Diagram](https://ws4.sinaimg.cn/large/006tNc79ly1frjnske1qzj30i20jw0y0.jpg "Joystick Configuration")
@@ -65,7 +65,7 @@ This command is used in the *startup* function to finish the start up steps. The
 
 **08**: Move to Target </br>
 <08 TTTTTTTT> TTTTTTTT is the target position in encoder counts (HEX). </br> 
-There is no reading back from this command. This command is used in function *goToLocation* to drive the stage to move </br>
+There is no reading back from this command. This command is used in function *go_to_location* to drive the stage to move </br>
 
 **10**: View Closed-Loop Status and Position
 <10>. Read back <10 SSSSSS PPPPPPPP EEEEEEEE>. </br>
@@ -73,7 +73,7 @@ SSSSSS is the motor status. </br>
 PPPPPPPP is the absolute position in encoder count. </br>
 EEEEEEEE is the position error in encoder counts. </br>
 The table for motor status refer to Page 16-18 in M3-LS-1.8-6 Smart Stage manual </br>
-This command is used in function *getPositionFromM3LS* </br>
+This command is used in function *get_position_from_M3LS* </br>
 
 **87**: Run Frequency Calibration </br>
 <87 D[ XX]> D is the calibration movement direction and calibration type. </br>

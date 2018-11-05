@@ -9,27 +9,27 @@ Originally Created: R. Nance 12/2017
 
 from helper import *
 import time
-## TEST
 
 class Stage(object):
 
     def __init__(self, position):
 
+        # self.startup()  # TODO Uncomment this to run startup sequence.
         self.position = position    # initialize position parameter
         self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
 
      # @property TODO What does @property do, and should I use it?
-    def getPosition(self):
+    def get_position(self):
         return int(self.position)
 
 
     # @property
-    def getAddress(self):
+    def get_address(self):
         return self.address
 
 
-    def setHome(self, location):
+    def set_home(self, location):
         """
         Allows user to set the home location for the particular axis
         :param location: a location, specified in encoder counts
@@ -38,15 +38,15 @@ class Stage(object):
         self.home = location
 
 
-    def setCurrentHome(self):
-        current = self.getPositionFromM3LS()
+    def set_current_home(self):
+        current = self.get_position_from_M3LS()
 
         print('The current home for this axis is now', current)
-        self.setHome(current)
+        self.set_home(current)
         print('The self.home home is now ', self.home)
 
 
-    def getPositionFromM3LS(self):
+    def get_position_from_M3LS(self):
         """
         Function that returns the position of the stage
         :return: Position of the stage in encoder counts (NOT uM!)
@@ -59,20 +59,23 @@ class Stage(object):
         E is error count. How far is the stage from where it is supposed to be?
         """
 
-        self.sendCommandNoVars('10')  # send query asking about motor status and position
+        self.send_command_no_vars('10')  # send query asking about motor status and position
         time.sleep(0.2)     ## TODO What is the purpose of this delay?
         temp = self.read()  # store incoming data from motor in list
         print ('This is temp',temp)
 
-        rcvEncodedPosition = ''
+        rcv_encoded_position = ''
+
         for element in range(8):
-            rcvEncodedPosition += str(temp[13 + element])
-        position = int(rcvEncodedPosition, 16)
+            rcv_encoded_position += str(temp[13 + element])
+
+        position = int(rcv_encoded_position, 16)
+
         print('The current position Reported by M3LS is : ', position)
         return position
 
 
-    def buildCommand(self, command_code, command_vars):
+    def build_command(self, command_code, command_vars):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
 
@@ -87,8 +90,10 @@ class Stage(object):
         command = []  # empty list to hold command
         # command += [self.address << 1]  # address of stage bit shifted 1 left
         command += [60]  # open carat(<)
+
         for i in str(command_code):
             command += [ord(i)]
+
         command += [32]  # space(' ')
         command += command_vars
         command += [62]  # close carat (>)
@@ -96,7 +101,7 @@ class Stage(object):
         return command
 
 
-    def buildCommandNoVars(self, command_code):
+    def build_command_no_vars(self, command_code):
         """
         Function that builds a command that is ready to be sent to a stage. The command is output in a list that is
 
@@ -120,7 +125,7 @@ class Stage(object):
         return command
 
 
-    def sendCommand(self, command_code, command_vars):
+    def send_command(self, command_code, command_vars):
         """
         Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
         documentation in square brackets.
@@ -128,21 +133,21 @@ class Stage(object):
         :param command_vars: the optional paramter for the command, in list form.
         :return:
         """
-        command_to_send = self.buildCommand(command_code, command_vars)
+        command_to_send = self.build_command(command_code, command_vars)
         #return command_to_send
-        #return(commandToString(command_to_send))
-        #print(commandToString(command_to_send))
+        #return(command_to_string(command_to_send))
+        #print(command_to_string(command_to_send))
         self.write(command_to_send)
 
 
-    def sendCommandNoVars(self, command_code):
+    def send_command_no_vars(self, command_code):
         """
         Sends a command that does not have optional paramters.
         :param command_code: two digit integer for the command you want to send. For example: Move to target is 08
         :return:
         """
-        command_to_send = self.buildCommandNoVars(command_code)
-        #print(commandToString(command_to_send))
+        command_to_send = self.build_command_no_vars(command_code)
+        #print(command_to_string(command_to_send))
         self.write(command_to_send)
 
 
@@ -157,72 +162,72 @@ class Stage(object):
         Receive from stage:
 
         '''
-        self.sendCommand('87', [ 5])
+        self.send_command('87', [ 5])
         time.sleep(0.2)
-        self.sendCommand('87', [ 4])
+        self.send_command('87', [ 4])
         time.sleep(0.2)
 
 
     def startup(self):
         """
-        Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs page 7
+        TODO Runs the New Scale recommended startup sequence. This is not yet complete. See New Scale docs, page 7.
         :return: NA
         """
         #forwardStep = ['0x31', '0x20', '0x30', '0x30', '0x30', '0x30', '0x30', '0x30', '0x36', '0x34']  # [1 000000064]
         ##backwardStep =
-        #self.sendCommand('06', ['0x31'] + ['0x20'] + encoderConvert(64))
-        self.sendCommand('06', [48] + [32] + encodeToCommand(100))
-        self.sendCommand('06', [49] + [32] + encodeToCommand(100))
+        #self.send_command('06', ['0x31'] + ['0x20'] + encoder_convert(64))
+        self.send_command('06', [48] + [32] + encode_to_command(100))
+        self.send_command('06', [49] + [32] + encode_to_command(100))
         # self.calibrate()  # TODO Turn this back on
 
 
-    def GetCloseLoopSpeed(self):
+    def get_closed_loop_speed(self):
         """Get Close Loop Speed information
         return close loop speed
         """
-        self.sendCommandNoVars('40')
+        self.send_command_no_vars('40')
         time.sleep(0.2)
         temp = self.read()
         print('This is speed',temp)
 
 
-    def goToLocation(self, location):
+    def go_to_location(self, location):
         """
         Sends the stage to the location specified, in encoder counts
         :param location: a location in encoder counts
         :return: NA
         """
 
-        #print(encodeToCommand(location)) ###FOR DEBUGGING PURPOSES######
+        #print(encode_to_command(location)) ###FOR DEBUGGING PURPOSES######
 
-        self.sendCommand('08', encodeToCommand(location))
-
-
-    def movesteps(self,steps):
-
-        self.sendCommand('06',[48] + [32] + encodeToCommand(steps))
+        self.send_command('08', encode_to_command(location))
 
 
-    def returnHome(self):
+    def move_steps(self,steps):
+
+        self.send_command('06',[48] + [32] + encode_to_command(steps))
+
+
+    def return_home(self):
         """
         Funtion that sends the stage to its home location
         :return: NA
         """
-        self.goToLocation(self.home)
+        self.go_to_location(self.home)
 
 
-    def Openloop(self):
+    def open_loop(self):  # NOTE Come back to later.
         """Set the stage into open loop mode
         :return NA
         """
-        self.sendCommand('20', [48])
+        self.send_command('20', [48])
 
 
-    def ViewMode(self):
+    def view_mode(self):  # NOTE Come back to later.
         """View the current Mode
         return the current mode information
         """
-        self.sendCommand('20', [82])
+        self.send_command('20', [82])
         time.sleep(0.2)
         temp = self.read()
         print('This is the mode',temp)
