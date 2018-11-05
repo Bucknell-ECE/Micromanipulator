@@ -30,8 +30,8 @@ y_axis = StageSPI(0, 1, 6000)
 
 z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean for an I2C address?
 
-x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
-y_axis.startup()
+# x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
+# y_axis.startup()
 #z_axis.startup()  # FIXME We need visual feedback on the z-axis (i.e., depth, axis sensitivity)
 
 
