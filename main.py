@@ -15,7 +15,7 @@ from Joystick import *
 from main_parameters import *  # May be a temporary file just for housekeeping.
 
 from datetime import datetime
-from tkinter import * ## was originally "Tkinter"
+from tk import * ## was originally "Tkinter"
 import pygame
 import random
 import time
