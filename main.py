@@ -15,7 +15,7 @@ from Joystick import *
 from main_parameters import *  # May be a temporary file just for housekeeping.
 
 from datetime import datetime
-from tk import * ## was originally "Tkinter"
+from Tkinter import *
 import pygame
 import random
 import time
@@ -94,7 +94,7 @@ def main():
 
         buttons = []
         buttons = joy.get_buttons()
-        scale_input = joy.get_throttle ()
+        scale_input = joy.get_throttle()
         print('Test Point 2', scale_input)
         #time.sleep(2)
 
