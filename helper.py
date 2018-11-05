@@ -10,8 +10,6 @@ import pygame
 from main import x_axis, y_axis, z_axis
 
 
-
-
 def encode_to_command(value):
     """
     Builds the guts of a command to send the stage to a particular encoder count
