@@ -35,10 +35,10 @@ y_axis.startup()
 #z_axis.startup()  # FIXME We need visual feedback on the z-axis (i.e., depth, axis sensitivity)
 
 
-if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
-    scale_input = sensitivity_read()
-print('test', scale_input)
-#time.sleep(5)
+# if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
+#     scale_input = sensitivity_read()
+# print('test', scale_input)
+# #time.sleep(5)
 
 # "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
 x = 1000
@@ -98,12 +98,10 @@ def main():
         print('Test Point 2', scale_input)
         #time.sleep(2)
 
-        sensitivity_write(scale_input)  # Stores new sensitivity in a text file.
+        sensitivity_write(scale_input)  # TODO Make storing in a text file work.
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
-
-        set_bounds()  # Sets bounds with settings stored in text files
 
         print('X: ', x, 'Y', y)
         print(buttons)

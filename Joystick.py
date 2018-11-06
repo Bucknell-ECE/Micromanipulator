@@ -6,9 +6,8 @@ Originating Branch: Joystick
 Originally Created: R. Nance 12/2017
 '''
 
-import pygame
+from pygame import *
 from helper import *
-# from helper import map_val
 
 
 
