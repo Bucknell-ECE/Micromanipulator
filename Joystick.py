@@ -6,7 +6,7 @@ Originating Branch: Joystick
 Originally Created: R. Nance 12/2017
 '''
 
-from pygame import *
+import pygame
 from helper import *
 
 
@@ -66,10 +66,10 @@ class CustomJoystick:
 
 ############################CODE WRITTEN BY RYDER#########################################
     def get_buttons(self):
-
+        clock = pygame.time.Clock()
         commands = []
 
-        for event in pygame.event.get():  # User did something
+        for event in pygame.event.get():  # User did a thing!
             #print(event)
             if event.type == pygame.QUIT:  # If user clicked close
                 done = True  # Flag that we are done so we exit this loop
