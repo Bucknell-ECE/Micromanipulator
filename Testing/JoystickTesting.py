@@ -46,5 +46,5 @@ while True: # Loop forever
     #print currentButton
     #print button8, button9, button10, button11
 
-    new_position = myJoy.convertPosition(0)
+    new_position = myJoy.convert_position(0)
     print new_position
