@@ -47,6 +47,7 @@ y = 1000
 
 x_coordinate = 1000
 y_coordinate = 1000
+
 #locations = [xlocation, ylocation, zlocation]
 
 
@@ -93,11 +94,8 @@ def main():
         time.sleep(0.01)  # Delay for 10 ms so as not to overload SPI registers.
                           # TODO Can we decrease this to improve response time?
 
-        buttons = []
         buttons = joy.get_buttons()
         scale_input = joy.get_throttle()
-        print('Test Point 2', scale_input)
-        #time.sleep(2)
 
         sensitivity_write(scale_input)  # TODO Make storing in a text file work.
 
@@ -138,18 +136,15 @@ def main():
 
             for nums in range(buttons.count('Reset_home')):
                 print('Reset home to the center of the stage')
-                x_axis.go_to_location(6000)
+                x_axis.set_home(6000)
                 x_coordinate = 1000
-                x_axis.go_to_location(6000)
+                x_axis.set_home(6000)
                 y_coordinate = 1000
 
-            for nums in range(buttons.count('get_status')):
-                get_status = 1
+            for nums in range(buttons.count('get_status')):  # returns the number of occurrences of substring
+                                                             # 'get_status' in 'buttons'
 
-                # statusx = x_axis.get_status()
-                # statusinfo(statusx)
-                # statusy = x_axis.get_status()
-                # statusinfo(statusy)
+                get_status = 1  # TODO What does "get_status" do?
 
                 x_status = x_axis.get_status()
                 y_status = y_axis.get_status()
@@ -174,24 +169,32 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
                 z_sensitivity -= 50
 
-        # Main commands to tell the stage to go to a location described by the joystick.  # TODO HELP, RYDER!
-        if x < 1000:
-            x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
-            x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
-            if x_coordinate <= 0:
-                x_coordinate = 0
-        elif x > 1000:
-            x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-            x_coordinate += map_val(8,0,12000,0,2000)
-            if x_coordinate >= 2000:
-                x_coordinate = 2000
+        # Main commands to tell the stage to go to a location described by the joystick.
+        x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+        print('map_val x: ', map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
 
-        if y < 1000:
-            x_axis.send_command('06', [48] + [32] + encode_to_command(5))
-            y_coordinate -= map_val(8,0,12000,0,12000)
-        elif y > 1000:
-            x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-            y_coordinate += map_val(8,0,2000,0,12000)
+        y_axis.go_to_location(map_val(x, 0, 2000, y_linear_range_min, y_linear_range_max))
+        print('map_val y: ', map_val(x, 0, 2000, y_linear_range_min, y_linear_range_max))
+
+
+        ## Velocity mode
+        # if x < 1000:
+        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
+        #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
+        #     if x_coordinate <= 0:
+        #         x_coordinate = 0
+        # elif x > 1000:
+        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+        #     x_coordinate += map_val(8,0,12000,0,2000)
+        #     if x_coordinate >= 2000:
+        #         x_coordinate = 2000
+        #
+        # if y < 1000:
+        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))
+        #     y_coordinate -= map_val(8,0,12000,0,12000)
+        # elif y > 1000:
+        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+        #     y_coordinate += map_val(8,0,2000,0,12000)
 
 
     except KeyboardInterrupt:

@@ -61,7 +61,7 @@ class StageI2C(Stage):
     def get_status(self):
         self.send_command_no_vars('10')  # send query asking about motor status and position
         temp = self.read()  # store incoming data from motor in list
-        #return temp
+        return temp
 
         rcv_encoded_status = ''
         for element in range(6):
