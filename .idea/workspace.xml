@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="issues, begone!">
+      <change beforePath="$PROJECT_DIR$/Joystick.py" beforeDir="false" afterPath="$PROJECT_DIR$/Joystick.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JoystickTesting.py" beforeDir="false" afterPath="$PROJECT_DIR$/JoystickTesting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/main.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="567">
+                  <caret line="38" column="59" lean-forward="true" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
+                  <folding>
+                    <element signature="e#248#268#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Stage.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Stage.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2760">
+                  <caret line="184" column="43" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+                  <folding>
+                    <element signature="e#330#350#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StageI2C.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/StageI2C.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="480">
+                  <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StageSPI.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/StageSPI.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="465">
+                  <caret line="36" selection-start-line="36" selection-end-line="36" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="main_parameters.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/main_parameters.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/helper.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="9" selection-start-line="9" selection-end-line="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Joystick.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="615">
+                  <caret line="84" column="23" lean-forward="true" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#250#263#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>sendcommand</find>
+      <find>lastMillis</find>
+      <find>X</find>
+      <find>object</find>
+      <find>Zsensitivity</find>
+      <find>xlocation</find>
+      <find>yaxis</find>
+      <find>print</find>
+      <find>set_bound</find>
+      <find>set_bounds</find>
+      <find>send_command</find>
+      <find>startup</find>
+      <find>encode_to</find>
+      <find>encode_to_command</find>
+      <find>sensitivity</find>
+      <find>random</find>
+      <find>set_bo</find>
+      <find>get_butt</find>
+      <find>convertPosition</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>z_sensitivity</replace>
+      <replace>convert_position</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Jacquelyn Scott &lt;jbs044@bucknell.edu&gt;" />
+      </list>
+    </option>
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/StageI2C.py" />
+        <option value="$PROJECT_DIR$/testStage.py" />
+        <option value="$PROJECT_DIR$/SPITest.py" />
+        <option value="$PROJECT_DIR$/JoystickTesting.py" />
+        <option value="$PROJECT_DIR$/JoystickGui.py" />
+        <option value="$PROJECT_DIR$/buttonHandlerT.py" />
+        <option value="$PROJECT_DIR$/EventHandlerTesting.py" />
+        <option value="$PROJECT_DIR$/newJoystickTesting.py" />
+        <option value="$PROJECT_DIR$/mainSpiTesting.py" />
+        <option value="$PROJECT_DIR$/StageSPI.py" />
+        <option value="$PROJECT_DIR$/Stage.py" />
+        <option value="$PROJECT_DIR$/helper.py" />
+        <option value="$PROJECT_DIR$/main_parameters.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Joystick.py" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <scope name="SPI-Debugging" pattern="file:Stage.py||file:Joystick.py||file:main_parameters.py||file:StageSPI.py||file:main.py||file:helper.py" />
+    <scope name="main.py" pattern="file:main.py" />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Micromanipulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Micromanipulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="Commenting-code" />
+    </force-push-targets>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Joystick.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/JoystickTesting.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/README.md</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Stage.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/StageI2C.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/StageSPI.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/UnusedCode.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/helper.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/main.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/mainSpiTesting.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/main_parameters.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/newJoystickTesting.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/testStage.py</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="" />
+      <created>1530755414046</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1530755414046</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Neatened some code and getting ready to comment more thoroughly.">
+      <created>1531058874102</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1531058874102</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Neatened code, copied over from failed push from linuxremote.">
+      <created>1541109252823</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541109252823</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Neatened code, copied over from failed push from linuxremote.">
+      <created>1541109623839</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1541109623839</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Neatened code, copied over from failed push from linuxremote.">
+      <created>1541377622627</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1541377622627</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Neatened code, copied over from failed push from linuxremote.">
+      <created>1541384598663</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541384598664</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&quot;Tkinter&quot; has an annoying naming scheme (correcting)">
+      <created>1541449579918</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541449579919</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Corrected set_bounds() function (temporarily in helper.py)">
+      <created>1541450768798</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1541450768798</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Corrected set_bounds() function (temporarily in helper.py)">
+      <created>1541451020645</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1541451020645</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Corrected set_bounds() function (temporarily in helper.py)">
+      <created>1541451058272</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1541451058272</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Corrected set_bounds() function (temporarily in helper.py)">
+      <created>1541451510048</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1541451510049</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Put set_bounds() function back in main.py arrrrghhh">
+      <created>1541452397680</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1541452397680</updated>
+    </task>
+    <task id="LOCAL-00012" summary="encode_to_command() issues ; debugging">
+      <created>1541452669746</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1541452669746</updated>
+    </task>
+    <task id="LOCAL-00013" summary="encode_to_command() issues ; debugging">
+      <created>1541453197945</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1541453197945</updated>
+    </task>
+    <task id="LOCAL-00014" summary="encode_to_command() issues ; debugging">
+      <created>1541453381001</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1541453381001</updated>
+    </task>
+    <task id="LOCAL-00015" summary="issues, begone!">
+      <created>1541546907513</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1541546907518</updated>
+    </task>
+    <task id="LOCAL-00016" summary="issues, begone!">
+      <created>1541547326434</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1541547326435</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4981685" weight="0.18051282" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.501221" side_tool="true" weight="0.26871794" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.498779" weight="0.19897436" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.498779" weight="0.32923076" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.498779" weight="0.21333334" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.092185594" />
+      <window_info anchor="right" id="R Packages" order="3" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.2225641" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Neatened some code and getting ready to comment more thoroughly." />
+    <MESSAGE value="Neatened code, copied over from failed push from linuxremote." />
+    <MESSAGE value="&quot;Tkinter&quot; has an annoying naming scheme (correcting)" />
+    <MESSAGE value="Corrected set_bounds() function (temporarily in helper.py)" />
+    <MESSAGE value="Put set_bounds() function back in main.py arrrrghhh" />
+    <MESSAGE value="encode_to_command() issues ; debugging" />
+    <MESSAGE value="issues, begone!" />
+    <option name="LAST_COMMIT_MESSAGE" value="issues, begone!" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="404" height="560" key="Git.Branch.Popup" />
+    <state width="404" height="560" key="Git.Branch.Popup/3360.2100" />
+    <state width="404" height="560" key="Git.Branch.Popup@3360.2100@192dpi" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="5" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SPITest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickGui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonHandlerT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventHandlerTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4035">
+          <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+          <folding>
+            <element signature="e#248#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainSpiTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newJoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1710">
+          <caret line="114" column="50" selection-start-line="114" selection-start-column="50" selection-end-line="114" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SPITest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickGui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonHandlerT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventHandlerTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4035">
+          <caret line="283" column="17" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainSpiTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newJoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SPITest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickGui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonHandlerT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventHandlerTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4035">
+          <caret line="283" column="17" lean-forward="true" selection-start-line="283" selection-start-column="17" selection-end-line="283" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainSpiTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newJoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="54" column="47" lean-forward="true" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testStage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="26" selection-start-column="26" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SPITest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="20" selection-start-column="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JoystickGui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonHandlerT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventHandlerTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newJoystickTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2760">
+          <caret line="184" column="43" selection-start-line="184" selection-start-column="43" selection-end-line="184" selection-end-column="43" />
+          <folding>
+            <element signature="e#330#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageI2C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageSPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainSpiTesting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+          <folding>
+            <element signature="e#278#298#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="84" column="23" lean-forward="true" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+          <folding>
+            <element signature="e#250#263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="38" column="59" lean-forward="true" selection-start-line="38" selection-start-column="59" selection-end-line="38" selection-end-column="59" />
+          <folding>
+            <element signature="e#248#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <last-edited>main.py</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+          <order>
+            <scope name="SPI-Debugging" />
+            <scope name="main.py" />
+          </order>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

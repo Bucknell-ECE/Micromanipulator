@@ -57,7 +57,7 @@ class CustomJoystick:
         return joystick.get_axis(axis_index)
 
 
-    def convertPosition(self, axis_index):
+    def convert_position(self, axis_index):
         curr_pos = self.get_axis_position(axis_index)
         new_pos = (curr_pos + 1)*127.5  # TODO What's going on here?
         return new_pos
@@ -80,7 +80,7 @@ class CustomJoystick:
                 button = event.button
                 #commands += button
                 commands += [button_map[button]]
-            clock.tick(20)
+            clock.tick(20)  # Get every 20 ms
 
         return commands
 
