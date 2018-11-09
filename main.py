@@ -30,7 +30,6 @@ y_axis = StageSPI(0, 1, 6000)
 
 z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean for an I2C address?
 
-# TODO "master" branch does not have
 x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
 y_axis.startup()
 #z_axis.startup()  # FIXME We need visual feedback on the z-axis (i.e., depth, axis sensitivity)
@@ -56,19 +55,14 @@ pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
 joy = CustomJoystick('Logitech', 0)
-elapsed = 0
+elapsed = 0  # Used later to test script latency
 count = 0
 
-
-# def setControlMode(newControlMode):  # NOTE Control <ode can be toggled using Tony's code in 'UnusedCode.py'.
-#     controlMode = newControlMode
-
-
-# print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
-x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
-y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
-# 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
-# NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
+# # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
+# x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
+# y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
+# # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
+# # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 # TODO Make it so that these settings can be changed manually through the RPi terminal.
 
 
@@ -82,6 +76,27 @@ def main():
     global x_coordinate
     global y_coordinate
     global z_sensitivity
+
+
+    # Set linear ranges depending on home position
+    home = [x_axis.home, y_axis.home, z_axis.home]
+    print('Homes', home)
+    # Find which stop the stage is closest to
+    # [left, bottom, right, top]
+    boundaries = [x_axis.home, y_axis.home, 12000 - x_axis.home, 12000 - y_axis.home]
+    print('boundaries: ', boundaries)
+
+    constrained_linear_range = min(boundaries)
+    print('constrained_linear_range', constrained_linear_range)
+
+    scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+    print('Scaled Range: ', scaled_range)
+
+    x_linear_range_min = x_axis.home - scaled_range + safety_margin
+    x_linear_range_max = x_axis.home + scaled_range - safety_margin
+    y_linear_range_min = y_axis.home - scaled_range + safety_margin
+    y_linear_range_max = y_axis.home + scaled_range - safety_margin
+
 
     # Loop for mapping joystick movements to M3-LS commands
     try:
@@ -132,13 +147,13 @@ def main():
             for nums in range(buttons.count('Home')):  # Returns no. of times that "Home" is
                 print('Setting home as current position')
                 x_axis.set_current_home()
-                x_axis.set_current_home()
+                y_axis.set_current_home()
 
             for nums in range(buttons.count('Reset_home')):
                 print('Reset home to the center of the stage')
                 x_axis.set_home(6000)
                 x_coordinate = 1000
-                x_axis.set_home(6000)
+                y_axis.set_home(6000)
                 y_coordinate = 1000
 
             for nums in range(buttons.count('get_status')):  # returns the number of occurrences of substring
@@ -173,8 +188,8 @@ def main():
         x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
         print('map_val x: ', map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
 
-        y_axis.go_to_location(map_val(x, 0, 2000, y_linear_range_min, y_linear_range_max))
-        print('map_val y: ', map_val(x, 0, 2000, y_linear_range_min, y_linear_range_max))
+        y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
+        print('map_val y: ', map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
 
 
         ## Velocity mode

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/StageI2C.py" beforeDir="false" afterPath="$PROJECT_DIR$/StageI2C.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +19,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="582">
-                  <caret line="184" column="24" lean-forward="true" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
+                <state relative-caret-position="-60">
+                  <caret line="193" lean-forward="true" selection-start-line="193" selection-end-line="193" />
                 </state>
               </provider>
             </entry>
@@ -29,8 +28,8 @@
           <file leaf-file-name="Stage.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Stage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="248">
-                  <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+                <state relative-caret-position="705">
+                  <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
                   <folding>
                     <element signature="e#330#350#0" expanded="true" />
                   </folding>
@@ -41,7 +40,7 @@
           <file leaf-file-name="StageI2C.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/StageI2C.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
+                <state relative-caret-position="480">
                   <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
                 </state>
               </provider>
@@ -59,24 +58,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/helper.py">
+        <leaf>
+          <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+            <entry file="file://$USER_HOME$/Desktop/Micromanipulator-old_code/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" selection-start-line="8" selection-end-line="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Joystick.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="473">
-                  <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
-                  <folding>
-                    <element signature="e#250#263#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="-52">
+                  <caret line="112" column="20" lean-forward="true" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
                 </state>
               </provider>
             </entry>
@@ -110,6 +97,10 @@
       <find>set_home</find>
       <find>get_status</find>
       <find>buttons</find>
+      <find>elapsed</find>
+      <find>refresh</find>
+      <find>x_linear</find>
+      <find>boundaries</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -455,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541638460389</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="git merge">
+      <created>1541787257733</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1541787257742</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -472,13 +470,13 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4981685" weight="0.18051282" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.501221" side_tool="true" weight="0.26871794" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.26871794" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.498779" weight="0.19897436" />
-      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.498779" weight="0.32923076" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.498779" weight="0.17435898" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.092185594" />
-      <window_info anchor="right" id="R Packages" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.498779" weight="0.32923076" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.498779" weight="0.17435898" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.092185594" />
+      <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2225641" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -491,6 +489,27 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.498779" weight="0.19897436" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.092185594" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="R Graphics" order="3" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4981685" weight="0.18051282" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="R Packages" order="4" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.498779" weight="0.32923076" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.498779" visible="true" weight="0.17435898" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.26871794" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.2225641" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -503,7 +522,8 @@
     <MESSAGE value="Put set_bounds() function back in main.py arrrrghhh" />
     <MESSAGE value="encode_to_command() issues ; debugging" />
     <MESSAGE value="issues, begone!" />
-    <option name="LAST_COMMIT_MESSAGE" value="issues, begone!" />
+    <MESSAGE value="git merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="git merge" />
   </component>
   <component name="WindowStateProjectService">
     <state width="404" height="560" key="Git.Branch.Popup" />
@@ -783,24 +803,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StageI2C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/StageSPI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -814,6 +820,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
+          <folding>
+            <element signature="e#250#263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageI2C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_parameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -823,28 +853,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
+        <state relative-caret-position="705">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#330#350#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Joystick.py">
+    <entry file="file://$USER_HOME$/Desktop/Micromanipulator-old_code/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="74" column="33" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="33" />
-          <folding>
-            <element signature="e#250#263#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-52">
+          <caret line="112" column="20" lean-forward="true" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="184" column="24" lean-forward="true" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="24" />
+        <state relative-caret-position="-60">
+          <caret line="193" lean-forward="true" selection-start-line="193" selection-end-line="193" />
         </state>
       </provider>
     </entry>
