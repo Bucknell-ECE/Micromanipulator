@@ -212,8 +212,9 @@ def map_val(x, in_min, in_max, out_min, out_max):
     return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))
 
 
-def AudioNoti(x,y,xMin,xMax,yMin,yMax):
-    "Play Audio Notification when hit the boundary"
+def audio_alert(x,y,xMin,xMax,yMin,yMax):
+    """Play Audio Notification when hit the boundary.
+    """
     if x == xMin or x == xMax or y == yMin or y == yMax:
         print('Hit the boundary')
         pygame.mixer.init()
@@ -223,7 +224,7 @@ def AudioNoti(x,y,xMin,xMax,yMin,yMax):
             continue
 
 
-def statusinfo(status):
+def status_info(status):
     """Status information corresponds to that table in Reference Manual <10>"""
     if status[0] == '1':
         print('The position error exceeds the stall detection threshold while motor is running')

@@ -108,6 +108,7 @@ class CustomJoystick:
         return map_val(absolute_throttle, -1, 1, 0, 100)
 
 
+    # TODO RYDER: Why would we need to use this? (Currently unused.)
     def get_position(self):
         absolute_position = [self.get_absolute_x() + 1, self.get_absolute_y() + 1]
 

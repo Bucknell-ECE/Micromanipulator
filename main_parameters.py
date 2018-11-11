@@ -1,7 +1,7 @@
 # From beginning of 'main.py'
 
-controlMode = 'position'  # TODO Create function to change this to 'velocity' mode
-safety_margin = 50  # TODO Change to use M3-LS "Soft Limits"
+controlMode = 'position'
+safety_margin = 50  # TODO Change this by incorporating M3-LS "Soft Limits"
 
 x_linear_range_min = 0
 x_linear_range_max = 12000
