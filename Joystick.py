@@ -38,12 +38,10 @@ class CustomJoystick:
         # Initialize the joystick
         pygame.joystick.init()
 
-        # joystick_count = pygame.joystick.get_count()
+        joystick_count = pygame.joystick.get_count()
 
-        # TODO If we only connect one device, will we ever have more than one joystick?
+        # TODO Question for Ryder: How is this loop doing anything new?
         # For each joystick:
-
-        # TODO Uncomment if something breaks! If not, delete.
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
             joystick.init()
