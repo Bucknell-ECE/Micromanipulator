@@ -55,7 +55,7 @@ pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
 joy = CustomJoystick('Logitech', 0)
-elapsed = 0  # Used later to test script latency
+elapsed = 0  # Used below to test script latency
 count = 0
 
 # # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
@@ -101,37 +101,21 @@ def main():
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
+        # TODO Can we use this to test location exactness?
         # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
         # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
         # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
         # Test result: <06 0 00000064>\r
 
-        time.sleep(0.01)  # Delay for 10 ms so as not to overload SPI registers.
-                          # TODO Can we decrease this to improve response time?
+        time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
         scale_input = joy.get_throttle()
 
-        sensitivity_write(scale_input)  # TODO Make storing in a text file work.
-
         x = joy.get_x()
         y = 2000 - joy.get_y()
-
         print('X: ', x, 'Y', y)
-        print(buttons)
 
-        # print('X-axis closed-loop speed: ', x_axis.get_closed_loop_speed())
-        # time.sleep(1)
-
-        # TODO Difference between map_val here vs. below?
-        # TODO Also, are X and Y used anywhere?
-
-        X = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
-        Y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
-
-        #AudioNoti(X,Y,x_linear_range_min,x_linear_range_max,y_linear_range_min,y_linear_range_max)
-        # print('get_status X', x_axis.get_status())
-        # print('get_status Z', z_axis.get_status())
 
         if len(buttons) != 0:
             # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.

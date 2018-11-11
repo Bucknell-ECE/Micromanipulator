@@ -9,8 +9,6 @@ Originally Created: R. Nance 12/2017
 import pygame
 from helper import *
 
-
-
 x_axis_NUM = 0
 y_axis_NUM = 1
 throttle_axis_NUM = 2
@@ -26,8 +24,8 @@ button_map = {
     9: 'Reset_home'
 }
 
+
 class CustomJoystick:
-    # FIXME Will need to create a button mapping function that imports text file stuff here.
 
     def __init__(self, name, number):
         self.name = name
@@ -37,58 +35,41 @@ class CustomJoystick:
         # Used to manage how fast the screen updates
         self.clock = pygame.time.Clock()
 
-        # Initialize the joysticks
+        # Initialize the joystick
         pygame.joystick.init()
 
-        joystick_count = pygame.joystick.get_count()
-        joystick = pygame.joystick.Joystick(0)
+        # joystick_count = pygame.joystick.get_count()
 
+        # TODO If we only connect one device, will we ever have more than one joystick?
         # For each joystick:
-        for i in range(joystick_count):
-            joystick = pygame.joystick.Joystick(i)
-            #print('this is joystick: ', i)
-            joystick.init()
-        axes = joystick.get_numaxes()
-        #print(axes)
+
+        # TODO Uncomment if something breaks! If not, delete.
+        # for i in range(joystick_count):
+        #     joystick = pygame.joystick.Joystick(i)
+        #     joystick.init()
 
 
-    def get_axis_position(self, axis_index):
-        joystick = pygame.joystick.Joystick(0)
-        return joystick.get_axis(axis_index)
-
-
-    def convert_position(self, axis_index):
-        curr_pos = self.get_axis_position(axis_index)
-        new_pos = (curr_pos + 1)*127.5  # TODO What's going on here?
-        return new_pos
-
-
-
-############################CODE WRITTEN BY RYDER#########################################
     def get_buttons(self):
         clock = pygame.time.Clock()
         commands = []
 
         for event in pygame.event.get():  # User did a thing!
-            #print(event)
-            if event.type == pygame.QUIT:  # If user clicked close
-                done = True  # Flag that we are done so we exit this loop
-
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
-            # TODO Verify these options with pygame documentation.
-            if event.type == pygame.JOYBUTTONDOWN:
+            if event.type == pygame.JOYBUTTONDOWN:  # add to "commands" when button is pressed
                 button = event.button
-                #commands += button
                 commands += [button_map[button]]
-            clock.tick(20)  # Get every 20 ms
+
+            clock.tick(20)  # TODO Why are we polling only every 20 ms? Can we try lower?
 
         return commands
 
 
     def get_absolute_x(self):
-        pygame.event.get()
-
-        #joystick = pygame.joystick.Joystick(0)
+        """Returns the current position of a joystick axis. The value will
+        range from -1 to 1 with a value of 0 being centered.
+        :return:
+        """
+        pygame.event.get()  # TODO Why do we need this line within every Joystick() function?
 
         return self.joystick.get_axis(x_axis_NUM)
 
@@ -96,15 +77,11 @@ class CustomJoystick:
     def get_absolute_y(self):
         pygame.event.get()
 
-        #joystick = pygame.joystick.Joystick(0)
-
         return self.joystick.get_axis(y_axis_NUM)
 
 
     def get_absolute_throttle(self):
         pygame.event.get()
-
-        #joystick = pygame.joystick.Joystick(0)
 
         return self.joystick.get_axis(throttle_axis_NUM)
 
@@ -112,13 +89,12 @@ class CustomJoystick:
     def get_absolute_position(self):
         pygame.event.get()
         position = [round(self.joystick.get_axis(x_axis_NUM), 3), round(self.joystick.get_axis(y_axis_NUM), 3)]
+
         return position
 
 
     def get_x(self):
         pygame.event.get()
-
-        #joystick = pygame.joystick.Joystick(0)
 
         absolute_x = self.get_absolute_x() + 1
         return map_val(absolute_x, 0, 2, 0, 2000)
@@ -126,8 +102,6 @@ class CustomJoystick:
 
     def get_y(self):
         pygame.event.get()
-
-        #joystick = pygame.joystick.Joystick(0)
 
         absolute_y = self.get_absolute_y() + 1
         return map_val(absolute_y, 0, 2, 0, 2000)

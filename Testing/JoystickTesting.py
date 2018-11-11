@@ -6,6 +6,17 @@ import time
 from Joystick import *
 
 
+def convert_position(self, axis_index):
+    '''Converts range from  [-1, 1] into [0, 127.5]. # TODO Why 127.5?
+    :param axis_index:
+    :return:
+    '''
+    curr_pos = self.get_axis(axis_index)  # gets axis position from pygame
+    new_pos = (curr_pos + 1) * 127.5
+
+    return new_pos
+
+
 pygame.init() # Initialize all pygame modules
 pygame.joystick.init() # Initialize joystick module
 
