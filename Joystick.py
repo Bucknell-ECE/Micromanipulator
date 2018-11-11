@@ -44,9 +44,9 @@ class CustomJoystick:
         # For each joystick:
 
         # TODO Uncomment if something breaks! If not, delete.
-        # for i in range(joystick_count):
-        #     joystick = pygame.joystick.Joystick(i)
-        #     joystick.init()
+        for i in range(joystick_count):
+            joystick = pygame.joystick.Joystick(i)
+            joystick.init()
 
 
     def get_buttons(self):
