@@ -120,20 +120,20 @@ def main():
         if len(buttons) != 0:
             # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
 
-            for nums in range(buttons.count('z_up')):
+            if buttons.count('z_up')) > 0:
                 print('Theres a z_up')
                 z_axis.z_move(0, z_sensitivity)  # move z-axis up by z_sensitivity
 
-            for nums in range(buttons.count('z_down')):
+            if buttons.count('z_down') > 0:
                 print('Theres a z_down')
                 z_axis.z_move(1, z_sensitivity)  # move z-axis down by z_sensitivity
 
-            for nums in range(buttons.count('Home')):  # Returns no. of times that "Home" is
+            if buttons.count('Home') > 0:
                 print('Setting home as current position')
                 x_axis.set_current_home()
                 y_axis.set_current_home()
 
-            for nums in range(buttons.count('Reset_home')):
+            if buttons.count('Reset_home') > 0:
                 print('Reset home to the center of the stage')
                 x_axis.set_home(6000)
                 x_coordinate = 1000
@@ -160,11 +160,11 @@ def main():
                         get_status = 0
                         # signal.pause()
 
-            for nums in range(buttons.count('Z Sensitivity Up')):
+            if buttons.count('Z Sensitivity Up') > 0:
                 print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
                 z_sensitivity += 50
 
-            for nums in range(buttons.count('Z Sensitivity Down')):
+            if buttons.count('Z Sensitivity Down') > 0:
                 print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
                 z_sensitivity -= 50
 
