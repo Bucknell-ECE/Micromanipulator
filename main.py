@@ -143,7 +143,7 @@ def main():
             for nums in range(buttons.count('get_status')):  # returns the number of occurrences of substring
                                                              # 'get_status' in 'buttons'
 
-                get_status = 1  # TODO What does "get_status" do?
+                get_status = 1  # TODO RYDER: What does "get_status" do?
 
                 x_status = x_axis.get_status()
                 y_status = y_axis.get_status()
@@ -176,7 +176,7 @@ def main():
         print('map_val y: ', map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
 
 
-        ## Velocity mode
+        ## Velocity mode?
         # if x < 1000:
         #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
         #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".

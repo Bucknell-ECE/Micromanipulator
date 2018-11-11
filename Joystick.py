@@ -40,7 +40,7 @@ class CustomJoystick:
 
         joystick_count = pygame.joystick.get_count()
 
-        # TODO Question for Ryder: How is this loop doing anything new?
+        # TODO RYDER: How is this loop doing anything new?
         # For each joystick:
         for i in range(joystick_count):
             joystick = pygame.joystick.Joystick(i)
@@ -53,8 +53,8 @@ class CustomJoystick:
 
         for event in pygame.event.get():  # User did a thing!
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
-            if event.type == pygame.JOYBUTTONDOWN:  # add to "commands" when button is pressed
-                button = event.button
+            if event.type == pygame.JOYBUTTONDOWN:  # add to "commands" when a button is pressed
+                button = event.button  # TODO RYDER: How do the numbers in "button_map" correspond to the buttons on the joystick?
                 commands += [button_map[button]]
 
             clock.tick(20)  # TODO Why are we polling only every 20 ms? Can we try lower?
@@ -67,7 +67,7 @@ class CustomJoystick:
         range from -1 to 1 with a value of 0 being centered.
         :return:
         """
-        pygame.event.get()  # TODO Do we need this line within every Joystick() function?
+        pygame.event.get()
 
         return self.joystick.get_axis(x_axis_NUM)
 
@@ -85,35 +85,30 @@ class CustomJoystick:
 
 
     def get_absolute_position(self):
-        # pygame.event.get()
         position = [round(self.get_absolute_x(), 3), round(self.get_absolute_y(), 3)]
 
         return position
 
 
     def get_x(self):
-        # pygame.event.get()
-
         absolute_x = self.get_absolute_x() + 1
+
         return map_val(absolute_x, 0, 2, 0, 2000)
 
 
     def get_y(self):
-        # pygame.event.get()
-
         absolute_y = self.get_absolute_y() + 1
+
         return map_val(absolute_y, 0, 2, 0, 2000)
 
 
     def get_throttle (self):
-        # pygame.event.get()
-
         absolute_throttle = self.get_absolute_throttle()
+
         return map_val(absolute_throttle, -1, 1, 0, 100)
 
 
     def get_position(self):
-        # pygame.event.get()
-
         absolute_position = [self.get_absolute_x() + 1, self.get_absolute_y() + 1]
+
         return map(lambda x: map_val(x, 0, 2, 0, 2000), absolute_position)
