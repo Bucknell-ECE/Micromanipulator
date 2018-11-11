@@ -120,7 +120,7 @@ def main():
         if len(buttons) != 0:
             # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
 
-            if buttons.count('z_up')) > 0:
+            if buttons.count('z_up') > 0:
                 print('Theres a z_up')
                 z_axis.z_move(0, z_sensitivity)  # move z-axis up by z_sensitivity
 

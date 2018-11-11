@@ -19,8 +19,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="371">
-                  <caret line="123" column="38" lean-forward="true" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+                <state relative-caret-position="346">
+                  <caret line="133" column="41" lean-forward="true" selection-start-line="133" selection-start-column="41" selection-end-line="133" selection-end-column="41" />
                 </state>
               </provider>
             </entry>
@@ -29,7 +29,7 @@
             <entry file="file://$PROJECT_DIR$/helper.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="502">
-                  <caret line="210" column="7" lean-forward="true" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
+                  <caret line="210" column="7" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -38,7 +38,7 @@
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
-                  <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+                  <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -65,7 +65,7 @@
           <file leaf-file-name="StageSPI.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/StageSPI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
+                <state relative-caret-position="603">
                   <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
                 </state>
               </provider>
@@ -519,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541971309246</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)">
+      <created>1541971642088</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1541971642089</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -533,6 +540,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4981685" weight="0.18051282" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501221" side_tool="true" weight="0.26871794" />
@@ -594,7 +602,8 @@
     <MESSAGE value="Trying to remove redundancy from Joystick.py (i.e., &quot;pygame.event.get()&quot;)." />
     <MESSAGE value="Still working on Joystick.py." />
     <MESSAGE value="Commented all of Joystick.py." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commented all of Joystick.py." />
+    <MESSAGE value="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)" />
   </component>
   <component name="WindowStateProjectService">
     <state width="404" height="560" key="Git.Branch.Popup" />
@@ -917,7 +926,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/StageSPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="603">
           <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
         </state>
       </provider>
@@ -932,7 +941,7 @@
     <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="1" lean-forward="true" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding>
             <element signature="e#250#263#0" expanded="true" />
           </folding>
@@ -942,14 +951,14 @@
     <entry file="file://$PROJECT_DIR$/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
-          <caret line="210" column="7" lean-forward="true" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
+          <caret line="210" column="7" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="123" column="38" lean-forward="true" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+        <state relative-caret-position="346">
+          <caret line="133" column="41" lean-forward="true" selection-start-line="133" selection-start-column="41" selection-end-line="133" selection-end-column="41" />
         </state>
       </provider>
     </entry>
