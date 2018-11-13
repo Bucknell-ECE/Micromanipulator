@@ -205,7 +205,7 @@ class Stage(object):
 
     def move_steps(self,steps):
 
-        self.send_command('06',[48] + [32] + encode_to_command(steps))
+        self.send_command('06', [48] + [32] + encode_to_command(steps))
 
 
     def return_home(self):

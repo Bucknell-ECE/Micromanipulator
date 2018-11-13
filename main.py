@@ -50,7 +50,7 @@ y_coordinate = 1000
 #locations = [xlocation, ylocation, zlocation]
 
 
-## Joystick initialization block
+## Initialize joysticks
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
@@ -118,7 +118,7 @@ def main():
 
 
         if len(buttons) != 0:
-            # 'for' statements return the no. of times a button mapping appears in the 'buttons' list.
+            # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy. (- Jacquelyn)
 
             if buttons.count('z_up') > 0:
                 print('Theres a z_up')
