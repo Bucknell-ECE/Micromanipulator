@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="Copied sample script from pygame joystick documentation to be used for interfacing later joysticks.">
-      <change afterPath="$PROJECT_DIR$/JoystickCalibration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Micromanipulator.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Micromanipulator.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="Copied sample script from pygame joystick documentation to be used for interfacing later joysticks." />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542125039275</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Copied sample script from pygame joystick documentation to be used for interfacing later joysticks.">
+      <created>1544567782414</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1544567782414</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
