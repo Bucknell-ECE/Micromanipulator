@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stage.py" beforeDir="false" afterPath="$PROJECT_DIR$/Stage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Joystick.py" beforeDir="false" afterPath="$PROJECT_DIR$/Joystick.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +16,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.53456223">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1612">
-                  <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+                <state relative-caret-position="309">
+                  <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -29,10 +28,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="helper.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/helper.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3029">
+                <state relative-caret-position="-7">
                   <caret line="210" column="7" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
                 </state>
               </provider>
@@ -41,8 +40,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+                <state relative-caret-position="-7">
+                  <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -54,11 +53,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Stage.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Stage.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Stage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1241">
-                  <caret line="210" column="26" selection-start-line="210" selection-start-column="26" selection-end-line="210" selection-end-column="26" />
+                <state relative-caret-position="309">
+                  <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
                   <folding>
                     <element signature="e#330#350#0" expanded="true" />
                   </folding>
@@ -66,10 +65,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StageSPI.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="StageSPI.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/StageSPI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="351">
+                <state relative-caret-position="-7">
                   <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
                 </state>
               </provider>
@@ -90,9 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>home</find>
-      <find>set_home</find>
-      <find>buttons</find>
       <find>elapsed</find>
       <find>refresh</find>
       <find>x_linear</find>
@@ -120,6 +116,9 @@
       <find>map_val</find>
       <find>.sleep</find>
       <find>x_coordinate</find>
+      <find>@proper</find>
+      <find>sleep</find>
+      <find>go_to</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -157,9 +156,9 @@
         <option value="$PROJECT_DIR$/StageI2C.py" />
         <option value="$PROJECT_DIR$/main_parameters.py" />
         <option value="$PROJECT_DIR$/helper.py" />
-        <option value="$PROJECT_DIR$/Joystick.py" />
         <option value="$PROJECT_DIR$/Stage.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Joystick.py" />
       </list>
     </option>
   </component>
@@ -415,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541971685711</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)">
+      <created>1542125039274</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1542125039275</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -428,7 +434,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="720" extended-state="6" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4981685" weight="0.18051282" />
@@ -437,7 +443,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.498779" weight="0.19897436" />
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.498779" weight="0.28062016" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.498779" weight="0.17435898" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12358643" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.093406595" />
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2225641" />
@@ -678,47 +684,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="210" column="7" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageSPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        <state relative-caret-position="-7">
+          <caret line="27" column="55" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
           <folding>
             <element signature="e#250#263#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="210" column="26" selection-start-line="210" selection-start-column="26" selection-end-line="210" selection-end-column="26" />
-          <folding>
-            <element signature="e#330#350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StageSPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1612">
-          <caret line="115" column="30" selection-start-line="115" selection-start-column="30" selection-end-line="115" selection-end-column="30" />
+        <state relative-caret-position="309">
+          <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
           <folding>
             <element signature="e#248#268#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/helper.py">
+    <entry file="file://$PROJECT_DIR$/Stage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3029">
-          <caret line="210" column="7" selection-start-line="210" selection-start-column="7" selection-end-line="210" selection-end-column="7" />
+        <state relative-caret-position="309">
+          <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
+          <folding>
+            <element signature="e#330#350#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

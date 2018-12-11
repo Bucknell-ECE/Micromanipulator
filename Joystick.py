@@ -24,6 +24,8 @@ button_map = {
     9: 'Reset_home'
 }
 
+# pygame returns buttons from raspi's config utility (that you download with pygame library)
+# joystick.gtk? (used to configure buttons on joystick)
 
 class CustomJoystick:
 
@@ -58,6 +60,7 @@ class CustomJoystick:
                 commands += [button_map[button]]
 
             clock.tick(20)  # TODO Why are we polling only every 20 ms? Can we try lower?
+            # Tony's addition?
 
         return commands
 
