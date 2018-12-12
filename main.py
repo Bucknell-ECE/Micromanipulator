@@ -50,16 +50,15 @@ y_coordinate = 1000
 #locations = [xlocation, ylocation, zlocation]
 
 
-## Initialize joysticks
+# Initialize joysticks
 pygame.init()  # Initialize all pygame modules
 pygame.joystick.init()  # Initialize joystick module
 
 joy = CustomJoystick('Logitech', 0)
-elapsed = 0  # Used below to test script latency
-count = 0
 
 # # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
 # x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
+
 # y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
 # # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
 # # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
@@ -97,6 +96,7 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
+    f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
     # Loop for mapping joystick movements to M3-LS commands
     try:
@@ -168,15 +168,23 @@ def main():
                 print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
                 z_sensitivity -= 50
 
+
+
         # Main commands to tell the stage to go to a location described by the joystick.
         x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
-        print('map_val x: ', map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+        mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
+        print('map_val x: ', mapped_x)
+        f1.write(str(mapped_x))
+        f1.write('\n')
 
         y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
-        print('map_val y: ', map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
+        mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+        print('map_val y: ', mapped_y)
+        f1.write(str(mapped_y))
+        f1.write('\n')
 
 
-        ## Velocity mode?
+        ## Velocity mode
         # if x < 1000:
         #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
         #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
@@ -199,15 +207,8 @@ def main():
     except KeyboardInterrupt:
         # x_axis.send_command_no_vars('19')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-        print('temp', temp)
-        # x_axis.send_command_no_vars('10')
-        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-        print('temp', temp)
-        f = open('errorLog.txt', 'a')
-        f.write('\n' + 'Keyboard Interrupt on ' + str(datetime.now()))
-        f.write(str(temp))
-        f.close()
-        print('Completed')
+        f1.close()
+        print('map_val() recording stopped.')
         raise
 
 start_time = time.time()
