@@ -94,12 +94,20 @@ class CustomJoystick:
 
 
     def get_x(self):
+        """
+        Maps absolute_x into an integer between 0 and 2000.
+        :return: integer that denotes the number of encoder counts from the stage's zero-boundary
+        """
         absolute_x = self.get_absolute_x() + 1
 
         return map_val(absolute_x, 0, 2, 0, 2000)
 
 
     def get_y(self):
+        """
+        Maps absolute_y into an integer between 0 and 2000.
+        :return: integer that denotes the number of encoder counts from the stage's zero-boundary
+        """
         absolute_y = self.get_absolute_y() + 1
 
         return map_val(absolute_y, 0, 2, 0, 2000)
@@ -111,8 +119,11 @@ class CustomJoystick:
         return map_val(absolute_throttle, -1, 1, 0, 100)
 
 
-    # TODO RYDER: Why would we need to use this? (Currently unused.)
+    # Currently unused, possibly so that other functions can utilize constituent subfunctions.
     def get_position(self):
         absolute_position = [self.get_absolute_x() + 1, self.get_absolute_y() + 1]
 
         return map(lambda x: map_val(x, 0, 2, 0, 2000), absolute_position)
+        # for reference:
+        # map_val(x, in_min, in_max, out_min, out_max)
+        # int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))

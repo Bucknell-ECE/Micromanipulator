@@ -151,6 +151,15 @@ def map_val(x, in_min, in_max, out_min, out_max):  # TODO I still have no idea h
 ##########################################OLD CODE THAT IS NOW DEPRICATED#####################
 
 
+def sensitivity_read():
+    file = open("sensitivity.txt", "r")
+    return file.read()
+
+
+def sensitivity_write(scale_input):
+    f = open("sensitivity.txt", "w+")
+    f.truncate()
+    f.write(str(scale_input))
 
 ###########################
 
@@ -199,19 +208,6 @@ def centerAllStages(axis1, axis2, axis3):
     Stage.go_to_location(axis3, 6000)
 
 
-def map_val(x, in_min, in_max, out_min, out_max):
-    """
-    Maps a value in one range to a value in another range. This code is used in the joystick package
-    :param x: value to be mapped
-    :param in_min: minimum of the input scale
-    :param in_max: maximum of the input scale
-    :param out_min: minimum of the output scale
-    :param out_max: maximum of the output scale
-    :return: mapped value, rounded to the nearest integer value
-    """
-    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))
-
-
 def audio_alert(x,y,xMin,xMax,yMin,yMax):
     """Play Audio Notification when hit the boundary.
     """
@@ -254,25 +250,15 @@ def status_info(status):
         print('Motor going backward')
 
 
-def sensitivity_read():
-    file = open("sensitivity.txt", "r")
-    return file.read()
 
-
-def sensitivity_write(scale_input):
-    f = open("sensitivity.txt", "w+")
-    f.truncate()
-    f.write(str(scale_input))
-
-
-        #####################TEST CODE ######################################
+#####################TEST CODE ######################################
 
 
 
 #print('This is a test')
 #start = input('Please indicate an initial position for the stage')
 #x_axis = Stage('0x63', start, 1)
-#print(x_axis.get_position())
+#print(x_axis.get_stage_position())
 
 
 
@@ -280,7 +266,7 @@ def sensitivity_write(scale_input):
 #print(encoder_convert(value))
 #testing = encoder_convert(value)
 #print(testing[0])
-#commandTest = build_command('0x33', '08', encoder_convert(x_axis.get_position()))
+#commandTest = build_command('0x33', '08', encoder_convert(x_axis.get_stage_position()))
 #print(commandTest)
 
 

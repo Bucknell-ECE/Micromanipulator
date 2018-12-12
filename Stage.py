@@ -20,7 +20,7 @@ class Stage(object):
 
 
      # @property TODO What does @property do, and should I use it?
-    def get_position(self):
+    def get_stage_position(self):
         return int(self.position)  # TODO Do we need to rename this function?
 
 
