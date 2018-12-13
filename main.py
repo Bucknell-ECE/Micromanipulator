@@ -150,11 +150,11 @@ def main():
 
 
                 # TODO See if commenting this changes anything.
-                #while get_status == 1:
-                    buttons = joy.get_buttons()
-                    if buttons.count('get_status'):
-                        get_status = 0
-                        # signal.pause()
+                # while get_status == 1:
+                #     buttons = joy.get_buttons()
+                #     if buttons.count('get_status'):
+                #         get_status = 0
+                #         # signal.pause()
 
             if buttons.count('Z Sensitivity Up') > 0:
                 print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
