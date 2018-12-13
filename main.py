@@ -120,21 +120,17 @@ def main():
         if len(buttons) != 0:
             # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy. (- Jacquelyn)
 
-            if buttons.count('z_up') > 0:
-                print('Theres a z_up')
-                z_axis.z_move(0, z_sensitivity)  # move z-axis up by z_sensitivity
+            if buttons.count('z_up') > 0
+                z_axis.z_move(1, z_sensitivity)  # move z-axis up by z_sensitivity
 
             if buttons.count('z_down') > 0:
-                print('Theres a z_down')
-                z_axis.z_move(1, z_sensitivity)  # move z-axis down by z_sensitivity
+                z_axis.z_move(0, z_sensitivity)  # move z-axis down by z_sensitivity
 
             if buttons.count('Home') > 0:
-                print('Setting home as current position')
                 x_axis.set_current_home()
                 y_axis.set_current_home()
 
             if buttons.count('Reset_home') > 0:
-                print('Reset home to the center of the stage')
                 x_axis.set_home(6000)
                 x_coordinate = 1000
                 y_axis.set_home(6000)
@@ -153,8 +149,8 @@ def main():
                 print('get_status Z', z_status)
 
 
-                # TODO What is this loop doing here?
-                while get_status == 1:
+                # TODO See if commenting this changes anything.
+                #while get_status == 1:
                     buttons = joy.get_buttons()
                     if buttons.count('get_status'):
                         get_status = 0
@@ -211,7 +207,11 @@ def main():
         print('map_val() recording stopped.')
         raise
 
+
 start_time = time.time()
+
+elapsed = 0
+count = 0
 
 while elapsed <= 1:
     main()

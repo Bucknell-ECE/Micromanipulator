@@ -14,13 +14,14 @@ y_axis_NUM = 1
 throttle_axis_NUM = 2
 
 button_map = {
+    0: 'null',
     1: 'z_down',
     2: 'z_up',
     3: 'Home',
     4: 'change_mode',
     6: 'get_status',
-    7: 'Z Sensitivity Up',
-    8: 'Z Sensitivity Down',
+    7: 'Z Sensitivity Down',
+    8: 'Z Sensitivity Up',
     9: 'Reset_home'
 }
 
