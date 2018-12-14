@@ -20,8 +20,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="606">
-                  <caret line="123" column="184" lean-forward="true" selection-start-line="123" selection-start-column="184" selection-end-line="123" selection-end-column="184" />
+                <state relative-caret-position="237">
+                  <caret line="114" column="27" lean-forward="true" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -45,8 +45,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="471">
-                  <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+                <state relative-caret-position="-705">
+                  <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -90,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>event.button</find>
       <find>statusinfo</find>
       <find>audio_noti</find>
       <find>AudioNoti</find>
@@ -120,6 +119,7 @@
       <find>get_absolute_thrott</find>
       <find>get_absolute_throttle</find>
       <find>get_throttle</find>
+      <find>joy</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -158,8 +158,8 @@
         <option value="$PROJECT_DIR$/main_parameters.py" />
         <option value="$PROJECT_DIR$/helper.py" />
         <option value="$PROJECT_DIR$/Stage.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Joystick.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -225,27 +225,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Neatened some code and getting ready to comment more thoroughly.">
-      <created>1531058874102</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1531058874102</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Neatened code, copied over from failed push from linuxremote.">
-      <created>1541109252823</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1541109252823</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Neatened code, copied over from failed push from linuxremote.">
-      <created>1541109623839</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1541109623839</updated>
     </task>
     <task id="LOCAL-00004" summary="Neatened code, copied over from failed push from linuxremote.">
       <created>1541377622627</created>
@@ -569,7 +548,28 @@
       <option name="project" value="LOCAL" />
       <updated>1544767427312</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="minor changes">
+      <created>1544767730427</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1544767730429</updated>
+    </task>
+    <task id="LOCAL-00051" summary="minor changes">
+      <created>1544767913730</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1544767913731</updated>
+    </task>
+    <task id="LOCAL-00052" summary="minor changes">
+      <created>1544767953604</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1544767953604</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
@@ -662,16 +662,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>113</line>
+          <line>114</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Joystick.py</url>
-          <line>49</line>
+          <line>48</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Joystick.py</url>
+          <line>126</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="25" />
+      <option name="time" value="27" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -872,22 +877,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="123" column="184" lean-forward="true" selection-start-line="123" selection-start-column="184" selection-end-line="123" selection-end-column="184" />
+        <state relative-caret-position="-705">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
           <folding>
-            <element signature="e#248#268#0" expanded="true" />
+            <element signature="e#250#263#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Joystick.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="49" column="36" lean-forward="true" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
+        <state relative-caret-position="237">
+          <caret line="114" column="27" lean-forward="true" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
           <folding>
-            <element signature="e#250#263#0" expanded="true" />
+            <element signature="e#248#268#0" expanded="true" />
           </folding>
         </state>
       </provider>

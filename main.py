@@ -111,10 +111,10 @@ def main():
 
         buttons = joy.get_buttons()
 
-        scale_input = joy.toggle_sensitivity  # First time get_axis(2) is called;
-                                          # value needs to be instantiated in
-                                          # Joystick class.
-
+        if pygame.event.get() is None:
+            scale_input = joy.toggle_sensitivity
+        else:
+            scale_input = joy.get_throttle()
 
         x = joy.get_x()
         y = 2000 - joy.get_y()

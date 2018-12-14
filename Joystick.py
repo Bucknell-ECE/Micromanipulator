@@ -36,18 +36,17 @@ class CustomJoystick:
         self.joystick = pygame.joystick.Joystick(number)
         pygame.init()
 
-        # Used to manage how fast the screen updates
+        # Pygame clock is used to manage how fast the screen updates
         self.clock = pygame.time.Clock()
 
         # Initialize the joystick
         pygame.joystick.init()
 
+        # Count the joysticks
         joystick_count = pygame.joystick.get_count()
 
-        # nonzero offset enables an exponential sensitivity scheme
-        pygame.event.get()
-
-        self.toggle_sensitivity = 75
+        # Nonzero offset enables an exponential (as opposed to linear) sensitivity scheme
+        self.toggle_sensitivity = 100
 
         # Initialize the starting sensitivity in a constant, and then have get_axis() overwrite that constant.
 
