@@ -194,13 +194,13 @@ def main():
     #     # elif y > 1000:
     #     #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
     #     #     y_coordinate += map_val(8,0,2000,0,12000)
-
-
-    except KeyboardInterrupt:
-        # x_axis.send_command_no_vars('19')
-        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-        # f1.close()
-        raise
+    #
+    #
+    # except KeyboardInterrupt:
+    #     # x_axis.send_command_no_vars('19')
+    #     # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
+    #     # f1.close()
+    #     raise
 
 
 start_time = time.time()
