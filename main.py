@@ -99,108 +99,108 @@ def main():
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
     # Loop for mapping joystick movements to M3-LS commands
-    # try:
-    #
-    #     # TODO Can we use this to test location exactness?
-    #     # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
-    #     # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
-    #     # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
-    #     # Test result: <06 0 00000064>\r
-    #
-    #     time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
-    #
-    #     buttons = joy.get_buttons()
-    #
-    #     scale_input = joy.get_throttle()  # First time get_axis(2) is called;
-    #                                       # value needs to be instantiated in
-    #                                       # Joystick class.
-    #
-    #     x = joy.get_x()
-    #     y = 2000 - joy.get_y()
-    #     print('X: ', x, 'Y', y)
-    #
-    #
-    #     if len(buttons) != 0:
-    #         # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy. (- Jacquelyn)
-    #
-    #         if buttons.count('z_up') > 0:
-    #             z_axis.z_move(1, z_sensitivity)  # move z-axis up by z_sensitivity
-    #
-    #         if buttons.count('z_down') > 0:
-    #             z_axis.z_move(0, z_sensitivity)  # move z-axis down by z_sensitivity
-    #
-    #         if buttons.count('Home') > 0:
-    #             x_axis.set_current_home()
-    #             y_axis.set_current_home()
-    #
-    #         if buttons.count('Reset_home') > 0:
-    #             x_axis.set_home(6000)
-    #             x_coordinate = 1000
-    #             y_axis.set_home(6000)
-    #             y_coordinate = 1000
-    #
-    #         if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
-    #
-    #             x_status = x_axis.get_status()
-    #             y_status = y_axis.get_status()
-    #             z_status = z_axis.get_status()
-    #             print('get_status X', x_status)
-    #             print('get_status Y', y_status)
-    #             print('get_status Z', z_status)
-    #
-    #             # while get_status == 1:
-    #             #     buttons = joy.get_buttons()
-    #             #     if buttons.count('get_status'):
-    #             #         get_status = 0
-    #             #         # signal.pause()
-    #
-    #         if buttons.count('Z Sensitivity Up') > 0:
-    #             print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
-    #             z_sensitivity += 50
-    #
-    #         if buttons.count('Z Sensitivity Down') > 0:
-    #             print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
-    #             z_sensitivity -= 50
-    #
-    #
-    #
-    #     # Main commands to tell the stage to go to a location described by the joystick.
-    #     x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
-    #     mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
-    #     print('map_val x: ', mapped_x)
-    #     # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
-    #
-    #     y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
-    #     mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
-    #     print('map_val y: ', mapped_y)
-    #     # f1.write('\n' + str(mapped_y) + '\n')
-    #
-    #
-    #     ## Velocity mode
-    #     # if x < 1000:
-    #     #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
-    #     #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
-    #     #     if x_coordinate <= 0:
-    #     #         x_coordinate = 0
-    #     # elif x > 1000:
-    #     #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-    #     #     x_coordinate += map_val(8,0,12000,0,2000)
-    #     #     if x_coordinate >= 2000:
-    #     #         x_coordinate = 2000
-    #     #
-    #     # if y < 1000:
-    #     #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))
-    #     #     y_coordinate -= map_val(8,0,12000,0,12000)
-    #     # elif y > 1000:
-    #     #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-    #     #     y_coordinate += map_val(8,0,2000,0,12000)
-    #
-    #
-    # except KeyboardInterrupt:
-    #     # x_axis.send_command_no_vars('19')
-    #     # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-    #     # f1.close()
-    #     raise
+    try:
+
+        # TODO Can we use this to test location exactness?
+        # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
+        # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
+        # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
+        # Test result: <06 0 00000064>\r
+
+        time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
+
+        buttons = joy.get_buttons()
+
+        scale_input = joy.get_throttle()  # First time get_axis(2) is called;
+                                          # value needs to be instantiated in
+                                          # Joystick class.
+
+        x = joy.get_x()
+        y = 2000 - joy.get_y()
+        print('X: ', x, 'Y', y)
+
+
+        if len(buttons) != 0:
+            # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy. (- Jacquelyn)
+
+            if buttons.count('z_up') > 0:
+                z_axis.z_move(1, z_sensitivity)  # move z-axis up by z_sensitivity
+
+            if buttons.count('z_down') > 0:
+                z_axis.z_move(0, z_sensitivity)  # move z-axis down by z_sensitivity
+
+            if buttons.count('Home') > 0:
+                x_axis.set_current_home()
+                y_axis.set_current_home()
+
+            if buttons.count('Reset_home') > 0:
+                x_axis.set_home(6000)
+                x_coordinate = 1000
+                y_axis.set_home(6000)
+                y_coordinate = 1000
+
+            if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
+
+                x_status = x_axis.get_status()
+                y_status = y_axis.get_status()
+                z_status = z_axis.get_status()
+                print('get_status X', x_status)
+                print('get_status Y', y_status)
+                print('get_status Z', z_status)
+
+                # while get_status == 1:
+                #     buttons = joy.get_buttons()
+                #     if buttons.count('get_status'):
+                #         get_status = 0
+                #         # signal.pause()
+
+            if buttons.count('Z Sensitivity Up') > 0:
+                print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
+                z_sensitivity += 50
+
+            if buttons.count('Z Sensitivity Down') > 0:
+                print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
+                z_sensitivity -= 50
+
+
+
+        # Main commands to tell the stage to go to a location described by the joystick.
+        x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+        mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
+        print('map_val x: ', mapped_x)
+        # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+
+        y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
+        mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+        print('map_val y: ', mapped_y)
+        # f1.write('\n' + str(mapped_y) + '\n')
+
+
+        ## Velocity mode
+        # if x < 1000:
+        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
+        #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
+        #     if x_coordinate <= 0:
+        #         x_coordinate = 0
+        # elif x > 1000:
+        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+        #     x_coordinate += map_val(8,0,12000,0,2000)
+        #     if x_coordinate >= 2000:
+        #         x_coordinate = 2000
+        #
+        # if y < 1000:
+        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))
+        #     y_coordinate -= map_val(8,0,12000,0,12000)
+        # elif y > 1000:
+        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
+        #     y_coordinate += map_val(8,0,2000,0,12000)
+
+
+    except KeyboardInterrupt:
+        # x_axis.send_command_no_vars('19')
+        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
+        # f1.close()
+        raise
 
 
 start_time = time.time()
