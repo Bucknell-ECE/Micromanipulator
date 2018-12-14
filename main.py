@@ -111,6 +111,8 @@ def main():
 
         buttons = joy.get_buttons()
 
+        pygame.event.get()
+
         if pygame.event.get() is None:
             scale_input = joy.toggle_sensitivity
         else:
