@@ -88,7 +88,9 @@ def main():
     constrained_linear_range = min(boundaries)
     print('constrained_linear_range', constrained_linear_range)
 
-    scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+    # Pass in initial value from CustomJoystick constructor
+
+    scaled_range = map_val(joy.scale_input, 0, 100, 0, constrained_linear_range)
     print('Scaled Range: ', scaled_range)
 
     x_linear_range_min = x_axis.home - scaled_range + safety_margin
@@ -96,8 +98,6 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
-    # Pass in initial value from CustomJoystick constructor
-    scale_index = joy.scale_index
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -113,8 +113,8 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-        print('scale_input = ', scale_input)
-        print('scale_index = ', scale_index)
+        print('scale_input = ', joy.scale_input)
+        print('scale_index = ', joy.scale_index)
 
         x = joy.get_x()
         y = 2000 - joy.get_y()

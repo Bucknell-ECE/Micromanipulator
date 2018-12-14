@@ -114,10 +114,10 @@ class CustomJoystick:
 
 
     def increase_scale_input(self):
-        sc_len = len(self.scale_options) - 1
+        options_length = len(self.scale_options) - 1
 
-        if self.scale_index == sc_len:
-            self.scale_index = sc_len
+        if self.scale_index == options_length:
+            self.scale_index = options_length
         else:
             self.scale_index += 1
             print(self.scale_index)

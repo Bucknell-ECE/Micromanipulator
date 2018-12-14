@@ -4,6 +4,7 @@
     <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Joystick.py" beforeDir="false" afterPath="$PROJECT_DIR$/Joystick.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +20,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="398">
-                  <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
+                <state relative-caret-position="631">
+                  <caret line="118" column="23" lean-forward="true" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -44,8 +45,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="644">
-                  <caret line="121" column="33" lean-forward="true" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
+                <state relative-caret-position="554">
+                  <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -89,7 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>statusinfo</find>
       <find>audio_noti</find>
       <find>AudioNoti</find>
       <find>get_position</find>
@@ -119,6 +119,7 @@
       <find>joy</find>
       <find>get_axis</find>
       <find>scale_input</find>
+      <find>scale_index</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -157,8 +158,8 @@
         <option value="$PROJECT_DIR$/Stage.py" />
         <option value="$PROJECT_DIR$/StageI2C.py" />
         <option value="$PROJECT_DIR$/StageSPI.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/Joystick.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -224,20 +225,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00040" summary="ˆ">
-      <created>1544766372234</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766372234</updated>
-    </task>
-    <task id="LOCAL-00041" summary="minor changes">
-      <created>1544766484029</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766484029</updated>
     </task>
     <task id="LOCAL-00042" summary="minor changes">
       <created>1544766542195</created>
@@ -568,7 +555,21 @@
       <option name="project" value="LOCAL" />
       <updated>1544818010657</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="minor changes">
+      <created>1544818119006</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1544818119006</updated>
+    </task>
+    <task id="LOCAL-00090" summary="minor changes">
+      <created>1544818162254</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1544818162254</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TodoView">
@@ -664,11 +665,6 @@
           <url>file://$PROJECT_DIR$/Joystick.py</url>
           <line>151</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>99</line>
-          <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Joystick.py</url>
@@ -887,22 +883,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
+        <state relative-caret-position="554">
+          <caret line="115" column="35" selection-start-line="115" selection-start-column="35" selection-end-line="115" selection-end-column="35" />
           <folding>
-            <element signature="e#248#268#0" expanded="true" />
+            <element signature="e#250#263#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Joystick.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="121" column="33" lean-forward="true" selection-start-line="121" selection-start-column="33" selection-end-line="121" selection-end-column="33" />
+        <state relative-caret-position="631">
+          <caret line="118" column="23" lean-forward="true" selection-start-line="118" selection-start-column="23" selection-end-line="118" selection-end-column="23" />
           <folding>
-            <element signature="e#250#263#0" expanded="true" />
+            <element signature="e#248#268#0" expanded="true" />
           </folding>
         </state>
       </provider>
