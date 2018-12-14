@@ -13,6 +13,9 @@ x_axis_NUM = 0
 y_axis_NUM = 1
 throttle_axis_NUM = 2
 
+# Set initial value for scale_input (as %)
+INITIAL_SCALE = 100
+
 button_map = {
     0: 'null',
     1: 'z_down',
@@ -47,6 +50,9 @@ class CustomJoystick:
         joystick_count = pygame.joystick.get_count()
 
         self.scale_options = [1, 5, 10, 25, 50, 100]
+
+        #  Associate INITIAL_SCALE with an index in scale_options
+        self.scale_index = self.scale_options.index(INITIAL_SCALE)
 
         # TODO RYDER: How is this loop doing anything new?
         # For each joystick:
@@ -91,6 +97,27 @@ class CustomJoystick:
         pygame.event.get()
 
         return self.joystick.get_axis(throttle_axis_NUM)
+
+
+    def decrease_scale_input(self):
+
+        # self.scale_options = [1, 5, 10, 25, 50, 100]
+        #
+        # self.scale_index = self.scale_options.index(INITIAL_SCALE)
+
+        if self.scale_index == 0:
+            self.scale_index = 0
+        else:
+            self.scale_index -= 1
+            self.scale_input = joy.scale_options[self.scale_index]
+
+
+    def increase_scale_input(self):
+        if self.scale_index == -1:
+            self.scale_index = -1
+        else:
+            self.scale_index += 1
+            self.scale_input = joy.scale_options[scale_index]
 
 
     def get_absolute_position(self):

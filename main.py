@@ -96,9 +96,7 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
-    # Set initial value for scale_input (as %)
-    INITIAL_SCALE = 100
-    scale_index = joy.scale_options.index[INITIAL_SCALE]  # associate INITIAL_SCALE with an index in scale_options
+    scale_index = joy.scale_index
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -157,26 +155,13 @@ def main():
                 #         # signal.pause()
 
             if buttons.count('Decrease scale_input') > 0:
-                # defaults to 50; so set initial index to be 50
-                # scale_options = [1, 5, 10, 25, 50, 100]
-                # scale_input = scale_options[5]
-
-                if scale_index == 0:
-                    scale_index = 0
-                else:
-                    scale_index -= 1
-                    scale_input = joy.scale_options[scale_index]
+                joy.decrease_scale_input()
 
                 print('scale_input = ', scale_input)
                 print('scale_index = ', scale_index)
 
             if buttons.count('Increase scale_input') > 0:
-
-                if scale_index == -1:
-                    scale_index = -1
-                else:
-                    scale_index += 1
-                    scale_input = joy.scale_options[scale_index]
+                joy.increase_scale_input()
 
                 print('scale_input = ', scale_input)
                 print('scale_index = ', scale_index)
