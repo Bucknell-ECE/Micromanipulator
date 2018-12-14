@@ -113,7 +113,7 @@ def main():
 
         buttons = joy.get_buttons()
 
-        if joy.get_throttle() is not None:
+        if joy.get_throttle() != joy.scale_input:
             scale_input = joy.get_throttle()
 
         x = joy.get_x()
