@@ -109,7 +109,7 @@ class CustomJoystick:
             self.scale_index = 0
         else:
             self.scale_index -= 1
-            self.scale_input = joy.scale_options[self.scale_index]
+            self.scale_input = self.scale_options[self.scale_index]
 
 
     def increase_scale_input(self):
@@ -117,7 +117,7 @@ class CustomJoystick:
             self.scale_index = -1
         else:
             self.scale_index += 1
-            self.scale_input = joy.scale_options[scale_index]
+            self.scale_input = self.scale_options[scale_index]
 
 
     def get_absolute_position(self):
