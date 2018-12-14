@@ -127,7 +127,7 @@ class CustomJoystick:
         absolute_throttle = self.get_absolute_throttle()
         self.scale_input = map_val(absolute_throttle, -1, 1, 0, 100)
 
-        return
+        return self.scale_input
 
 
     # Currently unused, possibly so that other functions can utilize constituent subfunctions.
