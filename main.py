@@ -99,7 +99,7 @@ def main():
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
     # Loop for mapping joystick movements to M3-LS commands
-    try:
+    #try:
 
         # TODO Can we use this to test location exactness?
         # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
@@ -111,7 +111,7 @@ def main():
 
         buttons = joy.get_buttons()
 
-        scale_input = joy.get_throttle() + 25  # First time get_axis(2) is called;
+        scale_input = joy.get_throttle()  # First time get_axis(2) is called;
                                           # value needs to be instantiated in
                                           # Joystick class.
 
