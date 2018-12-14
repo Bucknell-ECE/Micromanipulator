@@ -111,7 +111,7 @@ def main():
 
         buttons = joy.get_buttons()
 
-        scale_input = joy.get_throttle()  # First time get_axis(2) is called;
+        scale_input = joy.toggle_sensitivity  # First time get_axis(2) is called;
                                           # value needs to be instantiated in
                                           # Joystick class.
 

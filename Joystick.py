@@ -47,7 +47,7 @@ class CustomJoystick:
         # nonzero offset enables an exponential sensitivity scheme
         pygame.event.get()
 
-        self.toggle_sensitivity = pygame.joystick.get_axis(throttle_axis_NUM) + 0.5
+        self.toggle_sensitivity = 75
 
         # Initialize the starting sensitivity in a constant, and then have get_axis() overwrite that constant.
 
@@ -128,7 +128,9 @@ class CustomJoystick:
     def get_throttle (self):
         absolute_throttle = self.get_absolute_throttle()
 
-        return map_val(absolute_throttle, -1, 1, 0, 100)
+        toggle_sensitivity = map_val(absolute_throttle, -1, 1, 0, 100)
+
+        return toggle_sensitivity
 
 
     # Currently unused, possibly so that other functions can utilize constituent subfunctions.
