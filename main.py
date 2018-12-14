@@ -202,7 +202,7 @@ def main():
         # x_axis.send_command_no_vars('19')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         f1.close()
-        # raise
+        raise
 
 
 start_time = time.time()
