@@ -113,7 +113,7 @@ def main():
 
         pygame.event.get()
 
-        if pygame.event.get() is None:
+        if pygame.event.get() == "":
             scale_input = 0
         else:
             scale_input = 100
