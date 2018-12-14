@@ -40,12 +40,12 @@ y_axis.startup()
 # print('test', scale_input)
 # #time.sleep(5)
 
-# "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
-x = 1000
-y = 1000
-
-x_coordinate = 1000
-y_coordinate = 1000
+# # "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
+# x = 1000
+# y = 1000
+#
+# x_coordinate = 1000
+# y_coordinate = 1000
 
 #locations = [xlocation, ylocation, zlocation]
 
@@ -110,7 +110,11 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-        scale_input = joy.get_throttle()
+
+        scale_input = 50  # Instantiate value?
+        scale_input = joy.get_throttle()  # First time get_axis(2) is called;
+                                          # value needs to be instantiated in
+                                          # Joystick class.
 
         x = joy.get_x()
         y = 2000 - joy.get_y()

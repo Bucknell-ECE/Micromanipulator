@@ -44,7 +44,14 @@ class CustomJoystick:
         joystick_count = pygame.joystick.get_count()
 
         # nonzero offset enables an exponential sensitivity scheme
-        self.joystick.get_axis(throttle_axis_NUM) = 0.5
+        pygame.event.get()
+
+        self.toggle_sensitivity = (self.joystick.get_axis(throttle_axis_NUM) + 0.5)
+
+        # Initialize the starting sensitivity in a constant, and then have get_axis() overwrite that constant.
+
+        # When is the first time that get_axis(2) is called?
+        #
 
         # TODO RYDER: How is this loop doing anything new?
         # For each joystick:
@@ -60,7 +67,7 @@ class CustomJoystick:
         for event in pygame.event.get():  # User did a thing!
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
             if event.type == pygame.JOYBUTTONDOWN:  # add to "commands" when a button is pressed
-                button = event.button  # TODO RYDER: How do the numbers in "button_map" correspond to the buttons on the joystick?
+                button = event.button
                 commands += [button_map[button]]
 
             clock.tick(20)  # TODO Why are we polling only every 20 ms? Can we try lower?
@@ -85,7 +92,7 @@ class CustomJoystick:
         return self.joystick.get_axis(y_axis_NUM)
 
 
-    def get_absolute_throttle(self):
+    def get_absolute_throttle(self, toggle_sensitivity):
         pygame.event.get()
 
         return self.joystick.get_axis(throttle_axis_NUM)
