@@ -20,8 +20,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="237">
-                  <caret line="114" column="27" lean-forward="true" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
+                <state relative-caret-position="352">
+                  <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -45,8 +45,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-705">
-                  <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+                <state relative-caret-position="1440">
+                  <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -158,8 +158,8 @@
         <option value="$PROJECT_DIR$/main_parameters.py" />
         <option value="$PROJECT_DIR$/helper.py" />
         <option value="$PROJECT_DIR$/Stage.py" />
-        <option value="$PROJECT_DIR$/Joystick.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Joystick.py" />
       </list>
     </option>
   </component>
@@ -225,153 +225,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Neatened code, copied over from failed push from linuxremote.">
-      <created>1541377622627</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1541377622627</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Neatened code, copied over from failed push from linuxremote.">
-      <created>1541384598663</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1541384598664</updated>
-    </task>
-    <task id="LOCAL-00006" summary="&quot;Tkinter&quot; has an annoying naming scheme (correcting)">
-      <created>1541449579918</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1541449579919</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Corrected set_bounds() function (temporarily in helper.py)">
-      <created>1541450768798</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1541450768798</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Corrected set_bounds() function (temporarily in helper.py)">
-      <created>1541451020645</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1541451020645</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Corrected set_bounds() function (temporarily in helper.py)">
-      <created>1541451058272</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1541451058272</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Corrected set_bounds() function (temporarily in helper.py)">
-      <created>1541451510048</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1541451510049</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Put set_bounds() function back in main.py arrrrghhh">
-      <created>1541452397680</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1541452397680</updated>
-    </task>
-    <task id="LOCAL-00012" summary="encode_to_command() issues ; debugging">
-      <created>1541452669746</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1541452669746</updated>
-    </task>
-    <task id="LOCAL-00013" summary="encode_to_command() issues ; debugging">
-      <created>1541453197945</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1541453197945</updated>
-    </task>
-    <task id="LOCAL-00014" summary="encode_to_command() issues ; debugging">
-      <created>1541453381001</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1541453381001</updated>
-    </task>
-    <task id="LOCAL-00015" summary="issues, begone!">
-      <created>1541546907513</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1541546907518</updated>
-    </task>
-    <task id="LOCAL-00016" summary="issues, begone!">
-      <created>1541547326434</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1541547326435</updated>
-    </task>
-    <task id="LOCAL-00017" summary="issues, begone!">
-      <created>1541638460389</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1541638460389</updated>
-    </task>
-    <task id="LOCAL-00018" summary="git merge">
-      <created>1541787257733</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1541787257742</updated>
-    </task>
-    <task id="LOCAL-00019" summary="corrected &quot;x_axis&quot; vs. &quot;y_axis&quot; naming errors">
-      <created>1541789699821</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1541789699821</updated>
-    </task>
-    <task id="LOCAL-00020" summary="deleted writing sensitivity to text file during each main() loop, moved unused Joystick() functions into JoystickTesting.py">
-      <created>1541968559135</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1541968559135</updated>
-    </task>
-    <task id="LOCAL-00021" summary="I messed up Joystick.py :(">
-      <created>1541968684941</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1541968684942</updated>
-    </task>
-    <task id="LOCAL-00022" summary="I messed up Joystick.py :(">
-      <created>1541968779082</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1541968779085</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Trying to remove redundancy from Joystick.py (i.e., &quot;pygame.event.get()&quot;).">
-      <created>1541969295873</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1541969295873</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Still working on Joystick.py.">
-      <created>1541970675756</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1541970675756</updated>
     </task>
     <task id="LOCAL-00025" summary="Commented all of Joystick.py.">
       <created>1541971309246</created>
@@ -569,7 +422,154 @@
       <option name="project" value="LOCAL" />
       <updated>1544767953604</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="minor changes">
+      <created>1544768469300</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768469300</updated>
+    </task>
+    <task id="LOCAL-00054" summary="minor changes">
+      <created>1544768508582</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768508582</updated>
+    </task>
+    <task id="LOCAL-00055" summary="minor changes">
+      <created>1544768533192</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768533192</updated>
+    </task>
+    <task id="LOCAL-00056" summary="minor changes">
+      <created>1544768568013</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768568014</updated>
+    </task>
+    <task id="LOCAL-00057" summary="minor changes">
+      <created>1544768607618</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768607618</updated>
+    </task>
+    <task id="LOCAL-00058" summary="minor changes">
+      <created>1544768645150</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768645150</updated>
+    </task>
+    <task id="LOCAL-00059" summary="minor changes">
+      <created>1544768677473</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768677473</updated>
+    </task>
+    <task id="LOCAL-00060" summary="minor changes">
+      <created>1544768710629</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768710629</updated>
+    </task>
+    <task id="LOCAL-00061" summary="minor changes">
+      <created>1544768770389</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768770389</updated>
+    </task>
+    <task id="LOCAL-00062" summary="minor changes">
+      <created>1544768830590</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768830591</updated>
+    </task>
+    <task id="LOCAL-00063" summary="minor changes">
+      <created>1544768951833</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1544768951833</updated>
+    </task>
+    <task id="LOCAL-00064" summary="minor changes">
+      <created>1544769021743</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1544769021743</updated>
+    </task>
+    <task id="LOCAL-00065" summary="minor changes">
+      <created>1544769063850</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1544769063850</updated>
+    </task>
+    <task id="LOCAL-00066" summary="minor changes">
+      <created>1544769132684</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1544769132684</updated>
+    </task>
+    <task id="LOCAL-00067" summary="minor changes">
+      <created>1544769286228</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1544769286228</updated>
+    </task>
+    <task id="LOCAL-00068" summary="minor changes">
+      <created>1544769754978</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1544769754978</updated>
+    </task>
+    <task id="LOCAL-00069" summary="minor changes">
+      <created>1544770303020</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1544770303020</updated>
+    </task>
+    <task id="LOCAL-00070" summary="minor changes">
+      <created>1544770416860</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1544770416860</updated>
+    </task>
+    <task id="LOCAL-00071" summary="minor changes">
+      <created>1544770513211</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1544770513211</updated>
+    </task>
+    <task id="LOCAL-00072" summary="minor changes">
+      <created>1544770549207</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1544770549207</updated>
+    </task>
+    <task id="LOCAL-00073" summary="minor changes">
+      <created>1544770564915</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1544770564915</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TodoView">
@@ -591,7 +591,7 @@
       <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.498779" weight="0.22153845" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.498779" weight="0.17435898" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11965812" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11904762" />
       <window_info anchor="right" id="R Packages" order="4" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.2225641" />
@@ -650,7 +650,8 @@
     <MESSAGE value="Minor updates" />
     <MESSAGE value="ˆ" />
     <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="WindowStateProjectService">
     <state width="404" height="560" key="Git.Branch.Popup" />
@@ -660,11 +661,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>114</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Joystick.py</url>
           <line>48</line>
@@ -676,7 +672,7 @@
           <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -877,22 +873,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Joystick.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-705">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+        <state relative-caret-position="352">
+          <caret line="112" column="40" selection-start-line="112" selection-start-column="40" selection-end-line="112" selection-end-column="40" />
           <folding>
-            <element signature="e#250#263#0" expanded="true" />
+            <element signature="e#248#268#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="114" column="27" lean-forward="true" selection-start-line="114" selection-start-column="27" selection-end-line="114" selection-end-column="27" />
+        <state relative-caret-position="1440">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
           <folding>
-            <element signature="e#248#268#0" expanded="true" />
+            <element signature="e#250#263#0" expanded="true" />
           </folding>
         </state>
       </provider>

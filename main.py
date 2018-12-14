@@ -110,13 +110,7 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-
-        pygame.event.get()
-
-        if pygame.event.get() == []:
-            scale_input = 0
-        else:
-            scale_input = 100
+        scale_input = joy.scale_input
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
