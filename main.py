@@ -23,6 +23,16 @@ import os.path
 import subprocess
 import threading
 
+# global scale_input
+global x
+global y
+global x_status
+global y_status
+global z_status
+global x_coordinate
+global y_coordinate
+global z_sensitivity
+
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)
 y_axis = StageSPI(0, 1, 6000)
@@ -65,15 +75,6 @@ joy = CustomJoystick('Logitech', 0)
 
 
 def main():
-    # global scale_input
-    global x
-    global y
-    global x_status
-    global y_status
-    global z_status
-    global x_coordinate
-    global y_coordinate
-    global z_sensitivity
 
     print('All values in encoder counts (2 cts / micron).')
 
@@ -124,6 +125,21 @@ def main():
         print('X: ', x, 'Y', y)
 
 
+        # Main commands to tell the stage to go to a location described by the joystick.
+        mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
+        mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
+
+        x_axis.go_to_location(mapped_x)
+        print('map_val x: ', mapped_x)
+        # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+
+        y_axis.go_to_location(mapped_y)
+        print('map_val y: ', mapped_y)
+        # f1.write('\n' + str(mapped_y) + '\n')
+
+        print('\n')  # line break
+
+        # Code for acting upon button presses
         if len(buttons) != 0:
             # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy.
 
@@ -136,12 +152,14 @@ def main():
             if buttons.count('Set Home') > 0:
                 x_axis.set_current_home()
                 y_axis.set_current_home()
+                z_axis.set_current_home()
 
             if buttons.count('Reset Home') > 0:
                 x_axis.set_home(6000)
                 # x_coordinate = 6000
                 y_axis.set_home(6000)
                 # y_coordinate = 6000
+                z_axis.set_home(6000)
 
             if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
 
@@ -164,20 +182,6 @@ def main():
 
             if buttons.count('Increase scale_input') > 0:
                 joy.increase_scale_input()
-
-        # Main commands to tell the stage to go to a location described by the joystick.
-        mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
-        mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
-
-        x_axis.go_to_location(mapped_x)
-        print('map_val x: ', mapped_x)
-        # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
-
-        y_axis.go_to_location(mapped_y)
-        print('map_val y: ', mapped_y)
-        # f1.write('\n' + str(mapped_y) + '\n')
-
-        print('\n')  # line break
 
         ## Velocity mode
         # if x < 1000:
@@ -211,7 +215,7 @@ start_time = time.time()
 elapsed = 0
 count = 0
 
-while elapsed <= 1:
+while True:
     main()
     # elapsed =  time.time() - start_time
     # count += 1
@@ -307,18 +311,17 @@ while elapsed <= 1:
 #     statusz.pack()
 
 
-'''
-except IOError:
-    #x_axis.send_command_no_vars('19')
-    #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
-    #print('temp', temp)
-    x_axis.send_command_no_vars('10')
-    temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-    print('temp', temp)
-    f = open('errorLog.txt', 'a')
-    f.write('\n' + 'Error Occured on '+ str(datetime.now()))
-    #f.write(str(temp))
-    raise
-    #f.close()
 
-'''
+# except IOError:
+#     #x_axis.send_command_no_vars('19')
+#     #temp = x_axis.bus.read_i2c_block_data(0x32, 0)
+#     #print('temp', temp)
+#     x_axis.send_command_no_vars('10')
+#     temp = x_axis.bus.read_i2c_block_data(0x33, 0)
+#     print('temp', temp)
+#     f = open('errorLog.txt', 'a')
+#     f.write('\n' + 'Error Occured on '+ str(datetime.now()))
+#     #f.write(str(temp))
+#     raise
+#     #f.close()
+

@@ -19,8 +19,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="320">
-                  <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
+                <state relative-caret-position="289">
+                  <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -44,8 +44,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2460">
-                  <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+                <state relative-caret-position="285">
+                  <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -56,8 +56,8 @@
           <file leaf-file-name="Stage.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Stage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="40" column="24" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="24" />
+                <state relative-caret-position="635">
+                  <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
                   <folding>
                     <element signature="e#330#350#0" expanded="true" />
                   </folding>
@@ -89,9 +89,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buttons.count</find>
       <find>get_status()</find>
-      <find>get_status</find>
       <find>keyboard</find>
       <find>throttle_axis_NUM</find>
       <find>map_val x</find>
@@ -112,13 +110,15 @@
       <find>12000</find>
       <find>2000</find>
       <find>set_current</find>
-      <find>get_x</find>
       <find>main()</find>
       <find>random</find>
       <find>signal</find>
-      <find>home</find>
       <find>x_coordinate</find>
       <find>coordinate</find>
+      <find>home</find>
+      <find>get_x</find>
+      <find>get_status</find>
+      <find>z_axis.home</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -224,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00045" summary="minor changes">
-      <created>1544766691106</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766691106</updated>
     </task>
     <task id="LOCAL-00046" summary="minor changes">
       <created>1544766761162</created>
@@ -568,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544824867893</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="minor changes">
+      <created>1544825400910</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1544825400910</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TodoView">
@@ -874,8 +874,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="157" lean-forward="true" selection-start-line="157" selection-end-line="157" />
+        <state relative-caret-position="285">
+          <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding>
             <element signature="e#250#263#0" expanded="true" />
           </folding>
@@ -884,8 +884,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Stage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="40" column="24" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="24" />
+        <state relative-caret-position="635">
+          <caret line="45" column="46" selection-start-line="45" selection-start-column="46" selection-end-line="45" selection-end-column="46" />
           <folding>
             <element signature="e#330#350#0" expanded="true" />
           </folding>
@@ -894,8 +894,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
+        <state relative-caret-position="289">
+          <caret line="75" column="24" lean-forward="true" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
           <folding>
             <element signature="e#248#268#0" expanded="true" />
           </folding>
