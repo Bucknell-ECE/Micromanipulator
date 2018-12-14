@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,8 +41,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1521">
-                  <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+                <state relative-caret-position="323">
+                  <caret line="116" column="56" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -157,8 +154,8 @@
         <option value="$PROJECT_DIR$/Stage.py" />
         <option value="$PROJECT_DIR$/StageI2C.py" />
         <option value="$PROJECT_DIR$/StageSPI.py" />
-        <option value="$PROJECT_DIR$/Joystick.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/Joystick.py" />
       </list>
     </option>
   </component>
@@ -224,27 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Minor updates">
-      <created>1544766029448</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766029448</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Minor updates">
-      <created>1544766092131</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766092131</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Minor updates">
-      <created>1544766170474</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766170474</updated>
     </task>
     <task id="LOCAL-00038" summary="Minor updates">
       <created>1544766264469</created>
@@ -568,7 +544,28 @@
       <option name="project" value="LOCAL" />
       <updated>1544817298039</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="minor changes">
+      <created>1544817555502</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1544817555503</updated>
+    </task>
+    <task id="LOCAL-00085" summary="minor changes">
+      <created>1544817725156</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1544817725156</updated>
+    </task>
+    <task id="LOCAL-00086" summary="minor changes">
+      <created>1544817762699</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1544817762699</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TodoView">
@@ -887,22 +884,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Joystick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1521">
-          <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
-          <folding>
-            <element signature="e#250#263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
           <caret line="116" column="44" selection-start-line="116" selection-start-column="44" selection-end-line="116" selection-end-column="44" />
           <folding>
             <element signature="e#248#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="116" column="56" selection-start-line="116" selection-start-column="56" selection-end-line="116" selection-end-column="56" />
+          <folding>
+            <element signature="e#250#263#0" expanded="true" />
           </folding>
         </state>
       </provider>

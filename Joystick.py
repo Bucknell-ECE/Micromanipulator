@@ -53,6 +53,7 @@ class CustomJoystick:
 
         #  Associate INITIAL_SCALE with an index in scale_options
         self.scale_index = self.scale_options.index(INITIAL_SCALE)
+        self.scale_input = self.scale_options[self.scale_index]
 
         # TODO RYDER: How is this loop doing anything new?
         # For each joystick:
