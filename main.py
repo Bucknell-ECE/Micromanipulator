@@ -152,14 +152,14 @@ def main():
             if buttons.count('Set Home') > 0:
                 x_axis.set_current_home()
                 y_axis.set_current_home()
-                z_axis.set_current_home()
+                # z_axis.set_current_home()
 
             if buttons.count('Reset Home') > 0:
                 x_axis.set_home(6000)
                 # x_coordinate = 6000
                 y_axis.set_home(6000)
                 # y_coordinate = 6000
-                z_axis.set_home(6000)
+                # z_axis.set_home(6000)
 
             if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
 
