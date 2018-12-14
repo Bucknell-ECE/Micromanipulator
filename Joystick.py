@@ -49,6 +49,7 @@ class CustomJoystick:
         # Count the joysticks
         joystick_count = pygame.joystick.get_count()
 
+        # Set the options for the scale factor
         self.scale_options = [1, 5, 10, 25, 50, 100]
 
         #  Associate INITIAL_SCALE with an index in scale_options
@@ -132,21 +133,21 @@ class CustomJoystick:
 
     def get_x(self):
         """
-        Maps absolute_x into an integer between 0 and 2000.
+        Maps absolute_x into an integer between 0 and 12000.
         :return: integer that denotes the number of encoder counts from the stage's zero-boundary
         """
         absolute_x = self.get_absolute_x() + 1
 
-        return map_val(absolute_x, 0, 2, 0, 2000)
+        return map_val(absolute_x, 0, 2, 0, 12000)
 
 
     def get_y(self):
         """
-        Maps absolute_y into an integer between 0 and 2000.
+        Maps absolute_y into an integer between 0 and 12000.
         :return: integer that denotes the number of encoder counts from the stage's zero-boundary
         """
         absolute_y = self.get_absolute_y() + 1
-        return map_val(absolute_y, 0, 2, 0, 2000)
+        return map_val(absolute_y, 0, 2, 0, 12000)
 
 
     def get_throttle(self):
@@ -154,13 +155,3 @@ class CustomJoystick:
         self.scale_input = map_val(absolute_throttle, -1, 1, 0, 100)
 
         return self.scale_input
-
-
-    # Currently unused, possibly so that other functions can utilize constituent subfunctions.
-    def get_position(self):
-        absolute_position = [self.get_absolute_x() + 1, self.get_absolute_y() + 1]
-
-        return map(lambda x: map_val(x, 0, 2, 0, 2000), absolute_position)
-        # for reference:
-        # map_val(x, in_min, in_max, out_min, out_max)
-        # int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))

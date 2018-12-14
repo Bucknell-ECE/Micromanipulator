@@ -148,18 +148,9 @@ def map_val(x, in_min, in_max, out_min, out_max):  # TODO I still have no idea h
     return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))  # The '0' specifies int output
 
 
-##########################################OLD CODE THAT IS NOW DEPRICATED#####################
+def console_readout():
 
-
-def sensitivity_read():
-    file = open("sensitivity.txt", "r")
-    return file.read()
-
-
-def sensitivity_write(scale_input):
-    f = open("sensitivity.txt", "w+")
-    f.truncate()
-    f.write(str(scale_input))
+    return
 
 ###########################
 

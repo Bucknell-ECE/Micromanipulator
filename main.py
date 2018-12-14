@@ -80,16 +80,16 @@ def main():
     # Set linear ranges depending on home position
     home = [x_axis.home, y_axis.home, z_axis.home]
     print('Homes', home)
-    # Find which stop the stage is closest to
+    # Find which stop the stage is closest to (in encoder counts)
     # [left, bottom, right, top]
     boundaries = [x_axis.home, y_axis.home, 12000 - x_axis.home, 12000 - y_axis.home]
     print('boundaries: ', boundaries)
 
+    # Take the smallest boundary value,
     constrained_linear_range = min(boundaries)
     print('constrained_linear_range', constrained_linear_range)
 
-    # Pass in initial value from CustomJoystick constructor
-
+    # ... and make a square out of that smallest value
     scaled_range = map_val(joy.scale_input, 0, 100, 0, constrained_linear_range)
     print('Scaled Range: ', scaled_range)
 
@@ -104,7 +104,7 @@ def main():
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
-        # TODO Can we use this to test location exactness?
+        # TODO Use this as part of performance test.
         # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
         # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
         # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
@@ -112,12 +112,15 @@ def main():
 
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
+        # console_readout()
+
         buttons = joy.get_buttons()
         print('scale_input = ', joy.scale_input)
         print('scale_index = ', joy.scale_index)
 
+        # TODO Make the
         x = joy.get_x()
-        y = 2000 - joy.get_y()
+        y = 12000 - joy.get_y()  # encoder counts
         print('X: ', x, 'Y', y)
 
 
@@ -162,15 +165,16 @@ def main():
             if buttons.count('Increase scale_input') > 0:
                 joy.increase_scale_input()
 
-
         # Main commands to tell the stage to go to a location described by the joystick.
-        x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
+        # TODO Why is it [0, 2000] encoder counts?
         mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
+        mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+
+        x_axis.go_to_location(mapped_x)
         print('map_val x: ', mapped_x)
         # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
 
-        y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
-        mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+        y_axis.go_to_location(mapped_y)
         print('map_val y: ', mapped_y)
         # f1.write('\n' + str(mapped_y) + '\n')
 
