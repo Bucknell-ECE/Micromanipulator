@@ -21,6 +21,7 @@ EXPECTED_RETURN_LENGTH = 31  # TODO Message from stage is expected to be 31 byte
 
 
 class StageSPI(Stage):
+
     def __init__(self, bus, device, position):
         Stage.__init__(self, position)  # StageSPI is a child class of Stage -- inherits everything from Stage
 

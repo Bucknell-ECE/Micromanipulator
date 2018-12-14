@@ -17,12 +17,13 @@ button_map = {
     0: 'null',
     1: 'z_down',
     2: 'z_up',
-    3: 'Home',
+    3: 'Set Home',
     4: 'change_mode',
     6: 'get_status',
-    7: 'Z Sensitivity Down',
-    8: 'Z Sensitivity Up',
-    9: 'Reset_home'
+    7: 'Decrease scale_input',
+    8: 'Increase scale_input',
+    9: 'Reset Home',
+    10: 'null'
 }
 
 # pygame returns buttons from raspi's config utility (that you download with pygame library)
@@ -45,13 +46,7 @@ class CustomJoystick:
         # Count the joysticks
         joystick_count = pygame.joystick.get_count()
 
-        # Nonzero offset enables an exponential (as opposed to linear) sensitivity scheme
-        self.scale_input = 100
-
-        # Initialize the starting sensitivity in a constant, and then have get_axis() overwrite that constant.
-
-        # When is the first time that get_axis(2) is called?
-        #
+        self.scale_options = [1, 5, 10, 25, 50, 100]
 
         # TODO RYDER: How is this loop doing anything new?
         # For each joystick:

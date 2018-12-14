@@ -4,6 +4,7 @@
     <list default="true" id="54710fbb-bd57-4616-9ad2-2aa3cc7ced9f" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Joystick.py" beforeDir="false" afterPath="$PROJECT_DIR$/Joystick.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/StageSPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/StageSPI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +21,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="354">
-                  <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+                <state relative-caret-position="-800">
+                  <caret line="100" column="83" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="83" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -45,8 +46,8 @@
           <file leaf-file-name="Joystick.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Joystick.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="608">
-                  <caret line="129" column="14" lean-forward="true" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
+                <state relative-caret-position="279">
+                  <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
                   <folding>
                     <element signature="e#250#263#0" expanded="true" />
                   </folding>
@@ -57,7 +58,7 @@
           <file leaf-file-name="Stage.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Stage.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="157">
+                <state relative-caret-position="180">
                   <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
                   <folding>
                     <element signature="e#330#350#0" expanded="true" />
@@ -69,8 +70,8 @@
           <file leaf-file-name="StageSPI.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/StageSPI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1185">
-                  <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
+                <state relative-caret-position="438">
+                  <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -78,8 +79,8 @@
           <file leaf-file-name="StageI2C.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/StageI2C.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+                <state relative-caret-position="208">
+                  <caret line="22" selection-start-line="22" selection-end-line="22" />
                 </state>
               </provider>
             </entry>
@@ -110,16 +111,16 @@
       <find>map_val x</find>
       <find>sensitivity</find>
       <find>sensitivity_read</find>
-      <find>get_axis</find>
       <find>x_coordinate</find>
       <find>f1</find>
-      <find>scale_input</find>
       <find>set_home</find>
       <find>Reset_home</find>
       <find>get_absolute_thrott</find>
       <find>get_absolute_throttle</find>
       <find>get_throttle</find>
       <find>joy</find>
+      <find>get_axis</find>
+      <find>scale_input</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -152,12 +153,12 @@
         <option value="$PROJECT_DIR$/EventHandlerTesting.py" />
         <option value="$PROJECT_DIR$/newJoystickTesting.py" />
         <option value="$PROJECT_DIR$/mainSpiTesting.py" />
-        <option value="$PROJECT_DIR$/StageSPI.py" />
         <option value="$PROJECT_DIR$/Testing/JoystickTesting.py" />
-        <option value="$PROJECT_DIR$/StageI2C.py" />
         <option value="$PROJECT_DIR$/main_parameters.py" />
         <option value="$PROJECT_DIR$/helper.py" />
         <option value="$PROJECT_DIR$/Stage.py" />
+        <option value="$PROJECT_DIR$/StageI2C.py" />
+        <option value="$PROJECT_DIR$/StageSPI.py" />
         <option value="$PROJECT_DIR$/Joystick.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
@@ -225,27 +226,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)">
-      <created>1541971642088</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1541971642089</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)">
-      <created>1541971685711</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1541971685711</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Trying to remove some &quot;for&quot; loops to increase speed in main.py. (Note: May actually be counterproductive.)">
-      <created>1542125039274</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1542125039275</updated>
     </task>
     <task id="LOCAL-00029" summary="Updated for Dec. 11th resuming of work">
       <created>1544549045737</created>
@@ -569,7 +549,28 @@
       <option name="project" value="LOCAL" />
       <updated>1544771955568</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="minor changes">
+      <created>1544772222019</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1544772222019</updated>
+    </task>
+    <task id="LOCAL-00076" summary="minor changes">
+      <created>1544772427750</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1544772427750</updated>
+    </task>
+    <task id="LOCAL-00077" summary="minor changes">
+      <created>1544772488851</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1544772488851</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TodoView">
@@ -663,16 +664,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Joystick.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Joystick.py</url>
-          <line>125</line>
+          <line>120</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>100</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="29" />
+      <option name="time" value="32" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -835,34 +836,10 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Desktop/Micromanipulator-old_code/main.py" />
-    <entry file="file://$PROJECT_DIR$/StageI2C.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_parameters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="55" selection-start-line="3" selection-start-column="55" selection-end-line="3" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/StageSPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1185">
-          <caret line="84" column="21" selection-start-line="84" selection-start-column="21" selection-end-line="84" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#330#350#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -873,10 +850,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Stage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#330#350#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageI2C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StageSPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Joystick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="129" column="14" lean-forward="true" selection-start-line="129" selection-start-column="14" selection-end-line="129" selection-end-column="14" />
+        <state relative-caret-position="279">
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
           <folding>
             <element signature="e#250#263#0" expanded="true" />
           </folding>
@@ -885,8 +886,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+        <state relative-caret-position="-800">
+          <caret line="100" column="83" selection-start-line="100" selection-start-column="83" selection-end-line="100" selection-end-column="83" />
           <folding>
             <element signature="e#248#268#0" expanded="true" />
           </folding>

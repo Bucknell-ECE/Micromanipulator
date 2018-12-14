@@ -96,7 +96,9 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
-    scale_input = joy.scale_input
+    # Set initial value for scale_input (as %)
+    INITIAL_SCALE = 100
+    scale_index = joy.scale_options.index(INITIAL_SCALE)  # associate INITIAL_SCALE with an index in scale_options
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -112,9 +114,7 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-
-        if joy.get_throttle() != joy.scale_input:
-            scale_input = joy.get_throttle()
+        scale_options = joy.scale_options
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
@@ -130,11 +130,11 @@ def main():
             if buttons.count('z_down') > 0:
                 z_axis.z_move(0, z_sensitivity)  # move z-axis down by z_sensitivity
 
-            if buttons.count('Home') > 0:
+            if buttons.count('Set Home') > 0:
                 x_axis.set_current_home()
                 y_axis.set_current_home()
 
-            if buttons.count('Reset_home') > 0:
+            if buttons.count('Reset Home') > 0:
                 x_axis.set_home(6000)
                 x_coordinate = 1000
                 y_axis.set_home(6000)
@@ -145,6 +145,7 @@ def main():
                 x_status = x_axis.get_status()
                 y_status = y_axis.get_status()
                 z_status = z_axis.get_status()
+
                 print('get_status X', x_status)
                 print('get_status Y', y_status)
                 print('get_status Z', z_status)
@@ -155,14 +156,30 @@ def main():
                 #         get_status = 0
                 #         # signal.pause()
 
-            if buttons.count('Z Sensitivity Up') > 0:
-                print('Z sensitivity up by 50, Now the sensitivity is', z_sensitivity)
-                z_sensitivity += 50
+            if buttons.count('Decrease scale_input') > 0:
+                # defaults to 50; so set initial index to be 50
+                # scale_options = [1, 5, 10, 25, 50, 100]
+                # scale_input = scale_options[5]
 
-            if buttons.count('Z Sensitivity Down') > 0:
-                print('Z sensitivity up down 50, Now the sensitivity is', z_sensitivity)
-                z_sensitivity -= 50
+                if scale_index == 0:
+                    scale_index = 0
+                else:
+                    scale_index -= 1
+                    scale_input = joy.scale_options(scale_index)
 
+                print('scale_input = ', scale_input)
+                print('scale_index = ', scale_index)
+
+            if buttons.count('Increase scale_input') > 0:
+
+                if scale_index == -1:
+                    scale_index = -1
+                else:
+                    scale_index += 1
+                    scale_input = joy.scale_options(scale_index)
+
+                print('scale_input = ', scale_input)
+                print('scale_index = ', scale_index)
 
 
         # Main commands to tell the stage to go to a location described by the joystick.
