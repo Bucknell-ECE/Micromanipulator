@@ -113,10 +113,7 @@ def main():
 
         pygame.event.get()
 
-        if joy.get_throttle() != 100:
-            scale_input = 100
-        else:
-            scale_input = joy.get_throttle()
+        print(pygame.event.get())
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
