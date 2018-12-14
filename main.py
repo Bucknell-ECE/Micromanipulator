@@ -32,7 +32,7 @@ z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean for an I2C ad
 
 x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
 y_axis.startup()
-#z_axis.startup()  # FIXME We need visual feedback on the z-axis (i.e., depth, axis sensitivity)
+#z_axis.startup()
 
 
 # if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
@@ -136,10 +136,7 @@ def main():
                 y_axis.set_home(6000)
                 y_coordinate = 1000
 
-            for nums in range(buttons.count('get_status')):  # returns the number of occurrences of substring
-                                                             # 'get_status' in 'buttons'
-
-                get_status = 1  # TODO RYDER: What does "get_status" do?
+            if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
 
                 x_status = x_axis.get_status()
                 y_status = y_axis.get_status()
@@ -148,8 +145,6 @@ def main():
                 print('get_status Y', y_status)
                 print('get_status Z', z_status)
 
-
-                # TODO See if commenting this changes anything.
                 # while get_status == 1:
                 #     buttons = joy.get_buttons()
                 #     if buttons.count('get_status'):
@@ -170,14 +165,12 @@ def main():
         x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
         mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
         print('map_val x: ', mapped_x)
-        f1.write(str(mapped_x))
-        f1.write('\n')
+        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
 
         y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
         mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
         print('map_val y: ', mapped_y)
-        f1.write(str(mapped_y))
-        f1.write('\n')
+        f1.write('\n' + str(mapped_y) + '\n')
 
 
         ## Velocity mode
@@ -204,8 +197,7 @@ def main():
         # x_axis.send_command_no_vars('19')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         f1.close()
-        print('map_val() recording stopped.')
-        raise
+        # raise
 
 
 start_time = time.time()

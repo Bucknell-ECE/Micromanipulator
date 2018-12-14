@@ -43,6 +43,9 @@ class CustomJoystick:
 
         joystick_count = pygame.joystick.get_count()
 
+        # nonzero offset enables an exponential sensitivity scheme
+        self.joystick.get_axis(throttle_axis_NUM) = 0.5
+
         # TODO RYDER: How is this loop doing anything new?
         # For each joystick:
         for i in range(joystick_count):
