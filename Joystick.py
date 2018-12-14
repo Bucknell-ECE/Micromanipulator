@@ -128,9 +128,9 @@ class CustomJoystick:
     def get_throttle (self):
         absolute_throttle = self.get_absolute_throttle()
 
-        toggle_sensitivity = map_val(absolute_throttle, -1, 1, 0, 100)
+        self.toggle_sensitivity = map_val(absolute_throttle, -1, 1, 0, 100)
 
-        return toggle_sensitivity
+        return self.toggle_sensitivity
 
 
     # Currently unused, possibly so that other functions can utilize constituent subfunctions.
