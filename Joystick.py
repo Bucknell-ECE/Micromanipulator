@@ -120,14 +120,14 @@ class CustomJoystick:
         :return: integer that denotes the number of encoder counts from the stage's zero-boundary
         """
         absolute_y = self.get_absolute_y() + 1
-
         return map_val(absolute_y, 0, 2, 0, 2000)
 
 
     def get_throttle(self):
         absolute_throttle = self.get_absolute_throttle()
-
         self.scale_input = map_val(absolute_throttle, -1, 1, 0, 100)
+
+        return
 
 
     # Currently unused, possibly so that other functions can utilize constituent subfunctions.

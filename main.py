@@ -96,6 +96,8 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
+    scale_input = joy.scale_input
+
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
     # Loop for mapping joystick movements to M3-LS commands
@@ -110,7 +112,9 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-        scale_input = joy.scale_input
+
+        if joy.get_throttle() is not None:
+            scale_input = joy.get_throttle()
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
