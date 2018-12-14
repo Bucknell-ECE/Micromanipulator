@@ -19,8 +19,8 @@
           <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="168" selection-start-line="168" selection-end-line="168" />
+                <state relative-caret-position="320">
+                  <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
                   <folding>
                     <element signature="e#248#268#0" expanded="true" />
                   </folding>
@@ -89,10 +89,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sleep</find>
-      <find>go_to</find>
-      <find>z_move</find>
-      <find>z_down</find>
       <find>buttons.count</find>
       <find>get_status()</find>
       <find>get_status</find>
@@ -115,10 +111,14 @@
       <find>1200</find>
       <find>12000</find>
       <find>2000</find>
-      <find>home</find>
-      <find>x_coordinate</find>
       <find>set_current</find>
       <find>get_x</find>
+      <find>main()</find>
+      <find>random</find>
+      <find>signal</find>
+      <find>home</find>
+      <find>x_coordinate</find>
+      <find>coordinate</find>
     </findStrings>
     <replaceStrings>
       <replace>z_sensitivity</replace>
@@ -224,13 +224,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530755414046</updated>
-    </task>
-    <task id="LOCAL-00044" summary="minor changes">
-      <created>1544766664519</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1544766664519</updated>
     </task>
     <task id="LOCAL-00045" summary="minor changes">
       <created>1544766691106</created>
@@ -568,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1544824309819</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="minor changes">
+      <created>1544824867893</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1544824867893</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TodoView">
@@ -681,7 +681,7 @@
           <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="41" />
+      <option name="time" value="45" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -894,8 +894,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        <state relative-caret-position="320">
+          <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
           <folding>
             <element signature="e#248#268#0" expanded="true" />
           </folding>

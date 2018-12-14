@@ -17,7 +17,6 @@ from main_parameters import *  # May be a temporary file just for housekeeping.
 from datetime import datetime
 from Tkinter import *
 import pygame
-import random
 import time
 import signal
 import os.path
@@ -66,7 +65,7 @@ joy = CustomJoystick('Logitech', 0)
 
 
 def main():
-    global scale_input
+    # global scale_input
     global x
     global y
     global x_status
@@ -76,6 +75,7 @@ def main():
     global y_coordinate
     global z_sensitivity
 
+    print('All values in encoder counts (2 cts / micron).')
 
     # Set linear ranges depending on home position
     home = [x_axis.home, y_axis.home, z_axis.home]
@@ -139,9 +139,9 @@ def main():
 
             if buttons.count('Reset Home') > 0:
                 x_axis.set_home(6000)
-                x_coordinate = 1000
+                # x_coordinate = 6000
                 y_axis.set_home(6000)
-                y_coordinate = 1000
+                # y_coordinate = 6000
 
             if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
 
