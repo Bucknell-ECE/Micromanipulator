@@ -96,7 +96,7 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
-    f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
+    #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
     # Loop for mapping joystick movements to M3-LS commands
     try:
@@ -111,7 +111,7 @@ def main():
 
         buttons = joy.get_buttons()
 
-        # scale_input = 100  # Instantiate value?
+        scale_input = 100  # Instantiate value?
 
         scale_input = joy.get_throttle()  # First time get_axis(2) is called;
                                           # value needs to be instantiated in
@@ -170,12 +170,12 @@ def main():
         x_axis.go_to_location(map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max))
         mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
         print('map_val x: ', mapped_x)
-        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+        # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
 
         y_axis.go_to_location(map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max))
         mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
         print('map_val y: ', mapped_y)
-        f1.write('\n' + str(mapped_y) + '\n')
+        # f1.write('\n' + str(mapped_y) + '\n')
 
 
         ## Velocity mode
@@ -201,7 +201,7 @@ def main():
     except KeyboardInterrupt:
         # x_axis.send_command_no_vars('19')
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-        f1.close()
+        # f1.close()
         raise
 
 
