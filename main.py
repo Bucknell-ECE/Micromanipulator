@@ -98,8 +98,6 @@ def main():
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
-    scale_input = 100
-
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
@@ -112,7 +110,7 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-        scale_input = joy.get_throttle()
+        scale_input = joy.toggle_sensitivity
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
@@ -120,7 +118,7 @@ def main():
 
 
         if len(buttons) != 0:
-            # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy. (- Jacquelyn)
+            # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy.
 
             if buttons.count('z_up') > 0:
                 z_axis.z_move(1, z_sensitivity)  # move z-axis up by z_sensitivity
