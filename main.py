@@ -98,6 +98,8 @@ def main():
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
+    scale_input = 100
+
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
@@ -111,9 +113,6 @@ def main():
 
         buttons = joy.get_buttons()
         scale_input = joy.get_throttle()
-
-        if scale_input == 50:
-            scale_input = 100
 
         x = joy.get_x()
         y = 2000 - joy.get_y()

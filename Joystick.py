@@ -124,12 +124,10 @@ class CustomJoystick:
         return map_val(absolute_y, 0, 2, 0, 2000)
 
 
-    def get_throttle (self):
+    def get_throttle(self):
         absolute_throttle = self.get_absolute_throttle()
 
         self.toggle_sensitivity = map_val(absolute_throttle, -1, 1, 0, 100)
-
-        print(self.toggle_sensitivity)
 
         return self.toggle_sensitivity
 
