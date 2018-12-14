@@ -96,9 +96,8 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
+    # Pass in initial value from CustomJoystick constructor
     scale_index = joy.scale_index
-    print('scale_input = ', scale_input)
-    print('scale_index = ', scale_index)
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -114,7 +113,8 @@ def main():
         time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
 
         buttons = joy.get_buttons()
-        scale_options = joy.scale_options
+        print('scale_input = ', scale_input)
+        print('scale_index = ', scale_index)
 
         x = joy.get_x()
         y = 2000 - joy.get_y()
@@ -174,6 +174,7 @@ def main():
         print('map_val y: ', mapped_y)
         # f1.write('\n' + str(mapped_y) + '\n')
 
+        print('\n')  # line break
 
         ## Velocity mode
         # if x < 1000:
