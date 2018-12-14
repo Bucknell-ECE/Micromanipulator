@@ -97,6 +97,8 @@ def main():
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
     scale_index = joy.scale_index
+    print('scale_input = ', scale_input)
+    print('scale_index = ', scale_index)
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -157,14 +159,8 @@ def main():
             if buttons.count('Decrease scale_input') > 0:
                 joy.decrease_scale_input()
 
-                print('scale_input = ', scale_input)
-                print('scale_index = ', scale_index)
-
             if buttons.count('Increase scale_input') > 0:
                 joy.increase_scale_input()
-
-                print('scale_input = ', scale_input)
-                print('scale_index = ', scale_index)
 
 
         # Main commands to tell the stage to go to a location described by the joystick.
