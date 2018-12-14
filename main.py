@@ -98,7 +98,7 @@ def main():
 
     # Set initial value for scale_input (as %)
     INITIAL_SCALE = 100
-    scale_index = joy.scale_options.index(INITIAL_SCALE)  # associate INITIAL_SCALE with an index in scale_options
+    scale_index = joy.scale_options.index[INITIAL_SCALE]  # associate INITIAL_SCALE with an index in scale_options
 
     #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -165,7 +165,7 @@ def main():
                     scale_index = 0
                 else:
                     scale_index -= 1
-                    scale_input = joy.scale_options(scale_index)
+                    scale_input = joy.scale_options[scale_index]
 
                 print('scale_input = ', scale_input)
                 print('scale_index = ', scale_index)
@@ -176,7 +176,7 @@ def main():
                     scale_index = -1
                 else:
                     scale_index += 1
-                    scale_input = joy.scale_options(scale_index)
+                    scale_input = joy.scale_options[scale_index]
 
                 print('scale_input = ', scale_input)
                 print('scale_index = ', scale_index)
