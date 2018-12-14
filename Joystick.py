@@ -92,7 +92,7 @@ class CustomJoystick:
         return self.joystick.get_axis(y_axis_NUM)
 
 
-    def get_absolute_throttle(self, toggle_sensitivity):
+    def get_absolute_throttle(self):
         pygame.event.get()
 
         return self.joystick.get_axis(throttle_axis_NUM)
