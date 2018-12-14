@@ -28,6 +28,7 @@ button_map = {
 # pygame returns buttons from raspi's config utility (that you download with pygame library)
 # joystick.gtk? (used to configure buttons on joystick)
 
+
 class CustomJoystick:
 
     def __init__(self, name, number):
@@ -46,7 +47,7 @@ class CustomJoystick:
         # nonzero offset enables an exponential sensitivity scheme
         pygame.event.get()
 
-        # self.toggle_sensitivity = (self.joystick.get_axis(throttle_axis_NUM) + 0.5)
+        self.toggle_sensitivity = (self.joystick.get_axis(throttle_axis_NUM) + 0.5)
 
         # Initialize the starting sensitivity in a constant, and then have get_axis() overwrite that constant.
 
