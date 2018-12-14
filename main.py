@@ -111,9 +111,9 @@ def main():
 
         buttons = joy.get_buttons()
 
-        pygame.event.pump()
+        pygame.event.wait()
 
-        if pygame.event.pump() is None:
+        if pygame.event.wait() is None:
             scale_input = joy.get_throttle()
         else:
             scale_input = 100
