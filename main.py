@@ -166,9 +166,8 @@ def main():
                 joy.increase_scale_input()
 
         # Main commands to tell the stage to go to a location described by the joystick.
-        # TODO Why is it [0, 2000] encoder counts?
-        mapped_x = map_val(x, 0, 2000, x_linear_range_min, x_linear_range_max)
-        mapped_y = map_val(y, 0, 2000, y_linear_range_min, y_linear_range_max)
+        mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
+        mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
 
         x_axis.go_to_location(mapped_x)
         print('map_val x: ', mapped_x)
