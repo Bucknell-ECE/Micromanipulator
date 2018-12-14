@@ -113,7 +113,7 @@ def main():
 
         pygame.event.get()
 
-        if pygame.event.get() is None:
+        if not pygame.event.get() is None:
             scale_input = joy.get_throttle()
         else:
             scale_input = 100
