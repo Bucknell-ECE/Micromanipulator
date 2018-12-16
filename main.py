@@ -76,23 +76,23 @@ joy = CustomJoystick('Logitech', 0)
 
 def main():
 
-    print('All values in encoder counts (2 cts / micron).')
+    # print('All values in encoder counts (2 cts / micron).')
 
     # Set linear ranges depending on home position
     home = [x_axis.home, y_axis.home, z_axis.home]
-    print('Homes', home)
+    # print('Homes', home)
     # Find which stop the stage is closest to (in encoder counts)
     # [left, bottom, right, top]
     boundaries = [x_axis.home, y_axis.home, 12000 - x_axis.home, 12000 - y_axis.home]
-    print('boundaries: ', boundaries)
+    # print('boundaries: ', boundaries)
 
     # Take the smallest boundary value,
     constrained_linear_range = min(boundaries)
-    print('constrained_linear_range', constrained_linear_range)
+    # print('constrained_linear_range', constrained_linear_range)
 
     # ... and make a square out of that smallest value
     scaled_range = map_val(joy.scale_input, 0, 100, 0, constrained_linear_range)
-    print('Scaled Range: ', scaled_range)
+    # print('Scaled Range: ', scaled_range)
 
     x_linear_range_min = x_axis.home - scaled_range + safety_margin
     x_linear_range_max = x_axis.home + scaled_range - safety_margin
@@ -116,13 +116,13 @@ def main():
         # console_readout()
 
         buttons = joy.get_buttons()
-        print('scale_input = ', joy.scale_input)
-        print('scale_index = ', joy.scale_index)
+        # print('scale_input = ', joy.scale_input)
+        # print('scale_index = ', joy.scale_index)
 
         # TODO Make the
         x = joy.get_x()
         y = 12000 - joy.get_y()  # encoder counts
-        print('X: ', x, 'Y', y)
+        # print('X: ', x, 'Y', y)
 
 
         # Main commands to tell the stage to go to a location described by the joystick.
@@ -130,14 +130,14 @@ def main():
         mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
 
         x_axis.go_to_location(mapped_x)
-        print('map_val x: ', mapped_x)
+        # print('map_val x: ', mapped_x)
         # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
 
         y_axis.go_to_location(mapped_y)
-        print('map_val y: ', mapped_y)
+        # print('map_val y: ', mapped_y)
         # f1.write('\n' + str(mapped_y) + '\n')
 
-        print('\n')  # line break
+        # print('\n')  # line break
 
         # Code for acting upon button presses
         if len(buttons) != 0:
