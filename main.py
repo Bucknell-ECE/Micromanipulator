@@ -14,7 +14,7 @@ from StageI2C import StageI2C
 from Joystick import *
 from main_parameters import *  # May be a temporary file just for housekeeping.
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from Tkinter import *
 import pygame
 import time
@@ -23,7 +23,7 @@ import os.path
 import subprocess
 import threading
 
-# global scale_input
+# global input_scale_factor
 global x
 global y
 global x_status
@@ -34,19 +34,23 @@ global y_coordinate
 global z_sensitivity
 
 # Constructors for the stages
-x_axis = StageSPI(0, 0, 6000)
-y_axis = StageSPI(0, 1, 6000)
-
-z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean for an I2C address?
+x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
+y_axis = StageSPI(0, 1, 6000)  # open y-axis on bus 1
+z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean in an I2C address?
 
 x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
 y_axis.startup()
 #z_axis.startup()
 
+#initialize time (can account for daylight savings time, DST) for logging purposes:
+import time
+t = time.time()
+t_str = time.strftime('%Y-%m-%d %H:%M %Z', time.localtime(t))
+
 
 # if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
-#     scale_input = sensitivity_read()
-# print('test', scale_input)
+#     input_scale_factor = sensitivity_read()
+# print('test', input_scale_factor)
 # #time.sleep(5)
 
 # # "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
@@ -79,6 +83,10 @@ def main():
     # print('All values in encoder counts (2 cts / micron).')
 
     # Set linear ranges depending on home position
+    print(  'x_axis.home = 'x_axis.home,
+            'y_axis.home = 'y_axis.home,
+            'z_axis.home = 'z_axis.home)
+
     home = [x_axis.home, y_axis.home, z_axis.home]
     # print('Homes', home)
     # Find which stop the stage is closest to (in encoder counts)
@@ -91,7 +99,7 @@ def main():
     # print('constrained_linear_range', constrained_linear_range)
 
     # ... and make a square out of that smallest value
-    scaled_range = map_val(joy.scale_input, 0, 100, 0, constrained_linear_range)
+    scaled_range = map_val(joy.input_scale_factor, 0, 100, 0, constrained_linear_range)
     # print('Scaled Range: ', scaled_range)
 
     x_linear_range_min = x_axis.home - scaled_range + safety_margin
@@ -105,24 +113,18 @@ def main():
     # Loop for mapping joystick movements to M3-LS commands
     try:
 
-        # TODO Use this as part of performance test.
-        # print('x_axis location',x_axis.get_position_from_M3LS()), location in 12000
-        # print('go to location test', x_axis.send_command('08', encode_to_command(3000)))
-        # print('command test', x_axis.send_command('06', [48] + [32] + encode_to_command(100)))
-        # Test result: <06 0 00000064>\r
-
-        time.sleep(0.01)  # TODO Is this delay for the SPI registers? (C&C-RG p. 9)
+        time.sleep(0.01)  # 10 ms delay allows ample time for everything.
 
         # console_readout()
 
         buttons = joy.get_buttons()
-        # print('scale_input = ', joy.scale_input)
-        # print('scale_index = ', joy.scale_index)
+        print('input_scale_factor = ', joy.input_scale_factor)
+        print('scale_index = ', joy.scale_index, 'out of ', len(joy.scale_index))
 
-        # TODO Make the
+        #
         x = joy.get_x()
         y = 12000 - joy.get_y()  # encoder counts
-        # print('X: ', x, 'Y', y)
+        print('Joystick X: ', x, 'Y: ', y)
 
 
         # Main commands to tell the stage to go to a location described by the joystick.
@@ -132,6 +134,7 @@ def main():
         x_axis.go_to_location(mapped_x)
         # print('map_val x: ', mapped_x)
         # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+        # f1.write(str(time.now()))
 
         y_axis.go_to_location(mapped_y)
         # print('map_val y: ', mapped_y)
@@ -171,36 +174,21 @@ def main():
                 print('get_status Y', y_status)
                 print('get_status Z', z_status)
 
-                # while get_status == 1:
-                #     buttons = joy.get_buttons()
-                #     if buttons.count('get_status'):
-                #         get_status = 0
-                #         # signal.pause()
+                while get_status == 1:
+                    buttons = joy.get_buttons()
+                    if buttons.count('get_status'):
+                        get_status = 0
+                        # signal.pause()
 
-            if buttons.count('Decrease scale_input') > 0:
-                joy.decrease_scale_input()
+            if buttons.count('Decrease input_scale_factor') > 0:
+                joy.decrease_scale_factor()
 
-            if buttons.count('Increase scale_input') > 0:
-                joy.increase_scale_input()
+            if buttons.count('Increase input_scale_factor') > 0:
+                joy.increase_scale_factor()
 
         ## Velocity mode
-        # if x < 1000:
-        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))  # Move CL step, '0' = reverse, ...5 steps?
-        #     x_coordinate -= map_val(8,0,6000,0,2000)  # TODO Try changing the "8" to a "6".
-        #     if x_coordinate <= 0:
-        #         x_coordinate = 0
-        # elif x > 1000:
-        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-        #     x_coordinate += map_val(8,0,12000,0,2000)
-        #     if x_coordinate >= 2000:
-        #         x_coordinate = 2000
-        #
-        # if y < 1000:
-        #     x_axis.send_command('06', [48] + [32] + encode_to_command(5))
-        #     y_coordinate -= map_val(8,0,12000,0,12000)
-        # elif y > 1000:
-        #     x_axis.send_command('06', [49] + [32] + encode_to_command(5))
-        #     y_coordinate += map_val(8,0,2000,0,12000)
+        if joy.get_x() > 6000:
+            x_axis.send_command()
 
 
     except KeyboardInterrupt:
@@ -301,7 +289,7 @@ while True:
 #     positionx.pack()
 #     positiony['text'] = ('Position y is ',y_coordinate)
 #     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', scale_input)
+#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', input_scale_factor)
 #     sensitivity_scale.pack()
 #     statusx['text'] = ('x status is ', x_status)
 #     statusx.pack()

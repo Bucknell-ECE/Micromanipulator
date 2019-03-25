@@ -33,7 +33,7 @@ class StageSPI(Stage):
         axis = spidev.SpiDev()
         axis.open(self.bus, self.device)
         axis.mode = 0b01
-        axis.max_speed_hz = 1000000  # TODO Responsiveness of 1 MHz? (Is this used anywhere?)
+        axis.max_speed_hz = 1000000  # Change to 62.5 MHz (test) from 1 MHz (TEST)
         self.axis = axis
 
 

@@ -9,12 +9,9 @@ Originally Created: R. Nance 12/2017
 import pygame
 from helper import *
 
-x_axis_NUM = 0
-y_axis_NUM = 1
-throttle_axis_NUM = 2
-
-# Set initial value for scale_input (as %)
-INITIAL_SCALE = 100
+X_AXIS_NUM = 0
+Y_AXIS_NUM = 1
+THROTTLE_AXIS_NUM = 2
 
 button_map = {
     0: 'null',
@@ -23,8 +20,8 @@ button_map = {
     3: 'Set Home',
     4: 'change_mode',
     6: 'get_status',
-    7: 'Decrease scale_input',
-    8: 'Increase scale_input',
+    7: 'Decrease input_scale_factor',
+    8: 'Increase input_scale_factor',
     9: 'Reset Home',
     10: 'null'
 }
@@ -43,115 +40,73 @@ class CustomJoystick:
         # Pygame clock is used to manage how fast the screen updates
         self.clock = pygame.time.Clock()
 
-        # Initialize the joystick
+        # Initialize pygame's joystick modules
         pygame.joystick.init()
 
-        # Count the joysticks
-        joystick_count = pygame.joystick.get_count()
-
         # Set the options for the scale factor
-        self.scale_options = [1, 5, 10, 25, 50, 100]
+        self.scale_factor_options = [1, 5, 10, 25, 50, 100]
 
-        #  Associate INITIAL_SCALE with an index in scale_options
-        self.scale_index = self.scale_options.index(INITIAL_SCALE)
-        self.scale_input = self.scale_options[self.scale_index]
-
-        # TODO RYDER: How is this loop doing anything new?
-        # For each joystick:
-        for i in range(joystick_count):
-            joystick = pygame.joystick.Joystick(i)
-            joystick.init()
-
+        #  Associate INITIAL_SCALE with largest scale factor (100)
+        self.input_scale_factor = self.scale_factor_options[-1]
 
     def get_buttons(self):
+        """
+        Retrieves the full list of buttons and their respective status from the joystick.
+        :return: commands for the M3-LS stages (processed in main.py loop)
+        """
         clock = pygame.time.Clock()  # Create function-specific clock to poll for button input.
         commands = []
 
-        for event in pygame.event.get():  # User did a thing!
+        for event in pygame.event.get():  # User did something!
             # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
             if event.type == pygame.JOYBUTTONDOWN:  # add to "commands" when a button is pressed
                 button = event.button
                 commands += [button_map[button]]
 
-            clock.tick(20)  # TODO Why are we polling only every 20 ms? Can we try lower?
-            # Tony's addition?
+            clock.tick(60)  # Allows pygame to call event.get() 60 times per second.
 
         return commands
 
 
-    def get_absolute_x(self):
-        """Returns the current position of a joystick axis. The value will
-        range from -1 to 1 with a value of 0 being centered.
-        :return:
-        """
-        pygame.event.get()
-
-        return self.joystick.get_axis(x_axis_NUM)
-
-
-    def get_absolute_y(self):
-        pygame.event.get()
-
-        return self.joystick.get_axis(y_axis_NUM)
-
-
-    def get_absolute_throttle(self):
-        pygame.event.get()
-
-        return self.joystick.get_axis(throttle_axis_NUM)
-
-
-    def decrease_scale_input(self):
-
-        # self.scale_options = [1, 5, 10, 25, 50, 100]
-        #
-        # self.scale_index = self.scale_options.index(INITIAL_SCALE)
-
-        if self.scale_index == 0:
-            self.scale_index = 0
-        else:
-            self.scale_index -= 1
-            self.scale_input = self.scale_options[self.scale_index]
-
-
-    def increase_scale_input(self):
-        options_length = len(self.scale_options) - 1
-
-        if self.scale_index == options_length:
-            self.scale_index = options_length
-        else:
-            self.scale_index += 1
-            print(self.scale_index)
-            self.scale_input = self.scale_options[self.scale_index]
-
-
-    def get_absolute_position(self):
-        position = [round(self.get_absolute_x(), 3), round(self.get_absolute_y(), 3)]
-
-        return position
-
-
     def get_x(self):
-        """
-        Maps absolute_x into an integer between 0 and 12000.
+        """Takes in the current position of the joystick x-axis, which ranges from -1 to 1 with a value of 0 being centered.
         :return: integer that denotes the number of encoder counts from the stage's zero-boundary
         """
-        absolute_x = self.get_absolute_x() + 1
+        pygame.event.get()
+        absolute_x = self.joystick.get_axis(X_AXIS_NUM)
 
-        return map_val(absolute_x, 0, 2, 0, 12000)
+        return map_val(absolute_x, -1, 1, 0, 12000)
 
 
     def get_y(self):
-        """
-        Maps absolute_y into an integer between 0 and 12000.
+        """Takes in the current position of the joystick y-axis, which ranges from -1 to 1 with a value of 0 being centered.
         :return: integer that denotes the number of encoder counts from the stage's zero-boundary
         """
-        absolute_y = self.get_absolute_y() + 1
-        return map_val(absolute_y, 0, 2, 0, 12000)
+        pygame.event.get()
+        absolute_y = self.joystick.get_axis(Y_AXIS_NUM)
+
+        return map_val(absolute_y, -1, 1, 0, 12000)
 
 
-    def get_throttle(self):
-        absolute_throttle = self.get_absolute_throttle()
-        self.scale_input = map_val(absolute_throttle, -1, 1, 0, 100)
+    def decrease_scale_factor(self):
+        if self.scale_index == 0:
+            return
+        else:
+            self.scale_index -= 1
+            self.input_scale_factor = self.scale_factor_options[self.scale_index]
 
-        return self.scale_input
+
+    def increase_scale_factor(self):
+        if self.scale_index == len(self.scale_factor_options) - 1:
+            return
+        else:
+            self.scale_index += 1
+            self.input_scale_factor = self.scale_factor_options[self.scale_index]
+            print(self.input_scale_factor)
+
+
+    # def get_throttle(self):  # Currently unused. Maybe use to help the user lower the needle to the desired height via the z-axis?
+    #     pygame.event.get()
+    #     absolute_throttle = self.joystick.get_axis(THROTTLE_AXIS_NUM)
+    #
+    #     return  # NUMBER

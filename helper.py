@@ -7,12 +7,11 @@ Originally Created: R. Nance 03/2018
 '''
 
 import pygame
-# test edit
+
 
 def encode_to_command(value):
     """
-    Builds the guts of a command to send the stage to a particular encoder count
-    Steps to figure out what should be converted in order to for command to word
+    Builds the guts of a command to send the stage to the target position in encoder counts TTTTTTTT.
     1. Come up with command according to newscale documentation and write out the command as a series of individual
     chars
 
@@ -29,9 +28,9 @@ def encode_to_command(value):
     # for each character in the input, convert it to its base 10 representation of the ascii character
     for i in value_convert:
         encode_output += [ord(str(i))]
-    # ensure that the output is 8 bytes
-    for i in range(8 - int(len(encode_output))):  # pads with zeros for len(encode_output) < 8
-        encode_output.insert(0, 0x30)
+    pad_zeros = range(8 - int(len(encode_output))):  # ensure that the output is 8 bytes
+    encode_output = [0x30]*pad_zeros + encode_output  # is this any faster?
+        # encode_output.insert(0, 0x30)
     return encode_output
 
 
@@ -135,7 +134,7 @@ def command_to_string(command):
     return string_out
 
 
-def map_val(x, in_min, in_max, out_min, out_max):  # TODO I still have no idea how/why this works. --Jacquelyn
+def map_val(x, in_min, in_max, out_min, out_max):
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
     :param x: value to be mapped
@@ -144,11 +143,13 @@ def map_val(x, in_min, in_max, out_min, out_max):  # TODO I still have no idea h
     :param out_min: minimum of the output scale
     :param out_max: maximum of the output scale
     :return: mapped value, rounded to the nearest integer value
+
+    For example, velocity mode (in main.py) calls map_val(8,0,6000,0,2000).
     """
     return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))  # The '0' specifies int output
 
 
-def console_readout():
+def console_readout():  # TODO Populate this function when standardizing readout.
 
     return
 

@@ -96,8 +96,8 @@ while True:
         time.sleep(0.01)
         buttons = []
         buttons = joy.get_buttons()
-        scale_input = joy.get_throttle ()
-        print(scale_input)
+        input_scale_factor = joy.get_throttle ()
+        print(input_scale_factor)
         x = joy.get_x()
         y = 1023 - joy.get_y()
         print('X: ', x, 'Y', y)
@@ -130,7 +130,7 @@ while True:
         print('boundries: ', boundries)
         constrained_linear_range = min(boundries)
         print('constrained_linear_range', constrained_linear_range)
-        scaled_range = map_val(scale_input, 0, 100, 0, constrained_linear_range)
+        scaled_range = map_val(input_scale_factor, 0, 100, 0, constrained_linear_range)
         print('Scaled Range: ', scaled_range)
         x_linear_range_min = home[0] - scaled_range + 100
         x_linear_range_max = home[0] + scaled_range - 100
