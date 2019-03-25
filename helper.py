@@ -7,27 +7,27 @@ Originally Created: R. Nance 03/2018
 '''
 
 import pygame
+from datetime import datetime, timedelta
 
 
 def encode_to_command(value):
     """
-    Builds the guts of a command to send the stage to the target position in encoder counts TTTTTTTT.
-    1. Come up with command according to newscale documentation and write out the command as a series of individual
-    chars
+    Formats the command in decimal to an 8-byte  to send the stage to the target position in encoder counts TTTTTTTT.
+    1. Come up with command according to New Scale documentation and write out the command as a series of individual chars
 
-    2. convert each character into its hex representation
+    2. convert each (decimal) character into its hex representation
+
+    3. The command then becomes
 
     3. The command can either be sent as the string of these values, or as the individual decimal values for each
-    :param: value: integer between 0 and 12000, representing the encoder count of the location to travel to.
-    :return: the 8 bit output that represents
+    :param: value: decimal value (integer) between 0 and 12000 that represents the encoder counts to move the stage.
+    :return: 8-bit HEX value with leading zeros padding unused digits
     """
-    encode_output = []  # create a blank list to hold the output
     hex_value = hex(int(value)).upper()  # convert the decimal to hex
     value_convert = hex_value[2:]  # remove the 0x from the hex value
     
     # for each character in the input, convert it to its base 10 representation of the ascii character
-    for i in value_convert:
-        encode_output += [ord(str(i))]
+    encode_output = [ord(str(i)) for i in value_convert]
     pad_zeros = range(8 - int(len(encode_output))):  # ensure that the output is 8 bytes
     encode_output = [0x30]*pad_zeros + encode_output  # is this any faster?
         # encode_output.insert(0, 0x30)
@@ -152,6 +152,7 @@ def map_val(x, in_min, in_max, out_min, out_max):
 def console_readout():  # TODO Populate this function when standardizing readout.
 
     return
+
 
 ###########################
 

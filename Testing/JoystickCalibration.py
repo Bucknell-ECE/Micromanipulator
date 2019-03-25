@@ -1,3 +1,5 @@
+# The following code comes from the example listed at https://www.pygame.org/docs/ref/joystick.html.
+
 import pygame
 
 # Define some colors

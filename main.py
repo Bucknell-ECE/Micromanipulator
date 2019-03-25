@@ -7,23 +7,19 @@ Originating Branch: Master
 Originally Created: R. Nance 12/2017
 """
 
-from helper import *
-from Stage import *
 from StageSPI import StageSPI
 from StageI2C import StageI2C
 from Joystick import *
-from main_parameters import *  # May be a temporary file just for housekeeping.
 
-from datetime import datetime, timedelta
-from Tkinter import *
+import datetime as dt
 import pygame
 import time
-import signal
-import os.path
-import subprocess
-import threading
+# from Tkinter import *
+# import signal
+# import os.path
+# import subprocess
+# import threading
 
-# global input_scale_factor
 global x
 global y
 global x_status
@@ -38,57 +34,25 @@ x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
 y_axis = StageSPI(0, 1, 6000)  # open y-axis on bus 1
 z_axis = StageI2C(0x40, 6000, 1)  # TODO What does "@" symbol mean in an I2C address?
 
-x_axis.startup()  # Runs calibration sequences for each stage (in Stage.py).
+x_axis.startup()  # Runs calibration sequences for each stage (see Stage.py).
 y_axis.startup()
 #z_axis.startup()
 
-#initialize time (can account for daylight savings time, DST) for logging purposes:
-import time
-t = time.time()
-t_str = time.strftime('%Y-%m-%d %H:%M %Z', time.localtime(t))
-
-
-# if os.path.getsize('/home/pi/Micromanipulator/sensitivity.txt') > 0:
-#     input_scale_factor = sensitivity_read()
-# print('test', input_scale_factor)
-# #time.sleep(5)
-
-# # "x" and "y" will be overwritten with the "joy.get_x() and ".get_y()" functions.
-# x = 1000
-# y = 1000
-#
-# x_coordinate = 1000
-# y_coordinate = 1000
-
-#locations = [xlocation, ylocation, zlocation]
-
-
-# Initialize joysticks
-pygame.init()  # Initialize all pygame modules
-pygame.joystick.init()  # Initialize joystick module
-
-joy = CustomJoystick('Logitech', 0)
-
-# # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
-# x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
-
-# y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
-# # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
-# # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
-# TODO Make it so that these settings can be changed manually through the RPi terminal.
-
+pygame.init()  # initialize all pygame modules
+pygame.joystick.init()  # initialize joystick module
+joy = CustomJoystick('Logitech', 0)  # initialize joystick
 
 def main():
+
+    # console_readout()
 
     # print('All values in encoder counts (2 cts / micron).')
 
     # Set linear ranges depending on home position
     print(  'x_axis.home = 'x_axis.home,
             'y_axis.home = 'y_axis.home,
-            'z_axis.home = 'z_axis.home)
+            'z_axis.home = 'z_axis.home  )
 
-    home = [x_axis.home, y_axis.home, z_axis.home]
-    # print('Homes', home)
     # Find which stop the stage is closest to (in encoder counts)
     # [left, bottom, right, top]
     boundaries = [x_axis.home, y_axis.home, 12000 - x_axis.home, 12000 - y_axis.home]
@@ -100,6 +64,7 @@ def main():
 
     # ... and make a square out of that smallest value
     scaled_range = map_val(joy.input_scale_factor, 0, 100, 0, constrained_linear_range)
+    # TODO Should scaled_range really be quantized?
     # print('Scaled Range: ', scaled_range)
 
     x_linear_range_min = x_axis.home - scaled_range + safety_margin
@@ -107,15 +72,13 @@ def main():
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
     y_linear_range_max = y_axis.home + scaled_range - safety_margin
 
+    f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
-    #f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
-    # Loop for mapping joystick movements to M3-LS commands
+    # Try clause for mapping joystick movements to M3-LS commands
     try:
 
-        time.sleep(0.01)  # 10 ms delay allows ample time for everything.
-
-        # console_readout()
+        time.sleep(0.01)  # 10 ms delay should allow ample time for everything.
 
         buttons = joy.get_buttons()
         print('input_scale_factor = ', joy.input_scale_factor)
@@ -126,19 +89,36 @@ def main():
         y = 12000 - joy.get_y()  # encoder counts
         print('Joystick X: ', x, 'Y: ', y)
 
+        ## Velocity mode in open-loop mode
+        if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
+            scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
+
+            x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
+        if joy.get_x() < 6000:
+            x_axis.send_command('05', [48] + [32] + encode_to_command(100))
+
+# # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
+# x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
+
+# y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
+# # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
+# # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 
         # Main commands to tell the stage to go to a location described by the joystick.
         mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
         mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
 
-        x_axis.go_to_location(mapped_x)
-        # print('map_val x: ', mapped_x)
-        # f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
-        # f1.write(str(time.now()))
 
+        x_axis.go_to_location(mapped_x)
         y_axis.go_to_location(mapped_y)
-        # print('map_val y: ', mapped_y)
-        # f1.write('\n' + str(mapped_y) + '\n')
+        print('mapped_x: ', mapped_x)
+        print('mapped_y: ', mapped_y)
+
+        # Record mapped x and y locations in file
+        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n', 'a')
+        f1.write('\n' + 'mapped range of y' + str(mapped_y) + '\n', 'a')
+        t_str = str(dt.datetime.now()) + ' EST'
+        f1.write(t_str, 'a')
 
         # print('\n')  # line break
 
@@ -164,7 +144,7 @@ def main():
                 # y_coordinate = 6000
                 # z_axis.set_home(6000)
 
-            if buttons.count('get_status') > 0:  # 'get_status' in 'buttons'
+            if buttons.count('get_status') > 0:  # get closed-loop status and position
 
                 x_status = x_axis.get_status()
                 y_status = y_axis.get_status()
@@ -174,28 +154,18 @@ def main():
                 print('get_status Y', y_status)
                 print('get_status Z', z_status)
 
-                while get_status == 1:
-                    buttons = joy.get_buttons()
-                    if buttons.count('get_status'):
-                        get_status = 0
-                        # signal.pause()
-
             if buttons.count('Decrease input_scale_factor') > 0:
                 joy.decrease_scale_factor()
 
             if buttons.count('Increase input_scale_factor') > 0:
                 joy.increase_scale_factor()
 
-        ## Velocity mode
-        if joy.get_x() > 6000:
-            x_axis.send_command()
 
-
-    except KeyboardInterrupt:
-        # x_axis.send_command_no_vars('19')
-        # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
-        # f1.close()
-        raise
+            except KeyboardInterrupt:
+                # x_axis.send_command_no_vars('19')
+                # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
+                # f1.close()
+                raise
 
 
 start_time = time.time()
@@ -204,10 +174,12 @@ elapsed = 0
 count = 0
 
 while True:
+    t = time.time()
+
     main()
-    # elapsed =  time.time() - start_time
-    # count += 1
-    # print('This is count',count)
+    # do other stuff
+
+    elapsed =  time.time() - t
 
 
 #Refreshing Rate of 0.05s
@@ -289,7 +261,7 @@ while True:
 #     positionx.pack()
 #     positiony['text'] = ('Position y is ',y_coordinate)
 #     positiony.pack()
-#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', input_scale_factor)
+#     sensitivity_scale['text'] = ('Sensitivity Percentage is ', joy.input_scale_factor)
 #     sensitivity_scale.pack()
 #     statusx['text'] = ('x status is ', x_status)
 #     statusx.pack()

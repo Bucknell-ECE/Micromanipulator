@@ -19,12 +19,10 @@ class Stage(object):
         self.home = 6000            # move stage to 6000 (encoder cts) at startup
 
 
-     # @property TODO What does @property do, and should I use it?
     def get_stage_position(self):
         return int(self.position)  # TODO Do we need to rename this function?
 
 
-    # @property
     def get_address(self):
         return self.address
 
@@ -127,8 +125,7 @@ class Stage(object):
 
     def send_command(self, command_code, command_vars):
         """
-        Sends a command that has both a code and optional parameters. Optional parameters are listed in the newscale
-        documentation in square brackets.
+        Sends a command that has both a code and optional parameters. Optional parameters are listed in the New Scale documentation in square brackets.
         :param command_code: two digit integer for the command you want to send. For example: Move to target is 08........
         :param command_vars: the optional paramter for the command, in list form.
         :return:
@@ -162,9 +159,9 @@ class Stage(object):
         Receive from stage:
 
         '''
-        self.send_command('87', [ 5])
-        time.sleep(0.2)
-        self.send_command('87', [ 4])
+        self.send_command('87', [ 1])  # execute forward calibration sequence
+        time.sleep(0.2)  # arbitrary 200 ms delay
+        self.send_command('87', [ 0])  # execute backward calibration sequence
         time.sleep(0.2)
 
 
@@ -186,7 +183,7 @@ class Stage(object):
         return close loop speed
         """
         self.send_command_no_vars('40')
-        time.sleep(0.2)
+        # time.sleep(0.2)
         temp = self.read()
         print('This is speed',temp)
 
@@ -228,7 +225,7 @@ class Stage(object):
         return the current mode information
         """
         self.send_command('20', [82])
-        time.sleep(0.2)
+        # time.sleep(0.2)
         temp = self.read()
         print('This is the mode',temp)
 

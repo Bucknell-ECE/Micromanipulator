@@ -67,7 +67,7 @@ class StageSPI(Stage):
         return a series of bits that correspond to the table on the reference manual <10>
         """
         self.send_command_no_vars('10')
-        time.sleep(0.2)  # TODO Magic number! Try playing around with this.
+        # time.sleep(0.2)
         temp = self.read()
         #return temp
 

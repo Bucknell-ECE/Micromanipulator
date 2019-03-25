@@ -49,6 +49,7 @@ class CustomJoystick:
         #  Associate INITIAL_SCALE with largest scale factor (100)
         self.input_scale_factor = self.scale_factor_options[-1]
 
+
     def get_buttons(self):
         """
         Retrieves the full list of buttons and their respective status from the joystick.
@@ -104,6 +105,13 @@ class CustomJoystick:
             self.input_scale_factor = self.scale_factor_options[self.scale_index]
             print(self.input_scale_factor)
 
+
+    def scaled_velocity_input(self, axis_num):
+        """
+        Scales the joystick displacement by input_scale_factor.
+        :return: scaled_input_step
+        """
+        self.joystick.get_axis(axis_num) =
 
     # def get_throttle(self):  # Currently unused. Maybe use to help the user lower the needle to the desired height via the z-axis?
     #     pygame.event.get()
