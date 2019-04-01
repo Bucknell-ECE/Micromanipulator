@@ -85,7 +85,7 @@ def encoder_convert(value):
 ## deprecated function
 
 def hex_to_command(command):
-    """From heximal number to 6 digit command
+    """From hexadecimal number to 6 digit command
     """
     encode_output = []
     for i in command:
@@ -98,7 +98,7 @@ def hex_to_command(command):
 
 
 def hex_to_command4(command):
-    """From heximal number to 4 digit command
+    """From hexadecimal number to 4 digit command
         """
     encode_output = []
     for i in command:

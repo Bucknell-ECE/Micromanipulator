@@ -45,7 +45,7 @@ joy = CustomJoystick('Logitech', 0)  # initialize joystick
 SAFETY_MARGIN = 50
 
 def main():
-    control_mode = 'velocity'  # TODO Resolve the issue whereby control_mode never leaves 'velocity'
+    control_mode = 'position'  # TODO Resolve the issue whereby control_mode never leaves 'velocity'
 
     # console_readout()
 
@@ -95,17 +95,12 @@ def main():
         if control_mode == 'velocity':
             if joy.get_x() > 6000:  # if the joystick is moved in the positive x-axis,
                 #scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
-                x_axis.send_command('05', [49] + [32] + encode_to_command(100))
+                x_axis.send_command('05', hex_to_command4('0049') + [32] + hex_to_command4(''))
                 # TODO Replace "100" with scaled_input_step
             if joy.get_x() < 6000:
                 x_axis.send_command('05', [48] + [32] + encode_to_command(100))
 
-# # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
-# x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
-
-# y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
-# # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
-# # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
+        # TODO What is the difference between hex_to_command() and encode_to_command()?
 
         # Main commands to tell the stages to go to a location described by the joystick.
         if control_mode == 'position':
@@ -177,7 +172,7 @@ def main():
         # f1.close()
         # finally
 
-    finally:  # TODO Why is this line suddenly necessary? (compare to earlier versions)
+    finally:  # TODO Why is this line necessary? (compare to earlier versions)
         pass
 
 
@@ -193,6 +188,15 @@ while True:
     # do other stuff
 
     elapsed =  time.time() - t
+
+
+# Tony's code on tweaking CL acceleration and velocity settings:
+# # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
+# x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
+#
+# y_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))
+# # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
+# # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 
 
 #Refreshing Rate of 0.05s
