@@ -166,8 +166,9 @@ def main():
         # temp = x_axis.bus.read_i2c_block_data(0x33, 0)
         # f1.close()
         # raise
-    finally:
-            pass
+
+    finally:  # TODO Why is this line suddenly necessary? (compare to earlier versions)
+        pass
 
 
 start_time = time.time()
