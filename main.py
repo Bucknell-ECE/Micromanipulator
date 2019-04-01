@@ -116,10 +116,10 @@ def main():
         print('mapped_y: ', mapped_y)
 
         # Record mapped x and y locations in file
-        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n', 'a')
-        f1.write('\n' + 'mapped range of y' + str(mapped_y) + '\n', 'a')
+        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+        f1.write('\n' + 'mapped range of y' + str(mapped_y) + '\n')
         t_str = str(dt.datetime.now()) + ' EST'
-        f1.write(t_str, 'a')
+        f1.write(t_str)
 
         # print('\n')  # line break
 
