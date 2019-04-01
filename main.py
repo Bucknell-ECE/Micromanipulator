@@ -28,7 +28,6 @@ global z_status
 global x_coordinate
 global y_coordinate
 global z_sensitivity
-global control_mode
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
@@ -44,9 +43,9 @@ pygame.joystick.init()  # initialize joystick module
 joy = CustomJoystick('Logitech', 0)  # initialize joystick
 
 SAFETY_MARGIN = 50
-control_mode = 'velocity'
 
 def main():
+    control_mode = 'velocity'
 
     # console_readout()
 
