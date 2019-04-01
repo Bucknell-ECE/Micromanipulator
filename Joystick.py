@@ -111,7 +111,7 @@ class CustomJoystick:
 
 
     def increase_scale_factor(self):
-        if self.scale_index == len(self.scale_factor_options) - 1:
+        if self.scale_index == len(self.scale_factor_options):
             return
         else:
             self.scale_index += 1
