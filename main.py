@@ -167,8 +167,7 @@ def main():
                 # f1.close()
                 # raise
 
-
-start_time = time.time()
+# start_time = time.time()
 
 elapsed = 0
 count = 0
