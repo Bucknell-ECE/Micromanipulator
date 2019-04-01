@@ -127,7 +127,7 @@ def main():
 
             # print('\n')  # line break
 
-            # Code for acting upon button presses
+        # Code for acting upon button presses
         if len(buttons) != 0:
             # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy.
 
@@ -152,7 +152,7 @@ def main():
             if buttons.count('change_mode') > 0:
                 if control_mode == 'position':
                     control_mode = 'velocity'
-                if control_mode == 'velocity':
+                elif control_mode == 'velocity':
                     control_mode = 'position'
 
             if buttons.count('get_status') > 0:  # get closed-loop status and position
