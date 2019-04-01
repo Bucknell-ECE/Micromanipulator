@@ -28,7 +28,7 @@ def encode_to_command(value):
     
     # for each character in the input, convert it to its base 10 representation of the ascii character
     encode_output = [ord(str(i)) for i in value_convert]
-    pad_zeros = range(8 - int(len(encode_output)))  # ensure that the output is 8 bytes
+    pad_zeros = 8 - int(len(encode_output))  # ensure that the output is 8 bytes
     encode_output = [0x30]*pad_zeros + encode_output  # is this any faster?
         # encode_output.insert(0, 0x30)
     return encode_output
