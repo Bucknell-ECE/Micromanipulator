@@ -28,6 +28,7 @@ global z_status
 global x_coordinate
 global y_coordinate
 global z_sensitivity
+global safety_margin = 50
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
