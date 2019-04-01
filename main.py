@@ -45,7 +45,7 @@ joy = CustomJoystick('Logitech', 0)  # initialize joystick
 SAFETY_MARGIN = 50
 
 def main():
-    control_mode = 'velocity'
+    control_mode = 'velocity'  # TODO Resolve the issue whereby control_mode never leaves 'velocity'
 
     # console_readout()
 
@@ -93,13 +93,12 @@ def main():
 
         # Main commands to tell the stages to move in open-loop steps.
         if control_mode == 'velocity':
-            print('velocity mode successful')
-            # if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
-            #     scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
-            #
-            #     x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
-            # if joy.get_x() < 6000:
-            #     x_axis.send_command('05', [48] + [32] + encode_to_command(100))
+            if joy.get_x() > 6000:  # if the joystick is moved in the positive x-axis,
+                scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
+                x_axis.send_command('05', [49] + [32] + encode_to_command(100))
+                # TODO Replace "100" with scaled_input_step
+            if joy.get_x() < 6000:
+                x_axis.send_command('05', [48] + [32] + encode_to_command(100))
 
 # # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
 # x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
@@ -149,11 +148,11 @@ def main():
                 # y_coordinate = 6000
                 # z_axis.set_home(6000)
 
-            if buttons.count('change_mode') > 0:
-                if control_mode == 'position':
-                    control_mode = 'velocity'
-                elif control_mode == 'velocity':
-                    control_mode = 'position'
+            # if buttons.count('change_mode') > 0:
+            #     if control_mode == 'position':
+            #         control_mode = 'velocity'
+            #     elif control_mode == 'velocity':
+            #         control_mode = 'position'
 
             if buttons.count('get_status') > 0:  # get closed-loop status and position
 
