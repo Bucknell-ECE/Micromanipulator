@@ -60,7 +60,7 @@ class CustomJoystick:
         self.input_scale_factor = self.scale_factor_options[-1]
 
         # Initialize value for scale_index
-        self.scale_index = len(self.scale_factor_options) - 1
+        self.scale_index = len(self.scale_factor_options)
 
 
     def get_buttons(self):
@@ -103,7 +103,7 @@ class CustomJoystick:
 
 
     def decrease_scale_factor(self):
-        if self.scale_index == 0:
+        if self.scale_index == 1:
             return
         else:
             self.scale_index -= 1
