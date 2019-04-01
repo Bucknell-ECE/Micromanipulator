@@ -1,7 +1,7 @@
 # From beginning of 'main.py'
 
 controlMode = 'position'
-safety_margin = 50  # TODO Change this by incorporating M3-LS "Soft Limits"
+SAFETY_MARGIN = 50  # TODO Change this by incorporating M3-LS "Soft Limits"
 
 x_linear_range_min = 0
 x_linear_range_max = 12000

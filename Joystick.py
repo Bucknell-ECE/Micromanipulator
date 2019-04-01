@@ -121,6 +121,7 @@ class CustomJoystick:
     def scaled_velocity_input(self, axis_num):
         """
         Scales the joystick displacement (type?) by input_scale_factor (int). Returns scaled_input_step (decimal int) for controlling velocity mode in main() loop.
+        axis_num: integer for one of the AXIS_NUM constants assigned in the __init__ constructor TODO How to write good docstrings in Python?
         :return: scaled_input_step
         """
         # self.joystick.get_axis(axis_num) =

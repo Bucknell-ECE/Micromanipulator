@@ -28,6 +28,7 @@ global z_status
 global x_coordinate
 global y_coordinate
 global z_sensitivity
+global control_mode
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
@@ -42,7 +43,8 @@ pygame.init()  # initialize all pygame modules
 pygame.joystick.init()  # initialize joystick module
 joy = CustomJoystick('Logitech', 0)  # initialize joystick
 
-safety_margin = 50
+SAFETY_MARGIN = 50
+control_mode = 'velocity'
 
 def main():
 
@@ -68,10 +70,10 @@ def main():
     scaled_range = map_val(joy.input_scale_factor, 0, 100, 0, constrained_linear_range)
     # TODO Should scaled_range really be quantized?
     # print('Scaled Range: ', scaled_range)
-    x_linear_range_min = x_axis.home - scaled_range + safety_margin
-    x_linear_range_max = x_axis.home + scaled_range - safety_margin
-    y_linear_range_min = y_axis.home - scaled_range + safety_margin
-    y_linear_range_max = y_axis.home + scaled_range - safety_margin
+    x_linear_range_min = x_axis.home - scaled_range + SAFETY_MARGIN
+    x_linear_range_max = x_axis.home + scaled_range - SAFETY_MARGIN
+    y_linear_range_min = y_axis.home - scaled_range + SAFETY_MARGIN
+    y_linear_range_max = y_axis.home + scaled_range - SAFETY_MARGIN
 
     f1 = open('map_val-recording.txt', 'a')  # used for recording map_val outputs
 
@@ -90,13 +92,15 @@ def main():
         y = 12000 - joy.get_y()  # encoder counts
         print('Joystick X: ', x, 'Y: ', y)
 
-        ## Velocity mode in open-loop mode
-        # if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
-        #     scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
-        #
-        #     x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
-        # if joy.get_x() < 6000:
-        #     x_axis.send_command('05', [48] + [32] + encode_to_command(100))
+        # Main commands to tell the stages to move in open-loop steps.
+        if control_mode == 'velocity':
+            print('velocity mode successful')
+            # if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
+            #     scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
+            #
+            #     x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
+            # if joy.get_x() < 6000:
+            #     x_axis.send_command('05', [48] + [32] + encode_to_command(100))
 
 # # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
 # x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
@@ -105,25 +109,26 @@ def main():
 # # 'Set CL speed to 200 ct/int'vl, [SPACE], minimum cutoff speed of 10 ct/int'vl, motor accel. of 12 ct/int'vl, int'vl dur. = 1
 # # NOTE Setting closed-loop speeds (C&C Ref. Guide, p. 19)
 
-        # Main commands to tell the stage to go to a location described by the joystick.
-        mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
-        mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
+        # Main commands to tell the stages to go to a location described by the joystick.
+        if control_mode == 'position':
 
+            mapped_x = map_val(x, 0, 12000, x_linear_range_min, x_linear_range_max)
+            mapped_y = map_val(y, 0, 12000, y_linear_range_min, y_linear_range_max)
 
-        x_axis.go_to_location(mapped_x)
-        y_axis.go_to_location(mapped_y)
-        print('mapped_x: ', mapped_x)
-        print('mapped_y: ', mapped_y)
+            x_axis.go_to_location(mapped_x)
+            y_axis.go_to_location(mapped_y)
+            print('mapped_x: ', mapped_x)
+            print('mapped_y: ', mapped_y)
 
-        # Record mapped x and y locations in file
-        f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
-        f1.write('\n' + 'mapped range of y' + str(mapped_y) + '\n')
-        t_str = str(dt.datetime.now()) + ' EST'
-        f1.write(t_str)
+            # Record mapped x and y locations in file
+            f1.write('\n' + 'mapped range of x:' + str(mapped_x) + '\n')
+            f1.write('\n' + 'mapped range of y' + str(mapped_y) + '\n')
+            t_str = str(dt.datetime.now()) + ' EST'
+            f1.write(t_str)
 
-        # print('\n')  # line break
+            # print('\n')  # line break
 
-        # Code for acting upon button presses
+            # Code for acting upon button presses
         if len(buttons) != 0:
             # NOTE: 'for' statements return the no. of times a button mapping appears in the 'buttons' list. I have changed these to "if" statements to remove redundancy.
 
@@ -144,6 +149,12 @@ def main():
                 y_axis.set_home(6000)
                 # y_coordinate = 6000
                 # z_axis.set_home(6000)
+
+            if buttons.count('change_mode') > 0:
+                if control_mode == 'position':
+                    control_mode = 'velocity'
+                if control_mode == 'velocity':
+                    control_mode = 'position'
 
             if buttons.count('get_status') > 0:  # get closed-loop status and position
 
