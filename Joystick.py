@@ -111,7 +111,7 @@ class CustomJoystick:
         Scales the joystick displacement by input_scale_factor.
         :return: scaled_input_step
         """
-        self.joystick.get_axis(axis_num) =
+        # self.joystick.get_axis(axis_num) =
 
     # def get_throttle(self):  # Currently unused. Maybe use to help the user lower the needle to the desired height via the z-axis?
     #     pygame.event.get()
