@@ -42,6 +42,11 @@ pygame.init()  # initialize all pygame modules
 pygame.joystick.init()  # initialize joystick module
 joy = CustomJoystick('Logitech', 0)  # initialize joystick
 
+start_time = time.time()
+
+elapsed = 0
+count = 0
+
 def main():
 
     # console_readout()
@@ -167,10 +172,7 @@ def main():
                 # f1.close()
                 # raise
 
-# start_time = time.time()
 
-elapsed = 0
-count = 0
 
 while True:
     t = time.time()
