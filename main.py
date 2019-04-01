@@ -83,7 +83,7 @@ def main():
 
         buttons = joy.get_buttons()
         print('input_scale_factor = ', joy.input_scale_factor)
-        print('scale_index = ', joy.scale_index, 'out of ', len(joy.scale_index))
+        print('scale_index = ', joy.scale_index, 'out of ', len(joy.scale_factor_options))
 
         #
         x = joy.get_x()
