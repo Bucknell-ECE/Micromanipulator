@@ -49,6 +49,9 @@ class CustomJoystick:
         #  Associate INITIAL_SCALE with largest scale factor (100)
         self.input_scale_factor = self.scale_factor_options[-1]
 
+        # Initialize value for scale_index
+        self.scale_index = len(self.scale_factor_options)
+
 
     def get_buttons(self):
         """
