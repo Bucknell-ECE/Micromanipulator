@@ -91,12 +91,12 @@ def main():
         print('Joystick X: ', x, 'Y: ', y)
 
         ## Velocity mode in open-loop mode
-        if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
-            scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
-
-            x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
-        if joy.get_x() < 6000:
-            x_axis.send_command('05', [48] + [32] + encode_to_command(100))
+        # if joy.get_x() > 6000:  # if the joystick is moved in the x-axis,
+        #     scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
+        #
+        #     x_axis.send_command('05', [49] + [32] + encode_to_command(scaled_input_step))
+        # if joy.get_x() < 6000:
+        #     x_axis.send_command('05', [48] + [32] + encode_to_command(100))
 
 # # print('test',x_axis.send_command('40',hex_to_command('001400')+[32]+hex_to_command('00000A')+[32]+hex_to_command('000033')+[32]+hex_to_command1('0001')))
 # x_axis.send_command('40',hex_to_command('000200')+[32]+hex_to_command('00000A')+[32]+hex_to_command('00000C')+[32]+hex_to_command4('0001'))  # Prints command after running
