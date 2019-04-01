@@ -169,10 +169,10 @@ def main():
                 # raise
 
 
-start_time = time.time()
+    start_time = time.time()
 
-elapsed = 0
-count = 0
+    elapsed = 0
+    count = 0
 
 while True:
     t = time.time()
