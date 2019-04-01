@@ -60,7 +60,7 @@ class CustomJoystick:
         self.input_scale_factor = self.scale_factor_options[-1]
 
         # Initialize value for scale_index
-        self.scale_index = len(self.scale_factor_options)
+        self.scale_index = len(self.scale_factor_options) - 1
 
 
     def get_buttons(self):
@@ -120,7 +120,7 @@ class CustomJoystick:
 
     def scaled_velocity_input(self, axis_num):
         """
-        Scales the joystick displacement by input_scale_factor.
+        Scales the joystick displacement (type?) by input_scale_factor (int). Returns scaled_input_step (decimal int) for controlling velocity mode in main() loop.
         :return: scaled_input_step
         """
         # self.joystick.get_axis(axis_num) =
