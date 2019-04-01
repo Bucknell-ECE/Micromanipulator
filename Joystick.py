@@ -107,7 +107,7 @@ class CustomJoystick:
             return
         else:
             self.scale_index -= 1
-            self.input_scale_factor = self.scale_factor_options[self.scale_index]
+            self.input_scale_factor = self.scale_factor_options[self.scale_index - 1]
 
 
     def increase_scale_factor(self):
@@ -115,7 +115,7 @@ class CustomJoystick:
             return
         else:
             self.scale_index += 1
-            self.input_scale_factor = self.scale_factor_options[self.scale_index + 1]
+            self.input_scale_factor = self.scale_factor_options[self.scale_index - 1]
 
 
     def scaled_velocity_input(self, axis_num):
