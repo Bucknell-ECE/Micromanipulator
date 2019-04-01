@@ -155,10 +155,10 @@ def main():
                 print('get_status Y', y_status)
                 print('get_status Z', z_status)
 
-            if buttons.count('Decrease input_scale_factor') > 0:
+            if buttons.count('decrease_scale_factor') > 0:
                 joy.decrease_scale_factor()
 
-            if buttons.count('Increase input_scale_factor') > 0:
+            if buttons.count('increase_scale_factor') > 0:
                 joy.increase_scale_factor()
                 return
 

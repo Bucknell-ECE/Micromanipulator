@@ -20,8 +20,8 @@ button_map = {
     3: 'Set Home',
     4: 'change_mode',
     6: 'get_status',
-    7: 'Decrease input_scale_factor',
-    8: 'Increase input_scale_factor',
+    7: 'decrease_scale_factor',
+    8: 'increase_scale_factor',
     9: 'Reset Home',
     10: 'null'
 }
@@ -115,8 +115,7 @@ class CustomJoystick:
             return
         else:
             self.scale_index += 1
-            self.input_scale_factor = self.scale_factor_options[self.scale_index]
-            print(self.input_scale_factor)
+            self.input_scale_factor = self.scale_factor_options[self.scale_index + 1]
 
 
     def scaled_velocity_input(self, axis_num):
