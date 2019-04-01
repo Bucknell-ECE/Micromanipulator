@@ -94,7 +94,7 @@ def main():
         # Main commands to tell the stages to move in open-loop steps.
         if control_mode == 'velocity':
             if joy.get_x() > 6000:  # if the joystick is moved in the positive x-axis,
-                scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
+                #scaled_input_step = scaled_velocity_input(X_AXIS_NUM)
                 x_axis.send_command('05', [49] + [32] + encode_to_command(100))
                 # TODO Replace "100" with scaled_input_step
             if joy.get_x() < 6000:
