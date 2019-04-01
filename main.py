@@ -28,7 +28,6 @@ global z_status
 global x_coordinate
 global y_coordinate
 global z_sensitivity
-global safety_margin = 50
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
@@ -42,6 +41,8 @@ y_axis.startup()
 pygame.init()  # initialize all pygame modules
 pygame.joystick.init()  # initialize joystick module
 joy = CustomJoystick('Logitech', 0)  # initialize joystick
+
+safety_margin = 50
 
 def main():
 
@@ -67,7 +68,6 @@ def main():
     scaled_range = map_val(joy.input_scale_factor, 0, 100, 0, constrained_linear_range)
     # TODO Should scaled_range really be quantized?
     # print('Scaled Range: ', scaled_range)
-
     x_linear_range_min = x_axis.home - scaled_range + safety_margin
     x_linear_range_max = x_axis.home + scaled_range - safety_margin
     y_linear_range_min = y_axis.home - scaled_range + safety_margin
