@@ -43,6 +43,16 @@ class CustomJoystick:
         # Initialize pygame's joystick modules
         pygame.joystick.init()
 
+        joystick_count = pygame.joystick.get_count()
+        joystick = pygame.joystick.Joystick(0)
+
+        # For each joystick axis:
+        for i in range(joystick_count):
+            joystick = pygame.joystick.Joystick(i)
+            # print('this is joystick: ', i)
+            joystick.init()
+        axes = joystick.get_numaxes()  # remove assignment later
+
         # Set the options for the scale factor
         self.scale_factor_options = [1, 5, 10, 25, 50, 100]
 
