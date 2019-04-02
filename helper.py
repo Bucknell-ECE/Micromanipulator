@@ -60,30 +60,6 @@ def encode_to_command4digit(value):
     return encode_output
 
 
-def encoder_convert(value):
-    '''
-    THIS FUNCTION IS NOW DEPRECATED BUT HAS NOT YET BEEN REMOVED FROM CIRCULATION. PLEASE DO NOT USE
-    Function that takes in a value in decimal and outputs the hex ascii version of it, by taking each number of the hex
-    value and sending that digit as a hex number
-    '''
-    
-    hex_value = hex(int(value)).upper() #convert the decimal to hex
-    value_convert = hex_value[2:]#remove the 0x from the hex value
-    encode_output = []
-    for i in str(value_convert):
-        encode_output += [hex(ord(i))]
-    
-    # ensure that the output is 8 bytes
-    for i in range(8 - int(len(encode_output))):
-        encode_output.insert(0, '0x30')
-    
-    print('Encoded output is ')
-    print('EncoderCount Output', encode_output)
-    print(encode_output[1] + encode_output[2])
-    
-    return encode_output
-## deprecated function
-
 def hex_to_command(command):
     """From hexadecimal number to 6 digit command
     """
@@ -137,16 +113,16 @@ def command_to_string(command):
 def map_val(x, in_min, in_max, out_min, out_max):
     """
     Maps a value in one range to a value in another range. This code is used in the joystick package
-    :param x: value to be mapped
-    :param in_min: minimum of the input scale
-    :param in_max: maximum of the input scale
-    :param out_min: minimum of the output scale
-    :param out_max: maximum of the output scale
-    :return: mapped value, rounded to the nearest integer value
+    :param x: (decimal) value to be mapped
+    :param in_min: (int)  minimum of the input scale
+    :param in_max: (int) maximum of the input scale
+    :param out_min: (int) minimum of the output scale
+    :param out_max: (int) maximum of the output scale
+    :return: (int) mapped value, rounded to the nearest integer value
 
     For example, velocity mode (in main.py) calls map_val(8,0,6000,0,2000).
     """
-    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))  # The '0' specifies int output
+    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 1))  # The '0' specifies integer output
 
 
 def console_readout():  # TODO Populate this function when standardizing readout.
