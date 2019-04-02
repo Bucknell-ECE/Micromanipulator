@@ -48,9 +48,10 @@ def main():
 
     # print('All values in encoder counts (2 cts / micron).')
 
+    print('\n' + '\n')  # break twice between console batches
     # Set linear ranges depending on home position
-    print(  'x_axis.home = ' + str(x_axis.home)  +
-            'y_axis.home = ' + str(y_axis.home)  +
+    print(  'x_axis.home = ' + str(x_axis.home)  + '\n'
+            'y_axis.home = ' + str(y_axis.home)  + '\n'
             'z_axis.home = ' + str(z_axis.home)  )
 
     # Find which stop the stage is closest to (in encoder counts)
