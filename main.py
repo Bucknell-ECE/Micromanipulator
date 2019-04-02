@@ -22,12 +22,8 @@ import time
 
 global x
 global y
-global x_status
-global y_status
-global z_status
 global x_coordinate
 global y_coordinate
-global z_sensitivity
 
 # Constructors for the stages
 x_axis = StageSPI(0, 0, 6000)  # open x-axis on bus 0
@@ -43,6 +39,7 @@ pygame.joystick.init()  # initialize joystick module
 joy = CustomJoystick('Logitech', 0)  # initialize joystick
 
 SAFETY_MARGIN = 50
+z_sensitivity = 200
 
 def main():
     control_mode = 'position'  # TODO Resolve the issue whereby control_mode never leaves 'velocity'
