@@ -122,7 +122,7 @@ def map_val(x, in_min, in_max, out_min, out_max):
 
     For example, velocity mode (in main.py) calls map_val(8,0,6000,0,2000).
     """
-    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 1))  # The '0' specifies integer output
+    return int(round((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min, 0))
 
 
 def console_readout():  # TODO Populate this function when standardizing readout.
