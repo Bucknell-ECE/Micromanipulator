@@ -143,6 +143,12 @@ https://www.digikey.com/scripts/DkSearch/dksus.dll?Detail&itemSeq=261246277&uq=6
 
 
 <a name="License"></a>
+
+## Contributor
+-------------------
+Jacquelyn Scott </br>
+Ryder Nance </br>
+Zheng Tian </br>
 ## License
 -------------------
 Waiting to be added
